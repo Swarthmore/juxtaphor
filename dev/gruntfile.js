@@ -13,26 +13,24 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		concat: {
-			options: { separator: ';' },
+			// we'll have to change the separator to ';' once we use uglify
+			options: { separator: '\n\n' },
 			dist: {
 				src: ['_/components/js/*.js'],
 				dest: '_/js/<%= pkg.name %>.js'
 				}
 		}, // concat
-		uglify: {
-			options: { banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n' },
-			dist: { files: { '_/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>'] } }
-		}, // uglify
+
+		// not necessary yet
+		// uglify: {
+		// 	options: { banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n' },
+		// 	dist: { files: { '_/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>'] } }
+		// }, // uglify
+
 		sass: {
-			options: { separator: ';' },
+			options: { trace: true, style: 'expanded' },
 			dist: {
-				files: [{
-					expand: true,
-					cwd: '_/components/sass',
-					src: ['*.scss'],
-					dest: '_/css',
-					ext: '.css'
-				}]
+				files: {'_/css/main.css' : '_/components/sass/main.scss'}
 			}
 		}, // sass
 		jshint: {
@@ -50,16 +48,16 @@ module.exports = function(grunt) {
 			jshint: {
 				options: { livereload: true },
 				files: ['<%= jshint.files %>', '*.html'],
-				tasks: ['jshint']
+				tasks: ['jshint', 'concat']
 			}, // watch jshint
 			sass: {
 				files: ['_/components/sass/*.scss'],
-				tasks: ['compass:dev']
+				tasks: ['sass']
 	      		}, // watch sass
       		} // watch
 	});
 
 	//register tasks
 	// grunt.registerTask('test', ['jshint','qunit']);
-	grunt.registerTask('default', ['watch','jshint', 'concat', 'uglify', 'sass']);
+	grunt.registerTask('default', ['watch','jshint', 'concat', 'sass']);
 };

@@ -1,1 +1,1 @@
-// A good place to start your scripts -- eventually we'll be creating a lot of these, might be worth concatenating early on
+// whatever javascript files you place in this folder will be concatenated to a single file in the js library
