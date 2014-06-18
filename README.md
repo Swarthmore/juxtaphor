@@ -19,7 +19,7 @@ In the dev folder you'll find:
                 + js
             - js
                 + lib
-        * css
+            - css
             
 On the server, you'll find the web service running and you all have access to development folders of
 your own. Each of your home folders has a dev subfolder that has a symlink -- you can see what you're making on the web.
