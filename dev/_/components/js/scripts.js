@@ -18,16 +18,28 @@ AV.routes = Backbone.Router.extend({
 	},
 	index: function(){
 		this.model = new AV.model();
-		this.model.save();	
+		this.model({
+
+			name: 'test',
+			type: 'txt',
+			content: 'test'
+		});
+		this.model.save({
+			success:function(d){
+				test('success');
+			},
+			error:function(d){
+				test('error');
+			}
+		});	
 	}
 });
 
 AV.model = Backbone.Model.extend({
 	url: 'localhost:8182/juxta/source',
-
-	data:{
-		
-	}
+	name: '',
+	type: '',
+	content: ''
 });
 
 AV.view = Backbone.View.extend({});
