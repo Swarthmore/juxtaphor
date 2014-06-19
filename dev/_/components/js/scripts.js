@@ -17,7 +17,7 @@ AV.routes = Backbone.Router.extend({
 		test('init');
 	},
 	index: function(){
-		this.model = new AV.model;
+		this.model = new AV.model();
 		this.model.save();	
 	}
 });
