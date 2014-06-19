@@ -37,3 +37,6 @@ var readysetgo = new AV.routes();
 $(function(){
   Backbone.history.start(); 
 });
+
+
+// test scripts
