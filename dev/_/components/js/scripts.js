@@ -5,6 +5,7 @@ function test(arg){
 	console.log(output);
 }
 
+Backbone.emulateHTTP = true;
 var AV = {};
 
 
@@ -17,9 +18,9 @@ AV.routes = Backbone.Router.extend({
 		test('init');
 	},
 	index: function(){
-		this.model = new AV.model();
-		this.model({
-
+		test("Inside index");
+		this.model = new AV.model(
+		{
 			name: 'test',
 			type: 'txt',
 			content: 'test'
@@ -36,7 +37,7 @@ AV.routes = Backbone.Router.extend({
 });
 
 AV.model = Backbone.Model.extend({
-	url: 'localhost:8182/juxta/source',
+	url: 'http://54.88.3.200:8182/juxta/source',
 	name: '',
 	type: '',
 	content: ''
