@@ -25,6 +25,7 @@ AV.routes = Backbone.Router.extend({
 			type: 'txt',
 			content: 'test'
 		});
+		test("before save...");
 		this.model.save({
 			success:function(d){
 				test('success');
@@ -32,12 +33,13 @@ AV.routes = Backbone.Router.extend({
 			error:function(d){
 				test('error');
 			}
-		});	
+		});
+		test("after save...");		
 	}
 });
 
 AV.model = Backbone.Model.extend({
-	url: 'http://54.88.3.200:8182/juxta/source',
+	url: 'http://54.88.3.200:8182/juxta/workspace',
 	name: '',
 	type: '',
 	content: ''
@@ -49,4 +51,10 @@ var readysetgo = new AV.routes();
 
 $(function(){
   Backbone.history.start(); 
+  $.ajaxSetup({
+	headers: {
+		"Access-Control-Allow-Origin":"*"
+	}
+  });
+  //test();
 });
