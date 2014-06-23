@@ -16,7 +16,7 @@ module.exports = function(grunt) {
 			// we'll have to change the separator to ';' once we use uglify
 			options: { separator: '\n\n' },
 			dist: {
-				src: ['_/components/js/*.js'],
+				src: ['_components/js/scripts.js','_/components/js/*.js'],
 				dest: '_/js/<%= pkg.name %>.js'
 				}
 		}, // concat
@@ -59,5 +59,6 @@ module.exports = function(grunt) {
 
 	//register tasks
 	// grunt.registerTask('test', ['jshint','qunit']);
-	grunt.registerTask('default', ['watch','jshint', 'concat', 'sass']);
+	grunt.registerTask('default', ['jshint', 'concat', 'sass']);
+    grunt.registerTask('watch', ['jshint', 'concat', 'sass','watch']);
 };
