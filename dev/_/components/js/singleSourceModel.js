@@ -1,5 +1,5 @@
 
-var AV = {}
+var AV = {};
 
 AV.source = Backbone.Model.extend({
 	url: 'redirect.php',
