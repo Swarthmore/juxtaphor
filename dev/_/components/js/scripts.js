@@ -19,9 +19,10 @@ AV.routes = Backbone.Router.extend({
 		test("Inside index");
 		this.model = new AV.model();
 		this.model.set({
-			name: 'great title',
-			data: 'poem'
+			name: 'greatest title2',
+			data: 'poem is poem is a poem is a poem. Poem is a poem.'
 		});
+		test("before the save");
 		this.model.save({
 			success:function(d){
 				test('success');
