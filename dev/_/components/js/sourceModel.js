@@ -1,6 +1,4 @@
-
-var AV = {};
-
+// Source Model
 AV.source = Backbone.Model.extend({
 	url: 'redirect.php',
 	defaults: {
@@ -10,3 +8,4 @@ AV.source = Backbone.Model.extend({
 		data: ''
 	}
 });
+// Source Model End
