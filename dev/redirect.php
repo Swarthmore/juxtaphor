@@ -35,7 +35,7 @@ if(isset($_GET['log']) && $_GET['log'] = 1) {
         fwrite($f, "\n\n");
 
         try{
-                $call = \Httpful\Request::post($baseURL . $routes[0])
+                $call = \Httpful\Request::post($baseURL . $route[0])
                 ->sendsJson()
                 ->body('[' . $json_string . ']')
                 ->send();
