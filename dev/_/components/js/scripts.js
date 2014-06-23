@@ -5,9 +5,7 @@ function test(arg){
 	console.log(output);
 }
 
-Backbone.emulateHTTP = true;
 var AV = {};
-
 
 AV.routes = Backbone.Router.extend({
 
