@@ -19,8 +19,8 @@ AV.routes = Backbone.Router.extend({
 	},
 	index: function(){
 		test("Inside index");
-		this.model = new AV.model(
-		{
+		this.model = new AV.model();
+		this.model.set({
 			name: 'great title',
 			data: 'poem'
 		});
@@ -31,7 +31,7 @@ AV.routes = Backbone.Router.extend({
 			error:function(d){
 				test('error');
 			}
-		});	
+		});
 	}
 });
 
@@ -50,5 +50,5 @@ AV.view = Backbone.View.extend({});
 var readysetgo = new AV.routes();
 
 $(function(){
-  Backbone.history.start(); 
+  Backbone.history.start();
 });
