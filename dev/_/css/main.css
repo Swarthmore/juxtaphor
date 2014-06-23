@@ -2,3 +2,16 @@
 @import "mixins";
 @import "base";
 @import "modules"; */
+nav.navbar-inverse h1.navbar-brand { color: #BACFDF;}
+#background {
+	display: block;
+	position: fixed;
+	top: 100px;
+	left: 0px;
+	height: 650px;	
+	width: 50%;
+	background: url('../img/altman-akhmatova.jpg') no-repeat top;
+	opacity: .5;
+}
+
+#main{ margin-top: 9%; font-size: 2em;}
