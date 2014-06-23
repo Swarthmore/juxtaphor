@@ -6,5 +6,6 @@ AV.SourceView = Backbone.View.extend({
 	}
 
 });
-var source_view = new SourceView();
+//this sets our view's "el" property to div#search_container
+var source_view = new SourceView({el: $("#search_container"});
  
