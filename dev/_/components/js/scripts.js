@@ -21,8 +21,8 @@ AV.routes = Backbone.Router.extend({
 		test("Inside index");
 		this.model = new AV.model(
 		{
-			name: 'test',
-			data: 'test'
+			name: 'great title',
+			data: 'poem'
 		});
 		this.model.save({
 			success:function(d){
@@ -37,11 +37,11 @@ AV.routes = Backbone.Router.extend({
 
 AV.model = Backbone.Model.extend({
 	url: 'redirect.php',
-	defaults{
-	name: '',
-	type: 'raw',
-	contentType: 'txt',
-	data: ''
+	defaults: {
+		name: '',
+		type: 'raw',
+		contentType: 'txt',
+		data: ''
 	}
 });
 
