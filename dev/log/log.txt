@@ -1,0 +1,277 @@
+<h2>1403549389</h2><hr/><pre>
+
+{"name":"greatest title333","type":"raw","contentType":"txt","data":"poem is poem is a poem is a poem. Poem is a m."}Array
+(
+    [name] => greatest title333
+    [type] => raw
+    [contentType] => txt
+    [data] => poem is poem is a poem is a poem. Poem is a m.
+)
+
+
+Httpful\Response Object
+(
+    [body] => Source 'greatest title333' already exists in workspace 'public'
+    [raw_body] => Source 'greatest title333' already exists in workspace 'public'
+    [headers] => Httpful\Response\Headers Object
+        (
+            [headers:Httpful\Response\Headers:private] => Array
+                (
+                    [content-type] => text/plain; charset=UTF-8
+                    [connection] => keep-alive
+                    [content-length] => 63
+                    [content-language] => en
+                    [server] => Restlet-Framework/2.1.4
+                    [accept-ranges] => bytes
+                    [date] => Mon, 23 Jun 2014 18:49:49 GMT
+                    [vary] => Accept-Charset, Accept-Encoding, Accept-Language, Accept
+                )
+
+        )
+
+    [raw_headers] => HTTP/1.1 409 Conflict
+Content-Type: text/plain; charset=UTF-8
+Connection: keep-alive
+Content-Length: 63
+Content-Language: en
+Server: Restlet-Framework/2.1.4
+Accept-Ranges: bytes
+Date: Mon, 23 Jun 2014 18:49:49 GMT
+Vary: Accept-Charset, Accept-Encoding, Accept-Language, Accept
+    [request] => Httpful\Request Object
+        (
+            [uri] => http://54.88.3.200:8182/juxta/source
+            [method] => POST
+            [headers] => Array
+                (
+                    [Content-Length] => 119
+                )
+
+            [raw_headers] => POST /juxta/source HTTP/1.1
+Host: 54.88.3.200:8182
+Expect:
+User-Agent: Httpful/0.2.10 (cURL/7.36.0 PHP/5.3.28 (Linux) Apache/2.2.27 (Amazon) Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36)
+Content-Type: application/json
+Accept: */*; q=0.5, text/plain; q=0.8, text/html;level=3;
+Content-Length: 119
+
+            [strict_ssl] => 
+            [content_type] => application/json
+            [expected_type] => 
+            [additional_curl_opts] => Array
+                (
+                )
+
+            [auto_parse] => 1
+            [serialize_payload_method] => 2
+            [username] => 
+            [password] => 
+            [serialized_payload] => [{"name":"greatest title333","type":"raw","contentType":"txt","data":"poem is poem is a poem is a poem. Poem is a m."}]
+            [payload] => [{"name":"greatest title333","type":"raw","contentType":"txt","data":"poem is poem is a poem is a poem. Poem is a m."}]
+            [parse_callback] => 
+            [error_callback] => 
+            [follow_redirects] => 
+            [max_redirects] => 25
+            [payload_serializers] => Array
+                (
+                )
+
+            [_ch] => Resource id #26
+            [_debug] => 
+        )
+
+    [code] => 409
+    [content_type] => text/plain
+    [parent_type] => text/plain
+    [charset] => UTF-8
+    [is_mime_vendor_specific] => 
+    [is_mime_personal] => 
+    [parsers:Httpful\Response:private] => 
+)
+end
+
+</pre><h2>1403549392</h2><hr/><pre>
+
+{"name":"greatest title333","type":"raw","contentType":"txt","data":"poem is poem is a poem is a poem. Poem is a m."}Array
+(
+    [name] => greatest title333
+    [type] => raw
+    [contentType] => txt
+    [data] => poem is poem is a poem is a poem. Poem is a m.
+)
+
+
+Httpful\Response Object
+(
+    [body] => Source 'greatest title333' already exists in workspace 'public'
+    [raw_body] => Source 'greatest title333' already exists in workspace 'public'
+    [headers] => Httpful\Response\Headers Object
+        (
+            [headers:Httpful\Response\Headers:private] => Array
+                (
+                    [content-type] => text/plain; charset=UTF-8
+                    [connection] => keep-alive
+                    [content-length] => 63
+                    [content-language] => en
+                    [server] => Restlet-Framework/2.1.4
+                    [accept-ranges] => bytes
+                    [date] => Mon, 23 Jun 2014 18:49:52 GMT
+                    [vary] => Accept-Charset, Accept-Encoding, Accept-Language, Accept
+                )
+
+        )
+
+    [raw_headers] => HTTP/1.1 409 Conflict
+Content-Type: text/plain; charset=UTF-8
+Connection: keep-alive
+Content-Length: 63
+Content-Language: en
+Server: Restlet-Framework/2.1.4
+Accept-Ranges: bytes
+Date: Mon, 23 Jun 2014 18:49:52 GMT
+Vary: Accept-Charset, Accept-Encoding, Accept-Language, Accept
+    [request] => Httpful\Request Object
+        (
+            [uri] => http://54.88.3.200:8182/juxta/source
+            [method] => POST
+            [headers] => Array
+                (
+                    [Content-Length] => 119
+                )
+
+            [raw_headers] => POST /juxta/source HTTP/1.1
+Host: 54.88.3.200:8182
+Expect:
+User-Agent: Httpful/0.2.10 (cURL/7.36.0 PHP/5.3.28 (Linux) Apache/2.2.27 (Amazon) Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36)
+Content-Type: application/json
+Accept: */*; q=0.5, text/plain; q=0.8, text/html;level=3;
+Content-Length: 119
+
+            [strict_ssl] => 
+            [content_type] => application/json
+            [expected_type] => 
+            [additional_curl_opts] => Array
+                (
+                )
+
+            [auto_parse] => 1
+            [serialize_payload_method] => 2
+            [username] => 
+            [password] => 
+            [serialized_payload] => [{"name":"greatest title333","type":"raw","contentType":"txt","data":"poem is poem is a poem is a poem. Poem is a m."}]
+            [payload] => [{"name":"greatest title333","type":"raw","contentType":"txt","data":"poem is poem is a poem is a poem. Poem is a m."}]
+            [parse_callback] => 
+            [error_callback] => 
+            [follow_redirects] => 
+            [max_redirects] => 25
+            [payload_serializers] => Array
+                (
+                )
+
+            [_ch] => Resource id #26
+            [_debug] => 
+        )
+
+    [code] => 409
+    [content_type] => text/plain
+    [parent_type] => text/plain
+    [charset] => UTF-8
+    [is_mime_vendor_specific] => 
+    [is_mime_personal] => 
+    [parsers:Httpful\Response:private] => 
+)
+end
+
+</pre><h2>1403553234</h2><hr/><pre>
+
+{"name":"greatest title333","type":"raw","contentType":"txt","data":"poem is poem is a poem is a poem. Poem is a m."}Array
+(
+    [name] => greatest title333
+    [type] => raw
+    [contentType] => txt
+    [data] => poem is poem is a poem is a poem. Poem is a m.
+)
+
+
+Httpful\Response Object
+(
+    [body] => Source 'greatest title333' already exists in workspace 'public'
+    [raw_body] => Source 'greatest title333' already exists in workspace 'public'
+    [headers] => Httpful\Response\Headers Object
+        (
+            [headers:Httpful\Response\Headers:private] => Array
+                (
+                    [content-type] => text/plain; charset=UTF-8
+                    [connection] => keep-alive
+                    [content-length] => 63
+                    [content-language] => en
+                    [server] => Restlet-Framework/2.1.4
+                    [accept-ranges] => bytes
+                    [date] => Mon, 23 Jun 2014 19:53:54 GMT
+                    [vary] => Accept-Charset, Accept-Encoding, Accept-Language, Accept
+                )
+
+        )
+
+    [raw_headers] => HTTP/1.1 409 Conflict
+Content-Type: text/plain; charset=UTF-8
+Connection: keep-alive
+Content-Length: 63
+Content-Language: en
+Server: Restlet-Framework/2.1.4
+Accept-Ranges: bytes
+Date: Mon, 23 Jun 2014 19:53:54 GMT
+Vary: Accept-Charset, Accept-Encoding, Accept-Language, Accept
+    [request] => Httpful\Request Object
+        (
+            [uri] => http://54.88.3.200:8182/juxta/source
+            [method] => POST
+            [headers] => Array
+                (
+                    [Content-Length] => 119
+                )
+
+            [raw_headers] => POST /juxta/source HTTP/1.1
+Host: 54.88.3.200:8182
+Expect:
+User-Agent: Httpful/0.2.10 (cURL/7.36.0 PHP/5.3.28 (Linux) Apache/2.2.27 (Amazon) Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36)
+Content-Type: application/json
+Accept: */*; q=0.5, text/plain; q=0.8, text/html;level=3;
+Content-Length: 119
+
+            [strict_ssl] => 
+            [content_type] => application/json
+            [expected_type] => 
+            [additional_curl_opts] => Array
+                (
+                )
+
+            [auto_parse] => 1
+            [serialize_payload_method] => 2
+            [username] => 
+            [password] => 
+            [serialized_payload] => [{"name":"greatest title333","type":"raw","contentType":"txt","data":"poem is poem is a poem is a poem. Poem is a m."}]
+            [payload] => [{"name":"greatest title333","type":"raw","contentType":"txt","data":"poem is poem is a poem is a poem. Poem is a m."}]
+            [parse_callback] => 
+            [error_callback] => 
+            [follow_redirects] => 
+            [max_redirects] => 25
+            [payload_serializers] => Array
+                (
+                )
+
+            [_ch] => Resource id #26
+            [_debug] => 
+        )
+
+    [code] => 409
+    [content_type] => text/plain
+    [parent_type] => text/plain
+    [charset] => UTF-8
+    [is_mime_vendor_specific] => 
+    [is_mime_personal] => 
+    [parsers:Httpful\Response:private] => 
+)
+end
+
+</pre>
