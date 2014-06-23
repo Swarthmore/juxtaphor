@@ -19,8 +19,6 @@ AV.routes = Backbone.Router.extend({
 		test("Inside index");
 		this.model = new AV.model();
 		this.model.set({
-			name: 'greatest title333',
-			data: 'poem is poem is a poem is a poem. Poem is a m.'
 			name: 'no glue in the media center',
 			data: 'poem is poem is a poem is a poem. Poem is a poem.'
 		});
