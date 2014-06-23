@@ -1,3 +1,5 @@
+
+
 // whatever javascript files you place in this iFEF `folder will be concatenated to a single file in the js library
 
 function test(arg){
@@ -19,9 +21,7 @@ AV.routes = Backbone.Router.extend({
 		test("Inside index");
 		this.model = new AV.model();
 		this.model.set({
-			name: 'greatest title333',
-			data: 'poem is poem is a poem is a poem. Poem is a m.'
-			name: 'no glue in the media center',
+			name: 'greatest title2',
 			data: 'poem is poem is a poem is a poem. Poem is a poem.'
 		});
 		test("before the save");
@@ -37,7 +37,7 @@ AV.routes = Backbone.Router.extend({
 });
 
 AV.model = Backbone.Model.extend({
-	url: 'php/redirect.php',
+	url: 'redirect.php',
 	defaults: {
 		name: '',
 		type: 'raw',
@@ -52,4 +52,32 @@ var readysetgo = new AV.routes();
 
 $(function(){
   Backbone.history.start();
+});
+
+
+// Source Model
+AV.source = Backbone.Model.extend({
+	url: 'redirect.php',
+	defaults: {
+		name: '',
+		type: 'raw',
+		contentType: 'txt',
+		data: ''
+	}
+});
+// Source Model End
+
+
+// test scripts
+// end test scripts
+
+
+
+var AV = {};
+
+AV.witness = Backbone.Model.extend({
+	url: 'redirect.php',
+	defaults: {
+		source: '',
+	}
 });

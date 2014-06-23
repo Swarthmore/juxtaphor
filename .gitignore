@@ -1,4 +1,7 @@
 node_modules
+.sass-cache
+dev/log/
 .DS_store
 .#*
 \#*\#
+log
