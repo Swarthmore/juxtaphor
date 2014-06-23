@@ -5,9 +5,7 @@ function test(arg){
 	console.log(output);
 }
 
-Backbone.emulateHTTP = true;
 var AV = {};
-
 
 AV.routes = Backbone.Router.extend({
 
@@ -19,11 +17,10 @@ AV.routes = Backbone.Router.extend({
 	},
 	index: function(){
 		test("Inside index");
-		this.model = new AV.model(
-		{
-			name: 'test',
-			type: 'txt',
-			content: 'test'
+		this.model = new AV.model();
+		this.model.set({
+			name: 'great title',
+			data: 'poem'
 		});
 		test("before save...");
 		this.model.save({
@@ -34,15 +31,17 @@ AV.routes = Backbone.Router.extend({
 				test('error');
 			}
 		});
-		test("after save...");		
 	}
 });
 
 AV.model = Backbone.Model.extend({
-	url: 'http://54.88.3.200:8182/juxta/workspace',
-	name: '',
-	type: '',
-	content: ''
+	url: 'redirect.php',
+	defaults: {
+		name: '',
+		type: 'raw',
+		contentType: 'txt',
+		data: ''
+	}
 });
 
 AV.view = Backbone.View.extend({});
@@ -50,11 +49,5 @@ AV.view = Backbone.View.extend({});
 var readysetgo = new AV.routes();
 
 $(function(){
-  Backbone.history.start(); 
-  $.ajaxSetup({
-	headers: {
-		"Access-Control-Allow-Origin":"*"
-	}
-  });
-  //test();
+  Backbone.history.start();
 });
