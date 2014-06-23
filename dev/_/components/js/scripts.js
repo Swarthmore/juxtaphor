@@ -19,7 +19,7 @@ AV.routes = Backbone.Router.extend({
 		test("Inside index");
 		this.model = new AV.model();
 		this.model.set({
-			name: 'greatest title2',
+			name: 'no glue in the media center',
 			data: 'poem is poem is a poem is a poem. Poem is a poem.'
 		});
 		test("before the save");
@@ -35,7 +35,7 @@ AV.routes = Backbone.Router.extend({
 });
 
 AV.model = Backbone.Model.extend({
-	url: 'redirect.php',
+	url: 'php/redirect.php',
 	defaults: {
 		name: '',
 		type: 'raw',

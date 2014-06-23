@@ -2,9 +2,9 @@
 // a small utility to redirect the backbone's model saves to the API (avoids cross domain nonsense)
 include 'httpful.phar';
 
+$fpath = '../log/log.txt';
 if(isset($_GET['log']) && $_GET['log'] = 1) {
 
-        $fpath = 'log/log.txt';
         $f = fopen($fpath, 'r');
         echo '<h1> LOG FILE </h1>';
         echo '<hr/>';
@@ -20,7 +20,7 @@ if(isset($_GET['log']) && $_GET['log'] = 1) {
 
         $baseURL = 'http://54.88.3.200:8182/juxta';
         $route = array('/source', '/transform');
-        $f = fopen('log/log.txt','a');
+        $f = fopen($fpath,'a');
 
         fwrite($f, '<h2>' . time() . '</h2>');
         fwrite($f, "<hr/><pre>\n\n");
@@ -33,15 +33,38 @@ if(isset($_GET['log']) && $_GET['log'] = 1) {
         
         fwrite($f, $json_write);
         fwrite($f, "\n\n");
+	
+	$verb = strtolower($_SERVER['REQUEST_METHOD']);
+	$path_array = explode('/',$_SERVER['REQUEST_URI']);
+	$route = (is_int(end($path_array))) ? prev($path_array) . '/' .  array_pop($path_array) : '/' . array_pop($path_array);
+	
+        fwrite($f, $verb . ' / ' . $route);
+        fwrite($f, "\n\n");
 
-        try{
-                $call = \Httpful\Request::post($baseURL . $route[0])
-                ->sendsJson()
-                ->body('[' . $json_string . ']')
-                ->send();
+	try{      
+		switch($verb){
+		case('post'): req($route,$verb); break;
+		case('get'): req($route,$verb); break;
+		case('put'): break;
+		case('delete'): break;
+		}
+	
 
-                $body = print_r($call, true);
-                fwrite($f, $body);
+		function req($route, $verb){
+			$call = \Httpful\Request::$verb($baseURL . $route);
+			if($verb == 'post') { $call->sendsJson()->body('[' . $json_string . ']'); }
+			$call->send();	
+                	$body = print_r($call, true);
+                	fwrite($f, $body);
+			echo $call->raw_headers;
+		}
+		//$call = \Httpful\Request::post($baseURL . $route[0])
+                //->sendsJson()
+                //->body('[' . $json_string . ']')
+                //->send();
+
+                //$body = print_r($call, true);
+                //fwrite($f, $body);
         
         } catch(Exception $e) {
 
