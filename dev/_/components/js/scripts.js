@@ -22,8 +22,7 @@ AV.routes = Backbone.Router.extend({
 		this.model = new AV.model(
 		{
 			name: 'test',
-			type: 'txt',
-			content: 'test'
+			data: 'test'
 		});
 		this.model.save({
 			success:function(d){
@@ -37,10 +36,13 @@ AV.routes = Backbone.Router.extend({
 });
 
 AV.model = Backbone.Model.extend({
-	url: 'http://54.88.3.200:8182/juxta/source',
+	url: 'redirect.php',
+	defaults{
 	name: '',
-	type: '',
-	content: ''
+	type: 'raw',
+	contentType: 'txt',
+	data: ''
+	}
 });
 
 AV.view = Backbone.View.extend({});
