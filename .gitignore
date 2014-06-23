@@ -4,4 +4,5 @@ dev/log/
 .DS_store
 .#*
 \#*\#
-log
+dev/_/css/main.css
+dev/_/js/AkhmatoViz.js
