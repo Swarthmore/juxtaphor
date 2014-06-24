@@ -1,6 +1,6 @@
 // Source Model
 AV.source = Backbone.Model.extend({
-	url: 'php/redirect.php#source',
+	url: 'php/redirect.php/source',
 	defaults: {
 		name: '',
 		type: 'raw',
