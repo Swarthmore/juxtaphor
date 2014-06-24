@@ -1,6 +1,4 @@
-//part of the model to represent witnesses
-
-var AV = {};
+// witness model
 
 AV.witness = Backbone.Model.extend({
 	url: 'redirect.php',
@@ -10,3 +8,5 @@ AV.witness = Backbone.Model.extend({
 		//TODO:there are some optional attributes we may need to add
 	}
 });
+
+// end witness model
