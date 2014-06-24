@@ -7,20 +7,10 @@ function test(arg){
 
 var AV = {};
 
-AV.model = Backbone.Model.extend({
-	url: 'php/redirect.php',
-	defaults: {
-		name: '',
-		type: 'raw',
-		contentType: 'txt',
-		data: ''
-	}
-});
 
-AV.view = Backbone.View.extend({});
 
-var readysetgo = new AV.routes();
 
 $(function(){
   Backbone.history.start();
 });
+
