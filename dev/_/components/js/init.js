@@ -7,8 +7,6 @@ function test(arg){
 
 var AV = {};
 
-
-
 AV.model = Backbone.Model.extend({
 	url: 'php/redirect.php',
 	defaults: {
