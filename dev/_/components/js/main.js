@@ -1,3 +1,4 @@
+//RUNS after all the declarations
 //Running the models
 var source1 = new AV.Source({
 	name: 'Rip Ripley',
@@ -5,7 +6,9 @@ var source1 = new AV.Source({
 	contentType: 'txt',
 	data: "YOYOYOYO. Rip Ripley in the House."
 });
+
+//BIND view to Model
 var source_view = new AV.SourceView({el: $("#search_container"), model: source1 });
 source_view.render();
 
-console.log("INSIDE OF THE MAIN!");
+//console.log("INSIDE OF THE MAIN!");
