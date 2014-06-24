@@ -3,22 +3,22 @@ AV.source = Backbone.Model.extend({
 
 
 
+
 	url: 'php/redirect.php/source',
+
+
+
 
 	defaults: {
 		name: '',
 		type: 'raw',
 		contentType: 'txt',
 		data: ''
-
-
-
 	},
-
 });
 
-
 // Source Model Tests
+
 
 
 test_source = new AV.source({
@@ -40,6 +40,9 @@ test_source.save( {
 
 
 // test_source = new AV.source({
+
+// test_Source = new AV.Source({
+
 //     name: 'The Wind and the Rain',
 //     type: 'raw',
 //     contentType: 'txt',
@@ -71,3 +74,5 @@ other_test.fetch();
 
 
 // Source Model End
+
+
