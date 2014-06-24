@@ -1,6 +1,7 @@
 //Create a view for the source
 //TODO get view to display in index.html
 AV.SourceView = Backbone.View.extend({
+        el: '#search_container',	
 	initialize: function(){
 		console.log("Source view init");
 	},
@@ -14,7 +15,8 @@ AV.SourceView = Backbone.View.extend({
             "click input[type=button]": "doSearch"  
         },
         doSearch: function( event ){
-        // Button clicked, you can access the element that was clicked with event.currentTarget
+       // Button clicked, you can access the element that was clicked with 
+       // event.currentTarget
         	alert( "Search for " + $("#search_input").val() );
         }
 
