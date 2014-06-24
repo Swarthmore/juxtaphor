@@ -11,28 +11,25 @@ AV.source = Backbone.Model.extend({
 
 // Source Model Tests
 
-test_source = new AV.source({
-    name: 'Potato Chips',
-    type: 'raw',
-    contentType: 'txt',
-    data: "No matter where it is, you'll always find a bag around. At a bar, or"+
-         " a picnic. Even a baseball ground!"
-});
+// test_source = new AV.source({
+//     name: 'Potato Chips',
+//     type: 'raw',
+//     contentType: 'txt',
+//     data: "No matter where it is, you'll always find a bag around. At a bar, or"+
+//          " a picnic. Even a baseball ground!"
+// });
 
-test_source.save( {
-        success: function () {
-            alert('success');
-        },
-        error: function(d){
-            alert('everything is terrible');
-        }       
-    });
+// test_source.save( {
+//         success: function () {
+//             alert('success');
+//         },
+//         error: function(d){
+//             alert('everything is terrible');
+//         }       
+//     });
 
 
 // test_source = new AV.source({
-
-// test_Source = new AV.Source({
-
 //     name: 'The Wind and the Rain',
 //     type: 'raw',
 //     contentType: 'txt',
@@ -48,22 +45,18 @@ test_source.save( {
 //         }       
 //     });
 
-other_test = new AV.source();
-other_test.url = 'php/redirect.php/source/15';
+// other_test = new AV.source();
+// other_test.url = 'php/redirect.php/source/15';
 
-
-other_test.save({}, {
-	success:function(){
-		console.log('Other test saved successfully');
-	},
-	error:function(){ 
-		console.log('Other user did not save');
-	},
-});
-other_test.fetch();
-
-
-
+// other_test.save({}, {
+// 	success:function(){
+// 		console.log('Other test saved successfully');
+// 	},
+// 	error:function(){ 
+// 		console.log('Other user did not save');
+// 	},
+// });
+// other_test.fetch();
 
 // Source Model End
 
