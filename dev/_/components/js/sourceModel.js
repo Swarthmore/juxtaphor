@@ -1,5 +1,5 @@
 // Source Model
-AV.source = Backbone.Model.extend({
+AV.Source = Backbone.Model.extend({
 	url: 'php/redirect.php/source',
 	defaults: {
 		name: '',
@@ -11,14 +11,15 @@ AV.source = Backbone.Model.extend({
 // Source Model Tests
 
 
-// test_source = new AV.source({
+// test_Source = new AV.Source({
 //     name: 'The Wind and the Rain',
 //     type: 'raw',
 //     contentType: 'txt',
-//     data: "When that I was and a little tiny boy, with a hey-ho, the wind and the rain, a foolish thing was but a toy, for the rain it raineth every day."
+//     data: "When that I was and a little tiny boy, with a hey-ho, the wind and "+
+//     the rain, a foolish thing was but a toy, for the rain it raineth every day."
 // });
 // alert('potato');
-// test_source.save( {
+// test_Source.save( {
 //         success: function () {
 //             alert('success');
 //         },
@@ -27,9 +28,9 @@ AV.source = Backbone.Model.extend({
 //         }       
 //     });
 
-other_test = new AV.source();
-other_test.url = 'php/redirect.php/source/15';
-other_test.fetch();
-
+// other_test = new AV.Source();
+// other_test.url = 'php/redirect.php/Source/15';
+// other_test.fetch();
+// alert(other_test.name);
 
 // Source Model End
