@@ -1,7 +1,7 @@
 // witness model
 
 AV.witness = Backbone.Model.extend({
-	url: 'redirect.php',
+	url: 'php/redirect.php/witness',
 	defaults: {
 		source: '',
 

@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-sass');
-	// grunt.loadNpmTasks('grunt-contrib-qunit');
+	grunt.loadNpmTasks('grunt-contrib-qunit');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
@@ -26,7 +26,9 @@ module.exports = function(grunt) {
 		// 	options: { banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n' },
 		// 	dist: { files: { '_/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>'] } }
 		// }, // uglify
-
+        qunit: {
+            all: ['tests/*.html']
+        },
 		sass: {
 			options: { trace: true, style: 'expanded' },
 			dist: {
@@ -58,7 +60,7 @@ module.exports = function(grunt) {
 	});
 
 	//register tasks
-	// grunt.registerTask('test', ['jshint','qunit']);
-	grunt.registerTask('default', ['jshint', 'concat', 'sass']);
+	grunt.registerTask('test', ['jshint','qunit']);
+	grunt.registerTask('default', ['jshint', 'concat', 'qunit', 'sass']);
     grunt.registerTask('watch', ['jshint', 'concat', 'sass','watch']);
 };
