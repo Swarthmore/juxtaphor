@@ -23,8 +23,6 @@ if(isset($_GET['log']) && $_GET['log'] = 1) {
 
         fwrite($f, '<h2>' . date(DATE_RFC2822,time()) . '</h2>');
         fwrite($f, "<hr/><pre>\n\n");
-        fwrite($f, $_SERVER['REQUEST_URI']);
-        fwrite($f, $json_string);
         fwrite($f, "\n\n");
 
 		$args = array (
@@ -34,6 +32,8 @@ if(isset($_GET['log']) && $_GET['log'] = 1) {
 		        $f
 		);
 
+        fwrite($f, print_r($args, true));
+
 		switch($verb){
 		case('post'): jws_request($args); break;
 		case('get'): jws_request($args); break;
@@ -41,7 +41,7 @@ if(isset($_GET['log']) && $_GET['log'] = 1) {
 		case('delete'): break;
 		}
 	        
-        fwrite($f, "end\n\n</pre>");
+        fwrite($f, "</pre>");
         fclose($f);
 	}
 
@@ -50,16 +50,35 @@ function jws_request($args){
         fwrite($args[3], BASE_URL . $args[1]);
         fwrite($args[3], "\n\n");
 
-        try {
-        $call = \Httpful\Request::$args[0](BASE_URL . $args[1]);
-        if($args[0] == 'post') { $call->sendsJson()->body('[' . $args[2] . ']'); }
-        $call->send();
-        $body = print_r($call, true);
-        fwrite($args[3], $body);
+        if($args[0] == 'post'){
+            try {
+        
+            $call = \Httpful\Request::$args[0](BASE_URL . '/public' . $args[1])
+                ->sendsJson()
+                ->body('[' . $args[2] . ']')
+                ->send();
 
-      } catch(Exception $e) {
+            fwrite($args[3], print_r($call, true));
+            echo $call->raw_headers;
 
-        $error = $e->getMessage();
-        fwrite($args[3], $e);
-		}
+            } catch(Exception $e) {
+
+            $error = $e->getMessage();
+            fwrite($args[3], $error);
+    		}
+        } else if ($args[0] == 'get'){
+            try {
+        
+            $call = \Httpful\Request::$args[0](BASE_URL . '/public' . $args[1])
+                ->send();
+
+            fwrite($args[3], print_r($call, true));
+            echo $call->raw_headers;
+
+            } catch(Exception $e) {
+
+            $error = $e->getMessage();
+            fwrite($args[3], $error);
+            }            
+        }
 }
