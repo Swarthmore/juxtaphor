@@ -8,18 +8,18 @@ AV.source = Backbone.Model.extend({
 		data: ''
 	}
 });
-<<<<<<< HEAD
-=======
+
+
 // Source Model Tests
 
 test_source = new AV.source({
-    name: 'Potato Chips',
+    name: 'Andrews Potato Chips',
     type: 'raw',
     contentType: 'txt',
     data: "No matter where it is, you'll always find a bag around. At a bar, or"+
          " a picnic. Even a baseball ground!"
 });
-
+test_source.set({name: "Andrew is Cool"});
 test_source.save( {
         success: function () {
             alert('success');
@@ -29,5 +29,5 @@ test_source.save( {
         }       
     });
 
->>>>>>> 64736477650750b47ab5e1a6fe2658181b9c130d
+
 // Source Model End
