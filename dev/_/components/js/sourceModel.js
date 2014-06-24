@@ -12,7 +12,7 @@ AV.source = Backbone.Model.extend({
 // Source Model Tests
 
 test_source = new AV.source({
-    name: 'Potato Chips',
+    name: 'Still Potato Chips',
     type: 'raw',
     contentType: 'txt',
     data: "No matter where it is, you'll always find a bag around. At a bar, or"+
