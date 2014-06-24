@@ -1,12 +1,6 @@
 // Source Model
-<<<<<<< HEAD
-AV.source = Backbone.Model.extend({
-
-
-
-=======
 AV.Source = Backbone.Model.extend({
->>>>>>> f6f3afda12313c5093774b47b62fa79789efccc0
+
 	url: 'php/redirect.php/source',
 
 	defaults: {
@@ -21,11 +15,10 @@ AV.Source = Backbone.Model.extend({
 
 });
 
-
 // Source Model Tests
 
 
-<<<<<<< HEAD
+
 test_source = new AV.source({
     name: 'Potato Chips',
     type: 'raw',
@@ -44,10 +37,9 @@ test_source.save( {
     });
 
 
-// test_source = new AV.source({
-=======
+
+
 // test_Source = new AV.Source({
->>>>>>> f6f3afda12313c5093774b47b62fa79789efccc0
 //     name: 'The Wind and the Rain',
 //     type: 'raw',
 //     contentType: 'txt',
@@ -72,3 +64,5 @@ test_source.save( {
 
 
 // Source Model End
+
+
