@@ -1,9 +1,7 @@
 //Create a view for the source
 AV.SourceView = Backbone.View.extend({
         el: '#search_container',	
-	initialize: function(){
-		console.log("Source view init");
-	},
+	initialize: function(){},
 	render: function(){
 		//compile the template using underscore
 		var template = _.template( $("#search_template").html(), {} );
