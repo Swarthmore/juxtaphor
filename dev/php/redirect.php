@@ -10,7 +10,7 @@ if(isset($_GET['log']) && $_GET['log'] = 1) {
         echo '<hr/>';
         echo '<br /><br />';
 
-        fwrite($f, "<br/><br/>end");
+        fwrite(LOG_PATH, "<br/><br/>end");
 
         $log = file_get_contents($fpath);
         echo $log;
