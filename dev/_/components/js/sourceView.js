@@ -1,5 +1,4 @@
 //Create a view for the source
-//TODO get view to display in index.html
 AV.SourceView = Backbone.View.extend({
         el: '#search_container',	
 	initialize: function(){
@@ -23,4 +22,4 @@ AV.SourceView = Backbone.View.extend({
 });
 //this sets our view's "el" property to div#search_container
 var source_view = new AV.SourceView({el: $("#search_container")});
- 
+source_view.render();

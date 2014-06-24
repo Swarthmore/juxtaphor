@@ -13,7 +13,7 @@ AV.routes = Backbone.Router.extend({
 		'': 'index'
 	},
 	initialize:function(){
-		test('init');
+		test('init.js');
 	},
 	index: function(){
 		test("Inside index");
