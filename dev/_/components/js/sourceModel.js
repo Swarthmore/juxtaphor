@@ -11,15 +11,15 @@ AV.source = Backbone.Model.extend({
 
 // Source Model Tests
 
-// test_Source = new AV.Source({
-//     name: 'The Wind and the Rain',
+// test_source = new AV.source({
+//     name: 'Potato Chips',
 //     type: 'raw',
 //     contentType: 'txt',
-//     data: "When that I was and a little tiny boy, with a hey-ho, the wind and "+
-//     the rain, a foolish thing was but a toy, for the rain it raineth every day."
+//     data: "No matter where it is, you'll always find a bag around. At a bar, or"+
+//          " a picnic. Even a baseball ground!"
 // });
-// alert('potato');
-// test_Source.save( {
+
+// test_source.save( {
 //         success: function () {
 //             alert('success');
 //         },
@@ -28,12 +28,35 @@ AV.source = Backbone.Model.extend({
 //         }       
 //     });
 
-// other_test = new AV.Source();
-// other_test.url = 'php/redirect.php/Source/15';
+
+// test_source = new AV.source({
+//     name: 'The Wind and the Rain',
+//     type: 'raw',
+//     contentType: 'txt',
+//     data: "When that I was and a little tiny boy, with a hey-ho, the wind and the rain, a foolish thing was but a toy, for the rain it raineth every day."
+// });
+// alert('potato');
+// test_source.save( {
+//         success: function () {
+//             alert('success');
+//         },
+//         error: function(d){
+//             alert('everything is terrible');
+//         }       
+//     });
+
+// other_test = new AV.source();
+// other_test.url = 'php/redirect.php/source/15';
+
+// other_test.save({}, {
+// 	success:function(){
+// 		console.log('Other test saved successfully');
+// 	},
+// 	error:function(){ 
+// 		console.log('Other user did not save');
+// 	},
+// });
 // other_test.fetch();
-// alert(other_test.name);
-
-
 
 // Source Model End
 
