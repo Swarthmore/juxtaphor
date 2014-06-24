@@ -10,9 +10,7 @@ if(isset($_GET['log']) && $_GET['log'] = 1) {
         echo '<hr/>';
         echo '<br /><br />';
 
-        fwrite(LOG_PATH, "<br/><br/>end");
-
-        $log = file_get_contents($fpath);
+        $log = file_get_contents(LOG_PATH);
         echo $log;
 } else {
        $f = fopen(LOG_PATH,'a');
@@ -20,7 +18,7 @@ if(isset($_GET['log']) && $_GET['log'] = 1) {
         $verb = strtolower($_SERVER['REQUEST_METHOD']);
         $path_array = explode('/',$_SERVER['REQUEST_URI']);
         $id = (int) end($path_array);
-        $route = ($id !== 0) ? prev($path_array) . '/' .  array_pop($path_array) : '/' . array_pop($path_array);
+        $route = ($id !== 0) ? '/' . prev($path_array) . '/' .  array_pop($path_array) : '/' . array_pop($path_array);
         $json_string = file_get_contents('php://input');
 
         fwrite($f, '<h2>' . date(DATE_RFC2822,time()) . '</h2>');
