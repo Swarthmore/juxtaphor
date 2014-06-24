@@ -1,12 +1,8 @@
 // Source Model
-<<<<<<< HEAD
 AV.source = Backbone.Model.extend({
 
 
 
-=======
-AV.Source = Backbone.Model.extend({
->>>>>>> f6f3afda12313c5093774b47b62fa79789efccc0
 	url: 'php/redirect.php/source',
 
 	defaults: {
@@ -25,7 +21,6 @@ AV.Source = Backbone.Model.extend({
 // Source Model Tests
 
 
-<<<<<<< HEAD
 test_source = new AV.source({
     name: 'Potato Chips',
     type: 'raw',
@@ -45,17 +40,13 @@ test_source.save( {
 
 
 // test_source = new AV.source({
-=======
-// test_Source = new AV.Source({
->>>>>>> f6f3afda12313c5093774b47b62fa79789efccc0
 //     name: 'The Wind and the Rain',
 //     type: 'raw',
 //     contentType: 'txt',
-//     data: "When that I was and a little tiny boy, with a hey-ho, the wind and "+
-//     the rain, a foolish thing was but a toy, for the rain it raineth every day."
+//     data: "When that I was and a little tiny boy, with a hey-ho, the wind and the rain, a foolish thing was but a toy, for the rain it raineth every day."
 // });
 // alert('potato');
-// test_Source.save( {
+// test_source.save( {
 //         success: function () {
 //             alert('success');
 //         },
@@ -64,10 +55,18 @@ test_source.save( {
 //         }       
 //     });
 
-// other_test = new AV.Source();
-// other_test.url = 'php/redirect.php/Source/15';
-// other_test.fetch();
-// alert(other_test.name);
+other_test = new AV.source();
+other_test.url = 'php/redirect.php/source/15';
+other_test.save({}, {
+	success:function(){
+		console.log('Other test saved successfully');
+	},
+	error:function(){ 
+		console.log('Other user did not save'
+	},
+});
+other_test.fetch();
+
 
 
 
