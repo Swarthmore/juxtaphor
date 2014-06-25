@@ -1,24 +1,24 @@
 //RUNS after all the declarations
 //Running the models
-var source1 = new AV.Source({
+var sourceInstance = new AV.Source({
 	name: 'default name...',
 	type: 'raw',
 	contentType: 'txt',
 	data: "default..."
 });
 //attaching view to Model
-var source_view = new AV.UploadSourceView({el: $("#search_container"), model: source1 });
+var source_view = new AV.UploadSourceView({el: $("#search_container"), model: sourceInstance });
 
-var destroy_view = new AV.DestroySourceView({el: $('#destroy_container'), model: source1});
+var destroy_view = new AV.DestroySourceView({el: $('#destroy_container'), model: sourceInstance});
 
-source1.save();
+sourceInstance.save();
 
 source_view.render();
 
 destroy_view.render();
 
 
-source1.destroy({success: function(){
+sourceInstance.destroy({success: function(){
 		console.log("model destroyed");
 	},
 	error: function(){
