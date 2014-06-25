@@ -27,7 +27,7 @@ AV.UploadSourceView = Backbone.View.extend({
 
 
 AV.DestroySourceView = Backbone.View.extend({
-    el: '#destroy_container',	
+	el: '#destroy_container',	
 	initialize: function(){},
 	render: function(){
 		//compile the template using underscore
@@ -40,19 +40,12 @@ AV.DestroySourceView = Backbone.View.extend({
 	    
     },
     destroy: function( event ){
-		//Using attached model...
-
-        
-
-        this.model.set({name: $("#upload").val()});
+	/*
+        this.model.set({name: $("#destroy").val()});
 		this.model.set({data: $("#uploadContent").val()});
 		alert("Model name is..." + this.model.get("name") );
 		this.model.save();
-        
-	}
-
-
-
-
+       */ 
+     }
 });
 

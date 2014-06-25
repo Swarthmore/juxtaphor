@@ -15,6 +15,9 @@ source1.save();
 
 source_view.render();
 
+destroy_view.render();
+
+
 source1.destroy({success: function(){
 		console.log("model destroyed");
 	},
