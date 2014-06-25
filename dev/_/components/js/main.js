@@ -33,3 +33,5 @@ sourceInstance.destroy({success: function(){
 var sourceCollectionView = new AV.SourceCollectionView();
 
 sourceCollectionView.render();
+
+Backbone.history.start();
