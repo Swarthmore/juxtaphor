@@ -101,7 +101,7 @@ AV.testerView = Backbone.View.extend({
 
 	clear:function(){
 		$.post('../../php/redirect.php?clear=1', function() { test('clear'); });
-		local.reload(true);
+		location.reload(true);
 	}
 });
 
