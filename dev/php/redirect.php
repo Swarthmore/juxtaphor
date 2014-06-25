@@ -16,13 +16,9 @@ if(isset($_GET['log'])) {
         $log = file_exists('../../php/log.txt') ? file_get_contents('../../php/log.txt') : 'no log file found';
         echo $log;
         echo '</div></div>';
-} else if(isset($_GET['clear'])){
-
-    $f = fopen('log.txt','w');
-    $fwrite($f, '');
-    $fclose();
 
 } else {
+
        $f = fopen('log.txt','w');
 
         $verb = strtolower($_SERVER['REQUEST_METHOD']);

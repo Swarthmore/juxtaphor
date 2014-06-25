@@ -63,7 +63,6 @@ AV.testerView = Backbone.View.extend({
 			+ '<li><button class="btn btn-primary" id="get-srcs">get sources</button></li>'
 			+ '<li><button class="btn btn-warning" id="put">put</button></li>'
 			+ '<li><button class="btn btn-danger" id="delete">delete</button></li>'
-			+ '<li><button class="btn btn-default" id="clear">clear</button></li>'
 			+ '</ul>');
 		this.$el.find('ul li').css( {'list-style' : 'none', 'margin-bottom' : '5px' });
 	},
@@ -98,11 +97,6 @@ AV.testerView = Backbone.View.extend({
 	put:function(){test('put');},
 
 	delete:function(){test('delete');},
-
-	clear:function(){
-		$.post('../../php/redirect.php?clear=1', function() { test('clear'); });
-		location.reload(true);
-	}
 });
 
 AV.post = Backbone.Model.extend({
