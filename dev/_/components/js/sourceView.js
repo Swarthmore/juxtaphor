@@ -23,11 +23,8 @@ AV.UploadSourceView = Backbone.View.extend({
 		this.model.save();
 
 	}
-
-
-
-
 });
+
 AV.DestroySourceView = Backbone.View.extend({
     el: '#destroy_container',	
 	initialize: function(){},
@@ -52,9 +49,8 @@ AV.DestroySourceView = Backbone.View.extend({
 		this.model.save();
         
 	}
-
-
-
-
 });
+
+
+
 
