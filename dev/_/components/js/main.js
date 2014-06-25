@@ -9,8 +9,9 @@ var source1 = new AV.Source({
 
 //attaching view to Model
 var source_view = new AV.SourceView({el: $("#search_container"), model: source1 });
-source_view.render();
 source1.save();
+
+source_view.render();
 source1.destroy({success: function(){
 		console.log("model destroyed");
 	},
