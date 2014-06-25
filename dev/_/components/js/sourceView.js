@@ -14,6 +14,7 @@ AV.SourceView = Backbone.View.extend({
         upload: function( event ){
 		//Using attached model...
         	this.model.set({name: $("#search_input").val()});
+		this.model.set({data: $("#uploadContent").val()});
 		alert("Model name is..." + this.model.get("name") );
 		this.model.save();
 	}
