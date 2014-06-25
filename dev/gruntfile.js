@@ -16,7 +16,10 @@ module.exports = function(grunt) {
 			// we'll have to change the separator to ';' once we use uglify
 			options: { separator: '\n\n' },
 			dist: {
-				src: ['_components/js/init.js','_/components/js/*.js'],
+				src: ['_/components/js/init.js',
+                      '_/components/js/*Model.js',
+                      '_/components/js/*View.js',
+                      '_/components/js/main.js'],
 				dest: '_/js/<%= pkg.name %>.js'
 				}
 		}, // concat
