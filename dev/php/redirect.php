@@ -21,7 +21,7 @@ if(isset($_GET['log'])) {
     file_put_contents('log.txt', '');
 
 } else {
-       $f = fopen('log.txt','a');
+       $f = fopen('log.txt','w');
 
         $verb = strtolower($_SERVER['REQUEST_METHOD']);
         $path_array = explode('/',$_SERVER['REQUEST_URI']);
