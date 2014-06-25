@@ -84,7 +84,9 @@ function jws_request($args){
 
             fwrite($args[3], print_r($call, true));
             echo $call->raw_headers;
+            echo $call->headers;
             echo $call->raw_body;
+            echo $call->body;
 
             } catch(Exception $e) {
 
