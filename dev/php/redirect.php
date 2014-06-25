@@ -1,27 +1,27 @@
 <?php
 // a small utility to redirect the backbone's model saves to the API (avoids cross domain nonsense)
 include 'httpful.phar';
-define('LOG_PATH', '../log/log.txt');
+// define('ABS_LOG_PATH', '../av_test_suite/log/log.txt');
+// define('REL_LOG_PATH', '../log/log.txt');
 define('BASE_URL', 'http://54.88.3.200:8182/juxta');
 
 if(isset($_GET['log'])) {
 
-        include 'av_test.html';
         echo '<div class="row">';
         echo '<div class="col-md-8 col-md-offset-1">';
         echo '<h1> LOG FILE </h1>';
         echo '<hr/>';
         echo '<br /><br />';
 
-        $log = file_exists(LOG_PATH) ? file_get_contents(LOG_PATH) : 'no log file found';
+        $log = file_exists('../../php/log.txt') ? file_get_contents('../../php/log.txt') : 'no log file found';
         echo $log;
         echo '</div></div>';
 } else if(isset($_GET['clear'])){
 
-    file_put_contents(LOG_PATH, '');
+    file_put_contents('log.txt', '');
 
 } else {
-       $f = fopen(LOG_PATH,'a');
+       $f = fopen('log.txt','a');
 
         $verb = strtolower($_SERVER['REQUEST_METHOD']);
         $path_array = explode('/',$_SERVER['REQUEST_URI']);

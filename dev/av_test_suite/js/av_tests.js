@@ -5,6 +5,12 @@ function test(arg){
 	console.log(output);
 }
 
+function delayReload(){
+	setTimeout(function(){
+		location.reload(true);
+	},1000);
+}
+
 var AV = {};
 
 
@@ -72,7 +78,7 @@ AV.testerView = Backbone.View.extend({
 			success:function() { test('success');},
 			error:function(a,b,c) { test(a); test(b); test(c);}
 		});
-		location.reload(true);
+		delayReload();
 	},
 
 	get:function(){test('get');
@@ -80,13 +86,13 @@ AV.testerView = Backbone.View.extend({
 			success:function() { test('success');},
 			error:function() { test('not so much');}
 		});
-		location.reload(true);
+		delayReload();
 	},
 
 	getSRCS:function(){test('get-srcs');
 		test('get-ws');
 		this.collection.models[2].fetch();
-		location.reload(true);
+		delayReload();
 	},
 
 	put:function(){test('put');},
@@ -94,15 +100,13 @@ AV.testerView = Backbone.View.extend({
 	delete:function(){test('delete');},
 
 	clear:function(){
-		$.post('redirect.php?clear=1', function() { test('clear'); });
-		location.reload(true);
+		$.post('../../php/redirect.php?clear=1', function() { test('clear'); });
+		local.reload(true);
 	}
-
-
 });
 
 AV.post = Backbone.Model.extend({
-	url: '../../redirect.php/juxta/source',
+	url: '../../php/redirect.php/juxta/source',
 
 	defaults:{
 		name: '',
@@ -113,11 +117,11 @@ AV.post = Backbone.Model.extend({
 });
 
 AV.get = Backbone.Model.extend({
-	url: '../../redirect.php/juxta/source/13.json'
+	url: '../../php/redirect.php/juxta/source/13.json'
 });
 
 AV.sources = Backbone.Model.extend({
-	url: '../..redirect.php/juxta/source.json'
+	url: '../../php/redirect.php/juxta/source.json'
 });
 
 AV.put = Backbone.Model.extend({});
