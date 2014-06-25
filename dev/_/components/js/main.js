@@ -5,7 +5,7 @@ var source1 = new AV.Source({
 	type: 'raw',
 	contentType: 'txt',
 	data: "default..."
-
+});
 //attaching view to Model
 var source_view = new AV.SourceView({el: $("#search_container"), model: source1 });
 source1.save();
