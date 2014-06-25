@@ -1,6 +1,6 @@
 //Create a view for the source
-AV.SourceView = Backbone.View.extend({
-        el: '#search_container',	
+AV.UploadSourceView = Backbone.View.extend({
+    el: '#search_container',	
 	initialize: function(){},
 	render: function(){
 		//compile the template using underscore
@@ -9,15 +9,15 @@ AV.SourceView = Backbone.View.extend({
 		this.$el.html( template );
 	},
 	events: {
-            "click input[value=Upload]": "upload",
-	
-        },
-        upload: function( event ){
+        "click input[value=Upload]": "upload",
+	    
+    },
+    upload: function( event ){
 		//Using attached model...
 
-        	alert("Model name is..." + this.model.fetch());
+        alert("Model name is..." + this.model.fetch());
 
-        	this.model.set({name: $("#upload").val()});
+        this.model.set({name: $("#upload").val()});
 		this.model.set({data: $("#uploadContent").val()});
 		alert("Model name is..." + this.model.get("name") );
 		this.model.save();
@@ -29,7 +29,7 @@ AV.SourceView = Backbone.View.extend({
 
 });
 AV.DestroySourceView = Backbone.View.extend({
-        el: '#destroy_container',	
+    el: '#destroy_container',	
 	initialize: function(){},
 	render: function(){
 		//compile the template using underscore
@@ -38,19 +38,19 @@ AV.DestroySourceView = Backbone.View.extend({
 		this.$el.html( template );
 	},
 	events: {
-            "click input[value=Destroy]": "destroy",
-	
-        },
-        destroy: function( event ){
+        "click input[value=Destroy]": "destroy",
+	    
+    },
+    destroy: function( event ){
 		//Using attached model...
 
         
 
-        	this.model.set({name: $("#upload").val()});
+        this.model.set({name: $("#upload").val()});
 		this.model.set({data: $("#uploadContent").val()});
 		alert("Model name is..." + this.model.get("name") );
 		this.model.save();
-    
+        
 	}
 
 
