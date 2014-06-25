@@ -1,12 +1,11 @@
 //RUNS after all the declarations
 //Running the models
 var source1 = new AV.Source({
-	name: 'Rip Ripley',
+	name: 'default name...',
 	type: 'raw',
 	contentType: 'txt',
-	data: "YOYOYOYO. Rip Ripley in the House."
+	data: "default..."
 });
-
 //attaching view to Model
 var source_view = new AV.SourceView({el: $("#search_container"), model: source1 });
 source1.save();
