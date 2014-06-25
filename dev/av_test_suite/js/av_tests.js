@@ -65,14 +65,14 @@ AV.testerView = Backbone.View.extend({
 
 		test('post');
 		this.collection.models[0].save({
-			name: 'good one one good',
+			name: 'continuing the tests',
 			data: 'good one'
 		},
 		{
 			success:function() { test('success');},
 			error:function(a,b,c) { test(a); test(b); test(c);}
 		});
-		location.reload(true);
+		location.delay(5000).reload(true);
 	},
 
 	get:function(){test('get');
