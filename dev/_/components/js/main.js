@@ -30,8 +30,8 @@ sourceInstance.destroy({success: function(){
 
 //console.log("INSIDE OF THE MAIN!");
 
-var sourceCollectionView = new AV.SourceCollectionView();
+router = new AV.routes();
 
-sourceCollectionView.render();
+
 
 Backbone.history.start();
