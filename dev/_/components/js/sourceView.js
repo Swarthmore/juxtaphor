@@ -13,7 +13,7 @@ AV.SourceView = Backbone.View.extend({
         },
         doSearch: function( event ){
 		//Using attached model...
-        	alert("Model name is..." + this.model.fetch() );
+        	alert("Model name is..." + this.model.fetch());
 	}
 
 });

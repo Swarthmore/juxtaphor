@@ -29,7 +29,7 @@ AV.Source = Backbone.Model.extend({
 //     });
 
 
-test_source = new AV.source({
+test_source = new AV.Source({
    
      name: 'The Wind and the Rain',
      type: 'raw',
@@ -38,15 +38,15 @@ test_source = new AV.source({
 });
 test_source.url = 'php/redirect.php/source/15';
 // alert('potato');
-test_source.save({}, {
-         success: function () {
-             alert('success');
-         },
-         error: function(){
-             alert('everything is terrible');
-         }       
-     });
-
+//test_source.save({}, {
+         //success: function () {
+             //alert('success');
+         //},
+         //error: function(){
+             //alert('everything is terrible');
+         //}       
+    // });
+//#the test is not saving. (We get error message)
 // other_test = new AV.source();
 // other_test.url = 'php/redirect.php/source/15';
 
