@@ -12,13 +12,8 @@ AV.SourceView = Backbone.View.extend({
             "click input[type=button]": "doSearch"  
         },
         doSearch: function( event ){
-       // Button clicked, you can access the element that was clicked with 
-       // event.currentTarget
-        	//alert( "Search for " + $("#search_input").val() );
-        	alert("Model name is..." + this.model.get('name') );
+		//Using attached model...
+        	alert("Model name is..." + this.model.get("name") );
 	}
 
 });
-//this sets our view's "el" property to div#search_container
-//var source_view = new AV.SourceView({el: $("#search_container"), model: AV.Source });
-//source_view.render();
