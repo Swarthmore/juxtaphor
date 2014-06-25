@@ -26,8 +26,8 @@ sourceInstance.destroy({success: function(){
 });
 
 
-var sourceCollectionView = new AV.SourceCollectionView();
+router = new AV.routes();
 
-sourceCollectionView.render();
+
 
 Backbone.history.start();
