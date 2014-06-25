@@ -1,10 +1,10 @@
 //Create a view for the source
 AV.UploadSourceView = Backbone.View.extend({
-    el: '#search_container',	
+	el: '#upload_container',	
 	initialize: function(){},
 	render: function(){
 		//compile the template using underscore
-		var template = _.template( $("#search_template").html(), {} );
+		var template = _.template( $("#upload_template").html(), {} );
 		//Load the compiled HTML into the backbone "el"
 		this.$el.html( template );
 	},
@@ -25,7 +25,6 @@ AV.UploadSourceView = Backbone.View.extend({
 	}
 });
 
-
 AV.DestroySourceView = Backbone.View.extend({
 	el: '#destroy_container',	
 	initialize: function(){},
@@ -45,7 +44,14 @@ AV.DestroySourceView = Backbone.View.extend({
 		this.model.set({data: $("#uploadContent").val()});
 		alert("Model name is..." + this.model.get("name") );
 		this.model.save();
+	}
+});
+
+
+
+
        */ 
      }
 });
+
 

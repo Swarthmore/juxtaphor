@@ -18,10 +18,11 @@ module.exports = function(grunt) {
 			dist: {
 				src: ['_/components/js/init.js',
                       '_/components/js/*Model.js',
+                      '_/components/js/*Collection.js',
                       '_/components/js/*View.js',
                       '_/components/js/main.js'],
 				dest: '_/js/<%= pkg.name %>.js'
-				}
+			}
 		}, // concat
 
 		// not necessary yet
@@ -42,10 +43,10 @@ module.exports = function(grunt) {
 			files: ['_/components/js/*.js', '!_/js/lib/*.js'],
 			options: {
 				globals: {
-				jQuery: true,
-				console: true,
-				module: true,
-				document: true,
+				    jQuery: true,
+				    console: true,
+				    module: true,
+				    document: true,
 				}
 			}
 		}, // jshint
@@ -58,8 +59,8 @@ module.exports = function(grunt) {
 			sass: {
 				files: ['_/components/sass/*.scss'],
 				tasks: ['sass']
-	      		}, // watch sass
-      		} // watch
+	      	}, // watch sass
+      	} // watch
 	});
 
 	//register tasks

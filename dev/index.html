@@ -20,8 +20,8 @@
       </div>
     </div>
 
-    <div id="search_container">a</div>
-    <script type="text/template" id="search_template">
+    <div id="upload_container">a</div>
+    <script type="text/template" id="upload_template">
       <label>Name</label>
       <input type = "text" id="upload"/>
       <input type="button" class= "btn btn-default btn-lg" value="Upload" />
@@ -44,13 +44,13 @@
           </tr>
         </thead>
         <tbody>
-          <% _.each(source, function (source) { %>
+          <% _.each(sources, function (source) { %>
           <tr>
-            <td><%= user.get('id) %></td>
-            <td><%= user.get('name') %></td>
-            <td><%= user.get('type') %></td>
-            <td><%= user.get('length') %></td>
-            <td><%= user.get('created') %></td>
+            <td><%= source.get('id') %></td>
+            <td><%= source.get('name') %></td>
+            <td><%= source.get('type') %></td>
+            <td><%= source.get('length') %></td>
+            <td><%= source.get('created') %></td>
             <td><a class="btn" role="button" %>Delete</a></td>
           <% }); %>
         </tbody>
