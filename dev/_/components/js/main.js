@@ -7,7 +7,7 @@ var sourceInstance = new AV.Source({
 	data: "default..."
 });
 //attaching view to Model
-var source_view = new AV.UploadSourceView({el: $("#search_container"), model: sourceInstance });
+var source_view = new AV.UploadSourceView({el: $("#upload_container"), model: sourceInstance });
 
 var destroy_view = new AV.DestroySourceView({el: $('#destroy_container'), model: sourceInstance});
 
