@@ -1,0 +1,30 @@
+//Create a view for the source
+AV.SourceView = Backbone.View.extend({
+        el: '#search_container',	
+	initialize: function(){},
+	render: function(){
+		//compile the template using underscore
+		var template = _.template( $("#search_template").html(), {} );
+		//Load the compiled HTML into the backbone "el"
+		this.$el.html( template );
+	},
+	events: {
+            "click input[value=Upload]": "upload",
+	
+        },
+        upload: function( event ){
+		//Using attached model...
+
+        	alert("Model name is..." + this.model.fetch());
+
+        	this.model.set({name: $("#upload").val()});
+		this.model.set({data: $("#uploadContent").val()});
+		alert("Model name is..." + this.model.get("name") );
+		this.model.save();
+
+	}
+
+
+
+
+});
