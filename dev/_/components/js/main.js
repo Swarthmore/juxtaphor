@@ -7,8 +7,17 @@ var source1 = new AV.Source({
 	data: "YOYOYOYO. Rip Ripley in the House."
 });
 
-//BIND view to Model
+//attaching view to Model
 var source_view = new AV.SourceView({el: $("#search_container"), model: source1 });
+source1.save();
+
 source_view.render();
+source1.destroy({success: function(){
+		console.log("model destroyed");
+	},
+	error: function(){
+		console.log("failed destroy");
+	}
+});
 
 //console.log("INSIDE OF THE MAIN!");
