@@ -9,14 +9,14 @@ AV.SourceView = Backbone.View.extend({
 		this.$el.html( template );
 	},
 	events: {
-            "click input[type=button]": "upload"  
+            "click input[value=Upload]": "upload"  
         },
         upload: function( event ){
 		//Using attached model...
 
         	alert("Model name is..." + this.model.fetch());
 
-        	this.model.set({name: $("#search_input").val()});
+        	this.model.set({name: $("#upload").val()});
 		this.model.set({data: $("#uploadContent").val()});
 		alert("Model name is..." + this.model.get("name") );
 		this.model.save();
