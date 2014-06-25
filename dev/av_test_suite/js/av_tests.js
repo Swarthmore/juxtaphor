@@ -72,7 +72,7 @@ AV.testerView = Backbone.View.extend({
 			success:function() { test('success');},
 			error:function(a,b,c) { test(a); test(b); test(c);}
 		});
-		location.delay(5000).reload(true);
+		location.reload(true);
 	},
 
 	get:function(){test('get');
@@ -102,7 +102,7 @@ AV.testerView = Backbone.View.extend({
 });
 
 AV.post = Backbone.Model.extend({
-	url: 'redirect.php/juxta/source',
+	url: '../../redirect.php/juxta/source',
 
 	defaults:{
 		name: '',
@@ -113,11 +113,11 @@ AV.post = Backbone.Model.extend({
 });
 
 AV.get = Backbone.Model.extend({
-	url: 'redirect.php/juxta/source/13.json'
+	url: '../../redirect.php/juxta/source/13.json'
 });
 
 AV.sources = Backbone.Model.extend({
-	url: 'redirect.php/juxta/source.json'
+	url: '../..redirect.php/juxta/source.json'
 });
 
 AV.put = Backbone.Model.extend({});
