@@ -15,6 +15,7 @@ AV.SourceView = Backbone.View.extend({
 		//Using attached model...
         	this.model.set({name: $("#search_input").val()});
 		alert("Model name is..." + this.model.get("name") );
+		this.model.save();
 	}
 
 });
