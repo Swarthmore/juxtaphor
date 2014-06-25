@@ -1,20 +1,35 @@
+<<<<<<< HEAD
 <h2>Wed, 25 Jun 2014 13:37:52 -0400</h2><hr/><pre>
+=======
+;lsdfj;alksdjf;alsdfj
+<h2>Wed, 25 Jun 2014 13:22:25 -0400</h2><hr/><pre>
+>>>>>>> bbd9b2fb2c9810ce4293b10d08d53eb0d30c464b
 
 
 
 Array
 (
+<<<<<<< HEAD
     [0] => get
     [1] => /source/13.json
     [2] => 
     [3] => Resource id #20
 )
 http://54.88.3.200:8182/juxta/source/13.json
+=======
+    [0] => post
+    [1] => /source
+    [2] => {"name":"continuing the tests","type":"raw","contentType":"txt","data":"good one"}
+    [3] => Resource id #20
+)
+http://54.88.3.200:8182/juxta/source
+>>>>>>> bbd9b2fb2c9810ce4293b10d08d53eb0d30c464b
 
 Httpful\Response Object
 (
     [body] => stdClass Object
         (
+<<<<<<< HEAD
             [id] => 13
             [name] => a totally new title.txt
             [type] => TXT
@@ -123,17 +138,31 @@ Httpful\Response Object
         )
 
     [raw_body] => {"id":13,"name":"a totally new title.txt","type":"TXT","content":"poem is poem is a poem is a poem. Poem is a m.\n"}
+=======
+            [0] => 30
+        )
+
+    [raw_body] => [30]
+>>>>>>> bbd9b2fb2c9810ce4293b10d08d53eb0d30c464b
     [headers] => Httpful\Response\Headers Object
         (
             [headers:Httpful\Response\Headers:private] => Array
                 (
                     [content-type] => application/json; charset=UTF-8
                     [connection] => keep-alive
+<<<<<<< HEAD
                     [content-length] => 116
                     [content-language] => en
                     [server] => Restlet-Framework/2.1.4
                     [accept-ranges] => bytes
                     [date] => Wed, 25 Jun 2014 17:37:58 GMT
+=======
+                    [content-length] => 4
+                    [content-language] => en
+                    [server] => Restlet-Framework/2.1.4
+                    [accept-ranges] => bytes
+                    [date] => Wed, 25 Jun 2014 17:22:25 GMT
+>>>>>>> bbd9b2fb2c9810ce4293b10d08d53eb0d30c464b
                     [vary] => Accept-Charset, Accept-Encoding, Accept-Language, Accept
                 )
 
@@ -142,6 +171,7 @@ Httpful\Response Object
     [raw_headers] => HTTP/1.1 200 OK
 Content-Type: application/json; charset=UTF-8
 Connection: keep-alive
+<<<<<<< HEAD
 Content-Length: 116
 Content-Language: en
 Server: Restlet-Framework/2.1.4
@@ -152,21 +182,41 @@ Vary: Accept-Charset, Accept-Encoding, Accept-Language, Accept
         (
             [uri] => http://54.88.3.200:8182/juxta/public/source/13.json
             [method] => GET
+=======
+Content-Length: 4
+Content-Language: en
+Server: Restlet-Framework/2.1.4
+Accept-Ranges: bytes
+Date: Wed, 25 Jun 2014 17:22:25 GMT
+Vary: Accept-Charset, Accept-Encoding, Accept-Language, Accept
+    [request] => Httpful\Request Object
+        (
+            [uri] => http://54.88.3.200:8182/juxta/public/source
+            [method] => POST
+>>>>>>> bbd9b2fb2c9810ce4293b10d08d53eb0d30c464b
             [headers] => Array
                 (
-                    [Content-Length] => 0
+                    [Content-Length] => 84
                 )
 
+<<<<<<< HEAD
             [raw_headers] => GET /juxta/public/source/13.json HTTP/1.1
 Host: 54.88.3.200:8182
 Expect:
 User-Agent: Httpful/0.2.10 (cURL/7.36.0 PHP/5.3.28 (Linux) Apache/2.2.27 (Amazon) Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36)
 Content-Type: 
+=======
+            [raw_headers] => POST /juxta/public/source HTTP/1.1
+Host: 54.88.3.200:8182
+Expect:
+User-Agent: Httpful/0.2.10 (cURL/7.36.0 PHP/5.3.28 (Linux) Apache/2.2.27 (Amazon) Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36)
+Content-Type: application/json
+>>>>>>> bbd9b2fb2c9810ce4293b10d08d53eb0d30c464b
 Accept: */*; q=0.5, text/plain; q=0.8, text/html;level=3;
-Content-Length: 0
+Content-Length: 84
 
             [strict_ssl] => 
-            [content_type] => 
+            [content_type] => application/json
             [expected_type] => 
             [additional_curl_opts] => Array
                 (
@@ -176,8 +226,8 @@ Content-Length: 0
             [serialize_payload_method] => 2
             [username] => 
             [password] => 
-            [serialized_payload] => 
-            [payload] => 
+            [serialized_payload] => [{"name":"continuing the tests","type":"raw","contentType":"txt","data":"good one"}]
+            [payload] => [{"name":"continuing the tests","type":"raw","contentType":"txt","data":"good one"}]
             [parse_callback] => 
             [error_callback] => 
             [follow_redirects] => 

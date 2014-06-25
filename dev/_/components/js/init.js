@@ -6,11 +6,3 @@ function test(arg){
 }
 
 var AV = {};
-
-
-
-
-$(function(){
-  Backbone.history.start();
-});
-
