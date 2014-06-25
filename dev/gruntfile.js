@@ -20,6 +20,7 @@ module.exports = function(grunt) {
                       '_/components/js/*Model.js',
                       '_/components/js/*Collection.js',
                       '_/components/js/*View.js',
+                      '_/components/js/router.js',
                       '_/components/js/main.js'],
 				dest: '_/js/<%= pkg.name %>.js'
 			}
@@ -68,3 +69,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', ['jshint', 'concat', 'qunit', 'sass']);
     grunt.registerTask('watch', ['jshint', 'concat', 'sass','watch']);
 };
+
+
+
+
