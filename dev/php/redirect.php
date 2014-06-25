@@ -18,7 +18,9 @@ if(isset($_GET['log'])) {
         echo '</div></div>';
 } else if(isset($_GET['clear'])){
 
-    file_put_contents('log.txt', '');
+    $f = fopen('log.txt','w');
+    $fwrite($f, '');
+    $fclose();
 
 } else {
        $f = fopen('log.txt','w');
