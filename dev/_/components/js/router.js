@@ -11,7 +11,7 @@ AV.routes = Backbone.Router.extend({
     },
     
     sources: function () {
-        this.sourceCollection.fetch();
+        this.sourceCollection.fetch({reset: true});
     }
 });
 
