@@ -25,9 +25,6 @@ sourceInstance.destroy({success: function(){
 	}
 });
 
-
-router = new AV.routes();
-
-
+var router = new AV.routes();
 
 Backbone.history.start();
