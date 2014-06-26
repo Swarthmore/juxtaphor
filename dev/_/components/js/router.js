@@ -1,5 +1,8 @@
 AV.routes = Backbone.Router.extend({
     initialize: function() {
+        this.sourceModel = new AV.SourceModel();
+        this.uploadSourceView = new AV.UploadSourceView();
+        this.destroySourceView = new AV.DestroySourceView();
         this.sourceCollection = new AV.SourceCollection();
         this.sourceCollectionView = new AV.SourceCollectionView({collection:
                                                                  this.sourceCollection});
@@ -7,11 +10,25 @@ AV.routes = Backbone.Router.extend({
     },
     
     routes: {
-        'sources': 'sources'
+        '': 'index',
+        'sources': 'sources',
+        'source/upload/': 'upload',
+        'source/destroy/': 'destroy'
     },
     
     sources: function () {
         this.sourceCollection.fetch({reset: true});
+    },
+    
+    upload: function () {
+        this.uploadSourceView.render();
+    },
+    destroy: function() {
+        this.destroySourceView.render();
+    },
+    index: function() {
+        this.upload();
+        this.sources();
     }
 });
 
