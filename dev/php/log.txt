@@ -1,4 +1,4 @@
-<h2>Thu, 26 Jun 2014 13:34:22 -0400</h2><hr/><pre>
+<h2>Thu, 26 Jun 2014 15:19:13 -0400</h2><hr/><pre>
 
 
 
@@ -307,7 +307,7 @@ Httpful\Response Object
                     [content-language] => en
                     [server] => Restlet-Framework/2.1.4
                     [accept-ranges] => bytes
-                    [date] => Thu, 26 Jun 2014 17:34:22 GMT
+                    [date] => Thu, 26 Jun 2014 19:19:13 GMT
                     [vary] => Accept-Charset, Accept-Encoding, Accept-Language, Accept
                 )
 
@@ -320,7 +320,7 @@ Content-Length: 2852
 Content-Language: en
 Server: Restlet-Framework/2.1.4
 Accept-Ranges: bytes
-Date: Thu, 26 Jun 2014 17:34:22 GMT
+Date: Thu, 26 Jun 2014 19:19:13 GMT
 Vary: Accept-Charset, Accept-Encoding, Accept-Language, Accept
     [request] => Httpful\Request Object
         (

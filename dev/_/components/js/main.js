@@ -14,7 +14,7 @@ var destroy_view = new AV.DestroySourceView({el: $('#destroy_container'), model:
 
 
 source_view.render();
-destroy_view.render();
+//destroy_view.render();
 
 //clean up memory. Is this necessary?
 sourceInstance.destroy({success: function(){
