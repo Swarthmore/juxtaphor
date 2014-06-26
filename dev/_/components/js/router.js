@@ -18,7 +18,8 @@ AV.Router = Backbone.Router.extend({
         '': 'index',
         'sources': 'sources',
         'source/upload/': 'upload',
-        'source/destroy/': 'destroy'
+        'source/destroy/': 'destroy',
+        'source/delete/:idToDelete': 'delete'
     },
     
     sources: function () {
@@ -34,6 +35,9 @@ AV.Router = Backbone.Router.extend({
     index: function() {
         this.upload();
         this.sources();
+    },
+    delete: function(idToDelete) {
+        //kill_the_thing(id);
     }
 });
 
