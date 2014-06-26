@@ -1,13 +1,17 @@
 AV.routes = Backbone.Router.extend({
-    routes: {
-        "list": "list"
+    initialize: function() {
+        this.sourceCollection = new AV.SourceCollection();
+        this.sourceCollectionView = new AV.SourceCollectionView({collection:
+                                                                 this.sourceCollection});
+        console.log("Initializing router");
     },
-    list: function () {
-        // This creates a new source collection view every single time.
-        // This is necessary right now, because of how grunt's putting together
-        // all of our javascript files.
-        var sourceCollectionView = new AV.SourceCollectionView();
-        sourceCollectionView.render();
+    
+    routes: {
+        'sources': 'sources'
+    },
+    
+    sources: function () {
+        this.sourceCollection.fetch();
     }
 });
 

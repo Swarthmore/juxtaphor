@@ -1,18 +1,11 @@
 AV.SourceCollectionView = Backbone.View.extend({
     el: '#list_container',
     initialize: function() {
-        
+        this.listenTo(this.collection, 'all', this.render);
     },
+    template: _.template( $("#list_template").html()),
     render: function () {
-        var sources = new AV.SourceCollection();
-        sources.fetch({
-            success: _.bind(function (sources) {
-                var template = _.template( $("#list_template").html(), {sources: sources.models} );
-                this.$el.html(template);
-            }, this),
-            error: function(a, b, c){console.log(a);console.log(b);console.log(c);}
-        });
-        console.log(sources.models);
-
+        console.log("Trying to render");
+        this.$el.html(this.template({sources: this.collection.models}));
     }
 });
