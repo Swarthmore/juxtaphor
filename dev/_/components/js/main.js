@@ -8,13 +8,13 @@ var sourceInstance = new AV.Source({
 });
 //attaching view to Model
 
-var source_view = new AV.UploadSourceView({el: $("#upload_container"), model: sourceInstance });
+var source_view = new AV.UploadSourceView({model: sourceInstance });
 
 var destroy_view = new AV.DestroySourceView({el: $('#destroy_container'), model: sourceInstance});
 
 
 source_view.render();
-destroy_view.render();
+//destroy_view.render();
 
 //clean up memory. Is this necessary?
 sourceInstance.destroy({success: function(){
@@ -25,9 +25,6 @@ sourceInstance.destroy({success: function(){
 	}
 });
 
-
-router = new AV.routes();
-
-
+var router = new AV.routes();
 
 Backbone.history.start();
