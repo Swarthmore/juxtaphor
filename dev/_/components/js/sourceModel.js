@@ -2,6 +2,7 @@
 AV.Source = Backbone.Model.extend({
 	url: 'php/redirect.php/source',
 	defaults: {
+		id: null,
 		name: '',
 		type: 'raw',
 		contentType: 'txt',
