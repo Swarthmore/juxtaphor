@@ -27,10 +27,13 @@ if(isset($_GET['log'])) {
         $route = ((int) $path_test !== 0 || $path_test == 'public.json') 
             ? '/' . prev($path_array) . '/' .  array_pop($path_array) : '/' . array_pop($path_array);
         $json_string = file_get_contents('php://input');
+        // parse_str($json_string, $json_string);
+        // $json_string = json_decode($json_string['model']);
 
         fwrite($f, '<h2>' . date(DATE_RFC2822,time()) . '</h2>');
         fwrite($f, "<hr/><pre>\n\n");
         fwrite($f, "\n\n");
+        // fwrite($f, print_r($GLOBALS, true));    
 
 		$args = array (
 		        $verb,
@@ -44,8 +47,8 @@ if(isset($_GET['log'])) {
 		switch($verb){
 		case('post'): jws_request($args); break;
 		case('get'): jws_request($args); break;
-		case('put'): break;
-		case('delete'): break;
+		case('put'): jws_request($args); break;
+		case('delete'): jws_request($args); break;
 		}
 	        
         fwrite($f, "</pre>");
@@ -56,14 +59,15 @@ function jws_request($args){
 
         fwrite($args[3], BASE_URL . $args[1]);
         fwrite($args[3], "\n\n");
-        $body = isset($args[2]) ? '[' . $args[2] . ']' : '';
+        // $body = isset($args[2]) ? '[' . $args[2] . ']' : '';
 
-        if($args[0] == 'post'){
+        if($args[0] == 'post' || $args[0] == 'put'){
             try {
         
             $call = \Httpful\Request::$args[0](BASE_URL . '/public' . $args[1])
-                ->sendsJson()
-                ->body($body)
+                ->sendsForm()
+                ->body($args[2])
+                ->raw_body(print_r($args[2],true))
                 ->send();
 
             fwrite($args[3], print_r($call, true));
@@ -74,7 +78,7 @@ function jws_request($args){
             $error = $e->getMessage();
             fwrite($args[3], $error);
     		}
-        } else if ($args[0] == 'get'){
+        } else if ($args[0] == 'get' || $args[0] == 'delete'){
             try {
         
             $call = \Httpful\Request::$args[0](BASE_URL . '/public' . $args[1])

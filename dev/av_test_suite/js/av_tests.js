@@ -11,6 +11,8 @@ function delayReload(){
 	},1000);
 }
 
+Backbone.emulateJSON = true;
+
 var AV = {};
 
 
@@ -94,9 +96,24 @@ AV.testerView = Backbone.View.extend({
 		delayReload();
 	},
 
-	put:function(){test('put');},
+	put:function(){test('put');
 
-	delete:function(){test('delete');},
+		this.collection.models[3].save(
+			{
+			name: 'successful put',
+			data: 'putted it really I did'
+			}
+		);
+
+		delayReload();
+	},
+
+	delete:function(){test('delete');
+
+		this.collection.models[4].destroy();
+
+		// delayReload();
+	}
 });
 
 AV.post = Backbone.Model.extend({
@@ -118,9 +135,21 @@ AV.sources = Backbone.Model.extend({
 	url: '../../php/redirect.php/juxta/source.json'
 });
 
-AV.put = Backbone.Model.extend({});
+AV.put = Backbone.Model.extend({
+	urlRoot: '../../php/redirect.php/juxta/source',
+	defaults:{
+		id: 13,
+		name: '',
+		type: 'raw',
+		contentType: 'txt',
+		data: ''
+	}
+});
 
-AV.delete = Backbone.Model.extend({});
+AV.delete = Backbone.Model.extend({
+	urlRoot: '../../php/redirect.php/juxta/source',
+	defaults:{ id: 7 }
+	});
 
 var readysetgo = new AV.routes();
 
