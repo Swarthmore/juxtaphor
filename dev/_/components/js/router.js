@@ -1,4 +1,9 @@
-AV.routes = Backbone.Router.extend({
+// AV.Router: Extends Backbone.Router for the AKHMATOVIZ Project
+// -------------------------------------------------------------
+// Most of our calls to all of the models and things should come from here.
+
+
+AV.Router = Backbone.Router.extend({
     initialize: function() {
         this.sourceModel = new AV.SourceModel();
         this.uploadSourceView = new AV.UploadSourceView();
