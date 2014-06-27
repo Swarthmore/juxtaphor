@@ -41,6 +41,18 @@
              id="Delete"/>
     </script>
 
+    <div class="container", id="edit_container"></div>
+    <script type="text/template" id="destroy_template">
+      <div class="input-group">
+        <span class="input-group-addon">Name</span>
+        <input type="text", 
+               class="form-control", 
+               placeholder="<%=   %>">
+      </div>
+      <textarea id="uploadContent" rows="10" cols="50" 
+                   placeholder="<%= %>"/>
+    </script>
+
     <div class="container" id="list_container"></div>
     <script type="text/template" id="list_template">
       <table class="table striped">
