@@ -32,7 +32,7 @@ AV.DestroySourceView = Backbone.View.extend({
 		this.$el.html( template );
 	},
 	events: {
-        "click input[value=Destroy]": "destroy",
+        "click input#Delete": "destroy",
 	    
     },
     destroy: function( event ){
@@ -44,6 +44,8 @@ AV.DestroySourceView = Backbone.View.extend({
 }
 });
        */
+	
+	//DELETE MODEL
 	AV.delete = Backbone.Model.extend({
 		urlRoot: 'php/redirect.php/juxta/source',
 		defaults: {id: $("#destroy").val(),},
