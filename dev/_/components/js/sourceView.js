@@ -56,4 +56,6 @@ AV.DestroySourceView = Backbone.View.extend({
      }
 });
 
-
+AV.EditSourceView = Backbone.View.extend({
+    
+});
