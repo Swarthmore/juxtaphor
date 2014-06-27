@@ -34,6 +34,7 @@ AV.Router = Backbone.Router.extend({
     index: function() {
         this.upload();
         this.sources();
+    	this.destroy();
     }
 });
 
