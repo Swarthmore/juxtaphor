@@ -44,6 +44,8 @@ AV.DestroySourceView = Backbone.View.extend({
 }
 });
        */
+	
+	//DELETE MODEL
 	AV.delete = Backbone.Model.extend({
 		urlRoot: 'php/redirect.php/juxta/source',
 		defaults: {id: $("#destroy").val(),},
