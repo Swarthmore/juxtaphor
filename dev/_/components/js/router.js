@@ -19,6 +19,7 @@ AV.Router = Backbone.Router.extend({
         'sources': 'sources',
         'source/upload/': 'upload',
         'source/destroy/': 'destroy',
+        'source/edit/:idToEdit': 'edit',
         'source/delete/:idToDelete': 'delete'
     },
     
