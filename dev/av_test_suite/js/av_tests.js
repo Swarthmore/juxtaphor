@@ -148,7 +148,7 @@ AV.put = Backbone.Model.extend({
 
 AV.delete = Backbone.Model.extend({
 	urlRoot: '../../php/redirect.php/juxta/source',
-	defaults:{ id: 7 }
+	defaults:{ id: 8 }
 	});
 
 var readysetgo = new AV.routes();

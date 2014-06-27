@@ -65,7 +65,7 @@ function jws_request($args){
             try {
         
             $call = \Httpful\Request::$args[0](BASE_URL . '/public' . $args[1])
-                ->sendsForm()
+                ->sendsJson()
                 ->body($args[2])
                 ->raw_body(print_r($args[2],true))
                 ->send();
