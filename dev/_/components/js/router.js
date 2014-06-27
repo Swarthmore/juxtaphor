@@ -1,4 +1,5 @@
 // AV.Router: Extends Backbone.Router for the AKHMATOVIZ Project
+//
 // -------------------------------------------------------------
 // Most of our calls to all of the models and things should come from here.
 
@@ -37,11 +38,11 @@ AV.Router = Backbone.Router.extend({
         this.sources();
     },
     delete: function(idToDelete) {
-        var foo = this.sourceCollection.find(function (source) {
+        var sourceToRemove = this.sourceCollection.find(function (source) {
             return source.id == idToDelete;});
-        console.log(foo);
-        foo.urlRoot = "php/redirect.php/source/";
-        foo.destroy();
+       
+        sourceToRemove.urlRoot = "php/redirect.php/source/";
+        sourceToRemove.destroy();
 	    this.navigate('',{trigger: false});	
         this.sourceCollectionView.render();
     }
