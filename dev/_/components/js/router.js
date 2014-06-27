@@ -38,7 +38,13 @@ AV.Router = Backbone.Router.extend({
         this.sources();
     },
     delete: function(idToDelete) {
-        //kill_the_thing(id);
+        var foo = this.sourceCollection.find(function (source) {
+            return source.id == idToDelete;});
+        console.log(foo);
+        foo.urlRoot = "php/redirect.php/source/";
+        foo.destroy();
+	    this.navigate('',{trigger: false});	
+        this.sourceCollectionView.render();
     }
 });
 

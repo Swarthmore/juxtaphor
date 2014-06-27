@@ -14,10 +14,10 @@ AV.UploadSourceView = Backbone.View.extend({
     	},
     	upload: function( event ){
 		//Using attached model...
-        	alert("Model name is..." + JSON.stringify(this.model.fetch()));
+        	//alert("Model name is..." + JSON.stringify(this.model.fetch()));
         	this.model.set({name: $("#upload").val()});
 		this.model.set({data: $("#uploadContent").val()});
-		alert("Model name is..." + this.model.get("name") );
+		//alert("Model name is..." + this.model.get("name") );
 		this.model.save();
 	}
 });
@@ -36,15 +36,6 @@ AV.DestroySourceView = Backbone.View.extend({
 	    
     },
     destroy: function( event ){
-	/*
-        this.model.set({name: $("#destroy").val()});
-		this.model.set({data: $("#uploadContent").val()});
-		alert("Model name is..." + this.model.get("name") );
-		this.model.save();	
-}
-});
-       */
-	
 	//DELETE MODEL
 	AV.delete = Backbone.Model.extend({
 		urlRoot: 'php/redirect.php/juxta/source',
@@ -56,6 +47,8 @@ AV.DestroySourceView = Backbone.View.extend({
      }
 });
 
+// This object ties in with the "edit_container" template
+// in order to display a current version of the file
 AV.EditSourceView = Backbone.View.extend({
-    
+    el: "#"
 });

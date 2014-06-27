@@ -27,7 +27,7 @@
     <script type="text/template" id="upload_template">
       <label>Name</label>
       <input type = "text" id="upload"/>
-      <input type="button" class="btn btn-default btn-lg" id="uploadButton"/>
+      <input type="button" value = "Upload" class="btn btn-default btn-lg" id="uploadButton"/>
       <p><textarea id="uploadContent" rows="10" cols="50" 
                    placeholder="Fill with content"/></p>
     </script>
@@ -80,7 +80,7 @@
                    class="btn btn-primary"
                    role="button"
                    id="editButton">Edit</a></td>
-            <td><a href="/source/delete/<%= source.get('id') %>"
+            <td><a href="#/source/delete/<%= source.get('id') %>"
                    class="btn btn-danger" 
                    role="button" 
                    id="deleteButton" %>Delete</a></td>
