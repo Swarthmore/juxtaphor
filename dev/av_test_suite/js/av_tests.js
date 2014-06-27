@@ -11,7 +11,7 @@ function delayReload(){
 	},1000);
 }
 
-Backbone.emulateJSON = true;
+// Backbone.emulateJSON = true;
 
 var AV = {};
 
@@ -72,7 +72,7 @@ AV.testerView = Backbone.View.extend({
 
 		test('post');
 		this.collection.models[0].save({
-			name: 'continuing the tests',
+			name: 'post issue debug',
 			data: 'good one'
 		},
 		{
@@ -83,6 +83,7 @@ AV.testerView = Backbone.View.extend({
 	},
 
 	get:function(){test('get');
+		this.collection.models[1].set({id : this.collection.models[1].id + '.json' })
 		this.collection.models[1].fetch({
 			success:function() { test('success');},
 			error:function() { test('not so much');}
@@ -109,7 +110,7 @@ AV.testerView = Backbone.View.extend({
 	},
 
 	delete:function(){test('delete');
-
+		this.collection.models[4].set({id : 23});
 		this.collection.models[4].destroy();
 
 		// delayReload();
@@ -138,7 +139,6 @@ AV.sources = Backbone.Model.extend({
 AV.put = Backbone.Model.extend({
 	urlRoot: '../../php/redirect.php/juxta/source',
 	defaults:{
-		id: 13,
 		name: '',
 		type: 'raw',
 		contentType: 'txt',
@@ -148,7 +148,7 @@ AV.put = Backbone.Model.extend({
 
 AV.delete = Backbone.Model.extend({
 	urlRoot: '../../php/redirect.php/juxta/source',
-	defaults:{ id: 7 }
+	defaults:{ id: 8 }
 	});
 
 var readysetgo = new AV.routes();
