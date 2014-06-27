@@ -7,5 +7,17 @@ AV.SourceCollectionView = Backbone.View.extend({
     render: function () {
         console.log("Trying to render");
         this.$el.html(this.template({sources: this.collection.models}));
-    }
+    },
+    events: {
+	"click input[value=Delete]": "Delete",
+},
+
+Delete: function( event ){
+	console.log("This is working");
+	this.model.set({name: prompt("I hope this works")});
+	alert("Model name is..." + this.model.get('name'));
+	this.model.save();	
+
+},
+
 });
