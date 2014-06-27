@@ -18,7 +18,8 @@ AV.Router = Backbone.Router.extend({
         '': 'index',
         'sources': 'sources',
         'source/upload/': 'upload',
-        'source/destroy/': 'destroy'
+        'source/destroy/': 'destroy',
+        'source/delete/:idToDelete': 'delete'
     },
     
     sources: function () {
@@ -34,7 +35,20 @@ AV.Router = Backbone.Router.extend({
     index: function() {
         this.upload();
         this.sources();
-    	this.destroy();
+    },
+    delete: function(idToDelete) {
+        //kill_the_thing(id);
+        console.log(idToDelete);
+	//Delete Model initialized here.
+	AV.delete = Backbone.Model.extend({
+                urlRoot: 'php/redirect.php/juxta/source',
+                defaults: {id: idToDelete},
+        });
+	
+        test = new AV.delete();
+        test.destroy();
+        test.save();
+	this.navigate('',true);	
     }
 });
 

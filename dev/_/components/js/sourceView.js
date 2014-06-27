@@ -9,7 +9,7 @@ AV.UploadSourceView = Backbone.View.extend({
 		this.$el.html( template );
 	},
 	events: {
-        "click input[value=Upload]": "upload",
+        "click #uploadButton": "upload",
 	    
     	},
     	upload: function( event ){
@@ -32,7 +32,7 @@ AV.DestroySourceView = Backbone.View.extend({
 		this.$el.html( template );
 	},
 	events: {
-        "click input#Delete": "destroy",
+        "click #deleteButton": "destroy",
 	    
     },
     destroy: function( event ){
