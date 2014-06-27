@@ -36,11 +36,11 @@ AV.Router = Backbone.Router.extend({
     index: function() {
         this.upload();
         this.sources();
+	
     },
     delete: function(idToDelete) {
         var sourceToRemove = this.sourceCollection.find(function (source) {
-            return source.id == idToDelete;});
-       
+            return source.id == idToDelete;}); 
         sourceToRemove.urlRoot = "php/redirect.php/source/";
         sourceToRemove.destroy();
 	    this.navigate('',{trigger: false});	
