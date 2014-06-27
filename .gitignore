@@ -1,8 +1,8 @@
 node_modules
 .sass-cache
-dev/log/
 .DS_store
 .#*
 \#*\#
 dev/_/css/main.css
 dev/_/js/AkhmatoViz.js
+log.txt

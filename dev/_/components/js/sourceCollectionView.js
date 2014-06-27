@@ -1,7 +1,8 @@
 AV.SourceCollectionView = Backbone.View.extend({
     el: '#list_container',
     initialize: function() {
-        this.listenTo(this.collection, 'all', this.render);
+        this.listenTo(this.collection, 'reset', this.render);
+        console.log("Initialize View");
     },
     template: _.template( $("#list_template").html()),
     render: function () {
