@@ -51,7 +51,9 @@
             <th>Type</th>
             <th>Length</th>
             <th>Created</th>
-            <th></th> Empty 
+            <!-- Empty headings in order to get spacing to work later. -->
+            <th></th> 
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -62,8 +64,12 @@
             <td><%= source.get('type') %></td>
             <td><%= source.get('length') %></td>
             <td><%= source.get('created') %></td>
+            <td><a href="#/source/edit/<%= source.get ('id') %>"
+                   class="btn btn-primary"
+                   role="button"
+                   id="editButton">Edit</a></td>
             <td><a href="/source/delete/<%= source.get('id') %>"
-                   class="btn" 
+                   class="btn btn-danger" 
                    role="button" 
                    id="deleteButton" %>Delete</a></td>
           <% }); %>
