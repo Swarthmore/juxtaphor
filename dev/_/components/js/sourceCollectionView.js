@@ -7,6 +7,10 @@ AV.SourceCollectionView = Backbone.View.extend({
     template: _.template( $("#list_template").html()),
     render: function () {
         console.log("Trying to render");
-        this.$el.html(this.template({sources: this.collection.models}));
-    }
+        this.$el.html(this.template({sources: this.collection.models}));	
+    },
+
+
+
+
 });
