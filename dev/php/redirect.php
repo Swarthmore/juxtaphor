@@ -59,7 +59,7 @@ function jws_request($args){
 
         fwrite($args[3], BASE_URL . $args[1]);
         fwrite($args[3], "\n\n");
-        // $body = isset($args[2]) ? '[' . $args[2] . ']' : '';
+        $body = isset($args[2]) ? '[' . $args[2] . ']' : '';
 
         if($args[0] == 'post' || $args[0] == 'put'){
             try {
