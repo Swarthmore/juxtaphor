@@ -11,7 +11,9 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-inverse navbar-static-top"><h1 class="navbar-brand">AKHMATOVIZ DEV</h1></nav>
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <h1 class="navbar-brand">AKHMATOVIZ DEV</h1>
+    </nav>
     
     <div class="container">
       <div class="row">
@@ -25,8 +27,9 @@
     <script type="text/template" id="upload_template">
       <label>Name</label>
       <input type = "text" id="upload"/>
-      <input type="button" class= "btn btn-default btn-lg" id="uploadButton" />
-      <p><textarea id="uploadContent" rows="10" cols="50" placeholder="Fill with content"/>
+      <input type="button" class="btn btn-default btn-lg" id="uploadButton"/>
+      <p><textarea id="uploadContent" rows="10" cols="50" 
+                   placeholder="Fill with content"/></p>
     </script>
 
     <div class="container" id="destroy_container"></div>
@@ -41,7 +44,12 @@
       <table class="table striped">
         <thead>
           <tr>
-            <th>id</th><th>Name</th><th>Type</th><th>Length</th><th>Created</th><th></th>
+            <th>id</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Length</th>
+            <th>Created</th>
+            <th></th> Empty 
           </tr>
         </thead>
         <tbody>
@@ -52,7 +60,10 @@
             <td><%= source.get('type') %></td>
             <td><%= source.get('length') %></td>
             <td><%= source.get('created') %></td>
-            <td><a class="btn" role="button" id = "deleteButton" %>Delete</a></td>
+            <td><a href="/source/delete/<%= source.get('id') %>"
+                   class="btn" 
+                   role="button" 
+                   id="deleteButton" %>Delete</a></td>
           <% }); %>
         </tbody>
       </table>
