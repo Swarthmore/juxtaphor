@@ -19,9 +19,18 @@ AV.UploadSourceView = Backbone.View.extend({
     	upload: function( event ){
 		//Using attached model...
         	//alert("Model name is..." + JSON.stringify(this.model.fetch()));
+		//var col = this.collection;
         	this.model.set({name: $("#upload").val()});
 		this.model.set({data: $("#uploadContent").val()});
-		this.model.save();
+		/*this.model.save({success: _.bind(function() { 
+			this.collection.fetch();
+			test("andrew");
+		}, this),
+		error: test("ERRORRRR")});*/
+		this.model.save().done(function() {alert("SAVED");});
+		test(this.collection.fetch());
+		
+		test("ben");
 	        this.render();
 	}
 });
