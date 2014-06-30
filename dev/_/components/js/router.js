@@ -8,8 +8,6 @@ AV.Router = Backbone.Router.extend({
         this.sourceModel = new AV.SourceModel();
         this.uploadSourceView = new AV.UploadSourceView(
             {model: this.sourceModel});
-        this.destroySourceView = new AV.DestroySourceView(
-            {model: this.sourceModel});
         this.editSourceView = new AV.EditSourceView({model:this.sourceModel});
         this.sourceCollection = new AV.SourceCollection();
         this.sourceCollectionView = new AV.SourceCollectionView(
