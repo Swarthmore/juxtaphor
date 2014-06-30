@@ -32,26 +32,17 @@ AV.UploadSourceView = Backbone.View.extend({
 	}
 });
 
-// This object ties in with the "edit_container" template
+// This object ties in with the "view_container" template
 // in order to display a current version of the file
-AV.EditSourceView = Backbone.View.extend({
-    el: "#edit_container",
-    template : _.template($("#edit_template").html()),
+AV.ViewSourceView = Backbone.View.extend({
+    el: "#view_container",
+    template : _.template($("#view_template").html()),
     render: function() {
+        console.log(this.model);
+        console.log(this.model.escape('name'));
+        console.log(this.model.escape('content'));
+        console.log(this.model.escape('type'));
         this.$el.html(this.template({source: this.model}));
-    },
-    events: {
-        "click #submitEditButton": "submit"
-    },
-    submit: function() {
-        var modelToSend = new AV.SourceModel();
-        modelToSend.set({
-            name: $("#editName").val(),
-            data: $("#editContent").val(),
-            id: this.model.get("id")
-        });
-        console.log(modelToSend);
-        modelToSend.save();
     }
 });
 
