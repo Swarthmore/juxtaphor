@@ -22,7 +22,7 @@ AV.UploadSourceView = Backbone.View.extend({
         	this.model.set({name: $("#upload").val()});
 		this.model.set({data: $("#uploadContent").val()});
 		this.model.save();
-	        this.render();	
+	        this.render();
 	}
 });
 

@@ -11,10 +11,9 @@ AV.SourceCollectionView = Backbone.View.extend({
     template: _.template( $("#list_template").html()),
     render: function () {
         this.$el.empty();
-        console.log("Trying to render");
+        console.log("View Rendered");
         this.$el.html(this.template({sources: this.collection.models}));	
     },
-
     delete: function(ev) {
 	    //ev is the mouse event. We receive the data-value which contains
 	    //the id.

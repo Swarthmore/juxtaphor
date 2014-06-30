@@ -11,7 +11,7 @@ AV.Router = Backbone.Router.extend({
                                                                  this.sourceCollection});
         this.sourceModel = new AV.SourceModel();
         this.uploadSourceView = new AV.UploadSourceView({model: this.sourceModel, 
-				colView:this.sourceCollectionView});
+				collection:this.sourceCollection});
         console.log("Initializing router");
     },
     
@@ -28,16 +28,8 @@ AV.Router = Backbone.Router.extend({
     upload: function () {
         this.uploadSourceView.render();
     },
-    destroy: function() {
-        this.destroySourceView.render();
-    },
     index: function() {
         this.upload();
         this.sources();
-	
     },
 });
-
-
-
-
