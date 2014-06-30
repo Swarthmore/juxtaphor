@@ -84,10 +84,14 @@
             <td><%= source.get('type') %></td>
             <td><%= source.get('length') %></td>
             <td><%= source.get('created') %></td>
-	    <td><button class="btn"
-                    id="deleteButton"
-                    data-value=<%=source.get('id')%>>delete</button></td>
-	<% }); %>
+            <td><a href="#/source/edit/<%= source.get ('id') %>"
+                   class="btn btn-primary"
+                   role="button"
+                   id="editButton">Edit</a></td>
+	        <td><button class="btn"
+                        id="deleteButton"
+                        data-value=<%=source.get('id')%>>delete</button></td>
+	        <% }); %>
         </tbody>
       </table>
     </script>
