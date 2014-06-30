@@ -5,8 +5,8 @@ AV.SourceCollectionView = Backbone.View.extend({
         console.log("Initialize View");
     },
     events: {
-	"click #deleteButton": "delete",
-	//"click #uploadButton": "upload",
+	    "click #deleteButton": "delete",
+	    //"click #uploadButton": "upload",
     },
     template: _.template( $("#list_template").html()),
     render: function () {
@@ -25,12 +25,5 @@ AV.SourceCollectionView = Backbone.View.extend({
 	    sourceToRemove.urlRoot = 'php/redirect.php/source/';
 	    sourceToRemove.destroy();
 	    
-    },
-    upload: function(ev) {
-
-	uploadModel = new AV.SourceModel({name: $("#upload").val(), data: $("#uploadContent").val()});
-	uploadModel.save();
-
-    },
-
+    }
 });
