@@ -22,8 +22,6 @@ AV.Router = Backbone.Router.extend({
         'sources': 'sources',
         'source/upload/': 'upload',
         'source/destroy/': 'destroy',
-        'source/edit/:idToEdit': 'edit',
-        'source/delete/:idToDelete': 'delete'
     },
     
     sources: function () {
@@ -33,32 +31,7 @@ AV.Router = Backbone.Router.extend({
     upload: function () {
         this.uploadSourceView.render();
     },
-    destroy: function() {
-        this.destroySourceView.render();
-    },
     index: function() {
         this.sources();
-	
-    },
-    delete: function(idToDelete) {
-        var sourceToRemove = this.sourceCollection.find(function (source) {
-            return source.id == idToDelete;}); 
-        sourceToRemove.urlRoot = "php/redirect.php/source/";
-        sourceToRemove.destroy();
-	    this.navigate('',{trigger: false});	
-        this.sourceCollectionView.render();
-    },
-    edit: function(idToEdit) {
-        //        this.sourceCollection.fetch();
-        var source = this.sourceCollection.find(function (source) {
-            return source.id == idToEdit;});
-        console.log(source ? source : "Panic and freak out.");
-        source.urlRoot = "php/redirect.php/source";
-        this.editSourceView.model = source;
-        this.editSourceView.render();
     }
 });
-
-
-
-
