@@ -6,12 +6,14 @@
 AV.Router = Backbone.Router.extend({
     initialize: function() {
         this.sourceModel = new AV.SourceModel();
-        this.uploadSourceView = new AV.UploadSourceView({model: this.sourceModel});
-        this.destroySourceView = new AV.DestroySourceView({model: this.sourceModel});
+        this.uploadSourceView = new AV.UploadSourceView(
+            {model: this.sourceModel});
+        this.destroySourceView = new AV.DestroySourceView(
+            {model: this.sourceModel});
         this.editSourceView = new AV.EditSourceView({model:this.sourceModel});
         this.sourceCollection = new AV.SourceCollection();
-        this.sourceCollectionView = new AV.SourceCollectionView({collection:
-                                                                 this.sourceCollection});
+        this.sourceCollectionView = new AV.SourceCollectionView(
+            {collection:this.sourceCollection});
         console.log("Initializing router");
     },
     
@@ -48,14 +50,13 @@ AV.Router = Backbone.Router.extend({
         this.sourceCollectionView.render();
     },
     edit: function(idToEdit) {
-//        this.sourceCollection.fetch();
+        //        this.sourceCollection.fetch();
         var source = this.sourceCollection.find(function (source) {
             return source.id == idToEdit;});
         console.log(source ? source : "Panic and freak out.");
         source.urlRoot = "php/redirect.php/source";
         this.editSourceView.model = source;
         this.editSourceView.render();
-
     }
 });
 

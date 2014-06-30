@@ -27,7 +27,10 @@
     <script type="text/template" id="upload_template">
       <label>Name</label>
       <input type = "text" id="upload"/>
-      <input type="button" value="Upload" class="btn btn-default btn-lg" id="uploadButton"/>
+      <input type="button"
+             value="Upload"
+             class="btn btn-default btn-lg" 
+             id="uploadButton"/>
       <p><textarea id="uploadContent" rows="10" cols="50" 
                    placeholder="Fill with content"/></p>
     </script>
@@ -45,12 +48,12 @@
     <script type="text/template" id="edit_template">
       <div class="input-group">
         <span class="input-group-addon">Name</span>
-        <input type="text", 
-               class="form-control", 
-               id="editName",
+        <input type="text"
+               class="form-control"
+               id="editName"
                placeholder="<%= source.get('name') %>">
       </div>
-      <p> <%= source.get('text') %> </p>
+      <p> <%= source.get('content') %> </p>
       <textarea id="editContent" rows="10" cols="50" 
                    placeholder="<%= source.get('text') %>"/>
       <input type="button" value="Submit Edit" class="btn btn-default btn-lg"
