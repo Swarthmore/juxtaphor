@@ -2,7 +2,7 @@
 AV.UploadSourceView = Backbone.View.extend({
 	el: '#upload_container',	
 	initialize: function(){
-		this.listenTo(this.model, 'all', this.render);
+		//this.listenTo(this.model, 'all', this.render);
 	},
 
 	render: function(){
@@ -22,7 +22,7 @@ AV.UploadSourceView = Backbone.View.extend({
         	this.model.set({name: $("#upload").val()});
 		this.model.set({data: $("#uploadContent").val()});
 		this.model.save();
-		
+	        this.render();	
 	}
 });
 
