@@ -76,10 +76,10 @@
             <td><%= source.get('created') %></td>
             <td>
               <div class="btn-group">
-                <button type="button" 
-                        class="btn btn-primary"
-                        id="editButton"
-                        data-value=<%=source.get('id')%>>Edit</button>
+                <a type="button" 
+                   class="btn btn-primary"
+                   id="editButton"
+                   href="#/edit/<%=source.get('id')%>">Edit</a>
                 <button type="button" 
 	                    class="btn btn-danger"
                         id="deleteButton"
