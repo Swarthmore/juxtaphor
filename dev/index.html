@@ -65,24 +65,24 @@
             <td><%= source.escape('type') %></td>
             <td><%= source.escape('length') %></td>
             <td><%= source.escape('created') %></td>
-            <td>
-              <div class="btn-group">
-                <a type="button" 
+            <!--<td>-->
+             <!--<div class="btn-group">-->
+            <td>   <a type="button" 
                    class="btn btn-primary"
                    id="viewButton"
-                   href="#/view/<%=source.escape('id')%>">View</a>
-		<button type="button"
+                   href="#/view/<%=source.escape('id')%>">View</a></td>
+	    <td><button type="button"
 			    class="btn btn-warning"
 			id="transformButton"
 			data-value=<%source.escape('id')%>> Transform
-		</button>
-                <button type="button" 
+		</button></td>
+            <td><button type="button" 
 	                    class="btn btn-danger"
                         id="deleteButton"
                         data-value=<%=source.escape('id')%>>
                   <span class="glyphicon glyphicon-trash"></span> Delete
-                </button>
-            </td>
+                </button></td>
+          <!--</td>-->
           </tr>
 	      <% }); %>
         </tbody>
