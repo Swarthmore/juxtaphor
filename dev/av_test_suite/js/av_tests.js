@@ -175,7 +175,20 @@ AV.testerView = Backbone.View.extend({
 			}
 
 		});
-	}
+	},
+
+	createSet: function(){
+		test('create set');
+		this.collection.models[8].save({
+			name: 'test set',
+			witnesses: [295, 292, 255]
+			{
+			success: function(a,b,c) {  
+				$('#log').append(JSON.stringify(b));
+			}
+		});
+	},
+
 });
 AV.post = Backbone.Model.extend({
 	url: '/juxta/source',
@@ -235,7 +248,11 @@ AV.witnesses = Backbone.Model.extend({
 });
 
 AV.set = Backbone.Model.extend({
-	url: '/juxta/witness.json'
+	url: '/juxta/set',
+	defaults: {
+		name: '',
+		witnesses: []
+	}
 });
 
 var readysetgo = new AV.routes();
