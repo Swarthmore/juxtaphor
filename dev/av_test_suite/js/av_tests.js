@@ -180,8 +180,9 @@ AV.testerView = Backbone.View.extend({
 	createSet: function(){
 		test('create set');
 		this.collection.models[8].save({
-			name: 'test set',
-			witnesses: [295, 292, 255]
+				name: 'test set',
+				witnesses: [295, 292, 255]
+			},	
 			{
 			success: function(a,b,c) {  
 				$('#log').append(JSON.stringify(b));
