@@ -253,10 +253,6 @@ AV.set = Backbone.Model.extend({
 	defaults: {
 		name: '',
 		witnesses: []
-	},
-	sync: function(a,b,c){
-		b.attributes = [b.attributes];
-		return Backbone.sync.apply(this, [a,b,c]);
 	}
 });
 
