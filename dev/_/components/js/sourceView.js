@@ -36,6 +36,7 @@ AV.UploadSourceView = Backbone.View.extend({
 		
 		// test("ben");
 	        this.render();
+		router.navigate('', true);
 	}
 });
 
