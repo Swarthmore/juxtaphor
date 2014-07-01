@@ -19,16 +19,18 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-5" id="main"></div>
       </div>
+      <div class="col-md-10 col-md-offset-5" id="main"></div>
     </div>
+
 
     <div class="container" id="upload_container">a</div>
     <script type="text/template" id="upload_template">
       <label>Name</label>
       <input type = "text" id="upload"/>
-      <input type="button"
-             value="Upload"
+      <input type="button" 
              class="btn btn-default btn-lg" 
-             id="uploadButton"/>
+             id="uploadButton"
+             value="Upload"/>
       <p><textarea id="uploadContent" rows="10" cols="50" 
                    placeholder="Fill with content"/></p>
     </script>
@@ -72,14 +74,16 @@
                 <button type="button" 
 	                    class="btn btn-danger"
                         id="deleteButton"
-                        data-value=<%=source.escape('id')%>>Delete</button>
+                        data-value=<%=source.escape('id')%>>
+                  <span class="glyphicon glyphicon-trash"></span> Delete
+                </button>
             </td>
           </tr>
-	        <% }); %>
+	      <% }); %>
         </tbody>
       </table>
     </script>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="_/js/lib/bootstrap.min.js"></script>
     <script src="_/js/lib/underscore.js"></script>
