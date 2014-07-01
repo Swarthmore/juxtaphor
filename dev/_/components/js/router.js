@@ -54,6 +54,7 @@ AV.Router = Backbone.Router.extend({
 		success: function(){ test('transform success'); },
 		error: function(e) { test(e); }
    		});
+	this.navigate('index');
 	}
 });
 
