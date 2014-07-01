@@ -188,7 +188,7 @@ AV.testerView = Backbone.View.extend({
 	createSet: function(){
 		test('create set');
 		this.collection.models[8].save({
-				name: 'test set',
+				name: 'akhmatova set',
 				witnesses: [28,27,26,25,24,23]
 			},	
 			{
