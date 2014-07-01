@@ -9,8 +9,13 @@
 AV.witness = Backbone.Model.extend({
 	url: 'php/redirect.php/witness',
 	defaults: {
+		sourceId: '',
+		title: '',
+		description: '',
 		source: '',
-		// TODO: there are some optional attributes we may need to add
+		author: '',
+		date: '',
+		notes: ''
 	}
 });
 
