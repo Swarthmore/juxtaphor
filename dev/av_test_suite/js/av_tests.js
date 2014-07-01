@@ -32,6 +32,8 @@ AV.routes = Backbone.Router.extend({
 		this.transform = new AV.transform();
 		this.witness = new AV.witness();
 		this.witnesses = new AV.witnesses();
+		this.set = new AV.set();
+		this.collate = new AV.collate();
 		this.collection = new Backbone.Collection([
 			this.post,
 			this.get,
@@ -40,7 +42,9 @@ AV.routes = Backbone.Router.extend({
 			this.delete,
 			this.transform,
 			this.witness,
-			this.witnesses
+			this.witnesses,
+			this.set,
+			this.collate
 			]);
 		this.testerView = new AV.testerView({collection: this.collection});
 	},
@@ -64,7 +68,11 @@ AV.testerView = Backbone.View.extend({
 		"click button#transform" : 'transform',
 		"click button#get-witness" : 'getWTNS',
 		"click button#get-witnesses" : 'getWTNSlist',
-		"click button#delete-witness" : 'deleteWitness'
+		"click button#delete-witness" : 'deleteWitness',
+		"click button#create-set" : 'createSet',
+		"click button#collate-set" : 'collateSet',
+		"click button#get-set" : 'getSet',
+		"click button#delete-set" : 'deleteSet'
 	},
 	render:function(){
 		this.$el.html(
@@ -77,7 +85,11 @@ AV.testerView = Backbone.View.extend({
 			+ '<li><button class="btn btn-success" id="transform">transform</button></li>'
 			+ '<li><button class="btn btn-default" id="get-witness">get witness</button></li>'
 			+ '<li><button class="btn btn-default" id="get-witnesses">get witnesses</button></li>'
-			+ '<li><button class="btn btn-default" id="delete-witness">delete witnesses</button></li>'
+			+ '<li><button class="btn btn-default" id="delete-witness">delete witness</button></li>'
+			+ '<li><button class="btn btn-default" id="create-set">create set</button></li>'
+			+ '<li><button class="btn btn-default" id="collate-set">collate set</button></li>'
+			+ '<li><button class="btn btn-default" id="get-set">get set</button></li>'
+			+ '<li><button class="btn btn-default" id="delete-set">get set</button></li>'
 			+ '</ul>');
 		this.$el.find('ul li').css( {'list-style' : 'none', 'margin-bottom' : '5px' });
 	},
@@ -139,14 +151,15 @@ AV.testerView = Backbone.View.extend({
 		test('transform');
 		this.collection.models[5].save({
 
-			source: 255,
-			finalName: 'new witness'
+			source: 295,
+			finalName: 'aefae witness'
 
 		});
 	},
 
 	getWTNS: function(){
 		test('get witness');
+		this.collection.models[6].set({ id : 11 });
 		this.collection.models[6].fetch({
 			success: function(a,b,c) {  
 				$('#log').append(JSON.stringify(b));
@@ -161,7 +174,8 @@ AV.testerView = Backbone.View.extend({
 
 	deleteWitness: function(){
 
-		test('delete witnesses')
+		test('delete witness')
+		this.collection.models[6].set({ id : 11 });
 		this.collection.models[6].destroy({
 
 			success: function(a,b,c) {  
@@ -169,7 +183,36 @@ AV.testerView = Backbone.View.extend({
 			}
 
 		});
+	},
+
+	createSet: function(){
+		test('create set');
+		this.collection.models[8].save({
+				name: 'akhmatova set',
+				witnesses: [28,27,26,25,24,23]
+			},	
+			{
+			success: function(a,b,c) {  
+				$('#log').append(JSON.stringify(b));
+			}
+		});
+	},
+
+	collateSet: function(){
+		test('collate set');
+		this.collection.models[9].collate();
+	},
+
+	getSet: function(){
+		test('get set');
+		this.collection.models[9].fetch();
+	},
+
+	deleteSet: function(){
+		test('delete set');
+		this.collection.models[9].delete();
 	}
+
 });
 AV.post = Backbone.Model.extend({
 	url: '/juxta/source',
@@ -221,12 +264,47 @@ AV.transform = Backbone.Model.extend({
 });
 
 AV.witness = Backbone.Model.extend({
-	url: '/juxta/witness/11'
+	urlRoot: '/juxta/witness'
 });
 
 AV.witnesses = Backbone.Model.extend({
 	url: '/juxta/witness.json'
 });
+
+AV.set = Backbone.Model.extend({
+	url: '/juxta/set',
+	defaults: {
+		name: '',
+		witnesses: []
+	}
+});
+
+AV.collate = Backbone.Model.extend({
+	url: '/juxta/set',
+	defaults: {
+
+		"id": 7,
+		"filterWhitespace": true,
+		"filterPunctuation": false,
+		"filterCase": true,
+		"hyphenationFilter": "INCLUDE_ALL"
+	},
+	collate: function() {
+		var data = this.attributes;
+		var url = this.url + '/' + this.attributes.id + '/collator';
+		$.ajax({
+			url: url,
+			type: 'POST',
+			data: JSON.stringify(data),
+			contentType: 'application/json',
+			success: function(){test('successful collate'); },
+			error: function(e){test('errorful collate'); test(e);}
+		});
+
+	}
+});
+
+
 
 var readysetgo = new AV.routes();
 
