@@ -147,6 +147,7 @@ AV.testerView = Backbone.View.extend({
 
 	getWTNS: function(){
 		test('get witness');
+		this.collection.models[6].set({ id : 11 });
 		this.collection.models[6].fetch({
 			success: function(a,b,c) {  
 				$('#log').append(JSON.stringify(b));
@@ -162,6 +163,7 @@ AV.testerView = Backbone.View.extend({
 	deleteWitness: function(){
 
 		test('delete witness')
+		this.collection.models[6].set({ id : 11 });
 		this.collection.models[6].destroy({
 
 			success: function(a,b,c) {  
@@ -221,7 +223,7 @@ AV.transform = Backbone.Model.extend({
 });
 
 AV.witness = Backbone.Model.extend({
-	url: '/juxta/witness/11'
+	urlRoot: '/juxta/witness'
 });
 
 AV.witnesses = Backbone.Model.extend({
