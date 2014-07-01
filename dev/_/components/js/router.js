@@ -29,7 +29,7 @@ AV.Router = Backbone.Router.extend({
     },
     view: function(idToView) {
         this.sourceModel.set('id', idToView);
-        this.sourceModel.url = this.sourceModel.urlRoot + 
+        this.sourceModel.url = this.sourceModel.urlRoot + '/' +
                                this.sourceModel.id + '.json';
         this.sourceModel.fetch({success: _.bind(function()
                                                 {this.viewSourceView.render();},
