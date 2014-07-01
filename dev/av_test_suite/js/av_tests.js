@@ -77,7 +77,7 @@ AV.testerView = Backbone.View.extend({
 			+ '<li><button class="btn btn-success" id="transform">transform</button></li>'
 			+ '<li><button class="btn btn-default" id="get-witness">get witness</button></li>'
 			+ '<li><button class="btn btn-default" id="get-witnesses">get witnesses</button></li>'
-			+ '<li><button class="btn btn-default" id="delete-witness">delete witnesses</button></li>'
+			+ '<li><button class="btn btn-default" id="delete-witness">delete witness</button></li>'
 			+ '</ul>');
 		this.$el.find('ul li').css( {'list-style' : 'none', 'margin-bottom' : '5px' });
 	},
@@ -161,7 +161,7 @@ AV.testerView = Backbone.View.extend({
 
 	deleteWitness: function(){
 
-		test('delete witnesses')
+		test('delete witness')
 		this.collection.models[6].destroy({
 
 			success: function(a,b,c) {  
