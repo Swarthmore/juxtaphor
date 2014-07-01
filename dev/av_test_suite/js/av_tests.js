@@ -283,7 +283,7 @@ AV.collate = Backbone.Model.extend({
 	url: '/juxta/set',
 	defaults: {
 
-		"id": 6,
+		"id": 7,
 		"filterWhitespace": true,
 		"filterPunctuation": false,
 		"filterCase": true,
