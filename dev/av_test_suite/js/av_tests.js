@@ -63,7 +63,7 @@ AV.testerView = Backbone.View.extend({
 		"click button#delete" : 'delete',
 		"click button#transform" : 'transform',
 		"click button#get-witness" : 'getWTNS',
-		"click button#get-witness" : 'getWTNSlist'
+		"click button#get-witnesses" : 'getWTNSlist'
 	},
 	render:function(){
 		this.$el.html(
@@ -137,14 +137,14 @@ AV.testerView = Backbone.View.extend({
 		test('transform');
 		this.collection.models[5].save({
 
-			source: 56,
+			source: 255,
 			finalName: 'new witness'
 
 		});
 	},
 
 	getWTNS: function(){
-		test('get witnesses');
+		test('get witness');
 		this.collection.models[6].fetch({
 			success: function(a,b,c) {  
 				$('#log').append(JSON.stringify(b));
@@ -165,16 +165,6 @@ AV.post = Backbone.Model.extend({
 	}	
 });
 
-AV.get = Backbone.Model.extend({
-	url: '/juxta/source/152.json'
-
-	defaults:{
-		name: '',
-		type: 'raw',
-		contentType: 'txt',
-		data: ''
-	}
-});
 
 AV.get = Backbone.Model.extend({
 	url: '/juxta/source/13.json'
@@ -217,7 +207,7 @@ AV.transform = Backbone.Model.extend({
 });
 
 AV.witness = Backbone.Model.extend({
-	url: '/juxta/witness/56.json'
+	url: '/juxta/witness/11'
 });
 
 AV.witnesses = Backbone.Model.extend({
