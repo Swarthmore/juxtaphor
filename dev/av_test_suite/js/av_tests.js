@@ -32,6 +32,7 @@ AV.routes = Backbone.Router.extend({
 		this.transform = new AV.transform();
 		this.witness = new AV.witness();
 		this.witnesses = new AV.witnesses();
+		this.set = new AV.set();
 		this.collection = new Backbone.Collection([
 			this.post,
 			this.get,
@@ -40,7 +41,8 @@ AV.routes = Backbone.Router.extend({
 			this.delete,
 			this.transform,
 			this.witness,
-			this.witnesses
+			this.witnesses,
+			this.set
 			]);
 		this.testerView = new AV.testerView({collection: this.collection});
 	},
@@ -64,7 +66,8 @@ AV.testerView = Backbone.View.extend({
 		"click button#transform" : 'transform',
 		"click button#get-witness" : 'getWTNS',
 		"click button#get-witnesses" : 'getWTNSlist',
-		"click button#delete-witness" : 'deleteWitness'
+		"click button#delete-witness" : 'deleteWitness',
+		"click button#create-set" : 'createSet'
 	},
 	render:function(){
 		this.$el.html(
@@ -78,6 +81,7 @@ AV.testerView = Backbone.View.extend({
 			+ '<li><button class="btn btn-default" id="get-witness">get witness</button></li>'
 			+ '<li><button class="btn btn-default" id="get-witnesses">get witnesses</button></li>'
 			+ '<li><button class="btn btn-default" id="delete-witness">delete witness</button></li>'
+			+ '<li><button class="btn btn-default" id="create-set">create set</button></li>'
 			+ '</ul>');
 		this.$el.find('ul li').css( {'list-style' : 'none', 'margin-bottom' : '5px' });
 	},
@@ -227,6 +231,10 @@ AV.witness = Backbone.Model.extend({
 });
 
 AV.witnesses = Backbone.Model.extend({
+	url: '/juxta/witness.json'
+});
+
+AV.set = Backbone.Model.extend({
 	url: '/juxta/witness.json'
 });
 
