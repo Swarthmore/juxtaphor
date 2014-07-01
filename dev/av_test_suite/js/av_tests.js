@@ -29,7 +29,9 @@ AV.routes = Backbone.Router.extend({
 		this.sources = new AV.sources();
 		this.put = new AV.put();
 		this.delete = new AV.delete();
-		this.collection = new Backbone.Collection([
+		var collection = Backbone.Collection.extend({ url: '/juxta/source' });
+		this.collection = new collection(
+			[
 			this.post,
 			this.get,
 			this.sources,
@@ -71,15 +73,17 @@ AV.testerView = Backbone.View.extend({
 	post:function(){
 
 		test('post');
+		this.collection.models[0].url = '/juxta/source';
 		this.collection.models[0].save({
-			name: 'post issue debug',
-			data: 'good one'
+	
+		name: 'post issue debug',
+			type: 'raw',
+			contentType: 'txt',
+			data: 'some test what what'
 		},
-		{
-			success:function() { test('success');},
-			error:function(a,b,c) { test(a); test(b); test(c);}
-		});
-		delayReload();
+	{ 	success: function(e){ test('success'); },
+	}	);
+//		delayReload();
 	},
 
 	get:function(){test('get');
@@ -88,25 +92,29 @@ AV.testerView = Backbone.View.extend({
 			success:function() { test('success');},
 			error:function() { test('not so much');}
 		});
-		delayReload();
+	//	delayReload();
 	},
 
 	getSRCS:function(){test('get-srcs');
 		test('get-ws');
-		this.collection.models[2].fetch();
-		delayReload();
+		this.collection.models[2].fetch({
+			success: function(e){ test('success'); },
+			error: function(e){ test('error'); }
+		});
+	//	delayReload();
 	},
 
 	put:function(){test('put');
 
 		this.collection.models[3].save(
 			{
+			id: '152',
 			name: 'successful put',
 			data: 'putted it really I did'
 			}
 		);
 
-		delayReload();
+		//delayReload();
 	},
 
 	delete:function(){test('delete');
@@ -116,34 +124,39 @@ AV.testerView = Backbone.View.extend({
 		// delayReload();
 	}
 });
-
+//AV.post = Backbone.Model.extend({ url: '/juxta/source' });
 AV.post = Backbone.Model.extend({
-	url: '../../php/redirect.php/juxta/source',
-
-	defaults:{
-		name: '',
-		type: 'raw',
-		contentType: 'txt',
-		data: ''
-	}
+	url: '/juxta/source',
+	sync: function(a,b,c){
+		b.attributes = [b.attributes];
+		return Backbone.sync.apply(this, [a,b,c]);
+	}	
 });
 
 AV.get = Backbone.Model.extend({
-	url: '../../php/redirect.php/juxta/source/13.json'
+	url: '/juxta/source/152.json'
 });
 
 AV.sources = Backbone.Model.extend({
-	url: '../../php/redirect.php/juxta/source.json'
+	url: '/juxta/source.json'
 });
 
 AV.put = Backbone.Model.extend({
-	urlRoot: '../../php/redirect.php/juxta/source',
+	urlRoot: '/juxta/source/152',
 	defaults:{
 		name: '',
 		type: 'raw',
 		contentType: 'txt',
 		data: ''
-	}
+	},
+	sync: function(a,b,c){
+		test(c);
+		b.attributes = [b.attributes];
+		c.emulateJSON = true;
+		c.contentType = false;
+		c.processData = false;
+		return Backbone.sync.apply(this, [a,b,c]);
+	}	
 });
 
 AV.delete = Backbone.Model.extend({
