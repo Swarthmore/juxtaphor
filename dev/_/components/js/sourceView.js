@@ -38,6 +38,7 @@ AV.ViewSourceView = Backbone.View.extend({
     el: "#view_container",
     template : _.template($("#view_template").html()),
     render: function() {
+        console.log("About to render");
         console.log(this.model);
         console.log(this.model.escape('name'));
         console.log(this.model.escape('content'));

@@ -19,7 +19,6 @@ AV.Router = Backbone.Router.extend({
         this.sourceCollection = new AV.SourceCollection();
         this.sourceCollectionView = new AV.SourceCollectionView(
             {collection:this.sourceCollection});
-        console.log("Initializing router");
     },
     
     routes: {
@@ -38,9 +37,9 @@ AV.Router = Backbone.Router.extend({
     },
     view: function(idToView) {
         this.sourceModel.set('id', idToView);
-        this.sourceModel.url = this.sourceModel.urlRoot + this.sourceModel.id + '.json';
+        this.sourceModel.url = this.sourceModel.urlRoot + 
+                               this.sourceModel.id + '.json';
         this.sourceModel.fetch();
-        AV.wait(50);
         this.viewSourceView.render();
     },
     upload: function () {
