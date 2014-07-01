@@ -70,7 +70,8 @@ AV.testerView = Backbone.View.extend({
 		"click button#get-witnesses" : 'getWTNSlist',
 		"click button#delete-witness" : 'deleteWitness',
 		"click button#create-set" : 'createSet',
-		"click button#collate-set" : 'collateSet'
+		"click button#collate-set" : 'collateSet',
+		"click button#get-set" : 'getSet'
 	},
 	render:function(){
 		this.$el.html(
@@ -86,6 +87,7 @@ AV.testerView = Backbone.View.extend({
 			+ '<li><button class="btn btn-default" id="delete-witness">delete witness</button></li>'
 			+ '<li><button class="btn btn-default" id="create-set">create set</button></li>'
 			+ '<li><button class="btn btn-default" id="collate-set">collate set</button></li>'
+			+ '<li><button class="btn btn-default" id="get-set">get set</button></li>'
 			+ '</ul>');
 		this.$el.find('ul li').css( {'list-style' : 'none', 'margin-bottom' : '5px' });
 	},
@@ -199,6 +201,11 @@ AV.testerView = Backbone.View.extend({
 		this.collection.models[9].collate();
 	},
 
+	getSet: function(){
+		test('get set');
+		this.collection.models[9].fetch();
+	}
+
 });
 AV.post = Backbone.Model.extend({
 	url: '/juxta/source',
@@ -266,7 +273,7 @@ AV.set = Backbone.Model.extend({
 });
 
 AV.collate = Backbone.Model.extend({
-	url: '/juxta/set/6/collator',
+	url: '/juxta/set',
 	defaults: {
 
 		"id": 6,
@@ -277,7 +284,7 @@ AV.collate = Backbone.Model.extend({
 	},
 	collate: function() {
 		var data = this.attributes;
-		var url = this.url;
+		var url = this.url + '/' + this.attributes.id + '/collator';
 		$.ajax({
 			url: url,
 			type: 'POST',
