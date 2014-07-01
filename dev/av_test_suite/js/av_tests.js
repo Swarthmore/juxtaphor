@@ -63,7 +63,8 @@ AV.testerView = Backbone.View.extend({
 		"click button#delete" : 'delete',
 		"click button#transform" : 'transform',
 		"click button#get-witness" : 'getWTNS',
-		"click button#get-witness" : 'getWTNSlist'
+		"click button#get-witnesses" : 'getWTNSlist',
+		"click button#delete-witness" : 'deleteWitness'
 	},
 	render:function(){
 		this.$el.html(
@@ -76,6 +77,7 @@ AV.testerView = Backbone.View.extend({
 			+ '<li><button class="btn btn-success" id="transform">transform</button></li>'
 			+ '<li><button class="btn btn-default" id="get-witness">get witness</button></li>'
 			+ '<li><button class="btn btn-default" id="get-witnesses">get witnesses</button></li>'
+			+ '<li><button class="btn btn-default" id="delete-witness">delete witnesses</button></li>'
 			+ '</ul>');
 		this.$el.find('ul li').css( {'list-style' : 'none', 'margin-bottom' : '5px' });
 	},
@@ -137,14 +139,14 @@ AV.testerView = Backbone.View.extend({
 		test('transform');
 		this.collection.models[5].save({
 
-			source: 56,
+			source: 255,
 			finalName: 'new witness'
 
 		});
 	},
 
 	getWTNS: function(){
-		test('get witnesses');
+		test('get witness');
 		this.collection.models[6].fetch({
 			success: function(a,b,c) {  
 				$('#log').append(JSON.stringify(b));
@@ -155,6 +157,18 @@ AV.testerView = Backbone.View.extend({
 	getWTNSlist: function(){
 		test('get witnesses');
 		this.collection.models[7].fetch();
+	},
+
+	deleteWitness: function(){
+
+		test('delete witnesses')
+		this.collection.models[6].destroy({
+
+			success: function(a,b,c) {  
+			$('#log').append(JSON.stringify(b));
+			}
+
+		});
 	}
 });
 AV.post = Backbone.Model.extend({
@@ -165,16 +179,6 @@ AV.post = Backbone.Model.extend({
 	}	
 });
 
-AV.get = Backbone.Model.extend({
-	url: '/juxta/source/152.json'
-
-	defaults:{
-		name: '',
-		type: 'raw',
-		contentType: 'txt',
-		data: ''
-	}
-});
 
 AV.get = Backbone.Model.extend({
 	url: '/juxta/source/13.json'
@@ -217,7 +221,7 @@ AV.transform = Backbone.Model.extend({
 });
 
 AV.witness = Backbone.Model.extend({
-	url: '/juxta/witness/56.json'
+	url: '/juxta/witness/11'
 });
 
 AV.witnesses = Backbone.Model.extend({
