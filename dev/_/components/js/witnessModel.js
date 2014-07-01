@@ -9,13 +9,9 @@
 AV.witness = Backbone.Model.extend({
 	url: '/juxta/witness',
 	defaults: {
-		sourceId: '',
-		title: '',
-		description: '',
 		source: '',
-		author: '',
-		date: '',
-		notes: ''
+		xslt: '',
+		finalName: ''
 	}
 });
 
