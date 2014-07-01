@@ -46,7 +46,9 @@
     <script type="text/template" id="view_template">
       <div class="panel panel-default">
         <div class="panel-heading"><%= source.escape('name') %></div>
-        <div class="panel-body"><%= source.escape('content') %></div>
+        <div class="panel-body">
+          <pre><%= source.escape('content') %></pre>
+        </div>
       </div>
     </script>
 
@@ -72,26 +74,28 @@
             <td><%= source.escape('type') %></td>
             <td><%= source.escape('length') %></td>
             <td><%= source.escape('created') %></td>
-            <td><div class="btn-group">
+            <td>
+              <div class="btn-group">
                 <a type="button" 
                    class="btn btn-primary"
                    id="viewButton"
                    href="#/view/<%=source.escape('id')%>">
-		   <span class="glyphicon glyphicon-eye-open"></span>
-		   View
-		</a>
-	    	<a type="button"
-		   class="btn btn-success"
-		   id="transformButton"
-		   href="#/transform/<%=source.escape('id')%>">
-	           Transform
-		</a>
-	        <button type="button"            
-		   class="btn btn-danger"
-                   id="deleteSourceButton"
-                   data-value=<%=source.escape('id')%>>
-                   <span class="glyphicon glyphicon-trash"></span> Delete
+		          <span class="glyphicon glyphicon-eye-open"></span>
+		          View
+		        </a>
+	    	    <a type="button"
+		           class="btn btn-success"
+		           id="transformButton"
+		           href="#/transform/<%=source.escape('id')%>">
+	              Transform
+		        </a>
+	            <button type="button"            
+		                class="btn btn-danger"
+                        id="deleteSourceButton"
+                        data-value=<%=source.escape('id')%>>
+                  <span class="glyphicon glyphicon-trash"></span> Delete
                 </button>
+              </div>
 	        </td>
           </tr>
 	      <% }); %>
