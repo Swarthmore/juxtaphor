@@ -71,7 +71,8 @@ AV.testerView = Backbone.View.extend({
 		"click button#delete-witness" : 'deleteWitness',
 		"click button#create-set" : 'createSet',
 		"click button#collate-set" : 'collateSet',
-		"click button#get-set" : 'getSet'
+		"click button#get-set" : 'getSet',
+		"click button#delete-set" : 'deleteSet'
 	},
 	render:function(){
 		this.$el.html(
@@ -88,6 +89,7 @@ AV.testerView = Backbone.View.extend({
 			+ '<li><button class="btn btn-default" id="create-set">create set</button></li>'
 			+ '<li><button class="btn btn-default" id="collate-set">collate set</button></li>'
 			+ '<li><button class="btn btn-default" id="get-set">get set</button></li>'
+			+ '<li><button class="btn btn-default" id="delete-set">get set</button></li>'
 			+ '</ul>');
 		this.$el.find('ul li').css( {'list-style' : 'none', 'margin-bottom' : '5px' });
 	},
@@ -187,7 +189,7 @@ AV.testerView = Backbone.View.extend({
 		test('create set');
 		this.collection.models[8].save({
 				name: 'test set',
-				witnesses: [12,13,14]
+				witnesses: [28,27,26,25,24,23]
 			},	
 			{
 			success: function(a,b,c) {  
@@ -204,6 +206,11 @@ AV.testerView = Backbone.View.extend({
 	getSet: function(){
 		test('get set');
 		this.collection.models[9].fetch();
+	},
+
+	deleteSet: function(){
+		test('delete set');
+		this.collection.models[9].delete();
 	}
 
 });
