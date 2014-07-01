@@ -77,18 +77,20 @@
                    class="btn btn-primary"
                    id="viewButton"
                    href="#/view/<%=source.escape('id')%>">
-		          <span class="glyphicon glyphicon-eye-open"></span> View</a>
-	            <button type="button"
-			            class="btn btn-success"
-			            id="transformButton"
-			            data-value=<%source.escape('id')%>> 
-                  Transform
-		        </button>
-                <button type="button" 
-	                    class="btn btn-danger"
-                        id="deleteSourceButton"
-                        data-value=<%=source.escape('id')%>>
-                  <span class="glyphicon glyphicon-trash"></span> Delete
+		   <span class="glyphicon glyphicon-eye-open"></span>
+		   View
+		</a>
+	    	<a type="button"
+		   class="btn btn-success"
+		   id="transformButton"
+		   href="#/transform/<%=source.escape('id')%>">
+	           Transform
+		</a>
+	        <button type="button"            
+		   class="btn btn-danger"
+                   id="deleteSourceButton"
+                   data-value=<%=source.escape('id')%>>
+                   <span class="glyphicon glyphicon-trash"></span> Delete
                 </button>
 	        </td>
           </tr>
