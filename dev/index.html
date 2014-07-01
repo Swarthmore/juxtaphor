@@ -78,11 +78,12 @@
                    id="viewButton"
                    href="#/view/<%=source.escape('id')%>">
 		   <span class="glyphicon glyphicon-eye-open"></span> View</a>
-	    <button type="button"
-			    class="btn btn-success"
-			id="transformButton"
-			data-value=<%source.escape('id')%>> Transform
-		</button>
+	    	<a type="button"
+		   class="btn btn-success"
+		   id="transformButton"
+		   href="#/transform/<%=source.escape('id')%>">
+	           Transform
+		</a>
             <button type="button" 
 	                    class="btn btn-danger"
                         id="deleteButton"
