@@ -1,6 +1,6 @@
 // Source Model
 AV.SourceModel = Backbone.Model.extend({
-	urlRoot: '/juxta/source/',
+	urlRoot: '/juxta/source',
 	sync: function(a,b,c){
 		b.attributes = [b.attribnutes];
 		return Backbone.sync.apply(this, [a,b,c]);
