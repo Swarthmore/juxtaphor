@@ -17,7 +17,7 @@
     
     <div class="container">
       <div class="row">
-        <!--<div "col-md-10 col-md-offset-5" id="background">-->
+        <div class="col-md-10 col-md-offset-5" id="main"></div>
       </div>
       <div class="col-md-10 col-md-offset-5" id="main"></div>
     </div>
@@ -35,14 +35,12 @@
                    placeholder="Fill with content"/></p>
     </script>
 
-    <div class="container" id="destroy_container"></div>
-    <script type="text/template" id="destroy_template">
-      <p><label>Name</label>
-	    <input type = "text" id="destroy"/>
-	    <input type="button" 
-               class="btn btn-default btn-lg" 
-               id="Delete" 
-               value="Delete" />
+    <div class="container", id="view_container"></div>
+    <script type="text/template" id="view_template">
+      <div class="panel panel-default">
+        <div class="panel-heading"><%= source.escape('name') %></div>
+        <div class="panel-body"><%= source.escape('content') %></div>
+      </div>
     </script>
 
     <div class="container" id="list_container"></div>
@@ -55,30 +53,33 @@
             <th>Type</th>
             <th>Length</th>
             <th>Created</th>
+            <!-- Empty headings in order to.escape spacing to work later. -->
             <th></th>
           </tr>
         </thead>
         <tbody>
           <% _.each(sources, function (source) { %>
           <tr>
-            <td><%= source.get('id') %></td>
-            <td><%= source.get('name') %></td>
-            <td><%= source.get('type') %></td>
-            <td><%= source.get('length') %></td>
-            <td><%= source.get('created') %></td>
-	        <td>
-              <button class="btn btn-danger" 
-                      id="deleteButton" 
-                      data-value=<%=source.get('id')%>>
-                <span class="glyphicon glyphicon-trash"></span> Delete
-              </button>
+            <td><%= source.escape('id') %></td>
+            <td><%= source.escape('name') %></td>
+            <td><%= source.escape('type') %></td>
+            <td><%= source.escape('length') %></td>
+            <td><%= source.escape('created') %></td>
+            <td>
+              <div class="btn-group">
+                <a type="button" 
+                   class="btn btn-primary"
+                   id="viewButton"
+                   href="#/view/<%=source.escape('id')%>">View</a>
+                <button type="button" 
+	                    class="btn btn-danger"
+                        id="deleteButton"
+                        data-value=<%=source.escape('id')%>>
+                  <span class="glyphicon glyphicon-trash"></span> Delete
+                </button>
             </td>
-            <!--<td><a href="#/source/delete/<%= source.get('id') %>"
-                class="btn" 
-                role="button" 
-                id="deleteButton" %>Delete</a></td>
-              -->
-	        <% }); %>
+          </tr>
+	      <% }); %>
         </tbody>
       </table>
     </script>

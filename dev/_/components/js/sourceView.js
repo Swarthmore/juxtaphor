@@ -1,59 +1,51 @@
 //Create a view for the source
 AV.UploadSourceView = Backbone.View.extend({
 	el: '#upload_container',	
-	initialize: function(){},
+	initialize: function(){
+		//this.listenTo(this.model, 'all', this.render);
+	},
+
 	render: function(){
 		//compile the template using underscore
 		var template = _.template( $("#upload_template").html(), {} );
 		//Load the compiled HTML into the backbone "el"
 		this.$el.html( template );
 	},
+
 	events: {
         "click #uploadButton": "upload",
 	    
-    	},
-    	upload: function( event ){
+    },
+    upload: function( event ){
 		//Using attached model...
-        	//alert("Model name is..." + JSON.stringify(this.model.fetch()));
-        	this.model.set({name: $("#upload").val()});
 		this.model.set({data: $("#uploadContent").val()});
-		//alert("Model name is..." + this.model.get("name") );
-		this.model.save();
+		/*this.model.save({success: _.bind(function() { 
+			this.collection.fetch();
+			test("andrew");
+		}, this),
+		error: test("ERRORRRR")});*/
+		this.model.save().done(function() {alert("SAVED");});
+		test(this.collection.fetch());
+		
+		test("ben");
+	        this.render();
 	}
 });
 
-AV.DestroySourceView = Backbone.View.extend({
-	el: '#destroy_container',	
-	initialize: function(){},
-	render: function(){
-		//compile the template using underscore
-		var template = _.template( $("#destroy_template").html(), {} );
-		//Load the compiled HTML into the backbone "el"
-		this.$el.html( template );
-	},
-	events: {
-        "click #deleteButton": "destroy",
-	    
+// This object ties in with the "view_container" template
+// in order to display a current version of the file
+AV.ViewSourceView = Backbone.View.extend({
+    el: "#view_container",
+    template : _.template($("#view_template").html()),
+    render: function() {
+        console.log("About to render");
+        console.log(this.model);
+        console.log(this.model.attributes);
+        this.$el.html(this.template({source: this.model}));
     },
-    destroy: function( event ){
-	/*
-        this.model.set({name: $("#destroy").val()});
-		this.model.set({data: $("#uploadContent").val()});
-		alert("Model name is..." + this.model.get("name") );
-		this.model.save();	
-}
+    fetch: function(options) {
+        this.clear({silent: true});
+        return Backbone.Model.prototype.fetch.call(this, options);
+    }
 });
-       */
-	
-	//DELETE MODEL
-	AV.delete = Backbone.Model.extend({
-		urlRoot: 'php/redirect.php/juxta/source',
-		defaults: {id: $("#destroy").val(),},
-	}); 
-	test = new AV.delete();
-	test.destroy();
-	test.save();
-     }
-});
-
 

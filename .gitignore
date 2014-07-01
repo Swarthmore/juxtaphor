@@ -6,3 +6,4 @@ node_modules
 dev/_/css/main.css
 dev/_/js/AkhmatoViz.js
 log.txt
+npm-debug.log
