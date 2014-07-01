@@ -63,7 +63,8 @@ AV.testerView = Backbone.View.extend({
 		"click button#delete" : 'delete',
 		"click button#transform" : 'transform',
 		"click button#get-witness" : 'getWTNS',
-		"click button#get-witnesses" : 'getWTNSlist'
+		"click button#get-witnesses" : 'getWTNSlist',
+		"click button#delete-witness" : 'deleteWitness'
 	},
 	render:function(){
 		this.$el.html(
@@ -76,6 +77,7 @@ AV.testerView = Backbone.View.extend({
 			+ '<li><button class="btn btn-success" id="transform">transform</button></li>'
 			+ '<li><button class="btn btn-default" id="get-witness">get witness</button></li>'
 			+ '<li><button class="btn btn-default" id="get-witnesses">get witnesses</button></li>'
+			+ '<li><button class="btn btn-default" id="delete-witness">delete witnesses</button></li>'
 			+ '</ul>');
 		this.$el.find('ul li').css( {'list-style' : 'none', 'margin-bottom' : '5px' });
 	},
@@ -155,6 +157,18 @@ AV.testerView = Backbone.View.extend({
 	getWTNSlist: function(){
 		test('get witnesses');
 		this.collection.models[7].fetch();
+	},
+
+	deleteWitness: function(){
+
+		test('delete witnesses')
+		this.collection.models[6].destroy({
+
+			success: function(a,b,c) {  
+			$('#log').append(JSON.stringify(b));
+			}
+
+		});
 	}
 });
 AV.post = Backbone.Model.extend({
