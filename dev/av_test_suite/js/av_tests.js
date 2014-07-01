@@ -84,7 +84,7 @@ AV.testerView = Backbone.View.extend({
 			+ '<li><button class="btn btn-default" id="get-witness">get witness</button></li>'
 			+ '<li><button class="btn btn-default" id="get-witnesses">get witnesses</button></li>'
 			+ '<li><button class="btn btn-default" id="delete-witness">delete witness</button></li>'
-			+ '<li><button class="btn btn-default" id="create-set">create set</button></li>',
+			+ '<li><button class="btn btn-default" id="create-set">create set</button></li>'
 			+ '<li><button class="btn btn-default" id="collate-set">collate set</button></li>'
 			+ '</ul>');
 		this.$el.find('ul li').css( {'list-style' : 'none', 'margin-bottom' : '5px' });
