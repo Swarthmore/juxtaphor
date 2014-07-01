@@ -2,14 +2,6 @@
 // -------------------------------------------------------------
 // Most of our calls to all of the models and things should come from here.
 
-AV.wait = function(n) {
-    if (n===0) {
-        return 1;
-    } else {
-        return n * AV.wait(n-1);
-    }
-};
-
 AV.Router = Backbone.Router.extend({
     initialize: function() {
         this.sourceModel = new AV.SourceModel();
