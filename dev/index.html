@@ -50,8 +50,8 @@
       </div>
     </script>
 
-    <div class="container" id="list_container"></div>
-    <script type="text/template" id="list_template">
+    <div class="container" id="list_source_container"></div>
+    <script type="text/template" id="list_source_template">
       <table class="table table-striped">
         <thead>
           <tr>
@@ -60,7 +60,7 @@
             <th>Type</th>
             <th>Length</th>
             <th>Created</th>
-            <!-- Empty headings in order to.escape spacing to work later. -->
+            <!-- Empty headings in order to get spacing to work later. -->
             <th></th>
           </tr>
         </thead>
@@ -77,25 +77,67 @@
                    class="btn btn-primary"
                    id="viewButton"
                    href="#/view/<%=source.escape('id')%>">
-		   <span class="glyphicon glyphicon-eye-open"></span> View</a>
+		   <span class="glyphicon glyphicon-eye-open"></span>
+		   View
+		</a>
 	    	<a type="button"
 		   class="btn btn-success"
 		   id="transformButton"
 		   href="#/transform/<%=source.escape('id')%>">
 	           Transform
 		</a>
-            <button type="button" 
-	                    class="btn btn-danger"
-                        id="deleteButton"
-                        data-value=<%=source.escape('id')%>>
-                  <span class="glyphicon glyphicon-trash"></span> Delete
+	        <button type="button"            
+		   class="btn btn-danger"
+                   id="deleteSourceButton"
+                   data-value=<%=source.escape('id')%>>
+                   <span class="glyphicon glyphicon-trash"></span> Delete
                 </button>
-	    </td>
+	        </td>
           </tr>
 	      <% }); %>
         </tbody>
       </table>
     </script>
+
+    <div class="container" id="list_witness_container"></div>
+    <script type="text/template" id="list_witness_template">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>xlstId</th>
+            <th>sourceId</th>
+            <th>Name</th>
+            <th>Created</th>
+            <th>Updated</th>
+            <!-- Empty headings in order to get spacing to work later. -->
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% _.each(witnesses, function (witness) { %>
+          <tr>
+            <td><%= witness.escape('id') %></td>
+            <td><%= witness.escape('xlstId') %></td>
+            <td><%= witness.escape('sourceId') %></td>
+            <td><%= witness.escape('name') %></td>
+            <td><%= witness.escape('created') %></td>
+            <td><%= witness.escape('updated') %></td>
+            <td>
+              <button type="button" 
+	                  class="btn btn-danger"
+                      id="deleteWitnessButton"
+                      data-value=<%=witness.escape('id')%>>
+                <span class="glyphicon glyphicon-trash"></span> Delete
+              </button>
+	        </td>
+          </tr>
+	      <% }); %>
+        </tbody>
+      </table>
+    </script>
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="_/js/lib/bootstrap.min.js"></script>

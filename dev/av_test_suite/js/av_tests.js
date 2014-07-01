@@ -63,7 +63,8 @@ AV.testerView = Backbone.View.extend({
 		"click button#delete" : 'delete',
 		"click button#transform" : 'transform',
 		"click button#get-witness" : 'getWTNS',
-		"click button#get-witness" : 'getWTNSlist'
+		"click button#get-witnesses" : 'getWTNSlist',
+		"click button#delete-witness" : 'deleteWitness'
 	},
 	render:function(){
 		this.$el.html(
@@ -76,21 +77,24 @@ AV.testerView = Backbone.View.extend({
 			+ '<li><button class="btn btn-success" id="transform">transform</button></li>'
 			+ '<li><button class="btn btn-default" id="get-witness">get witness</button></li>'
 			+ '<li><button class="btn btn-default" id="get-witnesses">get witnesses</button></li>'
+			+ '<li><button class="btn btn-default" id="delete-witness">delete witnesses</button></li>'
 			+ '</ul>');
 		this.$el.find('ul li').css( {'list-style' : 'none', 'margin-bottom' : '5px' });
 	},
 	post:function(){
 
 		test('post');
+		this.collection.models[0].url = '/juxta/source';
 		this.collection.models[0].save({
-			name: 'post issue debug',
-			data: 'good one'
+	
+		name: 'post issue debug',
+			type: 'raw',
+			contentType: 'txt',
+			data: 'some test what what'
 		},
-		{
-			success:function() { test('success');},
-			error:function(a,b,c) { test(a); test(b); test(c);}
-		});
-		delayReload();
+	{ 	success: function(e){ test('success'); },
+	}	);
+//		delayReload();
 	},
 
 	get:function(){test('get');
@@ -99,25 +103,29 @@ AV.testerView = Backbone.View.extend({
 			success:function() { test('success');},
 			error:function() { test('not so much');}
 		});
-		delayReload();
+	//	delayReload();
 	},
 
 	getSRCS:function(){test('get-srcs');
 		test('get-ws');
-		this.collection.models[2].fetch();
-		delayReload();
+		this.collection.models[2].fetch({
+			success: function(e){ test('success'); },
+			error: function(e){ test('error'); }
+		});
+	//	delayReload();
 	},
 
 	put:function(){test('put');
 
 		this.collection.models[3].save(
 			{
+			id: '152',
 			name: 'successful put',
 			data: 'putted it really I did'
 			}
 		);
 
-		delayReload();
+		//delayReload();
 	},
 
 	delete:function(){test('delete');
@@ -131,14 +139,14 @@ AV.testerView = Backbone.View.extend({
 		test('transform');
 		this.collection.models[5].save({
 
-			source: 56,
+			source: 255,
 			finalName: 'new witness'
 
 		});
 	},
 
 	getWTNS: function(){
-		test('get witnesses');
+		test('get witness');
 		this.collection.models[6].fetch({
 			success: function(a,b,c) {  
 				$('#log').append(JSON.stringify(b));
@@ -149,19 +157,28 @@ AV.testerView = Backbone.View.extend({
 	getWTNSlist: function(){
 		test('get witnesses');
 		this.collection.models[7].fetch();
+	},
+
+	deleteWitness: function(){
+
+		test('delete witnesses')
+		this.collection.models[6].destroy({
+
+			success: function(a,b,c) {  
+			$('#log').append(JSON.stringify(b));
+			}
+
+		});
 	}
 });
-
 AV.post = Backbone.Model.extend({
 	url: '/juxta/source',
-
-	defaults:{
-		name: '',
-		type: 'raw',
-		contentType: 'txt',
-		data: ''
-	}
+	sync: function(a,b,c){
+		b.attributes = [b.attributes];
+		return Backbone.sync.apply(this, [a,b,c]);
+	}	
 });
+
 
 AV.get = Backbone.Model.extend({
 	url: '/juxta/source/13.json'
@@ -172,13 +189,21 @@ AV.sources = Backbone.Model.extend({
 });
 
 AV.put = Backbone.Model.extend({
-	urlRoot: '/juxta/source',
+	urlRoot: '/juxta/source/152',
 	defaults:{
 		name: '',
 		type: 'raw',
 		contentType: 'txt',
 		data: ''
-	}
+	},
+	sync: function(a,b,c){
+		test(c);
+		b.attributes = [b.attributes];
+		c.emulateJSON = true;
+		c.contentType = false;
+		c.processData = false;
+		return Backbone.sync.apply(this, [a,b,c]);
+	}	
 });
 
 AV.delete = Backbone.Model.extend({
@@ -196,7 +221,7 @@ AV.transform = Backbone.Model.extend({
 });
 
 AV.witness = Backbone.Model.extend({
-	url: '/juxta/witness/56.json'
+	url: '/juxta/witness/11'
 });
 
 AV.witnesses = Backbone.Model.extend({

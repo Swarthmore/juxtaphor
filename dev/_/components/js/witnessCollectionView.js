@@ -1,12 +1,12 @@
-AV.SourceCollectionView = Backbone.View.extend({
-    el: '#list_source_container',
+AV.WitnessCollectionView = Backbone.View.extend({
+    el: '#list_witness_container',
     initialize: function() {
         this.listenTo(this.collection, 'all', this.render);
     },
     events: {
-	    "click #deleteButton": "delete"
+	    "click #deleteWitnessButton": "delete"
     },
-    template: _.template( $("#list_source_template").html()),
+    template: _.template( $("#list_witness_template").html()),
     render: function () {
         this.$el.empty();
         console.log("Rendered");
@@ -20,8 +20,9 @@ AV.SourceCollectionView = Backbone.View.extend({
 	    var idToDelete = $(ev.target).data('value');
 	    var sourceToRemove = this.collection.find(function (source) {
 		    return source.id == idToDelete;});
-	    sourceToRemove.urlRoot = '/juxta/source';
+	    sourceToRemove.urlRoot = '/juxta/witness';
 	    sourceToRemove.destroy();
 	    
     }
+    
 });
