@@ -274,6 +274,17 @@ AV.collate = Backbone.Model.extend({
 		"filterPunctuation": false,
 		"filterCase": true,
 		"hyphenationFilter": "INCLUDE_ALL"
+	},
+	collate: function() {
+		var data = this.attributes;
+		$.ajax({
+			type: 'POST',
+			data: JSON.stringify(data),
+			contentType: 'application/json',
+			success: function(){test('successful collate'; )},
+			error: function(e){test('errorful collate'; ); test(e);}
+		});
+
 	}
 });
 
