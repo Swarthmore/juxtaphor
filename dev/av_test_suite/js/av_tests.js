@@ -281,8 +281,8 @@ AV.collate = Backbone.Model.extend({
 			type: 'POST',
 			data: JSON.stringify(data),
 			contentType: 'application/json',
-			success: function(){test('successful collate'; )},
-			error: function(e){test('errorful collate'; ); test(e);}
+			success: function(){test('successful collate'); },
+			error: function(e){test('errorful collate'); test(e);}
 		});
 
 	}
