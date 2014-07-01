@@ -33,6 +33,7 @@ AV.routes = Backbone.Router.extend({
 		this.witness = new AV.witness();
 		this.witnesses = new AV.witnesses();
 		this.set = new AV.set();
+		this.collate = new AV.collate();
 		this.collection = new Backbone.Collection([
 			this.post,
 			this.get,
@@ -42,7 +43,8 @@ AV.routes = Backbone.Router.extend({
 			this.transform,
 			this.witness,
 			this.witnesses,
-			this.set
+			this.set,
+			this.collate
 			]);
 		this.testerView = new AV.testerView({collection: this.collection});
 	},
@@ -67,7 +69,8 @@ AV.testerView = Backbone.View.extend({
 		"click button#get-witness" : 'getWTNS',
 		"click button#get-witnesses" : 'getWTNSlist',
 		"click button#delete-witness" : 'deleteWitness',
-		"click button#create-set" : 'createSet'
+		"click button#create-set" : 'createSet',
+		"click button#collate-set" : 'collateSet'
 	},
 	render:function(){
 		this.$el.html(
@@ -81,7 +84,8 @@ AV.testerView = Backbone.View.extend({
 			+ '<li><button class="btn btn-default" id="get-witness">get witness</button></li>'
 			+ '<li><button class="btn btn-default" id="get-witnesses">get witnesses</button></li>'
 			+ '<li><button class="btn btn-default" id="delete-witness">delete witness</button></li>'
-			+ '<li><button class="btn btn-default" id="create-set">create set</button></li>'
+			+ '<li><button class="btn btn-default" id="create-set">create set</button></li>',
+			+ '<li><button class="btn btn-default" id="collate-set">collate set</button></li>'
 			+ '</ul>');
 		this.$el.find('ul li').css( {'list-style' : 'none', 'margin-bottom' : '5px' });
 	},
@@ -188,6 +192,10 @@ AV.testerView = Backbone.View.extend({
 				$('#log').append(JSON.stringify(b));
 			}
 		});
+	},
+
+	collateSet: function(){
+		test('collate set');
 	},
 
 });
