@@ -4,7 +4,7 @@ AV.SourceCollectionView = Backbone.View.extend({
         this.listenTo(this.collection, 'all', this.render);
     },
     events: {
-	    "click #deleteButton": "delete"
+	    "click #deleteSourceButton": "delete"
     },
     template: _.template( $("#list_source_template").html()),
     render: function () {
