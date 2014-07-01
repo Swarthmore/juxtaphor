@@ -23,7 +23,7 @@
     </div>
 
 
-    <div class="container" id="upload_container">a</div>
+    <div class="container" id="upload_container"></div>
     <script type="text/template" id="upload_template">
       <label>Name</label>
       <input type = "text" id="upload"/>
@@ -65,9 +65,8 @@
             <td><%= source.escape('type') %></td>
             <td><%= source.escape('length') %></td>
             <td><%= source.escape('created') %></td>
-            <!--<td>-->
-             <!--<div class="btn-group">-->
-            <td>   <a type="button" 
+            <td><div class="btn-group">
+                <a type="button" 
                    class="btn btn-primary"
                    id="viewButton"
                    href="#/view/<%=source.escape('id')%>">View</a>
@@ -81,8 +80,8 @@
                         id="deleteButton"
                         data-value=<%=source.escape('id')%>>
                   <span class="glyphicon glyphicon-trash"></span> Delete
-                </button></td>
-          <!--</td>-->
+                </button>
+	    </td>
           </tr>
 	      <% }); %>
         </tbody>
