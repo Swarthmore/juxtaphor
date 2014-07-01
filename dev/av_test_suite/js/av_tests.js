@@ -29,14 +29,18 @@ AV.routes = Backbone.Router.extend({
 		this.sources = new AV.sources();
 		this.put = new AV.put();
 		this.delete = new AV.delete();
-		var collection = Backbone.Collection.extend({ url: '/juxta/source' });
-		this.collection = new collection(
-			[
+		this.transform = new AV.transform();
+		this.witness = new AV.witness();
+		this.witnesses = new AV.witnesses();
+		this.collection = new Backbone.Collection([
 			this.post,
 			this.get,
 			this.sources,
 			this.put,
-			this.delete
+			this.delete,
+			this.transform,
+			this.witness,
+			this.witnesses
 			]);
 		this.testerView = new AV.testerView({collection: this.collection});
 	},
@@ -57,7 +61,9 @@ AV.testerView = Backbone.View.extend({
 		"click button#get-srcs" : 'getSRCS',
 		"click button#put" : 'put',
 		"click button#delete" : 'delete',
-		"click button#clear" : 'clear'
+		"click button#transform" : 'transform',
+		"click button#get-witness" : 'getWTNS',
+		"click button#get-witness" : 'getWTNSlist'
 	},
 	render:function(){
 		this.$el.html(
@@ -67,6 +73,9 @@ AV.testerView = Backbone.View.extend({
 			+ '<li><button class="btn btn-primary" id="get-srcs">get sources</button></li>'
 			+ '<li><button class="btn btn-warning" id="put">put</button></li>'
 			+ '<li><button class="btn btn-danger" id="delete">delete</button></li>'
+			+ '<li><button class="btn btn-success" id="transform">transform</button></li>'
+			+ '<li><button class="btn btn-default" id="get-witness">get witness</button></li>'
+			+ '<li><button class="btn btn-default" id="get-witnesses">get witnesses</button></li>'
 			+ '</ul>');
 		this.$el.find('ul li').css( {'list-style' : 'none', 'margin-bottom' : '5px' });
 	},
@@ -122,9 +131,32 @@ AV.testerView = Backbone.View.extend({
 		this.collection.models[4].destroy();
 
 		// delayReload();
+	},
+
+	transform: function(){
+		test('transform');
+		this.collection.models[5].save({
+
+			source: 56,
+			finalName: 'new witness'
+
+		});
+	},
+
+	getWTNS: function(){
+		test('get witnesses');
+		this.collection.models[6].fetch({
+			success: function(a,b,c) {  
+				$('#log').append(JSON.stringify(b));
+			}
+		});
+	},
+
+	getWTNSlist: function(){
+		test('get witnesses');
+		this.collection.models[7].fetch();
 	}
 });
-//AV.post = Backbone.Model.extend({ url: '/juxta/source' });
 AV.post = Backbone.Model.extend({
 	url: '/juxta/source',
 	sync: function(a,b,c){
@@ -135,6 +167,17 @@ AV.post = Backbone.Model.extend({
 
 AV.get = Backbone.Model.extend({
 	url: '/juxta/source/152.json'
+
+	defaults:{
+		name: '',
+		type: 'raw',
+		contentType: 'txt',
+		data: ''
+	}
+});
+
+AV.get = Backbone.Model.extend({
+	url: '/juxta/source/13.json'
 });
 
 AV.sources = Backbone.Model.extend({
@@ -160,9 +203,26 @@ AV.put = Backbone.Model.extend({
 });
 
 AV.delete = Backbone.Model.extend({
-	urlRoot: '../../php/redirect.php/juxta/source',
+	urlRoot: '/juxta/source',
 	defaults:{ id: 8 }
 	});
+
+AV.transform = Backbone.Model.extend({
+
+	url: '/juxta/transform',
+	defaults: {
+		source: '',
+		finalName: ''
+	}
+});
+
+AV.witness = Backbone.Model.extend({
+	url: '/juxta/witness/56.json'
+});
+
+AV.witnesses = Backbone.Model.extend({
+	url: '/juxta/witness.json'
+});
 
 var readysetgo = new AV.routes();
 
