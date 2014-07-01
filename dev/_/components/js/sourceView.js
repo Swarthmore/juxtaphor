@@ -32,9 +32,9 @@ AV.UploadSourceView = Backbone.View.extend({
 		}, this),
 		error: test("ERRORRRR")});*/
 		// this.model.save().done(function() {alert("SAVED");});
-		test(this.collection.fetch());
+		// test(this.collection.fetch());
 		
-		test("ben");
+		// test("ben");
 	        this.render();
 	}
 });
