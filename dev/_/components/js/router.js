@@ -17,7 +17,8 @@ AV.Router = Backbone.Router.extend({
         '': 'index',
         'sources': 'sources',
         'view/:idToView': 'view',
-        'source/upload/': 'upload'
+        'source/upload/': 'upload',
+	'transform/:idToTransform':'transform'
     },
 
     index: function() {
@@ -39,7 +40,22 @@ AV.Router = Backbone.Router.extend({
     },
     upload: function () {
         this.uploadSourceView.render();
-    }
+    },
+
+    transform: function (idToTransform) {
+	console.log("about to transform!");
+	var url = "/juxta/transform";
+	var request = { source: idToTransform };
+	$.ajax({
+		type: 'POST',
+		url: url,
+		data: JSON.stringify(request),
+		contentType: 'application/json',
+		success: function(){ test('transform success'); },
+		error: function(e) { test(e); }
+   		});
+	this.navigate('index');
+	}
 });
 
 
