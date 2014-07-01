@@ -1,12 +1,12 @@
 AV.SourceCollectionView = Backbone.View.extend({
-    el: '#list_container',
+    el: '#list_source_container',
     initialize: function() {
         this.listenTo(this.collection, 'all', this.render);
     },
     events: {
 	    "click #deleteButton": "delete"
     },
-    template: _.template( $("#list_template").html()),
+    template: _.template( $("#list_source_template").html()),
     render: function () {
         this.$el.empty();
         console.log("Rendered");
