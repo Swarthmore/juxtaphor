@@ -7,7 +7,7 @@
 
 
 AV.witness = Backbone.Model.extend({
-	url: 'php/redirect.php/witness',
+	url: '/juxta/witness',
 	defaults: {
 		source: '',
 		// TODO: there are some optional attributes we may need to add
