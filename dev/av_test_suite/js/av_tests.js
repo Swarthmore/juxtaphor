@@ -257,6 +257,7 @@ AV.set = Backbone.Model.extend({
 	sync: function(a,b,c){
 		b.attributes = [b.attributes];
 		return Backbone.sync.apply(this, [a,b,c]);
+	}
 });
 
 var readysetgo = new AV.routes();
