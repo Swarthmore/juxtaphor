@@ -196,6 +196,7 @@ AV.testerView = Backbone.View.extend({
 
 	collateSet: function(){
 		test('collate set');
+		this.collection.models[9].save();
 	},
 
 });
@@ -263,6 +264,20 @@ AV.set = Backbone.Model.extend({
 		witnesses: []
 	}
 });
+
+AV.collate = Backbone.Model.extend({
+	url: '/juxta/set/6/collator',
+	defaults: {
+
+		"id": 6,
+		"filterWhitespace": true,
+		"filterPunctuation": false,
+		"filterCase": true,
+		"hyphenationFilter": "INCLUDE_ALL"
+	}
+});
+
+
 
 var readysetgo = new AV.routes();
 
