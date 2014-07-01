@@ -5,7 +5,7 @@ AV.SourceModel = Backbone.Model.extend({
 		console.log(a);
 		console.log(b);
 		console.log(c);
-		b.attributes = [b.attribnutes];
+		b.attributes = [b.attributes];
 		return Backbone.sync.apply(this, [a,b,c]);
 		},
 	defaults: {
