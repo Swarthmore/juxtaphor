@@ -181,7 +181,7 @@ AV.testerView = Backbone.View.extend({
 		test('create set');
 		this.collection.models[8].save({
 				name: 'test set',
-				witnesses: [295, 292, 255]
+				witnesses: [12,13,14]
 			},	
 			{
 			success: function(a,b,c) {  
