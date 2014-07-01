@@ -277,7 +277,9 @@ AV.collate = Backbone.Model.extend({
 	},
 	collate: function() {
 		var data = this.attributes;
+		var url = this.url;
 		$.ajax({
+			url: url,
 			type: 'POST',
 			data: JSON.stringify(data),
 			contentType: 'application/json',
