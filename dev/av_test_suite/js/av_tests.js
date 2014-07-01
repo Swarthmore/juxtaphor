@@ -196,7 +196,7 @@ AV.testerView = Backbone.View.extend({
 
 	collateSet: function(){
 		test('collate set');
-		this.collection.models[9].save();
+		this.collection.models[9].collate();
 	},
 
 });
