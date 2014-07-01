@@ -17,7 +17,10 @@ AV.UploadSourceView = Backbone.View.extend({
 	    
     },
     upload: function( event ){
-		//Using attached model...
+		//Resetting attached model, because if something was
+        //looked at before the upload, that will still be in
+        // the model.
+        this.model.clear().set(this.model.defaults);
 		this.model.save({
 			data: $("#uploadContent").val(),
 			name: $("#upload").val()
