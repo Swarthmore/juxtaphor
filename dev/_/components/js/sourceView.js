@@ -40,10 +40,12 @@ AV.ViewSourceView = Backbone.View.extend({
     render: function() {
         console.log("About to render");
         console.log(this.model);
-        console.log(this.model.escape('name'));
-        console.log(this.model.escape('content'));
-        console.log(this.model.escape('type'));
+        console.log(this.model.attributes);
         this.$el.html(this.template({source: this.model}));
+    },
+    fetch: function(options) {
+        this.clear({silent: true});
+        return Backbone.Model.prototype.fetch.call(this, options);
     }
 });
 
