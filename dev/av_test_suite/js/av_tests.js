@@ -143,8 +143,8 @@ AV.testerView = Backbone.View.extend({
 		test('transform');
 		this.collection.models[5].save({
 
-			source: 255,
-			finalName: 'new witness'
+			source: 295,
+			finalName: 'aefae witness'
 
 		});
 	},
