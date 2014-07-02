@@ -240,7 +240,7 @@ AV.testerView = Backbone.View.extend({
 		// 			+ '/view?mode=heatmap&embed=true';
 		var url = 'http://54.88.3.200:8182/juxta/public/set/7/view?mode=heatmap&embed=true&condensed=true';
 		
-		var dependencies = _.template($('#dependencies').html());
+		var dependencies = _.template($('#dependencies').text());
 		console.log(dependencies);
 		viz.attr('src', url);
 		viz.contents().find('head').append(dependencies);
