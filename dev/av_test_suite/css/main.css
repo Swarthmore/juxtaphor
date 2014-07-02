@@ -4,3 +4,8 @@ iframe {
 	width: 700px;
 	border: 1px #000 solid;
 }
+
+#verb-tests li{
+	display: inline-block;
+	/*float: left;*/
+}
