@@ -222,6 +222,7 @@ AV.testerView = Backbone.View.extend({
 
 	getSet: function(){
 		test('get set');
+		this.collection.models[9].set({ id: 7 });
 		this.collection.models[9].fetch();
 	},
 
@@ -231,7 +232,8 @@ AV.testerView = Backbone.View.extend({
 	},
 
 	getViz: function(){
-
+		this.collection.models[9].set({ id: 7 });		
+		this.collection.models[9].viewHeatMap();
 	}
 
 });
