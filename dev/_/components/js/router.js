@@ -12,9 +12,10 @@ AV.Router = Backbone.Router.extend({
         this.sourceCollectionView = new AV.SourceCollectionView(
             {collection:this.sourceCollection});
         this.witnessCollection = new AV.WitnessCollection();
+        this.comparisonSetModel = new AV.ComparisonSetModel();
         this.witnessCollectionView = new AV.WitnessCollectionView(
-            {collection:this.witnessCollection});
-        
+            {collection:this.witnessCollection, model:this.comparisonSetModel});
+
     },
     
     routes: {
@@ -42,7 +43,7 @@ AV.Router = Backbone.Router.extend({
     view: function(idToView) {
         this.sourceModel.set('id', idToView);
         this.sourceModel.url = this.sourceModel.urlRoot + '/' +
-                               this.sourceModel.id + '.json';
+            this.sourceModel.id + '.json';
         this.sourceModel.fetch({success: _.bind(function()
                                                 {this.viewSourceView.render();},
                                                 this)});
@@ -52,19 +53,19 @@ AV.Router = Backbone.Router.extend({
     },
 
     transform: function (idToTransform) {
-	console.log("about to transform!");
-	var url = "/juxta/transform";
-	var request = { source: idToTransform };
-	//We use AJAX to send the request directly from here.
-	$.ajax({
-		type: 'POST',
-		url: url,
-		data: JSON.stringify(request),
-		contentType: 'application/json',
-		success: function(){ test('transform success'); },
-		error: function(e) { test(e); }
+	    console.log("about to transform!");
+	    var url = "/juxta/transform";
+	    var request = { source: idToTransform };
+	    //We use AJAX to send the request directly from here.
+	    $.ajax({
+		    type: 'POST',
+		    url: url,
+		    data: JSON.stringify(request),
+		    contentType: 'application/json',
+		    success: function(){ test('transform success'); },
+		    error: function(e) { test(e); }
    		});
-	this.navigate('index');
+	    this.navigate('index');
 	}
     
 });

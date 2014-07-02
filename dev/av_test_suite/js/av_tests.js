@@ -11,6 +11,20 @@ function delayReload(){
 	},1000);
 }
 
+function json_post(url,data,callback,flag){
+		var data = data || '';
+		var callback = callback || '';
+		var flag = flag || 'default';
+		$.ajax({
+			url: url,
+			type: 'POST',
+			data: JSON.stringify(data),
+			contentType: 'application/json',
+			success: callback,
+			error: function(e){test(flag); test(e);}
+		});
+}
+
 // Backbone.emulateJSON = true;
 
 var AV = {};
@@ -72,7 +86,8 @@ AV.testerView = Backbone.View.extend({
 		"click button#create-set" : 'createSet',
 		"click button#collate-set" : 'collateSet',
 		"click button#get-set" : 'getSet',
-		"click button#delete-set" : 'deleteSet'
+		"click button#delete-set" : 'deleteSet',
+		"click button#get-viz" : 'getViz'
 	},
 	render:function(){
 		this.$el.html(
@@ -89,7 +104,8 @@ AV.testerView = Backbone.View.extend({
 			+ '<li><button class="btn btn-default" id="create-set">create set</button></li>'
 			+ '<li><button class="btn btn-default" id="collate-set">collate set</button></li>'
 			+ '<li><button class="btn btn-default" id="get-set">get set</button></li>'
-			+ '<li><button class="btn btn-default" id="delete-set">get set</button></li>'
+			+ '<li><button class="btn btn-default" id="delete-set">delete set</button></li>'
+			+ '<li><button class="btn btn-default" id="get-viz">get viz</button></li>'
 			+ '</ul>');
 		this.$el.find('ul li').css( {'list-style' : 'none', 'margin-bottom' : '5px' });
 	},
@@ -200,17 +216,30 @@ AV.testerView = Backbone.View.extend({
 
 	collateSet: function(){
 		test('collate set');
-		this.collection.models[9].collate();
+		this.collection.models[9].set({ id: 7 });
+		this.collection.models[9].collateSetOpts();
 	},
 
 	getSet: function(){
 		test('get set');
+		this.collection.models[9].set({ id: 7 });
 		this.collection.models[9].fetch();
 	},
 
 	deleteSet: function(){
 		test('delete set');
 		this.collection.models[9].delete();
+	},
+
+	getViz: function(){
+		this.collection.models[9].set({ id: 7 });		
+		this.viz = this.collection.models[9].viewHeatMap();
+		console.log(this.viz);
+		$('#container').append('<iframe>')
+			.find('iframe')
+			.attr('src', 'view_embed.html')
+			.find('body')
+			.html(this.viz);
 	}
 
 });
@@ -283,28 +312,36 @@ AV.collate = Backbone.Model.extend({
 	url: '/juxta/set',
 	defaults: {
 
-		"id": 7,
-		"filterWhitespace": true,
-		"filterPunctuation": false,
-		"filterCase": true,
-		"hyphenationFilter": "INCLUDE_ALL"
+		id: null,
+		filterWhitespace: true,
+		filterPunctuation: false,
+		filterCase: true,
+		hyphenationFilter: "INCLUDE_ALL"
 	},
-	collate: function() {
+	collateSetOpts: function() {
 		var data = this.attributes;
 		var url = this.url + '/' + this.attributes.id + '/collator';
-		$.ajax({
-			url: url,
-			type: 'POST',
-			data: JSON.stringify(data),
-			contentType: 'application/json',
-			success: function(){test('successful collate'); },
-			error: function(e){test('errorful collate'); test(e);}
+		json_post(url,data,this.collate(), 'setopts');
+	},
+	collate: function() {
+		var url = this.url + '/' + this.attributes.id + '/collate';
+		json_post(url);
+	},
+	viewHeatMap: function(){
+		this.url = this.url + '/' + this.attributes.id + '/view';
+		var params = {mode: 'heatmap', embed: true};
+		
+		var heatmap = $.ajax({
+			type: 'GET',
+			data: params,
+			processData: true,
+			dataType: 'html'
+			// success: function(a,b,c){ return a.responseText; }
 		});
 
+		return heatmap;
 	}
 });
-
-
 
 var readysetgo = new AV.routes();
 
