@@ -5,7 +5,8 @@ AV.WitnessCollectionView = Backbone.View.extend({
         this.listenTo(this.collection, 'all', this.render);
     },
     events: {
-	    "click #deleteWitnessButton": "delete"
+	    "click #deleteWitnessButton": "delete",
+        "click #collateButton": "collate"
     },
     template: _.template( $("#list_witness_template").html()),
     render: function () {
@@ -24,6 +25,23 @@ AV.WitnessCollectionView = Backbone.View.extend({
 	    sourceToRemove.urlRoot = '/juxta/witness';
 	    sourceToRemove.destroy();
 	    
+    },
+    collate: function(ev) {
+        var checkedBoxes = _.filter($('input:checkbox.witnessCheckbox'), 
+                                    function(box)
+                                    {return box.checked === true;});
+        var checkedIDs = _.pluck(checkedBoxes, 'value');
+        checkedIDs = _.map(checkedIDs, Number);
+
+
+        var givenName = $('#collationNameField')[0].value;
+        console.log(givenName);
+        var newComparisonSet = new AV.ComparisonSetModel();
+        newComparisonSet.set({
+            name: givenName,
+            witnesses: checkedIDs
+        });
+        newComparisonSet.url = newComparisonSet.urlRoot + ".json";
+        newComparisonSet.save();
     }
-    
 });
