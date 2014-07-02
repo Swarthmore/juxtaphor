@@ -14,7 +14,7 @@ AV.Router = Backbone.Router.extend({
         this.witnessCollection = new AV.WitnessCollection();
         this.witnessCollectionView = new AV.WitnessCollectionView(
             {collection:this.witnessCollection});
-        
+        this.comparisonSetModel = new AV.ComparisonSetModel();
     },
     
     routes: {

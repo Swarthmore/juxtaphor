@@ -35,13 +35,16 @@ AV.WitnessCollectionView = Backbone.View.extend({
 
 
         var givenName = $('#collationNameField')[0].value;
-        console.log(givenName);
-        var newComparisonSet = new AV.ComparisonSetModel();
-        newComparisonSet.set({
-            name: givenName,
-            witnesses: checkedIDs
+
+        $.ajax({
+            url: "/juxta/set.json",
+            type: "POST",
+            data: JSON.stringify({name:givenName, witnesses:checkedIDs}),
+            contentType: 'application/json',
+            success: function (response, status, jqXHR) {
+                console.log(response);
+            }
         });
-        newComparisonSet.url = newComparisonSet.urlRoot + ".json";
-        newComparisonSet.save();
+
     }
 });
