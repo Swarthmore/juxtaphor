@@ -86,7 +86,7 @@
 		           class="btn btn-success"
 		           id="transformButton"
 		           href="#/transform/<%=source.escape('id')%>">
-                  <span class="glyphicon glyphicon-random"></span> Transform
+                  <span class="glyphicon glyphicon-randomg"></span> Transform
 		        </a>
 	            <button type="button"
 		                class="btn btn-danger"
@@ -114,6 +114,7 @@
             <th>Created</th>
             <th>Updated</th>
             <!-- Empty headings in order to get spacing to work later. -->
+            <th>Collate?</th>
             <th></th>
           </tr>
         </thead>
@@ -126,6 +127,11 @@
             <td><%= witness.escape('name') %></td>
             <td><%= witness.escape('created') %></td>
             <td><%= witness.escape('updated') %></td>
+            <td>
+              <input type="checkbox" 
+                     name="witness" 
+                     value="<%=witness.escape('id')%>">
+            </td>
             <td>
               <button type="button" 
 	                  class="btn btn-danger"

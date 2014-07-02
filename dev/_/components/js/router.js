@@ -11,14 +11,19 @@ AV.Router = Backbone.Router.extend({
         this.sourceCollection = new AV.SourceCollection();
         this.sourceCollectionView = new AV.SourceCollectionView(
             {collection:this.sourceCollection});
+        this.witnessCollection = new AV.WitnessCollection();
+        this.witnessCollectionView = new AV.WitnessCollectionView(
+            {collection:this.witnessCollection});
+        
     },
     
     routes: {
         '': 'index',
         'sources': 'sources',
+        'witnesses': 'witnesses',
         'view/:idToView': 'view',
         'source/upload/': 'upload',
-	'transform/:idToTransform':'transform'
+	    'transform/:idToTransform':'transform'
     },
 
     index: function() {
@@ -28,6 +33,11 @@ AV.Router = Backbone.Router.extend({
     sources: function () {
         this.sourceCollection.fetch({reset: true});
     },
+
+    witnesses: function() {
+        this.witnessCollection.fetch();
+    },
+
     view: function(idToView) {
         this.sourceModel.set('id', idToView);
         this.sourceModel.url = this.sourceModel.urlRoot + '/' +
@@ -35,8 +45,6 @@ AV.Router = Backbone.Router.extend({
         this.sourceModel.fetch({success: _.bind(function()
                                                 {this.viewSourceView.render();},
                                                 this)});
-
-        
     },
     upload: function () {
         this.uploadSourceView.render();
@@ -56,6 +64,7 @@ AV.Router = Backbone.Router.extend({
    		});
 	this.navigate('index');
 	}
+    
 });
 
 
