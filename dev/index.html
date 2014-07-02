@@ -18,6 +18,7 @@
         </div>
         <ul class="nav navbar-nav navbar-left">
           <li><a href="#source/upload/">Upload</a></li>
+          <li><a href="#witnesses">Witnesses</a></li>
         </ul>
       </div>
     </nav>
@@ -133,8 +134,9 @@
             <td><%= witness.escape('updated') %></td>
             <td>
               <input type="checkbox" 
+                     class="witnessCheckbox"
                      name="witness" 
-                     value="<%=witness.escape('id')%>">
+                     value=<%=witness.escape('id')%>>
             </td>
             <td>
               <button type="button" 
@@ -148,6 +150,11 @@
 	      <% }); %>
         </tbody>
       </table>
+      <div class="input-group">
+        <span class="input-group-addon">Collation Name</span>
+        <input type="text" class="form-control" id="collationNameField" />
+      </div>
+      <button type="button" class="btn btn-primary" id="collateButton">Collate</button>
     </script>
 
 
