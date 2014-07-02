@@ -57,6 +57,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
+	    <th></th>
             <th>id</th>
             <th>Name</th>
             <th>Type</th>
@@ -69,6 +70,9 @@
         <tbody>
           <% _.each(sources, function (source) { %>
           <tr>
+	    <td><label class="checkbox">
+		<input type="checkbox" value="">
+		</label>
             <td><%= source.escape('id') %></td>
             <td><%= source.escape('name') %></td>
             <td><%= source.escape('type') %></td>
@@ -80,20 +84,21 @@
                    class="btn btn-primary"
                    id="viewButton"
                    href="#/view/<%=source.escape('id')%>">
-		          <span class="glyphicon glyphicon-eye-open"></span>
-		          View
-		        </a>
-	    	    <a type="button"
-		           class="btn btn-success"
-		           id="transformButton"
-		           href="#/transform/<%=source.escape('id')%>">
-	              Transform
-		        </a>
-	            <button type="button"            
-		                class="btn btn-danger"
-                        id="deleteSourceButton"
-                        data-value=<%=source.escape('id')%>>
-                  <span class="glyphicon glyphicon-trash"></span> Delete
+		   <span class="glyphicon glyphicon-eye-open"></span>
+		   View
+		</a>
+	    	<a type="button"
+		   class="btn btn-success"
+		   id="transformButton"
+		   href="#/transform/<%=source.escape('id')%>">
+		   <span class="glyphicon glyphicon-globe"></span>
+	           Transform
+		</a>
+	        <button type="button"            
+		   class="btn btn-danger"
+                   id="deleteSourceButton"
+                   data-value=<%=source.escape('id')%>>
+                   <span class="glyphicon glyphicon-trash"></span> Delete
                 </button>
               </div>
 	        </td>
