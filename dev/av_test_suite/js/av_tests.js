@@ -233,14 +233,12 @@ AV.testerView = Backbone.View.extend({
 
 	getViz: function(){
 		this.collection.models[9].set({ id: 7 });		
-		this.collection.models[9].viewHeatMap().done(function(d){test(d);});
-		// console.log(this.viz);
+		this.collection.models[9].viewHeatMap()
+			.done(function(d){test(d);});
 		$('#container').append('<iframe>')
 			.find('iframe')
 			.attr('src', 'view_embed.html');
-		$('iframe').contents()
-			.find('body')
-			.html('what');
+		$('iframe').css('border', '5px #f00');
 	}
 
 });
