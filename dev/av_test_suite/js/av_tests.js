@@ -331,13 +331,15 @@ AV.collate = Backbone.Model.extend({
 		this.url = this.url + '/' + this.attributes.id + '/view';
 		var params = {mode: 'heatmap', embed: true};
 		
-		$.ajax({
+		var heatmap = $.ajax({
 			type: 'GET',
 			data: params,
 			processData: true,
 			dataType: 'html',
 			success: function(a,b,c){ return a; }
 		});
+
+		return heatmap;
 	}
 });
 
