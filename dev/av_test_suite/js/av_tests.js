@@ -323,10 +323,10 @@ AV.collate = Backbone.Model.extend({
 		this.url = this.url + '/' + this.attributes.id + '/view';
 		var params = {mode: 'heatmap'};
 		
-		this.fetch(
+		this.fetch({
 			data: params,
 			processData: true,
-		);
+		});
 	}
 });
 
