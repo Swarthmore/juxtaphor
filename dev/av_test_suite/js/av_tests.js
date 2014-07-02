@@ -335,11 +335,11 @@ AV.collate = Backbone.Model.extend({
 			type: 'GET',
 			data: params,
 			processData: true,
-			dataType: 'html',
-			success: function(a,b,c){ return a.responseText; }
+			dataType: 'html'
+			// success: function(a,b,c){ return a.responseText; }
 		});
 
-		return heatmap;
+		return heatmap.responseText;
 	}
 });
 
