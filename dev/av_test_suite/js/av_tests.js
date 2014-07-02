@@ -337,7 +337,7 @@ AV.collate = Backbone.Model.extend({
 			data: params,
 			processData: true,
 			dataType: 'html',
-			success: function(a,b,c){ return c; }
+			success: function(a,b,c){ test(); test(a); test(); test(b); test(); test(c); }
 		});
 	}
 });
