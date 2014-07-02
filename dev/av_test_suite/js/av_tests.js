@@ -236,8 +236,9 @@ AV.testerView = Backbone.View.extend({
 		this.collection.models[9].viewHeatMap()
 			.done(function(d){test(d);});
 		$('<iframe>').appendTo('#container')
-			.css('border', '5px solid #f00');
-			// .attr('src', 'view_embed.html');
+			.attr('src', 'view_embed.html')
+			.contents()
+			.find('body').html('what');
 	}
 
 });
