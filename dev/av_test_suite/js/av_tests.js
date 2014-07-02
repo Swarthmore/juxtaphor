@@ -233,13 +233,13 @@ AV.testerView = Backbone.View.extend({
 
 	getViz: function(){
 		this.collection.models[9].set({ id: 7 });		
-		var viz = this.collection.models[9].viewHeatMap();
+		this.viz = this.collection.models[9].viewHeatMap();
 		console.log(viz);
 		$('#container').append('<iframe>')
 			.find('iframe')
 			.attr('src', 'view_embed.html')
 			.find('body')
-			.html(viz);
+			.html(this.viz);
 
 	}
 
@@ -337,7 +337,7 @@ AV.collate = Backbone.Model.extend({
 			data: params,
 			processData: true,
 			dataType: 'html',
-			success: function(a,b,c){ test(b); return b; }
+			success: function(a,b,c){ test(a);test(b);test(c); }
 		});
 	}
 });
