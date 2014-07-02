@@ -38,6 +38,7 @@ AV.Router = Backbone.Router.extend({
         this.witnessCollection.fetch();
     },
 
+    //this route displays the contents of the source
     view: function(idToView) {
         this.sourceModel.set('id', idToView);
         this.sourceModel.url = this.sourceModel.urlRoot + '/' +
@@ -54,6 +55,7 @@ AV.Router = Backbone.Router.extend({
 	console.log("about to transform!");
 	var url = "/juxta/transform";
 	var request = { source: idToTransform };
+	//We use AJAX to send the request directly from here.
 	$.ajax({
 		type: 'POST',
 		url: url,

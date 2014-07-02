@@ -57,6 +57,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
+	    <th></th>
             <th>id</th>
             <th>Name</th>
             <th>Type</th>
@@ -69,6 +70,9 @@
         <tbody>
           <% _.each(sources, function (source) { %>
           <tr>
+	    <td><label class="checkbox">
+		<input type="checkbox" value="">
+		</label>
             <td><%= source.escape('id') %></td>
             <td><%= source.escape('name') %></td>
             <td><%= source.escape('type') %></td>
