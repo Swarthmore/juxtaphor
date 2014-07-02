@@ -235,13 +235,11 @@ AV.testerView = Backbone.View.extend({
 		var viz = $('#viz');
 		viz.toggle();
 		this.collection.models[9].set({ id: 7 });
-		var url = this.collection.url + '/' + 
-		viz.attr('src', url);
-
-		this.url = this.collection.models[9].url + '/' 
+		var url =  this.collection.models[9].url + '/' 
 					+ this.collection.models[9].id
 					+ '/view?mode=heatmap&embed=true';
 
+		viz.attr('src', url);
 		// this.collection.models[9].viewHeatMap()
 		// 	.done(function(d){
 		// 		console.log(d);
