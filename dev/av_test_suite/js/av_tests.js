@@ -11,16 +11,17 @@ function delayReload(){
 	},1000);
 }
 
-function json_post(url,data,callback){
+function json_post(url,data,callback,flag){
 		var data = data || '';
 		var callback = callback || '';
+		var flag = flag || 'default';
 		$.ajax({
 			url: url,
 			type: 'POST',
 			data: JSON.stringify(data),
 			contentType: 'application/json',
 			success: callback,
-			error: function(e){test('errorful'); test(e);}
+			error: function(e){test(flag); test(e);}
 		});
 }
 
@@ -306,10 +307,10 @@ AV.collate = Backbone.Model.extend({
 	collateSetOpts: function() {
 		var data = this.attributes;
 		var url = this.url + '/' + this.attributes.id + '/collator';
-		json_post(url,data,this.collate());
+		json_post(url,data,this.collate(), 'setopts');
 	},
 	collate: function() {
-		var url = this.url + '/' + this.attributes.id + '/collator';
+		var url = this.url + '/' + this.attributes.id + '/collate';
 		json_post(url);
 	}
 });
