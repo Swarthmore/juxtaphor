@@ -238,7 +238,7 @@ AV.testerView = Backbone.View.extend({
 		$('#container').append('<iframe>')
 			.find('iframe')
 			.attr('src', 'view_embed.html');
-		$('iframe').css('border', '5px #f00');
+		// $('iframe').css('border', '5px #f00');
 	}
 
 });
