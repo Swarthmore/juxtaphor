@@ -339,7 +339,7 @@ AV.collate = Backbone.Model.extend({
 			// success: function(a,b,c){ return a.responseText; }
 		});
 
-		return heatmap.responseText;
+		return heatmap;
 	}
 });
 
