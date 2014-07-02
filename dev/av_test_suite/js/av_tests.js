@@ -234,12 +234,13 @@ AV.testerView = Backbone.View.extend({
 	getViz: function(){
 		this.collection.models[9].set({ id: 7 });		
 		this.viz = this.collection.models[9].viewHeatMap();
-		console.log(this.viz);
+		console.log(this.viz.responseText);
 		$('#container').append('<iframe>')
 			.find('iframe')
 			.attr('src', 'view_embed.html')
+			.contents()
 			.find('body')
-			.html(this.viz);
+			.html('what');
 	}
 
 });
@@ -336,10 +337,9 @@ AV.collate = Backbone.Model.extend({
 			data: params,
 			processData: true,
 			dataType: 'html'
-			// success: function(a,b,c){ return a.responseText; }
 		});
 
-		// return heatmap;
+		return heatmap;
 	}
 });
 
