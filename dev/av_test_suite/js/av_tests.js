@@ -86,7 +86,8 @@ AV.testerView = Backbone.View.extend({
 		"click button#create-set" : 'createSet',
 		"click button#collate-set" : 'collateSet',
 		"click button#get-set" : 'getSet',
-		"click button#delete-set" : 'deleteSet'
+		"click button#delete-set" : 'deleteSet',
+		"click button#get-viz" : 'getViz'
 	},
 	render:function(){
 		this.$el.html(
@@ -103,7 +104,8 @@ AV.testerView = Backbone.View.extend({
 			+ '<li><button class="btn btn-default" id="create-set">create set</button></li>'
 			+ '<li><button class="btn btn-default" id="collate-set">collate set</button></li>'
 			+ '<li><button class="btn btn-default" id="get-set">get set</button></li>'
-			+ '<li><button class="btn btn-default" id="delete-set">get set</button></li>'
+			+ '<li><button class="btn btn-default" id="delete-set">delete set</button></li>'
+			+ '<li><button class="btn btn-default" id="get-viz">get viz</button></li>'
 			+ '</ul>');
 		this.$el.find('ul li').css( {'list-style' : 'none', 'margin-bottom' : '5px' });
 	},
@@ -226,6 +228,10 @@ AV.testerView = Backbone.View.extend({
 	deleteSet: function(){
 		test('delete set');
 		this.collection.models[9].delete();
+	},
+
+	getViz: function(){
+
 	}
 
 });
@@ -312,6 +318,15 @@ AV.collate = Backbone.Model.extend({
 	collate: function() {
 		var url = this.url + '/' + this.attributes.id + '/collate';
 		json_post(url);
+	},
+	viewHeatMap: function(){
+		this.url = this.url + '/' + this.attributes.id + '/view';
+		var params = {mode: 'heatmap'};
+		
+		this.fetch(
+			data: params,
+			processData: true,
+		);
 	}
 });
 
