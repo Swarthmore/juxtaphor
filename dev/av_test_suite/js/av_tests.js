@@ -11,6 +11,17 @@ function delayReload(){
 	},1000);
 }
 
+function json_post(url,data){
+		$.ajax({
+			url: url,
+			type: 'POST',
+			data: JSON.stringify(data),
+			contentType: 'application/json',
+			success: function(){test('successful'); },
+			error: function(e){test('errorful'); test(e);}
+		});
+}
+
 // Backbone.emulateJSON = true;
 
 var AV = {};
@@ -200,6 +211,7 @@ AV.testerView = Backbone.View.extend({
 
 	collateSet: function(){
 		test('collate set');
+		this.collection.models[9].set({ id: 7 });
 		this.collection.models[9].collate();
 	},
 
@@ -283,24 +295,16 @@ AV.collate = Backbone.Model.extend({
 	url: '/juxta/set',
 	defaults: {
 
-		"id": 7,
-		"filterWhitespace": true,
-		"filterPunctuation": false,
-		"filterCase": true,
-		"hyphenationFilter": "INCLUDE_ALL"
+		id: null,
+		filterWhitespace: true,
+		filterPunctuation: false,
+		filterCase: true,
+		hyphenationFilter: "INCLUDE_ALL"
 	},
 	collate: function() {
 		var data = this.attributes;
 		var url = this.url + '/' + this.attributes.id + '/collator';
-		$.ajax({
-			url: url,
-			type: 'POST',
-			data: JSON.stringify(data),
-			contentType: 'application/json',
-			success: function(){test('successful collate'); },
-			error: function(e){test('errorful collate'); test(e);}
-		});
-
+		json_post(data,url);
 	}
 });
 
