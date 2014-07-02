@@ -237,14 +237,10 @@ AV.testerView = Backbone.View.extend({
 		this.collection.models[9].set({ id: 7 });
 		var url =  this.collection.models[9].url + '/' 
 					+ this.collection.models[9].id
-					+ '/view?mode=heatmap';
+					+ '/view?mode=heatmap&embed=true';
 
 		viz.attr('src', url);
-		// this.collection.models[9].viewHeatMap()
-		// 	.done(function(d){
-		// 		console.log(d);
-		// 		viz.attr('src',d);
-		// 	});
+		viz.contents().find('head').append($('#dependencies').html());
 	}
 
 });
