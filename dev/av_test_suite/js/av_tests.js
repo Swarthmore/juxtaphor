@@ -238,7 +238,7 @@ AV.testerView = Backbone.View.extend({
 		// var url =  this.collection.models[9].url + '/' 
 		// 			+ this.collection.models[9].id
 		// 			+ '/view?mode=heatmap&embed=true';
-		var url = 'http://54.88.3.200:8182/juxta/public/set/7/view?mode=heatmap&embed=true';
+		var url = 'http://54.88.3.200:8182/juxta/public/set/7/view?mode=heatmap&embed=true&condensed=true';
 		
 		var dependencies = _.template($('#dependencies').html());
 		console.log(dependencies);
