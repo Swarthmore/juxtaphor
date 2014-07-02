@@ -1,6 +1,6 @@
 // Source Model
 AV.SourceModel = Backbone.Model.extend({
-	urlRoot: 'php/redirect.php/source/',
+	urlRoot: '/juxta/source',
 	defaults: {
 		id: null,
 		name: '',
@@ -8,6 +8,10 @@ AV.SourceModel = Backbone.Model.extend({
 		contentType: 'txt',
 		data: ''
 	},
+	sync: function(a,b,c){
+		b.attributes = [b.attributes];
+		return Backbone.sync.apply(this, [a,b,c]);
+        }
 });
 // Source Model End
 

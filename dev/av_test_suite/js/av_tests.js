@@ -29,12 +29,22 @@ AV.routes = Backbone.Router.extend({
 		this.sources = new AV.sources();
 		this.put = new AV.put();
 		this.delete = new AV.delete();
+		this.transform = new AV.transform();
+		this.witness = new AV.witness();
+		this.witnesses = new AV.witnesses();
+		this.set = new AV.set();
+		this.collate = new AV.collate();
 		this.collection = new Backbone.Collection([
 			this.post,
 			this.get,
 			this.sources,
 			this.put,
-			this.delete
+			this.delete,
+			this.transform,
+			this.witness,
+			this.witnesses,
+			this.set,
+			this.collate
 			]);
 		this.testerView = new AV.testerView({collection: this.collection});
 	},
@@ -55,7 +65,14 @@ AV.testerView = Backbone.View.extend({
 		"click button#get-srcs" : 'getSRCS',
 		"click button#put" : 'put',
 		"click button#delete" : 'delete',
-		"click button#clear" : 'clear'
+		"click button#transform" : 'transform',
+		"click button#get-witness" : 'getWTNS',
+		"click button#get-witnesses" : 'getWTNSlist',
+		"click button#delete-witness" : 'deleteWitness',
+		"click button#create-set" : 'createSet',
+		"click button#collate-set" : 'collateSet',
+		"click button#get-set" : 'getSet',
+		"click button#delete-set" : 'deleteSet'
 	},
 	render:function(){
 		this.$el.html(
@@ -65,21 +82,31 @@ AV.testerView = Backbone.View.extend({
 			+ '<li><button class="btn btn-primary" id="get-srcs">get sources</button></li>'
 			+ '<li><button class="btn btn-warning" id="put">put</button></li>'
 			+ '<li><button class="btn btn-danger" id="delete">delete</button></li>'
+			+ '<li><button class="btn btn-success" id="transform">transform</button></li>'
+			+ '<li><button class="btn btn-default" id="get-witness">get witness</button></li>'
+			+ '<li><button class="btn btn-default" id="get-witnesses">get witnesses</button></li>'
+			+ '<li><button class="btn btn-default" id="delete-witness">delete witness</button></li>'
+			+ '<li><button class="btn btn-default" id="create-set">create set</button></li>'
+			+ '<li><button class="btn btn-default" id="collate-set">collate set</button></li>'
+			+ '<li><button class="btn btn-default" id="get-set">get set</button></li>'
+			+ '<li><button class="btn btn-default" id="delete-set">get set</button></li>'
 			+ '</ul>');
 		this.$el.find('ul li').css( {'list-style' : 'none', 'margin-bottom' : '5px' });
 	},
 	post:function(){
 
 		test('post');
+		this.collection.models[0].url = '/juxta/source';
 		this.collection.models[0].save({
-			name: 'post issue debug',
-			data: 'good one'
+	
+		name: 'post issue debug',
+			type: 'raw',
+			contentType: 'txt',
+			data: 'some test what what'
 		},
-		{
-			success:function() { test('success');},
-			error:function(a,b,c) { test(a); test(b); test(c);}
-		});
-		delayReload();
+	{ 	success: function(e){ test('success'); },
+	}	);
+//		delayReload();
 	},
 
 	get:function(){test('get');
@@ -88,25 +115,29 @@ AV.testerView = Backbone.View.extend({
 			success:function() { test('success');},
 			error:function() { test('not so much');}
 		});
-		delayReload();
+	//	delayReload();
 	},
 
 	getSRCS:function(){test('get-srcs');
 		test('get-ws');
-		this.collection.models[2].fetch();
-		delayReload();
+		this.collection.models[2].fetch({
+			success: function(e){ test('success'); },
+			error: function(e){ test('error'); }
+		});
+	//	delayReload();
 	},
 
 	put:function(){test('put');
 
 		this.collection.models[3].save(
 			{
+			id: '152',
 			name: 'successful put',
 			data: 'putted it really I did'
 			}
 		);
 
-		delayReload();
+		//delayReload();
 	},
 
 	delete:function(){test('delete');
@@ -114,42 +145,166 @@ AV.testerView = Backbone.View.extend({
 		this.collection.models[4].destroy();
 
 		// delayReload();
-	}
-});
+	},
 
+	transform: function(){
+		test('transform');
+		this.collection.models[5].save({
+
+			source: 295,
+			finalName: 'aefae witness'
+
+		});
+	},
+
+	getWTNS: function(){
+		test('get witness');
+		this.collection.models[6].set({ id : 11 });
+		this.collection.models[6].fetch({
+			success: function(a,b,c) {  
+				$('#log').append(JSON.stringify(b));
+			}
+		});
+	},
+
+	getWTNSlist: function(){
+		test('get witnesses');
+		this.collection.models[7].fetch();
+	},
+
+	deleteWitness: function(){
+
+		test('delete witness')
+		this.collection.models[6].set({ id : 11 });
+		this.collection.models[6].destroy({
+
+			success: function(a,b,c) {  
+			$('#log').append(JSON.stringify(b));
+			}
+
+		});
+	},
+
+	createSet: function(){
+		test('create set');
+		this.collection.models[8].save({
+				name: 'akhmatova set',
+				witnesses: [28,27,26,25,24,23]
+			},	
+			{
+			success: function(a,b,c) {  
+				$('#log').append(JSON.stringify(b));
+			}
+		});
+	},
+
+	collateSet: function(){
+		test('collate set');
+		this.collection.models[9].collate();
+	},
+
+	getSet: function(){
+		test('get set');
+		this.collection.models[9].fetch();
+	},
+
+	deleteSet: function(){
+		test('delete set');
+		this.collection.models[9].delete();
+	}
+
+});
 AV.post = Backbone.Model.extend({
-	url: '../../php/redirect.php/juxta/source',
-
-	defaults:{
-		name: '',
-		type: 'raw',
-		contentType: 'txt',
-		data: ''
-	}
+	url: '/juxta/source',
+	sync: function(a,b,c){
+		b.attributes = [b.attributes];
+		return Backbone.sync.apply(this, [a,b,c]);
+	}	
 });
+
 
 AV.get = Backbone.Model.extend({
-	url: '../../php/redirect.php/juxta/source/13.json'
+	url: '/juxta/source/13.json'
 });
 
 AV.sources = Backbone.Model.extend({
-	url: '../../php/redirect.php/juxta/source.json'
+	url: '/juxta/source.json'
 });
 
 AV.put = Backbone.Model.extend({
-	urlRoot: '../../php/redirect.php/juxta/source',
+	urlRoot: '/juxta/source/152',
 	defaults:{
 		name: '',
 		type: 'raw',
 		contentType: 'txt',
 		data: ''
-	}
+	},
+	sync: function(a,b,c){
+		test(c);
+		b.attributes = [b.attributes];
+		c.emulateJSON = true;
+		c.contentType = false;
+		c.processData = false;
+		return Backbone.sync.apply(this, [a,b,c]);
+	}	
 });
 
 AV.delete = Backbone.Model.extend({
-	urlRoot: '../../php/redirect.php/juxta/source',
+	urlRoot: '/juxta/source',
 	defaults:{ id: 8 }
 	});
+
+AV.transform = Backbone.Model.extend({
+
+	url: '/juxta/transform',
+	defaults: {
+		source: '',
+		finalName: ''
+	}
+});
+
+AV.witness = Backbone.Model.extend({
+	urlRoot: '/juxta/witness'
+});
+
+AV.witnesses = Backbone.Model.extend({
+	url: '/juxta/witness.json'
+});
+
+AV.set = Backbone.Model.extend({
+	url: '/juxta/set',
+	defaults: {
+		name: '',
+		witnesses: []
+	}
+});
+
+AV.collate = Backbone.Model.extend({
+	url: '/juxta/set',
+	defaults: {
+
+		"id": 7,
+		"filterWhitespace": true,
+		"filterPunctuation": false,
+		"filterCase": true,
+		"hyphenationFilter": "INCLUDE_ALL"
+	},
+	collate: function() {
+		var data = this.attributes;
+		var url = this.url + '/' + this.attributes.id + '/collator';
+		$.ajax({
+			url: url,
+			type: 'POST',
+			data: JSON.stringify(data),
+			contentType: 'application/json',
+			success: function(){test('successful collate'); },
+			error: function(e){test('errorful collate'); test(e);}
+		});
+
+	}
+});
+
+
 
 var readysetgo = new AV.routes();
 

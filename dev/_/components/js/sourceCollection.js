@@ -1,3 +1,3 @@
 AV.SourceCollection = Backbone.Collection.extend({
-    url: 'php/redirect.php/source.json'
+    url: '/juxta/source.json'
 });
