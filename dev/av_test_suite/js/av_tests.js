@@ -334,6 +334,7 @@ AV.collate = Backbone.Model.extend({
 			processData: true,
 			success: function(){
 				test();test(a);test(b);test(c);
+				return this;
 			}
 		});
 	}
