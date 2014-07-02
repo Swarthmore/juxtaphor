@@ -233,8 +233,8 @@ AV.testerView = Backbone.View.extend({
 
 	getViz: function(){
 		this.collection.models[9].set({ id: 7 });		
-		this.viz = this.collection.models[9].viewHeatMap();
-		console.log(this.viz.responseText);
+		this.viz = this.collection.models[9].viewHeatMap().done(function(){test();});
+		console.log(this.viz);
 		$('#container').append('<iframe>')
 			.find('iframe')
 			.attr('src', 'view_embed.html')
