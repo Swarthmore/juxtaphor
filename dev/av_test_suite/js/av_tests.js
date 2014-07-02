@@ -237,7 +237,10 @@ AV.testerView = Backbone.View.extend({
 		console.log(viz);
 		$('#container').append('<iframe>')
 			.find('iframe')
-			.attr('src', 'view_embed.html');
+			.attr('src', 'view_embed.html')
+			.find('body')
+			.html(viz);
+
 	}
 
 });
