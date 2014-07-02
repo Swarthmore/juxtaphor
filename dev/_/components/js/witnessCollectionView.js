@@ -41,10 +41,10 @@ AV.WitnessCollectionView = Backbone.View.extend({
             type: "POST",
             data: JSON.stringify({name:givenName, witnesses:checkedIDs}),
             contentType: 'application/json',
-            success: function (response, status, jqXHR) {
-                console.log(response);
-            }
-        });
-
+            dataType: 'text'
+        }).done(_.bind(function(d){
+            this.model.set({id:d});
+            this.model.collate();
+        }, this));
     }
 });

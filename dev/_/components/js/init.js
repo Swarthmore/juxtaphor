@@ -5,4 +5,18 @@ function test(arg){
 	console.log(output);
 }
 
+function json_post(url,data,callback,flag){
+	data = data || '';
+	callback = callback || '';
+	flag = flag || 'default';
+	$.ajax({
+		url: url,
+		type: 'POST',
+		data: JSON.stringify(data),
+		contentType: 'application/json',
+		success: callback,
+		error: function(e){test(flag); test(e);}
+	});
+}
+
 var AV = {};
