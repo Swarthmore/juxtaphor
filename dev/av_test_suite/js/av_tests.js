@@ -235,12 +235,15 @@ AV.testerView = Backbone.View.extend({
 		var viz = $('#viz');
 		viz.toggle();
 		this.collection.models[9].set({ id: 7 });
-		var url =  this.collection.models[9].url + '/' 
-					+ this.collection.models[9].id
-					+ '/view?mode=heatmap&embed=true';
-
+		// var url =  this.collection.models[9].url + '/' 
+		// 			+ this.collection.models[9].id
+		// 			+ '/view?mode=heatmap&embed=true';
+		var url = 'http://54.88.3.200:8182/juxta/public/set/7/view?mode=heatmap&embed=true';
+		
+		var dependencies = _.template($('#dependencies').html());
+		console.log(dependencies);
 		viz.attr('src', url);
-		viz.contents().find('head').append($('#dependencies').html());
+		viz.contents().find('head').append(dependencies);
 	}
 
 });
