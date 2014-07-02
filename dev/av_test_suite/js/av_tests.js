@@ -238,7 +238,7 @@ AV.testerView = Backbone.View.extend({
 		this.collection.models[9].viewHeatMap()
 			.done(function(d){
 				console.log(d);
-				viz.contents().find('#icontainer').html(d);
+				viz.attr('src',d);
 			});
 	}
 
