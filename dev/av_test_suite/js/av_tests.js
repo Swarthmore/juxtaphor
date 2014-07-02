@@ -240,7 +240,6 @@ AV.testerView = Backbone.View.extend({
 			.attr('src', 'view_embed.html')
 			.find('body')
 			.html(this.viz);
-
 	}
 
 });
@@ -337,7 +336,7 @@ AV.collate = Backbone.Model.extend({
 			data: params,
 			processData: true,
 			dataType: 'html',
-			success: function(a,b,c){ test(); test(a); test(); test(b); test(); test(c); }
+			success: function(a,b,c){ return a; }
 		});
 	}
 });
