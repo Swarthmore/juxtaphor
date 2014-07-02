@@ -327,7 +327,7 @@ AV.collate = Backbone.Model.extend({
 	},
 	viewHeatMap: function(){
 		this.url = this.url + '/' + this.attributes.id + '/view';
-		var params = {mode: 'heatmap'};
+		var params = {mode: 'heatmap', embed: true};
 		
 		this.fetch({
 			data: params,
