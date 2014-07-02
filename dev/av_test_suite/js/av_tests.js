@@ -11,13 +11,15 @@ function delayReload(){
 	},1000);
 }
 
-function json_post(url,data){
+function json_post(url,data,callback){
+		var data = data || '';
+		var callback = callback || '';
 		$.ajax({
 			url: url,
 			type: 'POST',
 			data: JSON.stringify(data),
 			contentType: 'application/json',
-			success: function(){test('successful'); },
+			success: callback,
 			error: function(e){test('errorful'); test(e);}
 		});
 }
@@ -212,7 +214,7 @@ AV.testerView = Backbone.View.extend({
 	collateSet: function(){
 		test('collate set');
 		this.collection.models[9].set({ id: 7 });
-		this.collection.models[9].collate();
+		this.collection.models[9].collateSetOpts();
 	},
 
 	getSet: function(){
@@ -301,14 +303,16 @@ AV.collate = Backbone.Model.extend({
 		filterCase: true,
 		hyphenationFilter: "INCLUDE_ALL"
 	},
-	collate: function() {
+	collateSetOpts: function() {
 		var data = this.attributes;
 		var url = this.url + '/' + this.attributes.id + '/collator';
-		json_post(data,url);
+		json_post(url,data,this.collate());
+	},
+	collate: function() {
+		var url = this.url + '/' + this.attributes.id + '/collator';
+		json_post(url);
 	}
 });
-
-
 
 var readysetgo = new AV.routes();
 
