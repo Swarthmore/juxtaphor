@@ -258,7 +258,7 @@ AV.testerView = Backbone.View.extend({
 		viz.attr('src', 'view_embed.html');
 		viz.load(function(e) {
 
-			$.get(vizURL).done( function(){ viz.contents().find('body').append(html); });
+			$.get(vizURL).done( function(d){ viz.contents().find('body').append(d); });
 		});	
 	}
 
