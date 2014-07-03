@@ -1,3 +1,11 @@
+////////////////////////////////////////////////////////////////////
+// SourceCollectionView displays all of the sources available     //
+// on the Juxta server and displays them in a compelling way.     //
+//                                                                //
+// It allows the user to delete sources, view individual sources, //
+// and convert sources into witnesses.                            //
+////////////////////////////////////////////////////////////////////
+
 AV.SourceCollectionView = Backbone.View.extend({
     el: '#list_source_container',
     initialize: function() {

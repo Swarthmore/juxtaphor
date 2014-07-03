@@ -1,6 +1,11 @@
-// AV.Router: Extends Backbone.Router for the AKHMATOVIZ Project
-// -------------------------------------------------------------
-// Most of our calls to all of the models and things should come from here.
+///////////////////////////////////////////////////////////////////////
+// AV.Router: Extends Backbone.Router for the AKHMATOVIZ Project     //
+//                                                                   //
+// In this project's architecture, the router is the main object     //
+// that is responsible for calling and coordinating all of the other //
+// models, views, etc.                                               //
+///////////////////////////////////////////////////////////////////////
+
 
 AV.Router = Backbone.Router.extend({
     initialize: function() {
@@ -44,6 +49,7 @@ AV.Router = Backbone.Router.extend({
         this.sourceModel.set('id', idToView);
         this.sourceModel.url = this.sourceModel.urlRoot + '/' +
             this.sourceModel.id + '.json';
+        //Bind passes state (``this'') into the anonymous function below
         this.sourceModel.fetch({success: _.bind(function()
                                                 {this.viewSourceView.render();},
                                                 this)});
@@ -52,6 +58,8 @@ AV.Router = Backbone.Router.extend({
         this.uploadSourceView.render();
     },
 
+    // Transform a source into a witness on the server-side
+    // Nothing is actually changed on the client side
     transform: function (idToTransform) {
 	    console.log("about to transform!");
 	    var url = "/juxta/transform";
