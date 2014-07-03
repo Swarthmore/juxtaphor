@@ -251,15 +251,14 @@ AV.testerView = Backbone.View.extend({
 		viz.toggle();
 		
 		this.collection.models[9].set({ id: 7 });
-		var url = 'http://54.88.3.200:8182/juxta/public/set/'
+		var vizURL = 'http://54.88.3.200:8182/juxta/public/set/'
 					+ this.collection.models[9].id
 					+ '/view?mode=heatmap&condensed=true&embed=true';
 
-		viz.attr('src', url);
+		viz.attr('src', 'view_embed.html');
 		viz.load(function(e) {
-			viz.contents()
-			.find('head')
-			.append(dependencies);
+
+			$.get(vizURL).done( function(){ viz.contents().find('body').append(html); });
 		});	
 	}
 
