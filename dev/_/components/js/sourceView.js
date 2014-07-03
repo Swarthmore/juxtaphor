@@ -20,28 +20,26 @@ AV.UploadSourceView = Backbone.View.extend({
 		//Resetting attached model, because if something was
         //looked at before the upload, that will still be in
         // the model.
-        this.model.clear().set(this.model.defaults);
-		this.model.save({
-			data: $("#uploadContent").val(),
+	    this.model.clear().set(this.model.defaults);
+	    this.model.save({
+		    data: $("#uploadContent").val(),
 			name: $("#upload").val()
-		},
-		{
-			success: function() { test('successful post'); },
-		  	error: function() { test('errorful post'); }
-		});
-		/*this.model.save({success: _.bind(function() { 
-			this.collection.fetch();
-			test("andrew");
-		}, this),
-		error: test("ERRORRRR")});*/
-		// this.model.save().done(function() {alert("SAVED");});
-		// test(this.collection.fetch());
-		
-		// test("ben");
-	        this.render();
-		router.navigate('', true);
+			}).done(_.bind(function() {
+				    this.collection.fetch();
+				}, this));
+	    /*this.model.save({success: _.bind(function() { 
+	      this.collection.fetch();
+	      test("andrew");
+	      }, this),
+	      error: test("ERRORRRR")});*/
+	    // this.model.save().done(function() {alert("SAVED");});
+	    // test(this.collection.fetch());
+	    
+	    // test("ben");
+	    this.render();
+	    router.navigate('', true);
 	}
-});
+    });
 
 // This object ties in with the "view_container" template
 // in order to display a current version of the file
