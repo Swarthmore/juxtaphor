@@ -1,17 +1,25 @@
+/////////////////////////////////////////////////////////////////
+// WitnessCollectionView displays all of the sources available //
+// on the Juxta server, and allows the user to delete and      //
+// collate them.                                               //
+/////////////////////////////////////////////////////////////////
+
 AV.WitnessCollectionView = Backbone.View.extend({
     el: '#list_witness_container',
     initialize: function() {
+        console.log('initialize witnessCollectionView');
         this.listenTo(this.collection, 'all', this.render);
     },
     events: {
-	    "click #deleteWitnessButton": "delete"
+	    "click #deleteWitnessButton": "delete",
+        "click #collateButton": "collate"
     },
     template: _.template( $("#list_witness_template").html()),
     render: function () {
+        console.log("begin render witness collection view");
         this.$el.empty();
-        console.log("Rendered");
-        this.$el.html(this.template({sources: this.collection.models}));	
-    	test();
+        this.$el.html(this.template({witnesses: this.collection.models}));	
+        console.log("end render witness collection view");
     },
     delete: function(ev) {
 	    //ev is the mouse event. We receive the data-value which contains
@@ -23,6 +31,29 @@ AV.WitnessCollectionView = Backbone.View.extend({
 	    sourceToRemove.urlRoot = '/juxta/witness';
 	    sourceToRemove.destroy();
 	    
+    },
+    collate: function(ev) {
+        var checkedBoxes = _.filter($('input:checkbox.witnessCheckbox'), 
+                                    function(box)
+                                    {return box.checked === true;});
+        var checkedIDs = _.pluck(checkedBoxes, 'value');
+        checkedIDs = _.map(checkedIDs, Number);
+
+
+        var givenName = $('#collationNameField')[0].value;
+
+        //We spent a lot of time on the following. It submits the witnesses
+        //together as a set, and then takes the set ID that is returned
+        //from that, and collates it.
+        $.ajax({
+            url: "/juxta/set.json",
+            type: "POST",
+            data: JSON.stringify({name:givenName, witnesses:checkedIDs}),
+            contentType: 'application/json',
+            dataType: 'text'
+        }).done(_.bind(function(d){
+            this.model.set({id:d});
+            this.model.collate();
+        }, this));
     }
-    
 });
