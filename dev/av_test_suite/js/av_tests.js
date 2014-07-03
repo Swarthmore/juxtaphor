@@ -246,18 +246,32 @@ AV.testerView = Backbone.View.extend({
 		this.collection.models[9].delete();
 	},
 
+	// this function is an example, not particularly elegant, of how to return 
+	// an embedded heatmap visualization.
 	getViz: function(){
+		// select the iframe from the html (or you could append one).
+		// has the id #viz
 		var viz = $('#viz');
+		// make the iframe element visible
 		viz.toggle();
 		
+		// this is the set model
 		this.collection.models[9].set({ id: 7 });
+		// pattern for the visualization url
 		var vizURL = 'http://54.88.3.200:8182/juxta/public/set/'
 					+ this.collection.models[9].id
 					+ '/view?mode=heatmap&condensed=true';
-
+		// set the source attribute of the iframe to the url
 		viz.attr('src', vizURL)
+			// IMPORTANT ! use a callback within the load function
+			// to make sure the you can select stuff within the iframe
+			// -- otherwise it'll load asynchronously and the $ won't select
+			// anything
 			.load(function(){
+				// to select contents of an iframe, use the helper method .contents()
+				// plus .find()
 				var iframe = viz.contents();
+				// here I'm removing a a couple elements there's no need to render
 				iframe.find('.menubar').remove();
 				iframe.find('.title-bar').remove();
 			})
