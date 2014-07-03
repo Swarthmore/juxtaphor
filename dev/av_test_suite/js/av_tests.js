@@ -253,13 +253,13 @@ AV.testerView = Backbone.View.extend({
 		this.collection.models[9].set({ id: 7 });
 		var vizURL = 'http://54.88.3.200:8182/juxta/public/set/'
 					+ this.collection.models[9].id
-					+ '/view?mode=heatmap&condensed=true&embed=true';
+					+ '/view?mode=heatmap&condensed=true';
 
-		viz.attr('src', 'view_embed.html');
-		viz.load(function(e) {
-
-			$.get(vizURL).done( function(d){ viz.contents().find('body').append(d); });
-		});	
+		viz.attr('src', vizURL);
+		// viz.attr('src', 'view_embed.html');
+		// viz.load(function(e) {
+		// 	$.get(vizURL).done( function(d){ viz.contents().find('body').append(d); });
+		// });	
 	}
 
 });
