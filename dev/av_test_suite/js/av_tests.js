@@ -256,7 +256,7 @@ AV.testerView = Backbone.View.extend({
 					+ '/view?mode=heatmap&embed=true';
 
 		viz.attr('src', url);
-		viz.load(function(this) {
+		viz.load(function() {
 			this.contents()
 			.find('head')
 			.append(dependencies);
