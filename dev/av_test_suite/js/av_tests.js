@@ -25,6 +25,22 @@ function json_post(url,data,callback,flag){
 		});
 }
 
+     var dependencies = 
+      '<link rel="stylesheet" href="/juxta/stylesheets/juxta-ws.css" type="text/css"> \
+      <link rel="stylesheet" href="/juxta/stylesheets/heatmap.css" type="text/css"> \
+      <link rel="stylesheet" href="/juxta/stylesheets/sidebyside.css" type="text/css"> \ 
+      \
+      <script type="text/javascript" href="https://code.jquery.com/jquery-1.11.1.min.js"></script> \
+      <script type="text/javascript" href="/juxta/javascripts/jquery.mousewheel.min.js"></script> \
+      <script type="text/javascript" href="/juxta/javascripts/jquery.tinysort.min.js"></script> \
+      <script type="text/javascript" href="/juxta/javascripts/raphael-min.js"></script> \
+      <script type="text/javascript" href="/juxta/javascripts/juxta-ws-common.js"></script> \
+      <script type="text/javascript" href="/juxta/javascripts/juxta-ws.js"></script> \
+      <script type="text/javascript" href="/juxta/javascripts/heatmap.js"></script> \
+      <script type="text/javascript" href="/juxta/javascripts/sidebyside.js"></script>';
+
+      
+
 // Backbone.emulateJSON = true;
 
 var AV = {};
@@ -241,7 +257,9 @@ AV.testerView = Backbone.View.extend({
 					+ '/view?mode=heatmap&embed=true&condensed=true';
 
 		viz.attr('src', url);
-		$('#viz').contents().find('head').append(_.template($('#dependencies').text()));	
+		console.log(dependencies);
+		// $('#viz').contents().find('head').append(_.template($('#dependencies').text()));	
+		$('#viz').contents().find('head').append(dependencies);	
 	}
 
 });
