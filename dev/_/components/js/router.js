@@ -10,13 +10,12 @@
 AV.Router = Backbone.Router.extend({
     initialize: function() {
         this.sourceModel = new AV.SourceModel();
-        this.uploadSourceView = new AV.UploadSourceView(
-            {model: this.sourceModel});
-        this.viewSourceView = new AV.ViewSourceView({model:this.sourceModel});
-        this.sourceCollection = new AV.SourceCollection();
-        this.sourceCollectionView = new AV.SourceCollectionView(
+	this.viewSourceView = new AV.ViewSourceView({model:this.sourceModel});	
+	this.sourceCollection = new AV.SourceCollection();
+	this.sourceCollectionView = new AV.SourceCollectionView(
             {collection:this.sourceCollection});
-        this.witnessCollection = new AV.WitnessCollection();
+	this.uploadSourceView = new AV.UploadSourceView({model: this.sourceModel, collection:this.sourceCollection});
+       	this.witnessCollection = new AV.WitnessCollection();
         this.comparisonSetModel = new AV.ComparisonSetModel();
         this.witnessCollectionView = new AV.WitnessCollectionView(
             {collection:this.witnessCollection, model:this.comparisonSetModel});
