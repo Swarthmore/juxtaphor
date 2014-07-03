@@ -1,3 +1,9 @@
+/////////////////////////////////////////////////////////////////
+// WitnessCollectionView displays all of the sources available //
+// on the Juxta server, and allows the user to delete and      //
+// collate them.                                               //
+/////////////////////////////////////////////////////////////////
+
 AV.WitnessCollectionView = Backbone.View.extend({
     el: '#list_witness_container',
     initialize: function() {
@@ -35,13 +41,19 @@ AV.WitnessCollectionView = Backbone.View.extend({
 
 
         var givenName = $('#collationNameField')[0].value;
-        console.log(givenName);
-        var newComparisonSet = new AV.ComparisonSetModel();
-        newComparisonSet.set({
-            name: givenName,
-            witnesses: checkedIDs
-        });
-        newComparisonSet.url = newComparisonSet.urlRoot + ".json";
-        newComparisonSet.save();
+
+        //We spent a lot of time on the following. It submits the witnesses
+        //together as a set, and then takes the set ID that is returned
+        //from that, and collates it.
+        $.ajax({
+            url: "/juxta/set.json",
+            type: "POST",
+            data: JSON.stringify({name:givenName, witnesses:checkedIDs}),
+            contentType: 'application/json',
+            dataType: 'text'
+        }).done(_.bind(function(d){
+            this.model.set({id:d});
+            this.model.collate();
+        }, this));
     }
 });
