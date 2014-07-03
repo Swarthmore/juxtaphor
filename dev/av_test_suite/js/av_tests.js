@@ -28,8 +28,7 @@ function json_post(url,data,callback,flag){
      var dependencies = 
       '<link rel="stylesheet" href="/juxta/stylesheets/juxta-ws.css" type="text/css"> \
       <link rel="stylesheet" href="/juxta/stylesheets/heatmap.css" type="text/css"> \
-      <link rel="stylesheet" href="/juxta/stylesheets/sidebyside.css" type="text/css"> \ 
-      \
+      <link rel="stylesheet" href="/juxta/stylesheets/sidebyside.css" type="text/css"> \
       <script type="text/javascript" href="https://code.jquery.com/jquery-1.11.1.min.js"></script> \
       <script type="text/javascript" href="/juxta/javascripts/jquery.mousewheel.min.js"></script> \
       <script type="text/javascript" href="/juxta/javascripts/jquery.tinysort.min.js"></script> \
