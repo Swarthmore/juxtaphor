@@ -20,13 +20,16 @@ AV.Router = Backbone.Router.extend({
         this.comparisonSetModel = new AV.ComparisonSetModel();
         this.witnessCollectionView = new AV.WitnessCollectionView(
             {collection:this.witnessCollection, model:this.comparisonSetModel});
-
+        this.comparisonSetCollection = new AV.ComparisonSetCollection();
+        this.comparisonSetCollectionView = new AV.ComparisonSetCollectionView(
+            {collection:this.comparisonSetCollection});
     },
     
     routes: {
         '': 'index',
         'sources': 'sources',
         'witnesses': 'witnesses',
+        'sets': 'sets',
         'view/:idToView': 'view',
         'source/upload/': 'upload',
 	    'transform/:idToTransform':'transform'
@@ -38,6 +41,10 @@ AV.Router = Backbone.Router.extend({
     
     sources: function () {
         this.sourceCollection.fetch({reset: true});
+    },
+
+    sets: function() {
+        this.comparisonSetCollection.fetch({reset: true});
     },
 
     witnesses: function() {
