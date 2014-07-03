@@ -255,7 +255,12 @@ AV.testerView = Backbone.View.extend({
 					+ this.collection.models[9].id
 					+ '/view?mode=heatmap&condensed=true';
 
-		viz.attr('src', vizURL);
+		viz.attr('src', vizURL)
+			.load(function(){
+				var iframe = viz.contents();
+				iframe.find('.menubar').remove();
+				iframe.find('.title-bar').remove();
+			})
 		// viz.attr('src', 'view_embed.html');
 		// viz.load(function(e) {
 		// 	$.get(vizURL).done( function(d){ viz.contents().find('body').append(d); });
