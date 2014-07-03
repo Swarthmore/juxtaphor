@@ -25,6 +25,21 @@ function json_post(url,data,callback,flag){
 		});
 }
 
+     var dependencies = 
+      '<link rel="stylesheet" href="/juxta/stylesheets/juxta-ws.css" type="text/css"> \
+      <link rel="stylesheet" href="/juxta/stylesheets/heatmap.css" type="text/css"> \
+      <link rel="stylesheet" href="/juxta/stylesheets/sidebyside.css" type="text/css"> \
+      <script type="text/javascript" href="https://code.jquery.com/jquery-1.11.1.min.js"></script> \
+      <script type="text/javascript" href="/juxta/javascripts/jquery.mousewheel.min.js"></script> \
+      <script type="text/javascript" href="/juxta/javascripts/jquery.tinysort.min.js"></script> \
+      <script type="text/javascript" href="/juxta/javascripts/raphael-min.js"></script> \
+      <script type="text/javascript" href="/juxta/javascripts/juxta-ws-common.js"></script> \
+      <script type="text/javascript" href="/juxta/javascripts/juxta-ws.js"></script> \
+      <script type="text/javascript" href="/juxta/javascripts/heatmap.js"></script> \
+      <script type="text/javascript" href="/juxta/javascripts/sidebyside.js"></script>';
+
+      
+
 // Backbone.emulateJSON = true;
 
 var AV = {};
@@ -231,15 +246,41 @@ AV.testerView = Backbone.View.extend({
 		this.collection.models[9].delete();
 	},
 
+	// this function is an example, not particularly elegant, of how to return 
+	// an embedded heatmap visualization.
+	// NOTE -- in the CSS you may have to set the z-index to the appropriate number in
+	// 		order to ensure the view is interactable
 	getViz: function(){
-		this.collection.models[9].set({ id: 7 });		
-		this.viz = this.collection.models[9].viewHeatMap();
-		console.log(this.viz);
-		$('#container').append('<iframe>')
-			.find('iframe')
-			.attr('src', 'view_embed.html')
-			.find('body')
-			.html(this.viz);
+		// select the iframe from the html (or you could append one).
+		// has the id #viz
+		var viz = $('#viz');
+		// make the iframe element visible
+		viz.toggle();
+		
+		// this is the set model
+		this.collection.models[9].set({ id: 7 });
+		// pattern for the visualization url
+		var vizURL = 'http://54.88.3.200:8182/juxta/public/set/'
+					+ this.collection.models[9].id
+					+ '/view?mode=heatmap&condensed=true';
+		// set the source attribute of the iframe to the url
+		viz.attr('src', vizURL)
+			// IMPORTANT ! use a callback within the load function
+			// to make sure the you can select stuff within the iframe
+			// -- otherwise it'll load asynchronously and the $ won't select
+			// anything
+			.load(function(){
+				// to select contents of an iframe, use the helper method .contents()
+				// plus .find()
+				var iframe = viz.contents();
+				// here I'm removing a a couple elements there's no need to render
+				iframe.find('.menubar').remove();
+				iframe.find('.title-bar').remove();
+			})
+		// viz.attr('src', 'view_embed.html');
+		// viz.load(function(e) {
+		// 	$.get(vizURL).done( function(d){ viz.contents().find('body').append(d); });
+		// });	
 	}
 
 });
@@ -336,7 +377,6 @@ AV.collate = Backbone.Model.extend({
 			data: params,
 			processData: true,
 			dataType: 'html'
-			// success: function(a,b,c){ return a.responseText; }
 		});
 
 		return heatmap;

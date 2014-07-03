@@ -1,8 +1,9 @@
 
-iframe {
+iframe#viz{
 	height: 700px;
 	width: 700px;
 	border: 1px #000 solid;
+	z-index: 100;
 }
 
 #verb-tests li{
