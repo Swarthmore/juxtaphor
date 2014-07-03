@@ -1,27 +1,34 @@
-// AV.Router: Extends Backbone.Router for the AKHMATOVIZ Project
-// -------------------------------------------------------------
-// Most of our calls to all of the models and things should come from here.
+///////////////////////////////////////////////////////////////////////
+// AV.Router: Extends Backbone.Router for the AKHMATOVIZ Project     //
+//                                                                   //
+// In this project's architecture, the router is the main object     //
+// that is responsible for calling and coordinating all of the other //
+// models, views, etc.                                               //
+///////////////////////////////////////////////////////////////////////
+
 
 AV.Router = Backbone.Router.extend({
     initialize: function() {
         this.sourceModel = new AV.SourceModel();
-        this.uploadSourceView = new AV.UploadSourceView(
-            {model: this.sourceModel});
-        this.viewSourceView = new AV.ViewSourceView({model:this.sourceModel});
-        this.sourceCollection = new AV.SourceCollection();
-        this.sourceCollectionView = new AV.SourceCollectionView(
+	this.viewSourceView = new AV.ViewSourceView({model:this.sourceModel});	
+	this.sourceCollection = new AV.SourceCollection();
+	this.sourceCollectionView = new AV.SourceCollectionView(
             {collection:this.sourceCollection});
-        this.witnessCollection = new AV.WitnessCollection();
+	this.uploadSourceView = new AV.UploadSourceView({model: this.sourceModel, collection:this.sourceCollection});
+       	this.witnessCollection = new AV.WitnessCollection();
         this.comparisonSetModel = new AV.ComparisonSetModel();
         this.witnessCollectionView = new AV.WitnessCollectionView(
             {collection:this.witnessCollection, model:this.comparisonSetModel});
-
+        this.comparisonSetCollection = new AV.ComparisonSetCollection();
+        this.comparisonSetCollectionView = new AV.ComparisonSetCollectionView(
+            {collection:this.comparisonSetCollection});
     },
     
     routes: {
         '': 'index',
         'sources': 'sources',
         'witnesses': 'witnesses',
+        'sets': 'sets',
         'view/:idToView': 'view',
         'source/upload/': 'upload',
 	    'transform/:idToTransform':'transform'
@@ -35,6 +42,10 @@ AV.Router = Backbone.Router.extend({
         this.sourceCollection.fetch({reset: true});
     },
 
+    sets: function() {
+        this.comparisonSetCollection.fetch({reset: true});
+    },
+
     witnesses: function() {
         this.witnessCollection.fetch();
     },
@@ -44,6 +55,7 @@ AV.Router = Backbone.Router.extend({
         this.sourceModel.set('id', idToView);
         this.sourceModel.url = this.sourceModel.urlRoot + '/' +
             this.sourceModel.id + '.json';
+        //Bind passes state (``this'') into the anonymous function below
         this.sourceModel.fetch({success: _.bind(function()
                                                 {this.viewSourceView.render();},
                                                 this)});
@@ -52,6 +64,8 @@ AV.Router = Backbone.Router.extend({
         this.uploadSourceView.render();
     },
 
+    // Transform a source into a witness on the server-side
+    // Nothing is actually changed on the client side
     transform: function (idToTransform) {
 	    console.log("about to transform!");
 	    var url = "/juxta/transform";
