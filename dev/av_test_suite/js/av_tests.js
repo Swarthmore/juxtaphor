@@ -248,6 +248,8 @@ AV.testerView = Backbone.View.extend({
 
 	// this function is an example, not particularly elegant, of how to return 
 	// an embedded heatmap visualization.
+	// NOTE -- in the CSS you may have to set the z-index to the appropriate number in
+	// 		order to ensure the view is interactable
 	getViz: function(){
 		// select the iframe from the html (or you could append one).
 		// has the id #viz
