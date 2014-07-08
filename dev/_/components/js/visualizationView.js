@@ -12,7 +12,5 @@ AV.VisualizationView = Backbone.View.extend({
 			iframe.find('.title-bar').remove();
         }, this));
         this.$el.toggle();
-        //this.model.fetch();
-        //console.log(this);
     }
 });
