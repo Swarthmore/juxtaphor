@@ -23,6 +23,9 @@ AV.Router = Backbone.Router.extend({
         this.comparisonSetCollection = new AV.ComparisonSetCollection();
         this.comparisonSetCollectionView = new AV.ComparisonSetCollectionView(
             {collection:this.comparisonSetCollection});
+        this.visualizationModel = new AV.VisualizationModel();
+        this.visualizationView = new AV.VisualizationView(
+            {model: this.visualizationModel});
     },
     
     routes: {
@@ -32,7 +35,8 @@ AV.Router = Backbone.Router.extend({
         'sets': 'sets',
         'view/:idToView': 'view',
         'source/upload/': 'upload',
-	    'transform/:idToTransform':'transform'
+	    'transform/:idToTransform': 'transform',
+        'visualization/:idToVisualize': 'visualize'
     },
 
     index: function() {
@@ -81,8 +85,12 @@ AV.Router = Backbone.Router.extend({
 		    error: function(e) { test(e); }
    		});
 	    this.navigate('index');
-	}
-    
+	},
+    visualize: function (idToVisualize) {
+        console.log(idToVisualize);
+        this.visualizationModel.set('id', idToVisualize);
+        this.visualizationView.render();
+    }
 });
 
 
