@@ -82,7 +82,7 @@
                    class="btn btn-primary"
                    id="viewButton"
                    href="#/view/<%=source.escape('id')%>">
-		   <span class="glyphicon glyphicon-eye-open"></span> View
+		          <span class="glyphicon glyphicon-eye-open"></span> View
 		        </a>
 	    	    <a type="button"
 		           class="btn btn-success"
@@ -165,7 +165,6 @@
             <th>Created</th>
             <th>Updated</th>
             <!-- Empty headings in order to get spacing to work later. -->
-            <th>Collate?</th>
             <th></th>
           </tr>
         </thead>
@@ -178,12 +177,20 @@
             <td><%= set.escape('created') %></td>
             <td><%= set.escape('updated') %></td>
             <td>
-              <button type="button" 
-	                  class="btn btn-danger"
-                      id="deleteSetButton"
-                      data-value=<%=set.escape('id')%>>
-                <span class="glyphicon glyphicon-trash"></span> Delete
-              </button>
+              <div class="btn-group">
+                <a type="button"
+                   class="btn btn-primary"
+                   id="visualizationButton"
+                   href="#visualization/<%=set.escape('id')%>">
+                  Visualize
+                </a>
+                <button type="button" 
+	                    class="btn btn-danger"
+                        id="deleteSetButton"
+                        data-value=<%=set.escape('id')%>>
+                  <span class="glyphicon glyphicon-trash"></span> Delete
+                </button>
+              </div>
 	        </td>
           </tr>
 	      <% }); %>
