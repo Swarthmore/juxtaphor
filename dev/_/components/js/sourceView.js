@@ -2,14 +2,20 @@
 AV.UploadSourceView = Backbone.View.extend({
 	el: '#upload_container',	
 	initialize: function(){
-		//this.listenTo(this.model, 'all', this.render);
 	},
-
+    
 	render: function(){
 		//compile the template using underscore
 		var template = _.template( $("#upload_template").html(), {} );
 		//Load the compiled HTML into the backbone "el"
 		this.$el.html( template );
+
+        this.codeMirror = CodeMirror.fromTextArea(
+            document.getElementById("uploadContent"), 
+            {
+                theme: 'solarized dark',
+                lineNumbers: true
+            });
 	},
 
 	events: {
@@ -21,6 +27,7 @@ AV.UploadSourceView = Backbone.View.extend({
         //looked at before the upload, that will still be in
         // the model.
 	    this.model.clear().set(this.model.defaults);
+        this.codeMirror.save();
 	    this.model.save({
 		    data: $("#uploadContent").val(),
 			name: $("#upload").val()
@@ -39,7 +46,9 @@ AV.UploadSourceView = Backbone.View.extend({
 	    this.render();
 	    router.navigate('', true);
 	}
-    });
+});
+
+
 
 // This object ties in with the "view_container" template
 // in order to display a current version of the file
