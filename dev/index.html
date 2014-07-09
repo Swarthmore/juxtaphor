@@ -17,7 +17,7 @@
           <a class="navbar-brand" href="#">Akhmatoviz</a>
         </div>
         <ul class="nav navbar-nav navbar-left">
-          <li><a href="#source/upload/">Upload</a></li>
+          <li><a href="#source">Upload</a></li>
           <li><a href="#witnesses">Witnesses</a></li>
           <li><a href="#sets">Collation Sets</a>
         </ul>
@@ -44,13 +44,15 @@
     <!----------- Templates ----------->
     <script type="text/template" id="upload_template">
       <label>Name</label>
-      <input type = "text" id="upload"/>
+      <input type="text" 
+             id="upload"
+             placeholder="<%= source.escape('name') ? source.escape('name') : '' %>">
       <input type="button" 
-             class="btn btn-default btn-lg" 
+             class="btn btn-default btn-lg"
+             style="<%= source.get('name')?'display:none':''%>"
              id="uploadButton"
              value="Upload"/>
-      
-      <p><textarea id="uploadContent" /></p>
+      <p><textarea id="uploadContent"><%= source.escape('content') %></textarea></p>
     </script>
 
     <script type="text/template" id="view_template">
@@ -88,7 +90,7 @@
                 <a type="button" 
                    class="btn btn-primary"
                    id="viewButton"
-                   href="#/view/<%=source.escape('id')%>">
+                   href="#/source/<%=source.escape('id')%>">
 		          <span class="glyphicon glyphicon-eye-open"></span> View
 		        </a>
 	    	    <a type="button"
