@@ -10,12 +10,11 @@
 AV.Router = Backbone.Router.extend({
     initialize: function() {
         this.sourceModel = new AV.SourceModel();
-	    this.viewSourceView = new AV.ViewSourceView({model:this.sourceModel});	
 	    this.sourceCollection = new AV.SourceCollection();
+        this.sourceView = new AV.SourceView({
+            model:this.sourceModel, collection:this.sourceCollection});
 	    this.sourceCollectionView = new AV.SourceCollectionView(
             {collection:this.sourceCollection});
-	    this.uploadSourceView = new AV.UploadSourceView(
-            {model: this.sourceModel, collection:this.sourceCollection});
        	this.witnessCollection = new AV.WitnessCollection();
         this.comparisonSetModel = new AV.ComparisonSetModel();
         this.witnessCollectionView = new AV.WitnessCollectionView(
@@ -33,8 +32,8 @@ AV.Router = Backbone.Router.extend({
         'sources': 'sources',
         'witnesses': 'witnesses',
         'sets': 'sets',
-        'view/:idToView': 'view',
-        'source/upload/': 'upload',
+        'source': 'source',
+        'source/:idToView' : 'source',
 	    'transform/:idToTransform': 'transform',
         'visualization/:idToVisualize': 'visualize'
     },
@@ -57,11 +56,23 @@ AV.Router = Backbone.Router.extend({
         this.witnessCollection.fetch();
     },
 
+    source: function(sourceID) {
+        if (sourceID) {
+            //render the source with that ID
+            this.sourceModel.set('id', sourceID);
+            this.sourceModel.url = this.sourceModel.urlRoot + '/' +
+                this.sourceModel.id + '.json';
+            this.sourceModel.fetch().done(
+                _.bind(function(){this.sourceView.render();}, this));
+        } else {
+            this.sourceModel.clear().set(this.sourceModel.defaults);
+            this.sourceView.render();
+        }
+    },
+
     //this route displays the contents of the source
     view: function(idToView) {
-        this.sourceModel.set('id', idToView);
-        this.sourceModel.url = this.sourceModel.urlRoot + '/' +
-            this.sourceModel.id + '.json';
+        
         //Bind passes state (``this'') into the anonymous function below
         this.sourceModel.fetch({success: _.bind(function()
                                                 {this.viewSourceView.render();},
@@ -94,5 +105,4 @@ AV.Router = Backbone.Router.extend({
         this.visualizationView.render();
     }
 });
-
 

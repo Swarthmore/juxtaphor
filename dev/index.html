@@ -17,7 +17,7 @@
           <a class="navbar-brand" href="#">Akhmatoviz</a>
         </div>
         <ul class="nav navbar-nav navbar-left">
-          <li><a href="#source/upload/">Upload</a></li>
+          <li><a href="#source">Upload</a></li>
           <li><a href="#witnesses">Witnesses</a></li>
           <li><a href="#sets">Collation Sets</a>
         </ul>
@@ -99,13 +99,15 @@
     <!----------- Templates ----------->
     <script type="text/template" id="upload_template">
       <label>Name</label>
-      <input type = "text" id="upload"/>
+      <input type="text" 
+             id="upload"
+             placeholder="<%= source.escape('name') ? source.escape('name') : '' %>">
       <input type="button" 
-             class="btn btn-default btn-lg" 
+             class="btn btn-default btn-lg"
+             style="<%= source.get('name')?'display:none':''%>"
              id="uploadButton"
              value="Upload"/>
-      <p><textarea id="uploadContent" rows="10" cols="50" 
-                   placeholder="Fill with content"/></p>
+      <p><textarea id="uploadContent"><%= source.escape('content') %></textarea></p>
     </script>
 
     <script type="text/template" id="view_template">
@@ -147,7 +149,7 @@
                 <a type="button" 
                    class="btn btn-primary"
                    id="viewButton"
-                   href="#/view/<%=source.escape('id')%>">
+                   href="#/source/<%=source.escape('id')%>">
 		          <span class="glyphicon glyphicon-eye-open"></span>
 		        </a>
 	    	    <a type="button"
@@ -260,6 +262,9 @@
     <script src="_/js/lib/bootstrap.min.js"></script>
     <script src="_/js/lib/underscore.js"></script>
     <script src="_/js/lib/backbone.js"></script>
+    <script src="_/js/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="_/css/solarized.css">
+    <link rel="stylesheet" href="_/css/codemirror.css">
     <script src="_/js/AkhmatoViz.js"></script>
     <!-- <script src="http://localhost:35729/livereload.js"></script> -->
   </body>
