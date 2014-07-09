@@ -31,6 +31,9 @@
       <div class="col-md-10 col-md-offset-5" id="main"></div>
     </div>
 
+<div class = "container-fluid">
+<div class="row">
+  <div class="col-md-4">
     <!------ Template Containers ------>
     <div class="container" id="upload_container"></div>
     <div class="container", id="view_container"></div>
@@ -40,7 +43,9 @@
     <div class="container" id="visualization_container">
       <iframe id="visualization", style="display: none;"></iframe>
     </div>
+  </div>
 <!-- HERE begins the Collapsible Containers -->
+<div class="col-md-8">
 <div class="panel-group" id="accordion">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -88,7 +93,9 @@
   </div>
 </div>
 <!--Here ends the collapsible containers i-->
-    
+</div>
+</div>
+</div> 
     <!----------- Templates ----------->
     <script type="text/template" id="upload_template">
       <label>Name</label>
@@ -118,9 +125,9 @@
       <table class="table table-striped table-hover">
         <thead>
           <tr>
-            <th>id</th>
+            <!--<th>id</th>-->
             <th>Name</th>
-            <th>Type</th>
+            <!--<th>Type</th>-->
             <th>Length</th>
             <th>Created</th>
             <!-- Empty headings in order to get spacing to work later. -->
@@ -130,9 +137,9 @@
         <tbody>
           <% _.each(sources, function (source) { %>
           <tr>
-            <td><%= source.escape('id') %></td>
+            <!--<td><%= source.escape('id') %></td>-->
             <td><%= source.escape('name') %></td>
-            <td><%= source.escape('type') %></td>
+            <!--<td><%= source.escape('type') %></td>-->
             <td><%= source.escape('length') %></td>
             <td><%= source.escape('created') %></td>
             <td>
@@ -141,19 +148,19 @@
                    class="btn btn-primary"
                    id="viewButton"
                    href="#/view/<%=source.escape('id')%>">
-		          <span class="glyphicon glyphicon-eye-open"></span> View
+		          <span class="glyphicon glyphicon-eye-open"></span>
 		        </a>
 	    	    <a type="button"
 		           class="btn btn-success"
 		           id="transformButton"
 		           href="#/transform/<%=source.escape('id')%>">
-                  <span class="glyphicon glyphicon-random"></span> Transform
+                  <span class="glyphicon glyphicon-random"></span>
 		        </a>
 	            <button type="button"
 		                class="btn btn-danger"
                         id="deleteSourceButton"
                         data-value=<%=source.escape('id')%>>
-                  <span class="glyphicon glyphicon-trash"></span> Delete
+                  <span class="glyphicon glyphicon-trash"></span> 
                 </button>
               </div>
 	        </td>
