@@ -31,71 +31,71 @@
       <div class="col-md-10 col-md-offset-5" id="main"></div>
     </div>
 
-<div class = "container-fluid">
-<div class="row">
-  <div class="col-md-4">
-    <!------ Template Containers ------>
-    <div class="container" id="upload_container"></div>
-    <div class="container", id="view_container"></div>
-    <!--<div class="container" id="list_source_container"></div>-->
-    <!--<div class="container" id="list_witness_container"></div>-->
-    <!--<div class="container" id="list_set_container"></div>-->
-    <div class="container" id="visualization_container">
-      <iframe id="visualization", style="display: none;"></iframe>
-    </div>
-  </div>
-<!-- HERE begins the Collapsible Containers -->
-<div class="col-md-5 col-md-offset-3">
-<div class="panel-group" id="accordion">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-          Sources
-        </a>
-      </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse in">
-      <div class="panel-body">
-    	<div class="container" id="list_source_container"></div>
-	
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-          Witnesses
-        </a>
-      </h4>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
-      <div class="panel-body">
-    	<div class="container" id="list_witness_container"></div>
+    <div class = "container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <!------ Template Containers ------>
+          <div class="container" id="upload_container"></div>
+          <div class="container", id="view_container"></div>
+          <!--<div class="container" id="list_source_container"></div>-->
+          <!--<div class="container" id="list_witness_container"></div>-->
+          <!--<div class="container" id="list_set_container"></div>-->
+          <div class="container" id="visualization_container">
+            <iframe id="visualization", style="display: none;"></iframe>
+          </div>
+        </div>
+        <!-- HERE begins the Collapsible Containers -->
+        <div class="col-md-5 col-md-offset-3">
+          <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                    Sources
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+    	          <div class="container" id="list_source_container"></div>
+	              
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                    Witnesses
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+    	          <div class="container" id="list_witness_container"></div>
 
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                    Collections
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+    	          <div class="container" id="list_set_container"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Here ends the collapsible containers i-->
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-          Collections
-        </a>
-      </h4>
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse">
-      <div class="panel-body">
-    	<div class="container" id="list_set_container"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<!--Here ends the collapsible containers i-->
-</div>
-</div>
-</div> 
+    </div> 
     <!----------- Templates ----------->
     <script type="text/template" id="upload_template">
       <label>Name</label>
@@ -130,7 +130,7 @@
             <!--<th>Type</th>-->
             <!--<th>Length</th>-->
             <!--<th>Created</th>-->
-	    <th class="col-md-1">Transform?</th>
+	        <th class="col-md-1">Transform?</th>
             <!-- Empty headings in order to get spacing to work later. -->
             <th></th>
           </tr>
