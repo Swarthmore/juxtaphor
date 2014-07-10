@@ -101,6 +101,7 @@ AV.Router = Backbone.Router.extend({
 	},
     visualize: function (idToVisualize) {
         console.log(idToVisualize);
+	//$("#cContainers").toggle();
         this.visualizationModel.set('id', idToVisualize);
         this.visualizationView.render();
     }
