@@ -12,7 +12,8 @@ AV.SourceCollectionView = Backbone.View.extend({
         this.listenTo(this.collection, 'all', this.render);
     },
     events: {
-	    "click #deleteSourceButton": "delete"
+	    "click #deleteSourceButton": "delete",
+        "click #transformButton": "transform"
     },
     template: _.template( $("#list_source_template").html()),
     render: function () {
@@ -30,6 +31,23 @@ AV.SourceCollectionView = Backbone.View.extend({
 		    return source.id == idToDelete;});
 	    sourceToRemove.urlRoot = '/juxta/source';
 	    sourceToRemove.destroy();
-	    
+    },
+    transform: function(ev){
+        var checkedBoxes = _.filter($('input:checkbox.transformCheckbox'), 
+                                    function (box) {return box.checked === true;});
+        var checkedIDs = _.pluck(checkedBoxes, 'value');
+        _.forEach(checkedIDs, function(id) {
+	        var url = "/juxta/transform";
+	        var request = { source: id };
+	        //We use AJAX to send the request directly from here.
+	        $.ajax({
+		        type: 'POST',
+		        url: url,
+		        data: JSON.stringify(request),
+		        contentType: 'application/json'
+            });
+        });
+
     }
+
 });

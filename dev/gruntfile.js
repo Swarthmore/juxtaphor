@@ -66,7 +66,7 @@ module.exports = function(grunt) {
 
 	//register tasks
 	grunt.registerTask('test', ['jshint','qunit']);
-	grunt.registerTask('default', ['jshint', 'concat', 'qunit', 'sass']);
+	grunt.registerTask('default', ['jshint', 'concat', 'sass']);
     grunt.registerTask('wat', ['watch']);
 };
 
