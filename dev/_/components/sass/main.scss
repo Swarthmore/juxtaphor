@@ -28,3 +28,13 @@ iframe#visualization{
 body {
    padding-top: 65px;
 }
+
+.CodeMirror {
+  border: 1px solid #eee;
+  height: auto;
+}
+.CodeMirror-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+

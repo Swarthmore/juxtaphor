@@ -15,9 +15,9 @@ AV.SourceView = Backbone.View.extend({
             document.getElementById("viewContent"), 
             {
                 theme: 'solarized dark',
-                lineNumbers: true
+                lineNumbers: true,
+                viewportMargin: Infinity
             });
-
 	},
 
 	events: {
