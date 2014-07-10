@@ -28,7 +28,6 @@
       <div class="row">
         <div class="col-md-4">
           <!------ Template Containers ------>
-          <div class="col-md-4" id="upload_container"></div>
           <div class="container", id="view_container"></div>
           <div class="container" id="visualization_container">
             <iframe id="visualization", style="display: none;"></iframe>
@@ -87,29 +86,18 @@
       </div>
     </div> 
     <!----------- Templates ----------->
-    <script type="text/template" id="upload_template">
+    <script type="text/template" id="view_template">
       <label>Name</label>
       <input type="text" 
-             id="upload"
+             id="name"
              placeholder="<%= source.escape('name') ? source.escape('name') : '' %>">
       <input type="button" 
              class="btn btn-default btn-lg"
              style="<%= source.get('name')?'display:none':''%>"
              id="uploadButton"
              value="Upload"/>
-      <p><textarea id="uploadContent"><%= source.escape('content') %></textarea></p>
+      <p><textarea id="viewContent"><%= source.escape('content') %></textarea></p>
     </script>
-
-    <script type="text/template" id="view_template">
-      <div class="panel panel-default">
-        <div class="panel-heading"><%= source.escape('name') %></div>
-        <div class="panel-body">
-          <pre><%= source.escape('content') %></pre>
-        </div>
-      </div>
-    </script>
-
-
 
     <script type="text/template" id="list_source_template">
       <table class="table table-striped table-hover table-condensed">
