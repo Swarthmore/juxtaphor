@@ -1,23 +1,24 @@
 //Create a view for the source
 AV.SourceView = Backbone.View.extend({
-	el: '#upload_container',	
+	el: '#view_container',
 	initialize: function(){
 
 	},
     
 	render: function(){
 		//compile the template using underscore
-		var template = _.template( $("#upload_template").html(), {
+		var template = _.template( $("#view_template").html(), {
             source: this.model
         });
 		//Load the compiled HTML into the backbone "el"
 		this.$el.html( template );
         this.codeMirror = CodeMirror.fromTextArea(
-            document.getElementById("uploadContent"), 
+            document.getElementById("viewContent"), 
             {
                 theme: 'solarized dark',
                 lineNumbers: true
             });
+
 	},
 
 	events: {
@@ -31,7 +32,7 @@ AV.SourceView = Backbone.View.extend({
 	    this.model.clear().set(this.model.defaults);
         this.codeMirror.save();
 	    this.model.save({
-		    data: $("#uploadContent").val(),
+		    data: $("#viewContent").val(),
 			name: $("#upload").val()
 			}).done(_.bind(function() {
 				    this.collection.fetch();
