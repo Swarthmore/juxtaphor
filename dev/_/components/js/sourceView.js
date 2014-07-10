@@ -37,7 +37,6 @@ AV.SourceView = Backbone.View.extend({
 				    this.collection.fetch();
 				}, this));
 	    this.render();
-	    router.navigate('', true);
 	}
 });
 

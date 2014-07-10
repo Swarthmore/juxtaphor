@@ -12,7 +12,8 @@ AV.SourceCollectionView = Backbone.View.extend({
         this.listenTo(this.collection, 'all', this.render);
     },
     events: {
-	    "click #deleteSourceButton": "delete"
+	    "click #deleteSourceButton": "delete",
+        "click #uploadButton": "refresh"
     },
     template: _.template( $("#list_source_template").html()),
     render: function () {
@@ -20,6 +21,9 @@ AV.SourceCollectionView = Backbone.View.extend({
         console.log("Rendered");
         this.$el.html(this.template({sources: this.collection.models}));	
     	test();
+    },
+    refresh: function() {
+        this.collection.fetch();
     },
     delete: function(ev) {
 	    //ev is the mouse event. We receive the data-value which contains
