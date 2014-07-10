@@ -4,6 +4,3 @@ AV.VisualizationModel = Backbone.Model.extend({
 });
 
 
-
-
-

@@ -1,9 +1,8 @@
 //Create a view for the source
 AV.SourceView = Backbone.View.extend({
 	el: '#view_container',
-	initialize: function(){
 
-	},
+    initialize: function(){},
     
 	render: function(){
 		//compile the template using underscore
@@ -33,7 +32,7 @@ AV.SourceView = Backbone.View.extend({
         this.codeMirror.save();
 	    this.model.save({
 		    data: $("#viewContent").val(),
-			name: $("#upload").val()
+			name: $("#name").val()
 			}).done(_.bind(function() {
 				    this.collection.fetch();
 				}, this));
