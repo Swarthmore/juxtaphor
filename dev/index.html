@@ -39,7 +39,9 @@
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                  <a data-toggle="collapse" 
+                     data-parent="#accordion" 
+                     href="#collapseOne">
                     Sources
                   </a>
                 </h4>
@@ -54,7 +56,9 @@
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                  <a data-toggle="collapse" 
+                     data-parent="#accordion" 
+                     href="#collapseTwo">
                     Witnesses
                   </a>
                 </h4>
@@ -69,7 +73,9 @@
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                  <a data-toggle="collapse" 
+                     data-parent="#accordion" 
+                     href="#collapseThree">
                     Collections
                   </a>
                 </h4>
@@ -196,20 +202,24 @@
           <% _.each(sets, function (set) { %>
           <tr>
             <td><%= set.escape('name') %></td>
-            <td><%= set.escape('status') %></td>
+            <% if (set.get('status') == 'COLLATED') { %>
+            <td><span class="glyphicon glyphicon-ok"></span></td>
+            <% } else { %>
+            <td><span class="glyphicon glyphicon-remove"></span></td>
+            <% } %>
             <td>
               <div class="btn-group">
                 <a type="button"
                    class="btn btn-primary"
                    id="visualizationButton"
                    href="#visualization/<%=set.escape('id')%>">
-                  Visualize
+		          <span class="glyphicon glyphicon-eye-open"></span>
                 </a>
                 <button type="button" 
 	                    class="btn btn-danger"
                         id="deleteSetButton"
                         data-value=<%=set.escape('id')%>>
-                  <span class="glyphicon glyphicon-trash"></span> Delete
+                  <span class="glyphicon glyphicon-trash"></span>
                 </button>
               </div>
 	        </td>
