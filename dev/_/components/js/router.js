@@ -39,6 +39,7 @@ AV.Router = Backbone.Router.extend({
     },
 
     index: function() {
+        this.source();
         this.sources();
 	    this.witnesses();
 	    this.sets();
