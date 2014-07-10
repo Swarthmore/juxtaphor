@@ -103,11 +103,7 @@
       <table class="table table-striped table-hover table-condensed">
         <thead>
           <tr>
-            <!--<th>id</th>-->
             <th class="col-md-3">Name</th>
-            <!--<th>Type</th>-->
-            <!--<th>Length</th>-->
-            <!--<th>Created</th>-->
 	        <th class="col-md-1">Transform?</th>
             <!-- Empty headings in order to get spacing to work later. -->
             <th></th>
@@ -116,11 +112,7 @@
         <tbody>
           <% _.each(sources, function (source) { %>
           <tr>
-            <!--<td><%= source.escape('id') %></td>-->
             <td ><%= source.escape('name') %></td>
-            <!--<td><%= source.escape('type') %></td>-->
-            <!--<td><%= source.escape('length') %></td>-->
-            <!--<td><%= source.escape('created') %></td>-->
 
             <td >
               <input type="checkbox" 
@@ -135,12 +127,6 @@
                    id="viewButton"
                    href="#/source/<%=source.escape('id')%>">
 		          <span class="glyphicon glyphicon-eye-open"></span>
-		        </a>
-	    	    <a type="button"
-		           class="btn btn-success"
-		           id="transformButton"
-		           href="#/transform/<%=source.escape('id')%>">
-                  <span class="glyphicon glyphicon-random"></span>
 		        </a>
 	            <button type="button"
 		                class="btn btn-danger"
@@ -161,9 +147,7 @@
       <table class="table table-striped table-condensed">
         <thead>
           <tr>
-            <!--<th>id</th>-->
             <th class="col-md-3">Name</th>
-            <!--<th>Created</th>-->
             <!-- Empty headings in order to get spacing to work later. -->
             <th class="col-md-1">Collate?</th>
             <th></th>
@@ -172,9 +156,7 @@
         <tbody>
           <% _.each(witnesses, function (witness) { %>
           <tr>
-            <!--<td><%= witness.escape('id') %></td>-->
             <td><%= witness.escape('name') %></td>
-            <!--<td><%= witness.escape('created') %></td>-->
             <td>
               <input type="checkbox" 
                      class="witnessCheckbox"
@@ -204,11 +186,8 @@
       <table class="table table-striped table-condensed">
         <thead>
           <tr>
-            <!--<th>id</th>-->
             <th class="col-md-2">Name</th>
             <th class="col-md-2">Status</th>
-            <!--<th>Created</th>-->
-            <!--<th>Updated</th>-->
             <!-- Empty headings in order to get spacing to work later. -->
             <th></th>
           </tr>
@@ -216,11 +195,8 @@
         <tbody>
           <% _.each(sets, function (set) { %>
           <tr>
-            <!--<td><%= set.escape('id') %></td>-->
             <td><%= set.escape('name') %></td>
             <td><%= set.escape('status') %></td>
-            <!--<td><%= set.escape('created') %></td>-->
-            <!--<td><%= set.escape('updated') %></td>-->
             <td>
               <div class="btn-group">
                 <a type="button"
