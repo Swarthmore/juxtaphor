@@ -11,19 +11,28 @@ AV.VisualizationView = Backbone.View.extend({
             type: "GET"
         }).done(_.bind(function(d) {
             console.log(d[0]);
-            if (d[0] != 'R') {
+            //If the server returns an HTML document
+            if (d[0] != 'R') { 
                 return d;
-            } else {
-                setTimeout(function(){}, 5000);
+            } else { //Rendering
+                console.log("Yo dawg, I heard you like recursion, so I put" +
+                            " recursion in your recursion so you can recur" +
+                            " while you recur");
+                setTimeout(function(){}, 1000);
                 return this.render();
             }
         }, this));
+        
+
         this.$el.attr('src', this.model.url).load(_.bind(function() {
             var iframe = this.$el.contents();
             iframe.find('.menubar').remove();
 			iframe.find('.title-bar').remove();
         }, this));
-        this.$el.toggle();
+
+        $('#basicModal').modal({
+            show: true
+        });
     }
 });
 

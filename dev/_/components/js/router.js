@@ -10,7 +10,7 @@
 AV.Router = Backbone.Router.extend({
     initialize: function() {
         this.sourceModel = new AV.SourceModel();
-	    this.sourceCollection = new AV.SourceCollection();
+	this.sourceCollection = new AV.SourceCollection();
         this.sourceView = new AV.SourceView({
             model:this.sourceModel, collection:this.sourceCollection});
 	    this.sourceCollectionView = new AV.SourceCollectionView(
@@ -33,7 +33,9 @@ AV.Router = Backbone.Router.extend({
         'witnesses': 'witnesses',
         'sets': 'sets',
         'source': 'source',
-        'source/:idToView' : 'source'
+        'source/:idToView' : 'source',
+        'visualization/:idToViz': 'visualize'
+
     },
 
     index: function() {
@@ -41,6 +43,7 @@ AV.Router = Backbone.Router.extend({
         this.sources();
 	    this.witnesses();
 	    this.sets();
+        
     },
     
     sources: function () {
@@ -67,6 +70,13 @@ AV.Router = Backbone.Router.extend({
             this.sourceModel.clear().set(this.sourceModel.defaults);
             this.sourceView.render();
         }
+    },
+    visualize: function (idToVisualize) {
+        console.log(idToVisualize);
+        this.visualizationModel.set('id', idToVisualize);
+        this.visualizationView.render();
     }
+    
 });
+
 
