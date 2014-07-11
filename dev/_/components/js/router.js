@@ -33,9 +33,7 @@ AV.Router = Backbone.Router.extend({
         'witnesses': 'witnesses',
         'sets': 'sets',
         'source': 'source',
-        'source/:idToView' : 'source',
-	    'transform/:idToTransform': 'transform',
-        'visualization/:idToVisualize': 'visualize'
+        'source/:idToView' : 'source'
     },
 
     index: function() {
@@ -46,11 +44,11 @@ AV.Router = Backbone.Router.extend({
     },
     
     sources: function () {
-        this.sourceCollection.fetch({reset: true});
+        this.sourceCollection.fetch();
     },
 
     sets: function() {
-        this.comparisonSetCollection.fetch({reset: true});
+        this.comparisonSetCollection.fetch();
     },
 
     witnesses: function() {

@@ -18,9 +18,7 @@ AV.SourceCollectionView = Backbone.View.extend({
     template: _.template( $("#list_source_template").html()),
     render: function () {
         this.$el.empty();
-        console.log("Rendered");
         this.$el.html(this.template({sources: this.collection.models}));	
-    	test();
     },
     refresh: function() {
         this.collection.fetch();
@@ -28,7 +26,6 @@ AV.SourceCollectionView = Backbone.View.extend({
     delete: function(ev) {
 	    //ev is the mouse event. We receive the data-value which contains
 	    //the id.
-	    test("in delete in source collection"); 	    
 	    var idToDelete = $(ev.target).data('value');
 	    var sourceToRemove = this.collection.find(function (source) {
 		    return source.id == idToDelete;});
