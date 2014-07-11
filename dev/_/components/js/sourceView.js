@@ -30,6 +30,7 @@ AV.SourceView = Backbone.View.extend({
         // the model.
 	    this.model.clear().set(this.model.defaults);
         this.codeMirror.save();
+	// Saving the model sends a "sync" request. 
 	    this.model.save({
 		    data: $("#viewContent").val(),
 			name: $("#name").val()
@@ -37,7 +38,7 @@ AV.SourceView = Backbone.View.extend({
 				    this.collection.fetch();
 				}, this));
 	    this.render();
-	    router.navigate('', true);
+	//    router.navigate('', true);
 	}
 });
 
