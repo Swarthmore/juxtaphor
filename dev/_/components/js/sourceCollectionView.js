@@ -43,7 +43,7 @@ AV.SourceCollectionView = Backbone.View.extend({
 		        url: url,
 		        data: JSON.stringify(request),
 		        contentType: 'application/json'
-            });
+            }).done(function(){Backbone.trigger("source:transformed");});
         });
     }
 });

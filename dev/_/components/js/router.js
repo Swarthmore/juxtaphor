@@ -10,7 +10,7 @@
 AV.Router = Backbone.Router.extend({
     initialize: function() {
         this.sourceModel = new AV.SourceModel();
-	this.sourceCollection = new AV.SourceCollection();
+	    this.sourceCollection = new AV.SourceCollection();
         this.sourceView = new AV.SourceView({
             model:this.sourceModel, collection:this.sourceCollection});
 	    this.sourceCollectionView = new AV.SourceCollectionView(

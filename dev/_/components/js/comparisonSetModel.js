@@ -16,7 +16,12 @@ AV.ComparisonSetModel = Backbone.Model.extend({
         console.log("this.attributes.id is "+this.attributes.id);
 		var url = this.urlRoot + '/' + this.attributes.id + '/collate';
         console.log(url);
-		json_post(url);
+        $.ajax({
+            url: url, 
+            type: 'POST'
+        }).done(function(){
+            Backbone.trigger("comparison:collate");
+        });
 	},
 	viewHeatMap: function(){
 		this.url = this.url + '/' + this.attributes.id + '/view';

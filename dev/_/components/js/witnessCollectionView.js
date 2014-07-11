@@ -9,6 +9,7 @@ AV.WitnessCollectionView = Backbone.View.extend({
     initialize: function() {
         console.log('initialize witnessCollectionView');
         this.listenTo(this.collection, 'all', this.render);
+        this.listenTo(Backbone, "source:transformed", this.refresh);
     },
     events: {
 	    "click #deleteWitnessButton": "delete",
@@ -18,6 +19,10 @@ AV.WitnessCollectionView = Backbone.View.extend({
     render: function () {
         this.$el.empty();
         this.$el.html(this.template({witnesses: this.collection.models}));	
+    },
+    refresh: function() {
+        console.log("New witnesses.");
+        this.collection.fetch();
     },
     delete: function(ev) {
 	    //ev is the mouse event. We receive the data-value which contains
