@@ -30,7 +30,6 @@ AV.SourceCollectionView = Backbone.View.extend({
 	    var sourceToRemove = this.collection.find(function (source) {
 		    return source.id == idToDelete;});
 	    sourceToRemove.urlRoot = '/juxta/source';
-	    sourceToRemove.destroy();
-	    
+	    sourceToRemove.destroy().done(_.bind(function(){this.render();}, this));
     }
 });
