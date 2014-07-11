@@ -40,8 +40,8 @@ AV.Router = Backbone.Router.extend({
 
     index: function() {
         this.sources();
-	this.witnesses();
-	this.sets();
+	    this.witnesses();
+	    this.sets();
     },
     
     sources: function () {
@@ -68,41 +68,6 @@ AV.Router = Backbone.Router.extend({
             this.sourceModel.clear().set(this.sourceModel.defaults);
             this.sourceView.render();
         }
-    },
-
-    //this route displays the contents of the source
-    view: function(idToView) {
-        
-        //Bind passes state (``this'') into the anonymous function below
-        this.sourceModel.fetch({success: _.bind(function()
-                                                {this.viewSourceView.render();},
-                                                this)});
-    },
-    upload: function () {
-        this.uploadSourceView.render();
-    },
-
-    // Transform a source into a witness on the server-side
-    // Nothing is actually changed on the client side
-    transform: function (idToTransform) {
-	    console.log("about to transform!");
-	    var url = "/juxta/transform";
-	    var request = { source: idToTransform };
-	    //We use AJAX to send the request directly from here.
-	    $.ajax({
-		    type: 'POST',
-		    url: url,
-		    data: JSON.stringify(request),
-		    contentType: 'application/json',
-		    success: function(){ test('transform success'); },
-		    error: function(e) { test(e); }
-   		});
-	    this.navigate('index');
-	},
-    visualize: function (idToVisualize) {
-        console.log(idToVisualize);
-        this.visualizationModel.set('id', idToVisualize);
-        this.visualizationView.render();
     }
 });
 

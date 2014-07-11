@@ -1,9 +1,8 @@
 //Create a view for the source
 AV.SourceView = Backbone.View.extend({
-	el: '#view_container',	
-	initialize: function(){
+	el: '#view_container',
 
-	},
+    initialize: function(){},
     
 	render: function(){
 		//compile the template using underscore
@@ -16,7 +15,8 @@ AV.SourceView = Backbone.View.extend({
             document.getElementById("viewContent"), 
             {
                 theme: 'solarized dark',
-                lineNumbers: true
+                lineNumbers: true,
+                viewportMargin: Infinity
             });
 	},
 
