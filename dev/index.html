@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,31 +25,42 @@
     </nav>
 
 
-<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal fade bs-example-modal-lg" 
+         id="basicModal" 
+         tabindex="-1" 
+         role="dialog" 
+         aria-labelledby="basicModal" 
+         aria-hidden="true">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <div class="modal-header">
+            <button type="button" 
+                    class="close" 
+                    data-dismiss="modal" 
+                    aria-hidden="true">
+              &times;
+            </button>
             <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                <h3>Modal Body</h3>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+          <div class="modal-body">
+            <iframe id="visualization"></iframe>
+          </div>
+          <div class="modal-footer">
+            <button type="button"
+                    class="btn btn-default" 
+                    data-dismiss="modal">
+              Close
+            </button>
+          </div>
         </div>
+      </div>
     </div>
-  </div>
-</div>
 
     <div class = "container-fluid">
       <div class="row">
         <div id="views" class="col-md-4 col-md-offset-1">
           <!------ Template Containers ------>
           <div id="view_container"></div>
-          <div id="visualization_container">
-            <iframe id="visualization", style="display: none;"></iframe>
-          </div>
         </div>
         <!-- HERE begins the Collapsible Containers -->
 
@@ -240,10 +251,7 @@
                 <a type="button"
                    class="btn btn-primary"
                    href="#visualization/<%=set.escape('id')%>"
-                   id="visualizationButton"
-		   data-toggle="modal"
-		   data-target="#basicModal"
-			>
+                   id="visualizationButton">
                   Visualize
                 </a>
                 <button type="button" 
