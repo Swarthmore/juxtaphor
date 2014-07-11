@@ -21,9 +21,7 @@ AV.SourceView = Backbone.View.extend({
 	},
 
 	events: {
-        "click #uploadButton": "upload",
-        "click #newSourceButton": "newSource"
-	    
+        "click #uploadButton": "upload"
     },
     upload: function( event ){
 		//Resetting attached model, because if something was
@@ -38,10 +36,6 @@ AV.SourceView = Backbone.View.extend({
 				    this.collection.fetch();
 				}, this));
 	    this.render();
-	},
-    newSource: function(){
-        console.log("New Source Button Clicked");
-        this.render();
-    }
+	}
 });
 
