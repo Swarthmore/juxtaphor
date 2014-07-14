@@ -25,6 +25,7 @@ AV.Router = Backbone.Router.extend({
         this.visualizationModel = new AV.VisualizationModel();
         this.visualizationView = new AV.VisualizationView(
             {model: this.visualizationModel});
+        this.listViewsRendered = false;
     },
     
     routes: {
@@ -39,26 +40,21 @@ AV.Router = Backbone.Router.extend({
     },
 
     index: function() {
+        this.renderListViews();
         this.source();
-        this.sources();
-	    this.witnesses();
-	    this.sets();
-        
     },
     
-    sources: function () {
+    renderListViews: function(){
         this.sourceCollection.fetch();
-    },
-
-    sets: function() {
         this.comparisonSetCollection.fetch();
-    },
-
-    witnesses: function() {
         this.witnessCollection.fetch();
+        this.listViewsRendered = true;
     },
 
     source: function(sourceID) {
+        if (!(this.listViewsRendered)) {
+            this.renderListViews();
+        }
         if (sourceID) {
             //render the source with that ID
             this.sourceModel.set('id', sourceID);
@@ -71,7 +67,11 @@ AV.Router = Backbone.Router.extend({
             this.sourceView.render();
         }
     },
+
     visualize: function (idToVisualize) {
+        if (!(this.listViewsRendered)) {
+            this.renderListViews();
+        }
         console.log(idToVisualize);
         this.visualizationModel.set('id', idToVisualize);
         this.visualizationView.render();
