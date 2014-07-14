@@ -22,14 +22,17 @@ AV.SourceCollectionView = Backbone.View.extend({
         this.$el.empty();
         this.$el.html(this.template({sources: this.collection.models}));	
     },
+    refresh: function() {
+        this.collection.fetch();
+    },
     delete: function(ev) {
 	    //ev is the mouse event. We receive the data-value which contains
 	    //the id.
-	    var idToDelete = $(ev.target).data('value');
+	    var idToDelete = $(ev.currentTarget).data('value');
 	    var sourceToRemove = this.collection.find(function (source) {
 		    return source.id == idToDelete;});
 	    sourceToRemove.urlRoot = '/juxta/source';
-	    sourceToRemove.destroy().done(_.bind(function(){this.fetch();}, this));
+	    sourceToRemove.destroy().done(_.bind(function(){this.refresh();}, this));
     },
     transform: function(ev){
         var checkedBoxes = _.filter($('input:checkbox.transformCheckbox'), 
