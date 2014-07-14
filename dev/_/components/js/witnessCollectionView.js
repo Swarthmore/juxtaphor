@@ -21,14 +21,14 @@ AV.WitnessCollectionView = Backbone.View.extend({
         this.$el.html(this.template({witnesses: this.collection.models}));	
     },
     refresh: function() {
-        console.log("New witnesses.");
         this.collection.fetch();
     },
     delete: function(ev) {
 	    //ev is the mouse event. We receive the data-value which contains
 	    //the id.
-	    var idToDelete = $(ev.target).data('value');
+	    var idToDelete = $(ev.currentTarget).data('value');
 	    var sourceToRemove = this.collection.find(function (source) {
+            console.log(source.id + " <> " + idToDelete);
 		    return source.id == idToDelete;});
 	    sourceToRemove.urlRoot = '/juxta/witness';
 	    sourceToRemove.destroy();
