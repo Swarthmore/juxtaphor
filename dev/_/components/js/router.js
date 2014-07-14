@@ -75,6 +75,7 @@ AV.Router = Backbone.Router.extend({
         console.log(idToVisualize);
         this.visualizationModel.set('id', idToVisualize);
         this.visualizationView.render();
+	this.navigate('', {trigger: false, replace: true});
     }
     
 });
