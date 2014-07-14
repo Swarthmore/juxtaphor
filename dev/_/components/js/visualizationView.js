@@ -31,7 +31,7 @@ AV.VisualizationView = Backbone.View.extend({
         }, this));
 
         $('#basicModal').modal({
-            show: true
+            show: true 
         });
     }
 });
