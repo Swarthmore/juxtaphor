@@ -28,7 +28,6 @@ AV.WitnessCollectionView = Backbone.View.extend({
 	    //the id.
 	    var idToDelete = $(ev.currentTarget).data('value');
 	    var sourceToRemove = this.collection.find(function (source) {
-            console.log(source.id + " <> " + idToDelete);
 		    return source.id == idToDelete;});
 	    sourceToRemove.urlRoot = '/juxta/witness';
 	    sourceToRemove.destroy();
