@@ -30,9 +30,6 @@ AV.Router = Backbone.Router.extend({
     
     routes: {
         '': 'index',
-        'sources': 'sources',
-        'witnesses': 'witnesses',
-        'sets': 'sets',
         'source': 'source',
         'source/:idToView' : 'source',
         'visualization/:idToViz': 'visualize'
@@ -71,6 +68,7 @@ AV.Router = Backbone.Router.extend({
     visualize: function (idToVisualize) {
         if (!(this.listViewsRendered)) {
             this.renderListViews();
+            this.source();
         }
         console.log(idToVisualize);
         this.visualizationModel.set('id', idToVisualize);
