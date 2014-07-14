@@ -28,7 +28,7 @@ AV.SourceCollectionView = Backbone.View.extend({
 	    var sourceToRemove = this.collection.find(function (source) {
 		    return source.id == idToDelete;});
 	    sourceToRemove.urlRoot = '/juxta/source';
-	    sourceToRemove.destroy().done(_.bind(function(){this.render();}, this));
+	    sourceToRemove.destroy().done(_.bind(function(){this.fetch();}, this));
     },
     transform: function(ev){
         var checkedBoxes = _.filter($('input:checkbox.transformCheckbox'), 
