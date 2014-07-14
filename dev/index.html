@@ -152,20 +152,20 @@
               <input type="checkbox" 
                      class="transformCheckbox"
                      name="transform" 
-                     value=<%=source.escape('id')%>>
+                     value=<%=source.get('id')%>>
             </td>
             <td >
               <div class="btn-group">
                 <a type="button" 
                    class="btn btn-primary"
                    id="viewButton"
-                   href="#/source/<%=source.escape('id')%>">
+                   href="#/source/<%=source.get('id')%>">
 		          <span class="glyphicon glyphicon-eye-open"></span>
 		        </a>
 	            <button type="button"
 		                class="btn btn-danger"
                         id="deleteSourceButton"
-                        data-value=<%=source.escape('id')%>>
+                        data-value=<%=source.get('id')%>>
                   <span class="glyphicon glyphicon-trash"></span> 
                 </button>
               </div>
@@ -206,13 +206,13 @@
               <input type="checkbox" 
                      class="witnessCheckbox"
                      name="witness" 
-                     value=<%=witness.escape('id')%>>
+                     value=<%=witness.get('id')%>>
             </td>
             <td>
               <button type="button" 
 	                  class="btn btn-danger"
                       id="deleteWitnessButton"
-                      data-value=<%=witness.escape('id')%>>
+                      data-value=<%=witness.get('id')%>>
                 <span class="glyphicon glyphicon-trash"></span> Delete
               </button>
 	        </td>
@@ -245,20 +245,21 @@
             <% if (set.get('status') == 'COLLATED') { %>
             <td><span class="glyphicon glyphicon-ok"></span></td>
             <% } else { %>
-            <td><span class="glyphicon glyphicon-remove"></span></td>
+            <!-- <td><span class="glyphicon glyphicon-remove"></span></td> -->
+            <td><%=set.escape('status')%></td>
             <% } %>
             <td>
               <div class="btn-group">
                 <a type="button"
                    class="btn btn-primary"
-                   href="#visualization/<%=set.escape('id')%>"
+                   href="#visualization/<%=set.get('id')%>"
                    id="visualizationButton">
                   Visualize
                 </a>
                 <button type="button" 
 	                    class="btn btn-danger"
                         id="deleteSetButton"
-                        data-value=<%=set.escape('id')%>>
+                        data-value=<%=set.get('id')%>>
                   <span class="glyphicon glyphicon-trash"></span>
                 </button>
               </div>
