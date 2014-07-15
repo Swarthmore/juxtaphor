@@ -13,6 +13,9 @@ AV.VisualizationView = Backbone.View.extend({
                         .reload(true);
             }
         }, this));
+        $('#basicModal').on('hidden.bs.modal',function(){
+            router.navigate('', {trigger: false, replace: true});
+        });
     },
 
     
