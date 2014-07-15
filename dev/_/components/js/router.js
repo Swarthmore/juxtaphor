@@ -10,10 +10,10 @@
 AV.Router = Backbone.Router.extend({
     initialize: function() {
         this.sourceModel = new AV.SourceModel();
-	this.sourceCollection = new AV.SourceCollection();
+	    this.sourceCollection = new AV.SourceCollection();
         this.sourceView = new AV.SourceView({
             model:this.sourceModel, collection:this.sourceCollection});
-	this.sourceCollectionView = new AV.SourceCollectionView(
+	    this.sourceCollectionView = new AV.SourceCollectionView(
             {collection:this.sourceCollection});
        	this.witnessCollection = new AV.WitnessCollection();
         this.comparisonSetModel = new AV.ComparisonSetModel();
@@ -73,7 +73,6 @@ AV.Router = Backbone.Router.extend({
         console.log(idToVisualize);
         this.visualizationModel.set('id', idToVisualize);
         this.visualizationView.render();
-	this.navigate('', {trigger: false, replace: true});
     }
     
 });
