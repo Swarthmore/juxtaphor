@@ -1,5 +1,21 @@
 AV.VisualizationView = Backbone.View.extend({
     el: '#visualization',
+
+    initialize: function() {
+        this.$el.load(_.bind(function(){
+            console.log("it did a reload");
+            console.log(this.$el.contents()[0].title);
+            if (!(this.$el.contents()[0].title)) {
+                console.log("RENDERING it says");
+                document.getElementById('visualization')
+                        .contentWindow
+                        .location
+                        .reload(true);
+            }
+        }, this));
+    },
+
+    
     // The rendering of the visualization will be slightly
     // different here, because there is no templating necessary:
     // The server gives back a page.
@@ -18,12 +34,10 @@ AV.VisualizationView = Backbone.View.extend({
                 return this.render();
             }
         }, this));
-        
-
         this.$el.attr('src', this.model.url).load(_.bind(function() {
             var iframe = this.$el.contents();
-            // iframe.find('.menubar').remove();
-			// iframe.find('.title-bar').remove();
+            iframe.find('.menubar').remove();
+//			iframe.find('.title-bar').remove();
         }, this));
 
         $('#basicModal').modal({
