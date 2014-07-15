@@ -43,7 +43,7 @@ AV.Router = Backbone.Router.extend({
     
     renderListViews: function(){
         this.sourceCollection.fetch();
-        this.comparisonSetCollection.fetch();
+        this.comparisonSetCollectionView.refresh();
         this.witnessCollection.fetch();
         this.listViewsRendered = true;
     },

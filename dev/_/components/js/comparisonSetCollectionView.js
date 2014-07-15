@@ -1,7 +1,7 @@
 AV.ComparisonSetCollectionView = Backbone.View.extend({
     el: '#list_set_container',
     initialize: function() {
-        this.listenTo(this.collection, 'all', this.render);
+        this.listenTo(this.collection, 'reset', this.render);
         this.listenTo(Backbone, 'comparison:collate', this.refresh);
     },
     events: {
@@ -11,9 +11,16 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
     render: function () {
         this.$el.empty();
         this.$el.html(this.template({sets: this.collection.models}));
+        if (_.any(this.collection.models,
+                  function(model){
+                      return model.get('status') == 'TOKENIZING' || 
+                             model.get('status') == 'TOKENIZED' ||
+                             model.get('status') == 'COLLATING';})){
+            this.refresh();
+        }
     },
     refresh: function(){
-        this.collection.fetch();
+        this.collection.fetch({reset:true});
     },
     delete: function(ev) {
 	    //ev is the mouse event. We receive the data-value which contains

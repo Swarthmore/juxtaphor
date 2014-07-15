@@ -19,10 +19,6 @@ AV.WitnessCollectionView = Backbone.View.extend({
     render: function () {
         this.$el.empty();
         this.$el.html(this.template({witnesses: this.collection.models}));	
-        if (_.any(this.collection.models,
-                  function(model){return model.get('status') == 'TOKENIZING';})){
-            this.refresh();
-        };
     },
     refresh: function() {
         this.collection.fetch();
