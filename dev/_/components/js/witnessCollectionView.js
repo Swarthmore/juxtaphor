@@ -56,5 +56,6 @@ AV.WitnessCollectionView = Backbone.View.extend({
             this.model.set({id:d});
             this.model.collate();
         }, this));
+        this.refresh();
     }
 });

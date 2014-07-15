@@ -23,6 +23,5 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
 		    return source.id == idToDelete;});
 	    sourceToRemove.urlRoot = '/juxta/set';
 	    sourceToRemove.destroy();
-	    
     }
 });

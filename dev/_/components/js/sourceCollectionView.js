@@ -49,5 +49,6 @@ AV.SourceCollectionView = Backbone.View.extend({
 		        contentType: 'application/json'
             }).done(function(){Backbone.trigger("source:transformed");});
         });
+        this.refresh();
     }
 });
