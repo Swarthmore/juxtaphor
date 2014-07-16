@@ -9,6 +9,9 @@
 
 AV.Router = Backbone.Router.extend({
     initialize: function() {
+        this.workspaceCollection = new AV.WorkspaceCollection();
+        this.workspaceCollectionView = new AV.WorkspaceCollectionView(
+            {collection:this.workspaceCollection});
         this.sourceModel = new AV.SourceModel();
 	    this.sourceCollection = new AV.SourceCollection();
         this.sourceView = new AV.SourceView({
@@ -38,6 +41,7 @@ AV.Router = Backbone.Router.extend({
     },
 
     index: function() {
+        this.workspaceCollection.fetch();
         this.renderListViews();
         this.source();
     },
