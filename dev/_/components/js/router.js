@@ -34,7 +34,6 @@ AV.Router = Backbone.Router.extend({
         'source/:idToView' : 'source',
         'viz/heatmap/:idToViz': 'heatMap',
         'viz/sidebyside/:idToViz': 'sideBySide'
-
     },
 
     index: function() {
