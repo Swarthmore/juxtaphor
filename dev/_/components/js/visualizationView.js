@@ -8,9 +8,9 @@ AV.VisualizationView = Backbone.View.extend({
             if (!(this.$el.contents()[0].title)) {
                 console.log("RENDERING it says");
                 document.getElementById('visualization')
-                        .contentWindow
-                        .location
-                        .reload(true);
+                    .contentWindow
+                    .location
+                    .reload(true);
             }
         }, this));
         $('#basicModal').on('hidden.bs.modal',function(){
@@ -18,13 +18,32 @@ AV.VisualizationView = Backbone.View.extend({
         });
     },
 
-    
+    sideBySide: function() {
+        this.model.url = this.model.urlRoot + this.model.id;
+        this.model.fetch(
+            {success: _.bind(function(){
+                var ids = _.pluck(this.model.get('witnesses'), 'id');
+                if (ids.length < 2){
+                    console.log('ids.length < 2: ' + ids);
+                }
+                this.model.url = this.model.urlRoot + this.model.id +
+                    '/view?mode=sidebyside&condensed=true&docs=' + 
+                    ids[0] + ',' + ids[1];
+                this.render();
+            }, this)
+            });
+    },
+
+    heatMap: function() {
+        this.model.url = this.model.urlRoot + this.model.id +
+            '/view?mode=heatmap&condensed=true';
+        this.render();
+    },
+
     // The rendering of the visualization will be slightly
     // different here, because there is no templating necessary:
     // The server gives back a page.
-    render: function() {
-        this.model.url = this.model.urlRoot + this.model.id +
-            '/view?mode=heatmap&condensed=true';
+    render: function(url){
         var response = $.ajax({
             url: this.model.url,
             type: "GET"

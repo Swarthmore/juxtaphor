@@ -32,7 +32,8 @@ AV.Router = Backbone.Router.extend({
         '': 'index',
         'source': 'source',
         'source/:idToView' : 'source',
-        'visualization/:idToViz': 'visualize'
+        'viz/heatmap/:idToViz': 'heatMap',
+        'viz/sidebyside/:idToViz': 'sideBySide'
 
     },
 
@@ -65,14 +66,25 @@ AV.Router = Backbone.Router.extend({
         }
     },
 
-    visualize: function (idToVisualize) {
+    sideBySide: function (idToVisualize) {
         if (!(this.listViewsRendered)) {
             this.renderListViews();
             this.source();
         }
         console.log(idToVisualize);
         this.visualizationModel.set('id', idToVisualize);
-        this.visualizationView.render();
+        this.visualizationView.sideBySide();
+    },
+
+    heatMap: function (idToVisualize) {
+        console.log("Heatmap route OK");
+        if (!(this.listViewsRendered)) {
+            this.renderListViews();
+            this.source();
+        }
+        console.log(idToVisualize);
+        this.visualizationModel.set('id', idToVisualize);
+        this.visualizationView.heatMap();
     }
     
 });

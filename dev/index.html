@@ -51,7 +51,7 @@
       </div>
     </div>
 
-    <div class = "container-fluid">
+    <div class="container-fluid">
       <div class="row">
         <div id="views" class="col-md-4 col-md-offset-1">
           <!------ Template Containers ------>
@@ -119,7 +119,7 @@
       <label>Name</label>
       <input type="text" 
              id="name"
-	     maxlength=75
+	         maxlength=75
              placeholder="<%= source.escape('name') ? source.escape('name') : '' %>">
       <input type="button" 
              class="btn btn-default btn-lg"
@@ -248,9 +248,15 @@
               <div class="btn-group">
                 <a type="button"
                    class="btn btn-primary"
-                   href="#visualization/<%=set.get('id')%>"
-                   id="visualizationButton">
-                  Visualize
+                   href="#viz/heatmap/<%=set.get('id')%>"
+                   id="heatMapButton">
+                  Heat Map
+                </a>
+                <a type="button"
+                   class="btn btn-primary"
+                   href="#viz/sidebyside/<%=set.get('id')%>"
+                   id="sideBySideButton">
+                  Side By Side
                 </a>
                 <button type="button" 
 	                    class="btn btn-danger"
@@ -266,7 +272,8 @@
       </table>
     </script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+    </script>
     <script src="_/js/lib/bootstrap.min.js"></script>
     <script src="_/js/lib/underscore.js"></script>
     <script src="_/js/lib/backbone.js"></script>
