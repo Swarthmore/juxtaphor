@@ -29,3 +29,4 @@ function json_post(url,data,callback,flag){
 }
 
 var AV = {};
+AV.WORKSPACE = 'public';
