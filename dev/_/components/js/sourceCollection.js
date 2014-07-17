@@ -7,5 +7,9 @@
 ////////////////////////////////////////////////////////////////////
 
 AV.SourceCollection = Backbone.Collection.extend({
-    url: '/juxta/source.json'
+    url: '/juxta/' + AV.WORKSPACE + '/source.json',
+    updateURL: function() {
+        this.url = '/juxta/' + AV.WORKSPACE + '/source.json';
+    }
+
 });
