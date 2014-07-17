@@ -1,7 +1,7 @@
 // Backbone routing used here to get visualizations 
 
 
-test(arg){
+function test(arg){
 	var output = arg || 'fire';
 	console.log(output);
 }
@@ -21,10 +21,10 @@ function json_post(url,data,callback,flag){
 }
 var PV = {}
 
-
+test("yo1");
 PV.Router = Backbone.Router.extend({
   initialize: function(){
-
+    test("HELLLOO");
   },
 
   routes: {
@@ -32,12 +32,13 @@ PV.Router = Backbone.Router.extend({
     'viz/sidebyside/:idToViz': 'sideBySide'
   },
   sideBySide: function (idToVisualize) {
-
+    //render the sideBySide template
+    test("sideBySide");
   },
 
   heatMap: function (idToVisualize) {
-
-
+    //render the heatMap template
+    test("heatMap");	
   }
 
 
@@ -46,3 +47,4 @@ PV.Router = Backbone.Router.extend({
 
 var router = new PV.Router();
 Backbone.history.start();
+
