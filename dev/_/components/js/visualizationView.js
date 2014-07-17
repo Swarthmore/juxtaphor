@@ -49,7 +49,7 @@ AV.VisualizationView = Backbone.View.extend({
             type: "GET"
         }).done(_.bind(function(d) {
             //If the server returns an HTML document
-            if (d[0] != 'R') { 
+            if (d[0] != 'R') {
                 return d;
             } else { //Rendering
                 setTimeout(function(){}, 1000);
@@ -63,7 +63,7 @@ AV.VisualizationView = Backbone.View.extend({
         }, this));
 
         $('#basicModal').modal({
-            show: true 
+            show: true
         });
     }
 });
