@@ -30,24 +30,25 @@ AV.Router = Backbone.Router.extend({
             {model: this.visualizationModel});
         this.listViewsRendered = false;
     },
-    
+
     routes: {
         '': 'index',
         'source': 'source',
         'source/:idToView' : 'source',
         'viz/heatmap/:idToViz': 'heatMap',
-        'viz/sidebyside/:idToViz': 'sideBySide'
-
+        'viz/sidebyside/:idToViz': 'sideBySide',
+        'workspace/:ws' : 'switchWorkspace'
     },
 
     index: function() {
-        this.workspaceCollection.fetch();
+        console.log('index route triggered');
+        this.workspaceCollection.fetch({reset:true});
         this.renderListViews();
         this.source();
     },
-    
+
     renderListViews: function(){
-        this.sourceCollection.fetch();
+        this.sourceCollectionView.refresh();
         this.comparisonSetCollectionView.refresh();
         this.witnessCollection.fetch();
         this.listViewsRendered = true;
@@ -89,8 +90,15 @@ AV.Router = Backbone.Router.extend({
         console.log(idToVisualize);
         this.visualizationModel.set('id', idToVisualize);
         this.visualizationView.heatMap();
+    },
+
+    switchWorkspace: function(workspace){
+        AV.WORKSPACE = workspace;
+        console.log(AV.WORKSPACE);
+        this.navigate('');
+        this.index();
+
     }
-    
 });
 
 

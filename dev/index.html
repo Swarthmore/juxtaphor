@@ -23,8 +23,8 @@
                  data-toggle="dropdown">
                 Workspaces <span class="caret"></span>
               </a>
-              <ul class="dropdown-menu" 
-                  id="workspace_dropdown_container" 
+              <ul class="dropdown-menu"
+                  id="workspace_dropdown_container"
                   role="menu">
                 <!-- This will be filled by the template. -->
               </ul>
@@ -33,18 +33,18 @@
         </div>
       </nav>
 
-    <div class="modal fade bs-example-modal-lg" 
-         id="basicModal" 
-         tabindex="-1" 
-         role="dialog" 
-         aria-labelledby="basicModal" 
+    <div class="modal fade bs-example-modal-lg"
+         id="basicModal"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="basicModal"
          aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" 
-                    class="close" 
-                    data-dismiss="modal" 
+            <button type="button"
+                    class="close"
+                    data-dismiss="modal"
                     aria-hidden="true">
               &times;
             </button>
@@ -55,7 +55,7 @@
           </div>
           <div class="modal-footer">
             <button type="button"
-                    class="btn btn-default" 
+                    class="btn btn-default"
                     data-dismiss="modal">
               Close
             </button>
@@ -77,8 +77,8 @@
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" 
-                     data-parent="#accordion" 
+                  <a data-toggle="collapse"
+                     data-parent="#accordion"
                      href="#collapseOne">
                     Sources
                   </a>
@@ -93,8 +93,8 @@
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" 
-                     data-parent="#accordion" 
+                  <a data-toggle="collapse"
+                     data-parent="#accordion"
                      href="#collapseTwo">
                     Witnesses
                   </a>
@@ -109,8 +109,8 @@
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" 
-                     data-parent="#accordion" 
+                  <a data-toggle="collapse"
+                     data-parent="#accordion"
                      href="#collapseThree">
                     Collections
                   </a>
@@ -126,22 +126,26 @@
           <!--Here ends the collapsible containers i-->
         </div>
       </div>
-    </div> 
+    </div>
     <!----------- Templates ----------->
     <script type="text/template" id="workspace_dropdown_template">
       <% _.each(workspaces, function (workspace) {  %>
-      <li><a href="#"><%= workspace.escape('name')%></a></li>
+      <li>
+        <a href="#workspace/<%= workspace.escape('name') %>">
+          <%= workspace.escape('name')%>
+        </a>
+      </li>
       <% }); %>
       <li class="divider"></li>
       <li><a href="#">New Workspace</a></li>
     </script>
     <script type="text/template" id="view_template">
       <label>Name</label>
-      <input type="text" 
+      <input type="text"
              id="name"
 	         maxlength=75
              placeholder="<%= source.escape('name') ? source.escape('name') : '' %>">
-      <input type="button" 
+      <input type="button"
              class="btn btn-default btn-lg"
              style="<%= source.get('name')?'display:none':''%>"
              id="uploadButton"
@@ -165,14 +169,14 @@
             <td ><%= source.escape('name') %></td>
 
             <td >
-              <input type="checkbox" 
+              <input type="checkbox"
                      class="transformCheckbox"
-                     name="transform" 
+                     name="transform"
                      value=<%=source.get('id')%>>
             </td>
             <td >
               <div class="btn-group">
-                <a type="button" 
+                <a type="button"
                    class="btn btn-primary"
                    id="viewButton"
                    href="#/source/<%=source.get('id')%>">
@@ -182,7 +186,7 @@
 		                class="btn btn-danger"
                         id="deleteSourceButton"
                         data-value=<%=source.get('id')%>>
-                  <span class="glyphicon glyphicon-trash"></span> 
+                  <span class="glyphicon glyphicon-trash"></span>
                 </button>
               </div>
 	        </td>
@@ -219,13 +223,13 @@
           <tr>
             <td><%= witness.escape('name') %></td>
             <td>
-              <input type="checkbox" 
+              <input type="checkbox"
                      class="witnessCheckbox"
-                     name="witness" 
+                     name="witness"
                      value=<%=witness.get('id')%>>
             </td>
             <td>
-              <button type="button" 
+              <button type="button"
 	                  class="btn btn-danger"
                       id="deleteWitnessButton"
                       data-value=<%=witness.get('id')%>>
@@ -278,7 +282,7 @@
                    id="sideBySideButton">
                   Side By Side
                 </a>
-                <button type="button" 
+                <button type="button"
 	                    class="btn btn-danger"
                         id="deleteSetButton"
                         data-value=<%=set.get('id')%>>
