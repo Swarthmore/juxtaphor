@@ -7,12 +7,15 @@
 
 
 AV.witness = Backbone.Model.extend({
-	url: '/juxta/witness',
+	url: AV.URL('witness'),
 	defaults: {
 		source: '',
 		xslt: '',
 		finalName: ''
-	}
+	},
+    updateURL: function() {
+        this.url = AV.URL('witness');
+    }
 });
 
 // end witness model
