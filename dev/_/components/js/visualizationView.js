@@ -29,9 +29,15 @@ AV.VisualizationView = Backbone.View.extend({
                 this.model.url = this.model.urlRoot + this.model.id +
                     '/view?mode=sidebyside&condensed=true&docs=' + 
                     ids[0] + ',' + ids[1];
+
+	        //Set the Share button route.
+		var pathArray = window.location.pathname;
+	        var path = $("#shareID").attr("href") +'/#' + Backbone.history.fragment;
+	        $("#shareID").attr("href", path);
                 this.render();
             }, this)
             });
+
     },
 
     heatMap: function() {
