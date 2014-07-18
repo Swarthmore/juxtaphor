@@ -95,6 +95,18 @@ AV.Router = Backbone.Router.extend({
     switchWorkspace: function(workspace){
         AV.WORKSPACE = workspace;
         console.log(AV.WORKSPACE);
+        this.sourceModel.updateURL();
+        this.sourceCollection.updateURL();
+        this.witnessCollection.updateURL();
+        this.comparisonSetCollection.updateURL();
+        this.comparisonSetModel.updateURL();
+        this.visualizationModel.updateURL();
+        this.sourceModel.fetch({reset:true});
+        this.sourceCollection.fetch({reset:true});
+        this.witnessCollection.fetch({reset:true});
+        this.comparisonSetCollection.fetch({reset:true});
+        this.comparisonSetModel.fetch({reset:true});
+        this.visualizationModel.fetch({reset:true});
         this.navigate('');
         this.index();
 
