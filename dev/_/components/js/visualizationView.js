@@ -43,7 +43,14 @@ AV.VisualizationView = Backbone.View.extend({
     heatMap: function() {
         this.model.url = this.model.urlRoot + this.model.id +
             '/view?mode=heatmap&condensed=true';
-        this.render();
+        
+	
+	//Set the Share button route.
+	var pathArray = window.location.pathname;
+	var path = $("#shareID").attr("href") +'/#' + Backbone.history.fragment;
+	$("#shareID").attr("href", path);
+
+	this.render();
     },
 
     // The rendering of the visualization will be slightly
