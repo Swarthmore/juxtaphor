@@ -1,7 +1,8 @@
 AV.VisualizationView = Backbone.View.extend({
-    el: '#visualization',
-
+    el: '#modal_container',
     initialize: function() {
+	var template = _.template( $("#modal_template").html());
+	this.$el.html( template );
         this.$el.load(_.bind(function(){
             console.log("it did a reload");
             console.log(this.$el.contents()[0].title);
@@ -17,7 +18,6 @@ AV.VisualizationView = Backbone.View.extend({
             router.navigate('', {trigger: false, replace: true});
         });
     },
-
     sideBySide: function() {
         this.model.url = this.model.urlRoot + this.model.id;
         this.model.fetch(
@@ -43,7 +43,9 @@ AV.VisualizationView = Backbone.View.extend({
     // The rendering of the visualization will be slightly
     // different here, because there is no templating necessary:
     // The server gives back a page.
+
     render: function(url){
+
         var response = $.ajax({
             url: this.model.url,
             type: "GET"
@@ -56,8 +58,8 @@ AV.VisualizationView = Backbone.View.extend({
                 return this.render();
             }
         }, this));
-        this.$el.attr('src', this.model.url).load(_.bind(function() {
-            var iframe = this.$el.contents();
+        this.$("#visualization").attr('src', this.model.url).load(_.bind(function() {
+            var iframe = this.$("#visualization").contents();
             iframe.find('.menubar').remove();
 //			iframe.find('.title-bar').remove();
         }, this));
@@ -67,5 +69,3 @@ AV.VisualizationView = Backbone.View.extend({
         });
     }
 });
-
-

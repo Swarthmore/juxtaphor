@@ -21,7 +21,6 @@ function json_post(url,data,callback,flag){
 }
 var PV = {}
 
-test("yo1");
 PV.Router = Backbone.Router.extend({
   initialize: function(){
     test("HELLLOO");
