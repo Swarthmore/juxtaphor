@@ -30,3 +30,7 @@ function json_post(url,data,callback,flag){
 
 var AV = {};
 AV.WORKSPACE = 'public';
+AV.URL = function(path) {
+    path = path ? path : '';
+    return '/juxta/' + AV.WORKSPACE + '/' + path;
+};
