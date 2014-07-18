@@ -32,7 +32,7 @@ AV.VisualizationView = Backbone.View.extend({
 
 	        //Set the Share button route.
 		var pathArray = window.location.pathname;
-	        var path = $("#shareID").attr("href") +'/#' + Backbone.history.fragment;
+	        var path = $("#shareID").attr("href") +'#' + Backbone.history.fragment;
 	        $("#shareID").attr("href", path);
                 this.render();
             }, this)
@@ -47,7 +47,7 @@ AV.VisualizationView = Backbone.View.extend({
 	
 	//Set the Share button route.
 	var pathArray = window.location.pathname;
-	var path = $("#shareID").attr("href") +'/#' + Backbone.history.fragment;
+	var path = $("#shareID").attr("href") +'#' + Backbone.history.fragment;
 	$("#shareID").attr("href", path);
 
 	this.render();
