@@ -13,7 +13,7 @@ AV.VisualizationView = Backbone.View.extend({
                     .reload(true);
             }
         }, this));
-        $('#basicModal').on('hidden.bs.modal',function(){
+        $('#visualizationModal').on('hidden.bs.modal',function(){
             router.navigate('', {trigger: false, replace: true});
         });
     },
@@ -62,7 +62,7 @@ AV.VisualizationView = Backbone.View.extend({
 //			iframe.find('.title-bar').remove();
         }, this));
 
-        $('#basicModal').modal({
+        $('#visualizationModal').modal({
             show: true
         });
     }
