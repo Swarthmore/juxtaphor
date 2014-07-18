@@ -74,7 +74,7 @@ AV.VisualizationView = Backbone.View.extend({
         this.$("#visualization").attr('src', this.model.url).load(_.bind(function() {
             var iframe = this.$("#visualization").contents();
             iframe.find('.menubar').remove();
-//			iframe.find('.title-bar').remove();
+	    iframe.find('#change-workspace').remove();
         }, this));
 
         $('#basicModal').modal({
