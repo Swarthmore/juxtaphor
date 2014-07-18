@@ -18,7 +18,7 @@ AV.WitnessCollectionView = Backbone.View.extend({
     template: _.template( $("#list_witness_template").html()),
     render: function () {
         this.$el.empty();
-        this.$el.html(this.template({witnesses: this.collection.models}));	
+        this.$el.html(this.template({witnesses: this.collection.models}));
     },
     refresh: function() {
         this.collection.fetch();
@@ -29,12 +29,12 @@ AV.WitnessCollectionView = Backbone.View.extend({
 	    var idToDelete = $(ev.currentTarget).data('value');
 	    var sourceToRemove = this.collection.find(function (source) {
 		    return source.id == idToDelete;});
-	    sourceToRemove.urlRoot = '/juxta/witness';
+	    sourceToRemove.urlRoot = AV.URL('witness');
 	    sourceToRemove.destroy();
-	    
+
     },
     collate: function(ev) {
-        var checkedBoxes = _.filter($('input:checkbox.witnessCheckbox'), 
+        var checkedBoxes = _.filter($('input:checkbox.witnessCheckbox'),
                                     function(box)
                                     {return box.checked === true;});
         var checkedIDs = _.pluck(checkedBoxes, 'value');
@@ -47,7 +47,7 @@ AV.WitnessCollectionView = Backbone.View.extend({
         //together as a set, and then takes the set ID that is returned
         //from that, and collates it.
         $.ajax({
-            url: "/juxta/set.json",
+            url: AV.URL('set.json'),
             type: "POST",
             data: JSON.stringify({name:givenName, witnesses:checkedIDs}),
             contentType: 'application/json',

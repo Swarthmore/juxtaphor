@@ -32,7 +32,7 @@ AV.SourceCollectionView = Backbone.View.extend({
 	    var idToDelete = $(ev.currentTarget).data('value');
 	    var sourceToRemove = this.collection.find(function (source) {
 		    return source.id == idToDelete;});
-	    sourceToRemove.urlRoot = '/juxta/source';
+	    sourceToRemove.urlRoot = AV.URL('source');
 	    sourceToRemove.destroy().done(_.bind(function(){this.refresh();}, this));
     },
     transform: function(ev){
@@ -40,7 +40,7 @@ AV.SourceCollectionView = Backbone.View.extend({
                                     function (box) {return box.checked === true;});
         var checkedIDs = _.pluck(checkedBoxes, 'value');
         _.forEach(checkedIDs, function(id) {
-	        var url = "/juxta/transform";
+	        var url = '../..' + AV.URL('transform');
 	        var request = { source: id };
 	        //We use AJAX to send the request directly from here.
 	        $.ajax({
