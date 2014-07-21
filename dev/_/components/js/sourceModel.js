@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////
 
 AV.SourceModel = Backbone.Model.extend({
-	urlRoot: AV.URL('source.json'),
+	urlRoot: AV.URL('source'),
 	defaults: {
 		id: null,
 		name: null,
@@ -24,7 +24,7 @@ AV.SourceModel = Backbone.Model.extend({
 		return Backbone.sync.apply(this, [a,b,c]);
     },
     updateURL: function() {
-        this.urlRoot = AV.URL('source.json');
+        this.urlRoot = AV.URL('source');
         console.log("Current urlroot:" + this.urlRoot);
     }
 });
