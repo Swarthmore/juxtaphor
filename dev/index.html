@@ -64,7 +64,41 @@
       </div>
     </div>
 
-    <div id="modal_container"></div>
+    <div class="modal fade" 
+      id="visualizationModal" 
+      tabindex="-1" 
+      role="dialog" 
+      aria-labelledby="visualizationModal" 
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+	<div class="modal-content">
+	  <div class="modal-header">
+	    <button type="button" 
+	      class="close" 
+	      data-dismiss="modal" 
+	      aria-hidden="true">
+	      &times;
+	    </button>
+	    <h4 class="modal-title" id="myModalLabel">Akhmatoviz</h4>
+	  </div>
+	  <div class="modal-body">
+	    <iframe id="visualization"></iframe>
+	  </div>
+	  <div class="modal-footer">
+	    <a href="pages/present.html"
+	      class="btn btn-default"
+	      id= "shareID">
+	      Share
+	    </a>
+	    <button type="button"
+	      class="btn btn-default" 
+	      data-dismiss="modal">
+	      Close
+	    </button>
+	  </div>
+	</div>
+      </div>
+    </div>
 
     <div class="container-fluid">
       <div class="row">
@@ -175,44 +209,6 @@
              value="New Workspace"/>
     </script>
 
-    <script type="text/template" id="modal_template">
-      <div class="modal fade" 
-           id="visualizationModal" 
-           tabindex="-1" 
-           role="dialog" 
-           aria-labelledby="visualizationModal" 
-           aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" 
-                      class="close" 
-                      data-dismiss="modal" 
-                      aria-hidden="true">
-                &times;
-              </button>
-              <h4 class="modal-title" id="myModalLabel">Akhmatoviz</h4>
-            </div>
-            <div class="modal-body">
-              <iframe id="visualization"></iframe>
-            </div>
-	        <div class="modal-footer">
-	          <a href="pages/present.html"
-		         class="btn btn-default"
-                 id= "shareID">
-		        Share
-	          </a>
-              <button type="button"
-                      class="btn btn-default" 
-                      data-dismiss="modal">
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </script>
 
     <script type="text/template" id="view_template">
       <label>Name</label>
