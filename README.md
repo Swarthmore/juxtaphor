@@ -42,6 +42,16 @@ Other buttons, such as the viewSource button and the Visualize button link
 to routes. The logic for what happens when they are clicked lies mostly in
 the router.js file.
 
+###Presentation Mode###
+If one wants to link directly to a collection presentation, one can click
+on the Visualize to open up a Modal. In the modal, there's a share button
+on the bottom left. This button links to a page with just the visualization.
+
+The implementation is as follows:
+-Inside index.html, there's code for the modal. Inside is a share button. There is also an iframe with id "visualization".
+-In visualizationView.js, we retrieve the correct path and put it into the share button
+-the path is a route of another page-- present.html
+-present.html is a separate page. It has its own backbone router within visualRouter.js. It also has an iframe that gets rendered. 
 
 ##Nuances and Explanations##
 
