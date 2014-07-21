@@ -12,6 +12,8 @@ AV.Router = Backbone.Router.extend({
         this.workspaceCollection = new AV.WorkspaceCollection();
         this.workspaceDropdownView = new AV.WorkspaceDropdownView(
             {collection:this.workspaceCollection});
+        this.workspaceEditView = new AV.WorkspaceEditView(
+            {collection:this.workspaceCollection});
         this.sourceModel = new AV.SourceModel();
 	    this.sourceCollection = new AV.SourceCollection();
         this.sourceView = new AV.SourceView({
@@ -37,6 +39,7 @@ AV.Router = Backbone.Router.extend({
         'source/:idToView' : 'source',
         'viz/heatmap/:idToViz': 'heatMap',
         'viz/sidebyside/:idToViz': 'sideBySide',
+        'workspace': 'editWorkspaces',
         'workspace/:ws' : 'switchWorkspace'
     },
 
@@ -90,6 +93,12 @@ AV.Router = Backbone.Router.extend({
         console.log(idToVisualize);
         this.visualizationModel.set('id', idToVisualize);
         this.visualizationView.heatMap();
+    },
+
+    editWorkspaces: function(){
+        this.workspaceCollection.fetch({success: _.bind(function(){
+            this.workspaceEditView.render();
+        }, this)});
     },
 
     switchWorkspace: function(workspace){
