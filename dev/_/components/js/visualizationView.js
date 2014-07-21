@@ -31,7 +31,11 @@ AV.VisualizationView = Backbone.View.extend({
                     '/view?mode=sidebyside&condensed=true&docs=' + 
                     ids[0] + ',' + ids[1];
 
-	        //Set the Share button route.
+	        /*
+		 * Set the Share button route located in the modal template
+		 */
+
+		
 		var pathArray = window.location.pathname;
 	        var path = $("#shareID").attr("href") +'#' + Backbone.history.fragment;
 	        $("#shareID").attr("href", path);
