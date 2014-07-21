@@ -27,10 +27,10 @@ AV.WorkspaceEditView = Backbone.View.extend({
         this.render();
     },
     newWorkspace: function() {
-        json_post('/juxta/workspace', 
+        json_post('/juxta/workspace',
                   {name: $('#workspaceName').val()},
                   _.bind(function(){
-                      this.collection.fetch(); 
+                      this.collection.fetch();
                       this.render();}, this));
     }
 });

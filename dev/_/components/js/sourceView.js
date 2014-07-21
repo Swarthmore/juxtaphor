@@ -30,10 +30,14 @@ AV.SourceView = Backbone.View.extend({
 	    this.model.clear().set(this.model.defaults);
         this.codeMirror.save();
 	    // Saving the model sends a "sync" request.
-	    this.model.save({
+        console.log($('#viewContent').val());
+        console.log($('#name').val());
+        this.model.set({
 		    data: $("#viewContent").val(),
 			name: $("#name").val()
-			}).done(_.bind(function() {
+			});
+        console.log(this.model);
+	    this.model.save().done(_.bind(function() {
 				    this.collection.fetch();
 				}, this));
 	    this.render();
