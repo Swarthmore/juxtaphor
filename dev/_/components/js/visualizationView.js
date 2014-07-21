@@ -23,6 +23,7 @@ AV.VisualizationView = Backbone.View.extend({
         this.model.fetch(
             {success: _.bind(function(){
                 var ids = _.pluck(this.model.get('witnesses'), 'id');
+		test(ids);
                 if (ids.length < 2){
                     console.log('ids.length < 2: ' + ids);
                 }

@@ -1,11 +1,16 @@
 // Backbone routing used here to get visualizations 
 
-
+/*
+ * Basic wrapper for console.log
+ */
 function test(arg){
 	var output = arg || 'fire';
 	console.log(output);
 }
 
+/*
+ *
+ */
 function json_post(url,data,callback,flag){
 	data = data || '';
 	callback = callback || '';
@@ -34,20 +39,23 @@ PV.Router = Backbone.Router.extend({
     //render the sideBySide template
     //Create a model to fetch from server list of witnesses
     var URL = this.baseURL + idToVisualize + '/view?mode=sidebyside&condensed=true&docs=';
-    var mod = Backbone.Model.extend({
+    var model = Backbone.Model.extend({
       url: this.baseURL+idToVisualize
     });
+
+    var mod = new model();
     test("Bout to fetch");
     mod.fetch(
              {success: _.bind(function(){
                  var ids = _.pluck(mod.get('witnesses'), 'id');
-                  if (ids.length < 2){
+                 test(ids); 
+		 if (ids.length < 2){
                       console.log('ids.length < 2: ' + ids);
                   }
-                  mod.url = mod.urlRoot + mod.id +
+                  mod.url = mod.url + 
                      '/view?mode=sidebyside&condensed=true&docs=' +
                       ids[0] + ',' + ids[1];
-                  $("#presentVis").attr('src', URL);
+                  $("#presentVis").attr('src', mod.url);
               }, this)
               }); 
 
