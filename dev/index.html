@@ -39,7 +39,7 @@
          role="dialog"
          aria-labelledby="workspaceModal"
          aria-hidden="true">
-      <div class="modal-dialog modal-lg">
+      <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button"
@@ -50,7 +50,7 @@
             </button>
             <h4 class="modal-title">Workspaces</h4>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" id="workspace-modal-body">
 
           </div>
           <div class="modal-footer">
@@ -174,6 +174,36 @@
       <li><a href="#">New Workspace</a></li>
       <li><a href="#">Edit Workspaces</a></li>
     </script>
+
+    <script type="text/template" id="workspace_edit_template">
+      Hello World!
+      <table class="table table-striped">
+        <% _.each(workspaces, function (workspace) { %>
+          <tr>
+            <td>
+              <%= workspace.escape('name')%>
+            </td>
+            <td>
+	          <button type="button"
+		              class="btn btn-danger"
+                      id="deleteWorkspaceButton"
+                      data-value=<%=workspace.get('id')%>>
+                <span class="glyphicon glyphicon-trash"></span>
+              </button>
+            </td>
+          </tr>
+        <% }) %>
+      </table>
+      <input type="text"
+             id="workspaceName"
+	         maxlength=75
+             />
+      <input type="button"
+             class="btn btn-default btn-lg"
+             id="newWorkspaceButton"
+             value="New Workspace"/>
+    </script>
+
     <script type="text/template" id="view_template">
       <label>Name</label>
       <input type="text"
@@ -201,9 +231,9 @@
         <tbody>
           <% _.each(sources, function (source) { %>
           <tr>
-            <td ><%= source.escape('name') %></td>
+            <td><%= source.escape('name') %></td>
 
-            <td >
+            <td>
               <input type="checkbox"
                      class="transformCheckbox"
                      name="transform"
