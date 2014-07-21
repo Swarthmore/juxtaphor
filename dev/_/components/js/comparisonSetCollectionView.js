@@ -13,7 +13,7 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
         this.$el.html(this.template({sets: this.collection.models}));
         if (_.any(this.collection.models,
                   function(model){
-                      return model.get('status') == 'TOKENIZING' || 
+                      return model.get('status') == 'TOKENIZING' ||
                              model.get('status') == 'TOKENIZED' ||
                              model.get('status') == 'COLLATING';})){
             this.refresh();
@@ -29,7 +29,7 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
 	    var idToDelete = $(ev.currentTarget).data('value');
 	    var sourceToRemove = this.collection.find(function (source) {
 		    return source.id == idToDelete;});
-	    sourceToRemove.urlRoot = '/juxta/set';
+	    sourceToRemove.urlRoot = AV.URL('set');
 	    sourceToRemove.destroy().done(_.bind(function(){this.refresh();}, this));
         console.log("You euthanized your Weighted Companion Collection Set" +
                     " faster than any test subject on record." +

@@ -4,5 +4,8 @@
 /////////////////////////////////////////////////////////////////////
 
 AV.WitnessCollection = Backbone.Collection.extend({
-    url: '/juxta/witness.json'
+    url: AV.URL('witness.json'),
+    updateURL: function() {
+        this.url = AV.URL('witness.json');
+    }
 });

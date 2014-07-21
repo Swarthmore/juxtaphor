@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////
 
 AV.SourceModel = Backbone.Model.extend({
-	urlRoot: '/juxta/source',
+	urlRoot: AV.URL('source'),
 	defaults: {
 		id: null,
 		name: '',
@@ -22,6 +22,9 @@ AV.SourceModel = Backbone.Model.extend({
 	sync: function(a,b,c){
 		b.attributes = [b.attributes];
 		return Backbone.sync.apply(this, [a,b,c]);
+    },
+    updateURL: function() {
+        this.urlRoot = AV.URL('source');
     }
 });
 

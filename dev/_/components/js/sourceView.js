@@ -3,7 +3,7 @@ AV.SourceView = Backbone.View.extend({
 	el: '#view_container',
 
     initialize: function(){},
-    
+
 	render: function(){
 		//compile the template using underscore
 		var template = _.template( $("#view_template").html(), {
@@ -12,7 +12,7 @@ AV.SourceView = Backbone.View.extend({
 		//Load the compiled HTML into the backbone "el"
 		this.$el.html( template );
         this.codeMirror = CodeMirror.fromTextArea(
-            document.getElementById("viewContent"), 
+            document.getElementById("viewContent"),
             {
                 theme: 'solarized dark',
                 lineNumbers: true,
@@ -29,7 +29,7 @@ AV.SourceView = Backbone.View.extend({
         // the model.
 	    this.model.clear().set(this.model.defaults);
         this.codeMirror.save();
-	// Saving the model sends a "sync" request. 
+	    // Saving the model sends a "sync" request.
 	    this.model.save({
 		    data: $("#viewContent").val(),
 			name: $("#name").val()

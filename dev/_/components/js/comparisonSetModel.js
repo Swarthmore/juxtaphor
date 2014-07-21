@@ -1,5 +1,5 @@
 AV.ComparisonSetModel = Backbone.Model.extend({
-    urlRoot:"/juxta/set",
+    urlRoot: AV.URL('set'),
 	defaults: {
 		id: null,
 		filterWhitespace: true,
@@ -7,6 +7,9 @@ AV.ComparisonSetModel = Backbone.Model.extend({
 		filterCase: true,
 		hyphenationFilter: "INCLUDE_ALL"
 	},
+    updateURL: function() {
+        this.urlRoot = AV.URL('set');
+    },
 	collateSetOpts: function() {
 		var data = this.attributes;
 		var url = this.url + '/' + this.attributes.id + '/collator';
@@ -17,7 +20,7 @@ AV.ComparisonSetModel = Backbone.Model.extend({
 		var url = this.urlRoot + '/' + this.attributes.id + '/collate';
         console.log(url);
         $.ajax({
-            url: url, 
+            url: url,
             type: 'POST'
         }).done(function(){
             Backbone.trigger("comparison:collate");
@@ -26,7 +29,7 @@ AV.ComparisonSetModel = Backbone.Model.extend({
 	viewHeatMap: function(){
 		this.url = this.url + '/' + this.attributes.id + '/view';
 		var params = {mode: 'heatmap', embed: true};
-		
+
 		var heatmap = $.ajax({
 			type: 'GET',
 			data: params,

@@ -9,6 +9,11 @@
 
 AV.Router = Backbone.Router.extend({
     initialize: function() {
+        this.workspaceCollection = new AV.WorkspaceCollection();
+        this.workspaceDropdownView = new AV.WorkspaceDropdownView(
+            {collection:this.workspaceCollection});
+        this.workspaceEditView = new AV.WorkspaceEditView(
+            {collection:this.workspaceCollection});
         this.sourceModel = new AV.SourceModel();
 	    this.sourceCollection = new AV.SourceCollection();
         this.sourceView = new AV.SourceView({
@@ -27,23 +32,26 @@ AV.Router = Backbone.Router.extend({
             {model: this.visualizationModel});
         this.listViewsRendered = false;
     },
-    
+
     routes: {
         '': 'index',
         'source': 'source',
         'source/:idToView' : 'source',
         'viz/heatmap/:idToViz': 'heatMap',
-        'viz/sidebyside/:idToViz': 'sideBySide'
-
+        'viz/sidebyside/:idToViz': 'sideBySide',
+        'workspace': 'editWorkspaces',
+        'workspace/:ws' : 'switchWorkspace'
     },
 
     index: function() {
+        console.log('index route triggered');
+        this.workspaceCollection.fetch({reset:true});
         this.renderListViews();
         this.source();
     },
-    
+
     renderListViews: function(){
-        this.sourceCollection.fetch();
+        this.sourceCollectionView.refresh();
         this.comparisonSetCollectionView.refresh();
         this.witnessCollection.fetch();
         this.listViewsRendered = true;
@@ -85,8 +93,32 @@ AV.Router = Backbone.Router.extend({
         console.log(idToVisualize);
         this.visualizationModel.set('id', idToVisualize);
         this.visualizationView.heatMap();
+    },
+
+    editWorkspaces: function(){
+        this.workspaceCollection.fetch({success: _.bind(function(){
+            this.workspaceEditView.render();
+        }, this)});
+    },
+
+    switchWorkspace: function(workspace){
+        AV.WORKSPACE = workspace;
+        console.log(AV.WORKSPACE);
+        this.sourceModel.updateURL();
+        this.sourceCollection.updateURL();
+        this.witnessCollection.updateURL();
+        this.comparisonSetCollection.updateURL();
+        this.comparisonSetModel.updateURL();
+        this.visualizationModel.updateURL();
+        this.sourceModel.fetch({reset:true});
+        this.sourceCollection.fetch({reset:true});
+        this.witnessCollection.fetch({reset:true});
+        this.comparisonSetCollection.fetch({reset:true});
+        this.comparisonSetModel.fetch({reset:true});
+        this.visualizationModel.fetch({reset:true});
+        this.navigate('');
+        this.index();
     }
-    
 });
 
 
