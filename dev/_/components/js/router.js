@@ -110,12 +110,12 @@ AV.Router = Backbone.Router.extend({
         this.comparisonSetCollection.updateURL();
         this.comparisonSetModel.updateURL();
         this.visualizationModel.updateURL();
-        this.sourceModel.fetch({reset:true});
+        //this.sourceModel.fetch({reset:true});
         this.sourceCollection.fetch({reset:true});
         this.witnessCollection.fetch({reset:true});
         this.comparisonSetCollection.fetch({reset:true});
-        this.comparisonSetModel.fetch({reset:true});
-        this.visualizationModel.fetch({reset:true});
+        //this.comparisonSetModel.fetch({reset:true});
+        //this.visualizationModel.fetch({reset:true});
         this.navigate('');
         this.index();
     }
