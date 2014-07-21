@@ -8,22 +8,6 @@ function test(arg){
 	console.log(output);
 }
 
-/*
- *
- */
-function json_post(url,data,callback,flag){
-	data = data || '';
-	callback = callback || '';
-	flag = flag || 'default';
-	$.ajax({
-		url: url,
-		type: 'POST',
-		data: JSON.stringify(data),
-		contentType: 'application/json',
-		success: callback,
-		error: function(e){test(flag); test(e);}
-	});
-}
 var PV = {}
 
 PV.Router = Backbone.Router.extend({
@@ -39,12 +23,13 @@ PV.Router = Backbone.Router.extend({
     //render the sideBySide template
     //Create a model to fetch from server list of witnesses
     var URL = this.baseURL + idToVisualize + '/view?mode=sidebyside&condensed=true&docs=';
+    
+    //This model wraps the url and lets us use fetch
     var model = Backbone.Model.extend({
       url: this.baseURL+idToVisualize
     });
 
     var mod = new model();
-    test("Bout to fetch");
     mod.fetch(
              {success: _.bind(function(){
                  var ids = _.pluck(mod.get('witnesses'), 'id');
