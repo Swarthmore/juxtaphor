@@ -63,19 +63,6 @@ AV.VisualizationView = Backbone.View.extend({
     // The server gives back a page.
 
     render: function(url){
-
-        var response = $.ajax({
-            url: this.model.url,
-            type: "GET"
-        }).done(_.bind(function(d) {
-            //If the server returns an HTML document
-            if (d[0] != 'R') {
-                return d;
-            } else { //Rendering
-                setTimeout(function(){}, 1000);
-                return this.render();
-            }
-        }, this));
         $("#visualization").attr('src', this.model.url).load(_.bind(function() {
             var iframe = $("#visualization").contents();
             iframe.find('.menubar').remove();
