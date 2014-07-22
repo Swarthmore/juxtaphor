@@ -8,12 +8,6 @@
 // purposes of nice, pleasant namespacing.                 //
 /////////////////////////////////////////////////////////////
 
-
-function test(arg){
-	var output = arg || 'fire';
-	console.log(output);
-}
-
 function json_post(url,data,callback,flag){
 	data = data || '';
 	callback = callback || '';

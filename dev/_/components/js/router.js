@@ -44,15 +44,14 @@ AV.Router = Backbone.Router.extend({
     },
 
     index: function() {
-        console.log('index route triggered');
         this.workspaceCollection.fetch({reset:true});
         this.renderListViews();
         this.source();
     },
 
     renderListViews: function(){
-        this.sourceCollectionView.refresh();
-        this.comparisonSetCollectionView.refresh();
+        this.sourceCollection.fetch();
+        this.comparisonSetCollection.fetch({reset: true});
         this.witnessCollection.fetch();
         this.listViewsRendered = true;
     },
