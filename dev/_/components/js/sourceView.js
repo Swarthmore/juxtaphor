@@ -11,7 +11,6 @@ AV.SourceView = Backbone.View.extend({
         });
 		//Load the compiled HTML into the backbone "el"
 		this.$el.html( template );
-        console.log(this.model.get('name'));
         this.codeMirror = CodeMirror.fromTextArea(
             document.getElementById("viewContent"),
             {
@@ -31,15 +30,13 @@ AV.SourceView = Backbone.View.extend({
         // the model.
 
         var modelToSubmit = new AV.SourceModel();
+        modelToSubmit.updateURL();
         this.codeMirror.save();
 	    // Saving the model sends a "sync" request.
-        console.log($('#viewContent').val());
-        console.log($('#name').val());
         modelToSubmit.set({
 		    data: $("#viewContent").val(),
 			name: $("#name").val()
 			});
-        console.log(this.model);
 	    modelToSubmit.save().done(_.bind(function() {
 				    this.collection.fetch();
 				}, this));
