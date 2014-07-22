@@ -1,12 +1,10 @@
 AV.VisualizationView = Backbone.View.extend({
     el: '#visualization',
     initialize: function() {
-	    //var template = _.template( $("#modal_template").html());
-	    //this.$el.html( template );
-        $("#visualization").load(_.bind(function(){
-            console.log("it did a reload");
-            console.log($("#visualization").contents()[0].title);
-            if (!($("#visualization").contents()[0].title)) {
+        var visualizationIFrame = $("#visualization");
+        visualizationIFrame.load(_.bind(function(){
+            console.log(visualizationIFrame.contents()[0].title);
+            if (!(visualizationIFrame.contents()[0].title)) {
                 console.log("RENDERING it says");
                 document.getElementById('visualization')
                     .contentWindow
