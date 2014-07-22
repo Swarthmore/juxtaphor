@@ -1,14 +1,12 @@
 AV.VisualizationView = Backbone.View.extend({
-    el: '#modal_container',
+    el: '#visualization',
     initialize: function() {
-	var template = _.template( $("#modal_template").html());
-	test(template);
-	this.$el.html( template );
-
-        this.$("#visualization").load(_.bind(function(){
+	//var template = _.template( $("#modal_template").html());
+	//this.$el.html( template );
+        $("#visualization").load(_.bind(function(){
             console.log("it did a reload");
-            console.log(this.$("#visualization").contents()[0].title);
-            if (!(this.$("#visualization").contents()[0].title)) {
+            console.log($("#visualization").contents()[0].title);
+            if (!($("#visualization").contents()[0].title)) {
                 console.log("RENDERING it says");
                 document.getElementById('visualization')
                     .contentWindow
@@ -16,6 +14,7 @@ AV.VisualizationView = Backbone.View.extend({
                     .reload(true);
             }
         }, this));
+	test("HI");
         $('#visualizationModal').on('hidden.bs.modal',function(){
             router.navigate('', {trigger: false, replace: true});
         });
@@ -51,7 +50,7 @@ AV.VisualizationView = Backbone.View.extend({
         this.model.url = this.model.urlRoot + '/' + this.model.id +
             '/view?mode=heatmap&condensed=true';
         
-	
+	test(this.model.url);
 	//Set the Share button route.
 	var pathArray = window.location.pathname;
 	var path = $("#shareID").attr("href") +'#' + Backbone.history.fragment;
@@ -78,8 +77,8 @@ AV.VisualizationView = Backbone.View.extend({
                 return this.render();
             }
         }, this));
-        this.$("#visualization").attr('src', this.model.url).load(_.bind(function() {
-            var iframe = this.$("#visualization").contents();
+        $("#visualization").attr('src', this.model.url).load(_.bind(function() {
+            var iframe = $("#visualization").contents();
             iframe.find('.menubar').remove();
 	    iframe.find('#change-workspace').remove();
         }, this));

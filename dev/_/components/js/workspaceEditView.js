@@ -6,7 +6,6 @@ AV.WorkspaceEditView = Backbone.View.extend({
         'click #newWorkspaceButton': 'newWorkspace'
     },
     initialize: function(){
-        this.listenTo(this.collection, "all", this.render);
         $('workspaceModal').on('hidden.bs.modal', function(){
             router.navigate('', {trigger: false, replace: true});
         });
@@ -25,10 +24,13 @@ AV.WorkspaceEditView = Backbone.View.extend({
 	    sourceToRemove.url = '/juxta/workspace/' +
             encodeURIComponent(sourceToRemove.get('name'));
 	    sourceToRemove.destroy();
+        this.render();
     },
     newWorkspace: function() {
-        json_post('/juxta/workspace', 
+        json_post('/juxta/workspace',
                   {name: $('#workspaceName').val()},
-                  this.collection.fetch());
+                  _.bind(function(){
+                      this.collection.fetch();
+                      this.render();}, this));
     }
 });

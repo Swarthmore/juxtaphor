@@ -64,7 +64,41 @@
       </div>
     </div>
 
-    <div id="modal_container"></div>
+    <div class="modal fade" 
+      id="visualizationModal" 
+      tabindex="-1" 
+      role="dialog" 
+      aria-labelledby="visualizationModal" 
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+	<div class="modal-content">
+	  <div class="modal-header">
+	    <button type="button" 
+	      class="close" 
+	      data-dismiss="modal" 
+	      aria-hidden="true">
+	      &times;
+	    </button>
+	    <h4 class="modal-title" id="myModalLabel">Akhmatoviz</h4>
+	  </div>
+	  <div class="modal-body">
+	    <iframe id="visualization"></iframe>
+	  </div>
+	  <div class="modal-footer">
+	    <a href="pages/present.html"
+	      class="btn btn-default"
+	      id= "shareID">
+	      Share
+	    </a>
+	    <button type="button"
+	      class="btn btn-default" 
+	      data-dismiss="modal">
+	      Close
+	    </button>
+	  </div>
+	</div>
+      </div>
+    </div>
 
     <div class="container-fluid">
       <div class="row">
@@ -150,19 +184,19 @@
     <script type="text/template" id="workspace_edit_template">
       <table class="table table-striped">
         <% _.each(workspaces, function (workspace) { %>
-          <tr>
-            <td>
-              <%= workspace.escape('name')%>
-            </td>
-            <td>
-	          <button type="button"
-		              class="btn btn-danger"
-                      id="deleteWorkspaceButton"
-                      data-value=<%=workspace.get('id')%>>
-                <span class="glyphicon glyphicon-trash"></span>
-              </button>
-            </td>
-          </tr>
+        <tr>
+          <td>
+            <%= workspace.escape('name')%>
+          </td>
+          <td>
+	        <button type="button"
+		            class="btn btn-danger"
+                    id="deleteWorkspaceButton"
+                    data-value=<%=workspace.get('id')%>>
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </td>
+        </tr>
         <% }) %>
       </table>
       <input type="text"
@@ -174,50 +208,14 @@
              id="newWorkspaceButton"
              value="New Workspace"/>
     </script>
-      <script type="text/template" id="modal_template">
-        <div class="modal fade bs-example-modal-lg" 
-             id="basicModal" 
-             tabindex="-1" 
-             role="dialog" 
-             aria-labelledby="basicModal" 
-             aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" 
-                        class="close" 
-                        data-dismiss="modal" 
-                        aria-hidden="true">
-                  &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Akhmatoviz</h4>
-              </div>
-              <div class="modal-body">
-                <iframe id="visualization"></iframe>
-              </div>
-	          <div class="modal-footer">
-	            <a href="pages/present.html"
-		           class="btn btn-default"
-                   id= "shareID">
-		          Share
-	            </a>
-                <button type="button"
-                        class="btn btn-default" 
-                        data-dismiss="modal">
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
 
-    </script>
 
     <script type="text/template" id="view_template">
       <label>Name</label>
       <input type="text"
              id="name"
-	         maxlength=75
+		 pattern=".{7,75}"
+                 title="1 to 75 characters"
              placeholder="<%= source.escape('name') ? source.escape('name') : '' %>">
       <input type="button"
              class="btn btn-default btn-lg"

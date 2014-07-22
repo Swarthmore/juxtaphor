@@ -27,13 +27,18 @@ AV.SourceView = Backbone.View.extend({
 		//Resetting attached model, because if something was
         //looked at before the upload, that will still be in
         // the model.
-	    this.model.clear().set(this.model.defaults);
+
+        var modelToSubmit = new AV.SourceModel();
         this.codeMirror.save();
 	    // Saving the model sends a "sync" request.
-	    this.model.save({
+        console.log($('#viewContent').val());
+        console.log($('#name').val());
+        modelToSubmit.set({
 		    data: $("#viewContent").val(),
 			name: $("#name").val()
-			}).done(_.bind(function() {
+			});
+        console.log(this.model);
+	    modelToSubmit.save().done(_.bind(function() {
 				    this.collection.fetch();
 				}, this));
 	    this.render();
