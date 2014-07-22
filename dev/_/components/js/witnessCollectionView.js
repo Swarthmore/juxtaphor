@@ -7,9 +7,9 @@
 AV.WitnessCollectionView = Backbone.View.extend({
     el: '#list_witness_container',
     initialize: function() {
-        console.log('initialize witnessCollectionView');
         this.listenTo(this.collection, 'all', this.render);
         this.listenTo(Backbone, "source:transformed", this.refresh);
+        this.listenTo(Backbone, "source:deleted", this.refresh);
     },
     events: {
 	    "click #deleteWitnessButton": "delete",
@@ -20,8 +20,8 @@ AV.WitnessCollectionView = Backbone.View.extend({
         this.$el.empty();
         this.$el.html(this.template({witnesses: this.collection.models}));
     },
-    refresh: function() {
-        this.collection.fetch();
+    refresh: function(){
+        this.collection.fetch({reset:true});
     },
     delete: function(ev) {
 	    //ev is the mouse event. We receive the data-value which contains
@@ -31,7 +31,7 @@ AV.WitnessCollectionView = Backbone.View.extend({
 		    return source.id == idToDelete;});
 	    sourceToRemove.urlRoot = AV.URL('witness');
 	    sourceToRemove.destroy();
-
+        Backbone.trigger('witness:deleted');
     },
     collate: function(ev) {
         var checkedBoxes = _.filter($('input:checkbox.witnessCheckbox'),
@@ -39,8 +39,6 @@ AV.WitnessCollectionView = Backbone.View.extend({
                                     {return box.checked === true;});
         var checkedIDs = _.pluck(checkedBoxes, 'value');
         checkedIDs = _.map(checkedIDs, Number);
-
-
         var givenName = $('#collationNameField')[0].value;
 
         //We spent a lot of time on the following. It submits the witnesses
@@ -56,6 +54,6 @@ AV.WitnessCollectionView = Backbone.View.extend({
             this.model.set({id:d});
             this.model.collate();
         }, this));
-        this.refresh();
+        this.collection.fetch();
     }
 });

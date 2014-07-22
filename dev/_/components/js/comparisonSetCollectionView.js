@@ -3,6 +3,8 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
     initialize: function() {
         this.listenTo(this.collection, 'reset remove', this.render);
         this.listenTo(Backbone, 'comparison:collate', this.refresh);
+        this.listenTo(Backbone, 'source:deleted', this.refresh);
+        this.listenTo(Backbone, 'witness:deleted', this.refresh);
     },
     events: {
 	    "click #deleteSetButton": "delete"
@@ -16,12 +18,11 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
                       return model.get('status') == 'TOKENIZING' ||
                              model.get('status') == 'TOKENIZED' ||
                              model.get('status') == 'COLLATING';})){
-            this.refresh();
+            this.collection.fetch({reset: true});
         }
     },
     refresh: function(){
-        console.log("Refreshing");
-        this.collection.fetch({reset: true});
+        this.collection.fetch({reset:true});
     },
     delete: function(ev) {
 	    //ev is the mouse event. We receive the data-value which contains
@@ -30,10 +31,9 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
 	    var sourceToRemove = this.collection.find(function (source) {
 		    return source.id == idToDelete;});
 	    sourceToRemove.urlRoot = AV.URL('set');
-	    sourceToRemove.destroy().done(_.bind(function(){this.refresh();}, this));
-        console.log("You euthanized your Weighted Companion Collection Set" +
-                    " faster than any test subject on record." +
-                    " Congratulations.");
-
+	    sourceToRemove.destroy().done(
+            _.bind(function(){
+                this.collection.fetch({reset: true});
+            }, this));
     }
 });
