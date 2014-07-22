@@ -102,67 +102,40 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div id="views" class="col-md-4 col-md-offset-1">
+	<!-- Column 1. Contains the individual sourceView and upload source view-->
+	<div id="views" class="col-md-4 col-md-offset-1">
           <!------ Template Containers ------>
           <div id="view_container"></div>
         </div>
-        <!-- HERE begins the Collapsible Containers -->
 
-        <div id="cCountainers" class="col-md-5 col-md-offset-1">
-          <div class="panel-group" id="accordion">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse"
-                     data-parent="#accordion"
-                     href="#collapseOne">
-                    Sources
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseOne" class="panel-collapse collapse in">
-                <div class="panel-body">
-    	          <div id="list_source_container"></div>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse"
-                     data-parent="#accordion"
-                     href="#collapseTwo">
-                    Witnesses
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseTwo" class="panel-collapse collapse">
-                <div class="panel-body">
-    	          <div id="list_witness_container"></div>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse"
-                     data-parent="#accordion"
-                     href="#collapseThree">
-                    Collections
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseThree" class="panel-collapse collapse">
-                <div class="panel-body">
-    	          <div id="list_set_container"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Here ends the collapsible containers i-->
-        </div>
-      </div>
-    </div>
+	<!-- Column 2. Contains all the views in tabular form -->
+	<div class="col-md-5 col-md-offset-1">
+	  <!-- Nav tabs -->
+	  <ul class="nav nav-tabs" role="tablist">
+	    <li class="active"><a href="#sourcesTab" role="tab" data-toggle="tab">
+	      Sources</a></li>
+	    <li><a href="#witnessesTab" role="tab" data-toggle="tab">
+	      Witnesses</a></li>
+	    <li><a href="#collectionsTab" role="tab" data-toggle="tab">
+	      Collections</a></li>
+	  </ul>
+
+	  <!-- Tab panes -->
+
+	  <div class="tab-content">
+	    <div class="tab-pane active" id="sourcesTab">
+	      <div id="list_source_container"></div>
+	    </div>
+
+	    <div class="tab-pane" id="witnessesTab">
+	      <div id="list_witness_container"></div>
+	    </div>
+
+	    <div class="tab-pane" id="collectionsTab">
+	      <div id="list_set_container"></div>
+	    </div>
+	  </div>
+	</div>
     <!----------- Templates ----------->
 
     <script type="text/template" id="workspace_dropdown_template">
