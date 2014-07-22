@@ -36,9 +36,12 @@ AV.VisualizationView = Backbone.View.extend({
 		         * Set the Share button route located in the modal template
 		         */
 
-		        var pathArray = window.location.pathname;
-	            var path = $("#shareID").attr("href") +'#' + Backbone.history.fragment;
+
+		        var basePath = "pages/present.html";
+	            var path = basePath +'#' +
+		                Backbone.history.fragment;
 	            $("#shareID").attr("href", path);
+
                 this.render();
             }, this)
             });
@@ -48,6 +51,12 @@ AV.VisualizationView = Backbone.View.extend({
     heatMap: function() {
         this.model.url = this.model.urlRoot + '/' + this.model.id +
             '/view?mode=heatmap&condensed=true';
+
+	    //Set the Share button route.
+	    var basePath = "pages/present.html";
+	    var path = basePath  +'#' + Backbone.history.fragment;
+	    $("#shareID").attr("href", path);
+
 
 	    //Set the Share button route.
 	    var pathArray = window.location.pathname;
