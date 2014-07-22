@@ -2,7 +2,9 @@
 AV.SourceView = Backbone.View.extend({
 	el: '#view_container',
 
-    initialize: function(){},
+    initialize: function(){
+        
+    },
 
 	render: function(){
 		//compile the template using underscore
