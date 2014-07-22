@@ -33,8 +33,12 @@ AV.SourceCollectionView = Backbone.View.extend({
 	    var sourceToRemove = this.collection.find(function (source) {
 		    return source.id == idToDelete;});
 	    sourceToRemove.urlRoot = AV.URL('source');
-	    sourceToRemove.destroy().done(_.bind(function(){this.collection.fetch();},
-                                             this));
+	    sourceToRemove.destroy().done(
+            _.bind(function(){
+                this.collection.fetch();
+                Backbone.trigger("source:deleted");
+            }, this));
+
     },
     transform: function(ev){
         var checkedBoxes = _.filter($('input:checkbox.transformCheckbox'),
