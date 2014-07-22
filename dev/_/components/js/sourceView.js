@@ -21,6 +21,7 @@ AV.SourceView = Backbone.View.extend({
                 viewportMargin: Infinity,
                 readOnly: this.model.get('name')
             });
+	 this.codeMirror.setSize(400,400);
 	},
 
 	events: {
@@ -45,12 +46,3 @@ AV.SourceView = Backbone.View.extend({
 	    this.render();
 	}
 });
-
-
-
-
-
-
-
-
-
