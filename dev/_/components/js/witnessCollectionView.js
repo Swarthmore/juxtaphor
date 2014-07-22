@@ -7,7 +7,6 @@
 AV.WitnessCollectionView = Backbone.View.extend({
     el: '#list_witness_container',
     initialize: function() {
-        console.log('initialize witnessCollectionView');
         this.listenTo(this.collection, 'all', this.render);
         this.listenTo(Backbone, "source:transformed", this.refresh);
     },
