@@ -12,6 +12,7 @@ var PV = {}
 
 PV.Router = Backbone.Router.extend({
     initialize: function(){
+        console.log("Initialize Router");
         this.baseURL = 'http://54.88.3.200:8182/juxta/public/set/';
         var visualizationIFrame = $("#visualization");
         visualizationIFrame.load(_.bind(function(){
@@ -31,6 +32,7 @@ PV.Router = Backbone.Router.extend({
         'viz/sidebyside/:idToViz': 'sideBySide'
     },
     sideBySide: function (workspace, idToVisualize) {
+        console.log("Rendering side-by-side");
         //render the sideBySide template
         //Create a model to fetch from server list of witnesses
         var URL = 'http://54.88.3.200:8182/juxta/' + workspace + "/set/" + idToVisualize + '/view?mode=sidebyside&condensed=true&docs=';
@@ -50,7 +52,7 @@ PV.Router = Backbone.Router.extend({
                 mod.url = mod.url +
                     '/view?mode=sidebyside&condensed=true&docs=' +
                     ids[0] + ',' + ids[1];
-                $("#presentVis").attr('src', mod.url);
+                $("#visualization").attr('src', mod.url);
             }, this)
             });
 
@@ -58,10 +60,12 @@ PV.Router = Backbone.Router.extend({
     },
 
     heatMap: function (workspace, idToVisualize) {
+        console.log("rendering heatMap");
         //render the heatMap template
         var URL = 'http://54.88.3.200:8182/juxta/' + workspace + "/set/" +
                 idToVisualize + '/view?mode=heatmap&condensed=true';
-        $("#presentVis").attr('src', URL);
+        console.log(URL);
+        $("#visualization").attr('src', URL);
     }
 
 
