@@ -11,12 +11,14 @@ AV.SourceView = Backbone.View.extend({
         });
 		//Load the compiled HTML into the backbone "el"
 		this.$el.html( template );
+        console.log(this.model.get('name'));
         this.codeMirror = CodeMirror.fromTextArea(
             document.getElementById("viewContent"),
             {
                 theme: 'solarized dark',
                 lineNumbers: true,
-                viewportMargin: Infinity
+                viewportMargin: Infinity,
+                readOnly: this.model.get('name')
             });
 	},
 
@@ -44,4 +46,12 @@ AV.SourceView = Backbone.View.extend({
 	    this.render();
 	}
 });
+
+
+
+
+
+
+
+
 
