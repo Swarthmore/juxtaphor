@@ -102,31 +102,36 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div id="views" class="col-md-4 col-md-offset-1">
+	<!-- Column 1. Contains the individual sourceView and upload source view-->
+	<div id="views" class="col-md-4 col-md-offset-1">
           <!------ Template Containers ------>
           <div id="view_container"></div>
         </div>
 
-	<div id="cCountainers" class="col-md-5 col-md-offset-1">
+	<!-- Column 2. Contains all the views in tabular form -->
+	<div class="col-md-5 col-md-offset-1">
 	  <!-- Nav tabs -->
 	  <ul class="nav nav-tabs" role="tablist">
-	    <li class="active"><a href="#home" role="tab" data-toggle="tab">Sources</a></li>
-	    <li><a href="#profile" role="tab" data-toggle="tab">Witnesses</a></li>
-	    <li><a href="#messages" role="tab" data-toggle="tab">Collections</a></li>
+	    <li class="active"><a href="#sourcesTab" role="tab" data-toggle="tab">
+	      Sources</a></li>
+	    <li><a href="#witnessesTab" role="tab" data-toggle="tab">
+	      Witnesses</a></li>
+	    <li><a href="#collectionsTab" role="tab" data-toggle="tab">
+	      Collections</a></li>
 	  </ul>
 
 	  <!-- Tab panes -->
 
 	  <div class="tab-content">
-	    <div class="tab-pane active" id="home">
+	    <div class="tab-pane active" id="sourcesTab">
 	      <div id="list_source_container"></div>
 	    </div>
 
-	    <div class="tab-pane" id="profile">
+	    <div class="tab-pane" id="witnessesTab">
 	      <div id="list_witness_container"></div>
 	    </div>
 
-	    <div class="tab-pane" id="messages">
+	    <div class="tab-pane" id="collectionsTab">
 	      <div id="list_set_container"></div>
 	    </div>
 	  </div>
