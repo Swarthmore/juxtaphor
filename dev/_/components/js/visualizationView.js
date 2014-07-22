@@ -57,12 +57,6 @@ AV.VisualizationView = Backbone.View.extend({
 	    var path = basePath  +'#' + Backbone.history.fragment;
 	    $("#shareID").attr("href", path);
 
-
-	    //Set the Share button route.
-	    var pathArray = window.location.pathname;
-	    var path = $("#shareID").attr("href") +'#' + Backbone.history.fragment;
-	    $("#shareID").attr("href", path);
-
 	    this.render();
     },
 
