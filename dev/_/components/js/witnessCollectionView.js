@@ -10,7 +10,6 @@ AV.WitnessCollectionView = Backbone.View.extend({
         this.listenTo(this.collection, 'all', this.render);
         this.listenTo(Backbone, "source:transformed", this.refresh);
         this.listenTo(Backbone, "source:deleted", this.refresh);
-
     },
     events: {
 	    "click #deleteWitnessButton": "delete",
@@ -32,7 +31,7 @@ AV.WitnessCollectionView = Backbone.View.extend({
 		    return source.id == idToDelete;});
 	    sourceToRemove.urlRoot = AV.URL('witness');
 	    sourceToRemove.destroy();
-
+        Backbone.trigger('witness:deleted');
     },
     collate: function(ev) {
         var checkedBoxes = _.filter($('input:checkbox.witnessCheckbox'),
@@ -40,8 +39,6 @@ AV.WitnessCollectionView = Backbone.View.extend({
                                     {return box.checked === true;});
         var checkedIDs = _.pluck(checkedBoxes, 'value');
         checkedIDs = _.map(checkedIDs, Number);
-
-
         var givenName = $('#collationNameField')[0].value;
 
         //We spent a lot of time on the following. It submits the witnesses

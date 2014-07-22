@@ -3,7 +3,8 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
     initialize: function() {
         this.listenTo(this.collection, 'reset remove', this.render);
         this.listenTo(Backbone, 'comparison:collate', this.refresh);
-        this.listenTo(Backbone, "source:deleted", this.refresh);
+        this.listenTo(Backbone, 'source:deleted', this.refresh);
+        this.listenTo(Backbone, 'witness:deleted', this.refresh);
     },
     events: {
 	    "click #deleteSetButton": "delete"
