@@ -9,7 +9,6 @@
 AV.SourceModel = Backbone.Model.extend({
 	urlRoot: AV.URL('source'),
 	defaults: {
-		id: null,
 		name: null,
 		type: 'raw',
 		contentType: 'txt',

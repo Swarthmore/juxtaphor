@@ -16,7 +16,8 @@ AV.SourceView = Backbone.View.extend({
             {
                 theme: 'solarized dark',
                 lineNumbers: true,
-                viewportMargin: Infinity
+                viewportMargin: Infinity,
+                readOnly: this.model.get('name')
             });
 	},
 
@@ -29,19 +30,25 @@ AV.SourceView = Backbone.View.extend({
         // the model.
 
         var modelToSubmit = new AV.SourceModel();
+        modelToSubmit.updateURL();
         this.codeMirror.save();
 	    // Saving the model sends a "sync" request.
-        console.log($('#viewContent').val());
-        console.log($('#name').val());
         modelToSubmit.set({
 		    data: $("#viewContent").val(),
 			name: $("#name").val()
 			});
-        console.log(this.model);
 	    modelToSubmit.save().done(_.bind(function() {
 				    this.collection.fetch();
 				}, this));
 	    this.render();
 	}
 });
+
+
+
+
+
+
+
+
 
