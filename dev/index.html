@@ -106,63 +106,31 @@
           <!------ Template Containers ------>
           <div id="view_container"></div>
         </div>
-        <!-- HERE begins the Collapsible Containers -->
 
-        <div id="cCountainers" class="col-md-5 col-md-offset-1">
-          <div class="panel-group" id="accordion">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse"
-                     data-parent="#accordion"
-                     href="#collapseOne">
-                    Sources
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseOne" class="panel-collapse collapse in">
-                <div class="panel-body">
-    	          <div id="list_source_container"></div>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse"
-                     data-parent="#accordion"
-                     href="#collapseTwo">
-                    Witnesses
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseTwo" class="panel-collapse collapse">
-                <div class="panel-body">
-    	          <div id="list_witness_container"></div>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse"
-                     data-parent="#accordion"
-                     href="#collapseThree">
-                    Collections
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseThree" class="panel-collapse collapse">
-                <div class="panel-body">
-    	          <div id="list_set_container"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Here ends the collapsible containers i-->
-        </div>
-      </div>
-    </div>
+	<div id="cCountainers" class="col-md-5 col-md-offset-1">
+	  <!-- Nav tabs -->
+	  <ul class="nav nav-tabs" role="tablist">
+	    <li class="active"><a href="#home" role="tab" data-toggle="tab">Sources</a></li>
+	    <li><a href="#profile" role="tab" data-toggle="tab">Witnesses</a></li>
+	    <li><a href="#messages" role="tab" data-toggle="tab">Collections</a></li>
+	  </ul>
+
+	  <!-- Tab panes -->
+
+	  <div class="tab-content">
+	    <div class="tab-pane active" id="home">
+	      <div id="list_source_container"></div>
+	    </div>
+
+	    <div class="tab-pane" id="profile">
+	      <div id="list_witness_container"></div>
+	    </div>
+
+	    <div class="tab-pane" id="messages">
+	      <div id="list_set_container"></div>
+	    </div>
+	  </div>
+	</div>
     <!----------- Templates ----------->
 
     <script type="text/template" id="workspace_dropdown_template">
