@@ -12,7 +12,18 @@ var PV = {}
 
 PV.Router = Backbone.Router.extend({
   initialize: function(){
-    this.baseURL = 'http://54.88.3.200:8182/juxta/public/set/';
+      this.baseURL = 'http://54.88.3.200:8182/juxta/public/set/';
+      var visualizationIFrame = $("#visualization");
+      visualizationIFrame.load(_.bind(function(){
+          console.log(visualizationIFrame.contents()[0].title);
+          if (!(visualizationIFrame.contents()[0].title)) {
+              console.log("RENDERING it says");
+              document.getElementById('visualization')
+                  .contentWindow
+                  .location
+                  .reload(true);
+          }
+      }, this));
   },
 
   routes: {
@@ -23,7 +34,7 @@ PV.Router = Backbone.Router.extend({
     //render the sideBySide template
     //Create a model to fetch from server list of witnesses
     var URL = this.baseURL + idToVisualize + '/view?mode=sidebyside&condensed=true&docs=';
-    
+
     //This model wraps the url and lets us use fetch
     var model = Backbone.Model.extend({
       url: this.baseURL+idToVisualize
