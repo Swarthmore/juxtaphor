@@ -29,7 +29,7 @@ PV.Router = Backbone.Router.extend({
 
     routes: {
         ':workspace/viz/heatmap/:idToViz': 'heatMap',
-        'viz/sidebyside/:idToViz': 'sideBySide'
+        ':workspace/viz/sidebyside/:idToViz': 'sideBySide'
     },
     sideBySide: function (workspace, idToVisualize) {
         console.log("Rendering side-by-side");
@@ -67,9 +67,6 @@ PV.Router = Backbone.Router.extend({
         console.log(URL);
         $("#visualization").attr('src', URL);
     }
-
-
-
 });
 
 
