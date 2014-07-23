@@ -65,4 +65,7 @@ The sourceView object in router.js explicitly takes in a collection in
 addition to a model. This is so that we can fetch the collection after
 and upload.
 
-
+The HTML uses a lot of templating. We've put all the templates on the 
+bottom half of the page. A lot of the design of the page can be changed
+within the templates. Column width in the views, for example, is determined
+by bootstrap classes.
