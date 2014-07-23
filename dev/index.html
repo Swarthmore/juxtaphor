@@ -328,8 +328,11 @@
             <td><%= set.escape('name') %></td>
             <% if (set.get('status') == 'COLLATED') { %>
             <td><span class="glyphicon glyphicon-ok"></span></td>
-            <% } else if (set.get('status') == 'NOT_COLLATED') { %>
+            <% } else if (set.get('status').indexOf("NOT") > -1) { %>
             <td><span class="glyphicon glyphicon-remove"></span></td>
+            <% } else if (_.contains(['TOKENIZING', 'TOKENIZED', 'COLLATING'],
+               set.get('status')) { %>
+            <td><span class="glyphicon glyphicon-refresh"></span></td>
             <% } else { %>
             <td><%=set.escape('status')%></td>
             <% } %>
