@@ -186,8 +186,7 @@
       <label>Name</label>
       <input type="text"
              id="name"
-		 pattern=".{7,30}"
-                 title="1 to 30 characters"
+		     maxlength="20"
              placeholder="<%= source.escape('name') ? source.escape('name') : '' %>">
       <input type="button"
              class="btn btn-default btn-lg"
