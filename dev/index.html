@@ -182,16 +182,25 @@
 
 
     <script type="text/template" id="view_template">
-      <label>Name</label>
-      <input type="text"
-             id="name"
-		     maxlength="20"
-             placeholder="<%= source.escape('name') ? source.escape('name') : '' %>">
-      <input type="button"
-             class="btn btn-default btn-lg"
-             style="<%= source.get('name')?'display:none':''%>"
-             id="uploadButton"
-             value="Upload"/>
+      <div class="input-group">
+        <span class="input-group-addon">Name</span>
+
+
+        <input type="text"
+               id="name"
+               class="form-control"
+		       maxlength="20"
+               placeholder="<%= source.escape('name') ? source.escape('name') : ''
+		                    %>">
+        <% if (!source.get('name')) { %>
+        <span class="input-group-btn">
+          <input type="button"
+                 class="btn btn-primary"
+                 id="uploadButton"
+                 value="Save Source"/>
+        </span>
+        <% } %>
+      </div>
       <p><textarea id="viewContent"><%= source.escape('content') %></textarea></p>
     </script>
 
@@ -285,9 +294,14 @@
       <div class="input-group">
         <span class="input-group-addon">Collation Name</span>
         <input type="text" class="form-control" id="collationNameField" />
+        <span class="input-group-btn">
+          <button type="button"
+                  class="btn btn-primary"
+                  id="collateButton">
+            Collate
+          </button>
+        </span>
       </div>
-      
-      <button type="button" class="btn btn-primary" id="collateButton">Collate</button>
     </script>
 
 
