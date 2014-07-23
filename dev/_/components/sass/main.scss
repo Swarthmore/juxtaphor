@@ -12,7 +12,7 @@ nav.navbar-inverse h1.navbar-brand { color: #BACFDF;}
 	position: fixed;
 	top: 100px;
 	left: 0px;
-	height: 650px;	
+	height: 650px;
 	width: 50%;
 	background: url('../img/altman-akhmatova.jpg') no-repeat top;
 	opacity: .5;
@@ -31,7 +31,8 @@ body {
 
 .CodeMirror {
   border: 1px solid #eee;
-  height: auto;
+  min-width: 400px;
+  min-height: 400px;
 }
 .CodeMirror-scroll {
   overflow-y: hidden;
