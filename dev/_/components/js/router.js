@@ -97,6 +97,7 @@ AV.Router = Backbone.Router.extend({
     editWorkspaces: function(){
         this.workspaceCollection.fetch({success: _.bind(function(){
             this.workspaceEditView.render();
+            this.workspaceEditView.showModal();
         }, this)});
     },
 
