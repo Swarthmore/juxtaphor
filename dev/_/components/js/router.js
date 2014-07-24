@@ -44,12 +44,12 @@ AV.Router = Backbone.Router.extend({
     },
 
     index: function() {
-        this.workspaceCollection.fetch({reset:true});
         this.renderListViews();
         this.source();
     },
 
     renderListViews: function(){
+        this.workspaceCollection.fetch({reset:true});
         this.sourceCollection.fetch();
         this.comparisonSetCollection.fetch({reset: true});
         this.witnessCollection.fetch();
