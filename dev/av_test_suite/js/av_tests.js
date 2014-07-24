@@ -102,7 +102,8 @@ AV.testerView = Backbone.View.extend({
 		"click button#collate-set" : 'collateSet',
 		"click button#get-set" : 'getSet',
 		"click button#delete-set" : 'deleteSet',
-		"click button#get-viz" : 'getViz'
+		"click button#get-viz" : 'getViz',
+		"click button#xml" : 'xmlCollate'
 	},
 	render:function(){
 		this.$el.html(
@@ -121,6 +122,7 @@ AV.testerView = Backbone.View.extend({
 			+ '<li><button class="btn btn-default" id="get-set">get set</button></li>'
 			+ '<li><button class="btn btn-default" id="delete-set">delete set</button></li>'
 			+ '<li><button class="btn btn-default" id="get-viz">get viz</button></li>'
+			+ '<li><button class="btn btn-default" id="xml">parallel collate</button></li>'
 			+ '</ul>');
 		this.$el.find('ul li').css( {'list-style' : 'none', 'margin-bottom' : '5px' });
 	},
@@ -243,7 +245,8 @@ AV.testerView = Backbone.View.extend({
 
 	deleteSet: function(){
 		test('delete set');
-		this.collection.models[9].delete();
+		this.collection.models[9].set({ id: 7 });
+		this.collection.models[9].destroy();
 	},
 
 	// this function is an example, not particularly elegant, of how to return 
@@ -281,6 +284,18 @@ AV.testerView = Backbone.View.extend({
 		// viz.load(function(e) {
 		// 	$.get(vizURL).done( function(d){ viz.contents().find('body').append(d); });
 		// });	
+	},
+
+	xmlCollate: function(){
+		var URL = 'http://54.88.3.200:8182/juxta/import';
+
+		$.ajax({
+			url: URL,
+			type: 'POST',
+			data: { 'setName': 'akh_parallel', 'teiSourceId': 543 },
+			contentType: 'application/json; charset=utf-8',
+			dataType: 'json'
+		});
 	}
 
 });
@@ -350,7 +365,7 @@ AV.set = Backbone.Model.extend({
 });
 
 AV.collate = Backbone.Model.extend({
-	url: '/juxta/set',
+	urlRoot: '/juxta/set',
 	defaults: {
 
 		id: null,
