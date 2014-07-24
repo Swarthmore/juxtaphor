@@ -306,7 +306,10 @@
 
 
     <script type="text/template" id="list_set_template">
-      <% if (_.any(sets, function (set) {return set.get('status') != 'COLLATED';})) { %>
+      <% if (_.any(sets, function (set) {
+                         return !_.contains(['TOKENIZING', 'TOKENIZED',
+                                             'COLLATING', 'COLLATED'],
+                                            set.get('status'));})) { %>
       <div class="alert alert-danger" role="alert">
         <strong>Error:</strong>
         Something has gone wrong, and one or more of your collections can not be
