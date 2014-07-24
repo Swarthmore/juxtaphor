@@ -2,12 +2,11 @@ AV.WorkspaceEditView = Backbone.View.extend({
     el: '#workspaceModal',
     template: _.template($('#workspace_edit_template').html()),
     error: '<div class="alert alert-danger" role="alert">' +
-           'Workspace names must be alphanumeric, and not greater than 20' +
-           ' characters long.' + '</div>',
+           'Workspace names must be alphanumeric, and not greater than 20 ' +
+           'characters long.' + '</div>',
     events: {
         'click #deleteWorkspaceButton': 'delete',
         'click #newWorkspaceButton': 'newWorkspace'
-
     },
     initialize: function(){
         this.listenTo(this.collection, "all", this.render);
@@ -47,7 +46,8 @@ AV.WorkspaceEditView = Backbone.View.extend({
                       {name: workspaceName},
                       _.bind(function(){
                           this.collection.fetch();
-                          this.render();}, this));
+                          this.render();
+                      }, this));
         }
     }
 });

@@ -81,8 +81,8 @@ AV.Router = Backbone.Router.extend({
         console.log(idToVisualize);
         this.visualizationModel.set('id', idToVisualize);
         this.visualizationView.sideBySide();
-	//Show the "Collections" tab
-	$('#tablist a[href="#collectionsTab"]').tab('show');
+	    //Show the "Collections" tab
+	    $('#tablist a[href="#collectionsTab"]').tab('show');
     },
 
     heatMap: function (idToVisualize) {
@@ -94,8 +94,8 @@ AV.Router = Backbone.Router.extend({
         console.log(idToVisualize);
         this.visualizationModel.set('id', idToVisualize);
         this.visualizationView.heatMap();
-	//Show the "Collections" tab
-	$('#tablist a[href="#collectionsTab"]').tab('show');
+	    //Show the "Collections" tab
+	    $('#tablist a[href="#collectionsTab"]').tab('show');
     },
 
     editWorkspaces: function(){
@@ -124,5 +124,3 @@ AV.Router = Backbone.Router.extend({
         this.index();
     }
 });
-
-

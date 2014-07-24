@@ -9,4 +9,3 @@ AV.WorkspaceDropdownView = Backbone.View.extend({
         this.$el.html(this.template({workspaces:this.collection.models}));
     }
 });
-

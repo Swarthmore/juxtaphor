@@ -9,7 +9,7 @@
 AV.SourceCollectionView = Backbone.View.extend({
     el: '#list_source_container',
     initialize: function() {
-	//listen for sync events in the source collection
+	    //listen for sync events in the source collection
         this.listenTo(this.collection, 'sync', this.render);
     },
     events: {
