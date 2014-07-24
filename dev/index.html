@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Visualizing Translations</title>
     <link href="_/css/bootstrap.min.css" rel="stylesheet">
+    <link href="_/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="_/css/main.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="_/img/favicon.ico" />
   </head>
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">Akhmatoviz</a>
@@ -175,7 +176,7 @@
              id="workspaceName"
 	         maxlength="20"/>
       <input type="button"
-             class="btn btn-default btn-lg"
+             class="btn btn-success btn-lg"
              id="newWorkspaceButton"
              value="Create New Workspace"/>
     </script>
@@ -195,7 +196,7 @@
         <% if (!source.get('name')) { %>
         <span class="input-group-btn">
           <input type="button"
-                 class="btn btn-primary"
+                 class="btn btn-success"
                  id="uploadButton"
                  value="Save Source"/>
         </span>
@@ -246,14 +247,14 @@
         </tbody>
       </table>
       <a type="button"
-         class="btn btn-primary"
+         class="btn btn-success"
          id="newSourceButton"
          href="#source">
         Create New Source
       </a>
 
       <button type="button"
-              class="btn btn-primary"
+              class="btn btn-success"
               id="transformButton">
         Transform Selected Sources
       </button>
