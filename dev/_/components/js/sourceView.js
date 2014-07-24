@@ -38,7 +38,6 @@ AV.SourceView = Backbone.View.extend({
         modelToSubmit.set({
 		    data: $("#viewContent").val(),
 			name: $("#name").val(),
-			contentType: 'xml'
 			});
 	    modelToSubmit.save().done(_.bind(function() {
 				    this.collection.fetch();
