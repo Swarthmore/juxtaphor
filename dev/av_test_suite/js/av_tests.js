@@ -288,14 +288,8 @@ AV.testerView = Backbone.View.extend({
 
 	xmlCollate: function(){
 		var URL = 'http://54.88.3.200:8182/juxta/import';
-
-		$.ajax({
-			url: URL,
-			type: 'POST',
-			data: { 'setName': 'akh_parallel', 'teiSourceId': 543 },
-			contentType: 'application/json; charset=utf-8',
-			dataType: 'json'
-		});
+		var data = {setName: 'parallel_test', teiSourceId: 543};	
+		json_post(URL,data);
 	}
 
 });
