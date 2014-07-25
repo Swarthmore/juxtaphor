@@ -10,5 +10,7 @@ $('#tablist a').click(function (e) {
     $(this).tab('show');
 });
 
+
+
 var router = new AV.Router();
 Backbone.history.start();
