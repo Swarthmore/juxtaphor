@@ -7,6 +7,7 @@
    float: left;
    width: 5.5%;
    text-align: center;
+   display: none
 }
 #scroll-mode-img {
     border: 1px solid #BBB;
