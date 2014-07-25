@@ -17,7 +17,8 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
                   function(model){
                       return model.get('status') == 'TOKENIZING' ||
                              model.get('status') == 'TOKENIZED' ||
-                             model.get('status') == 'COLLATING';})){
+                             model.get('status') == 'COLLATING';
+                  })){
             this.collection.fetch({reset: true});
         }
     },
