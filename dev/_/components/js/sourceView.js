@@ -13,14 +13,19 @@ AV.SourceView = Backbone.View.extend({
         });
 		//Load the compiled HTML into the backbone "el"
 		this.$el.html( template );
+
         this.codeMirror = CodeMirror.fromTextArea(
             document.getElementById("viewContent"),
             {
                 theme: 'solarized dark',
                 lineNumbers: true,
                 viewportMargin: Infinity,
-                readOnly: this.model.get('name')
+                readOnly: this.model.get('name'),
+	  	id: "viewCodeMirror"
             });
+	$("#viewCodeMirror").click(function(){
+	    this.codeMirror.focus();
+	    });
 	},
 
 	events: {
@@ -43,5 +48,6 @@ AV.SourceView = Backbone.View.extend({
 				    this.collection.fetch();
 				}, this));
 	    this.render();
+
 	}
 });
