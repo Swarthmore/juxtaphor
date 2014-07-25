@@ -4,5 +4,3 @@ AV.VisualizationModel = Backbone.Model.extend({
         this.urlRoot = 'http://54.88.3.200:8182' + AV.URL('set');
     }
 });
-
-

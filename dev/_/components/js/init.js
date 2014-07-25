@@ -18,7 +18,10 @@ function json_post(url,data,callback,flag){
 		data: JSON.stringify(data),
 		contentType: 'application/json',
 		success: callback,
-		error: function(e){test(flag); test(e);}
+		error: function(e){
+            console.log(flag);
+            console.log(e);
+        }
 	});
 }
 

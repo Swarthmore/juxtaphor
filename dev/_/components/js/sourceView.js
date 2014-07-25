@@ -1,11 +1,6 @@
 //Create a view for the source
 AV.SourceView = Backbone.View.extend({
 	el: '#view_container',
-
-    initialize: function(){
-
-    },
-
 	render: function(){
 		//compile the template using underscore
 		var template = _.template( $("#view_template").html(), {
@@ -22,7 +17,6 @@ AV.SourceView = Backbone.View.extend({
                 readOnly: this.model.get('name')
             });
 	},
-
 	events: {
         "click #uploadButton": "upload"
     },
@@ -37,11 +31,11 @@ AV.SourceView = Backbone.View.extend({
 	    // Saving the model sends a "sync" request.
         modelToSubmit.set({
 		    data: $("#viewContent").val(),
-			name: $("#name").val(),
-			});
+			name: $("#name").val()
+		});
 	    modelToSubmit.save().done(_.bind(function() {
-				    this.collection.fetch();
-				}, this));
+			this.collection.fetch();
+		}, this));
 	    this.render();
 	}
 });

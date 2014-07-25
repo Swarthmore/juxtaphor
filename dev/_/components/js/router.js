@@ -16,8 +16,8 @@ AV.Router = Backbone.Router.extend({
             {collection:this.workspaceCollection});
         this.sourceModel = new AV.SourceModel();
 	    this.sourceCollection = new AV.SourceCollection();
-        this.sourceView = new AV.SourceView({
-            model:this.sourceModel, collection:this.sourceCollection});
+        this.sourceView = new AV.SourceView(
+            {model:this.sourceModel, collection:this.sourceCollection});
 	    this.sourceCollectionView = new AV.SourceCollectionView(
             {collection:this.sourceCollection});
        	this.witnessCollection = new AV.WitnessCollection();
@@ -44,15 +44,15 @@ AV.Router = Backbone.Router.extend({
     },
 
     index: function() {
-        this.workspaceCollection.fetch({reset:true});
         this.renderListViews();
         this.source();
     },
 
     renderListViews: function(){
-        this.sourceCollection.fetch();
+        this.workspaceCollection.fetch({reset: true});
+        this.sourceCollection.fetch({reset: true});
         this.comparisonSetCollection.fetch({reset: true});
-        this.witnessCollection.fetch();
+        this.witnessCollection.fetch({reset: true});
         this.listViewsRendered = true;
     },
 
@@ -81,8 +81,8 @@ AV.Router = Backbone.Router.extend({
         console.log(idToVisualize);
         this.visualizationModel.set('id', idToVisualize);
         this.visualizationView.sideBySide();
-	//Show the "Collections" tab
-	$('#tablist a[href="#collectionsTab"]').tab('show');
+	    //Show the "Collections" tab
+	    $('#tablist a[href="#collectionsTab"]').tab('show');
     },
 
     heatMap: function (idToVisualize) {
@@ -94,15 +94,18 @@ AV.Router = Backbone.Router.extend({
         console.log(idToVisualize);
         this.visualizationModel.set('id', idToVisualize);
         this.visualizationView.heatMap();
-	//Show the "Collections" tab
-	$('#tablist a[href="#collectionsTab"]').tab('show');
+	    //Show the "Collections" tab
+	    $('#tablist a[href="#collectionsTab"]').tab('show');
     },
 
     editWorkspaces: function(){
-        this.workspaceCollection.fetch({success: _.bind(function(){
-            this.workspaceEditView.render();
-            this.workspaceEditView.showModal();
-        }, this)});
+        this.workspaceCollection.fetch(
+            {success: _.bind(
+                function() {
+                    this.workspaceEditView.render();
+                    this.workspaceEditView.showModal();
+                }, this)
+            });
     },
 
     switchWorkspace: function(workspace){
@@ -114,15 +117,10 @@ AV.Router = Backbone.Router.extend({
         this.comparisonSetCollection.updateURL();
         this.comparisonSetModel.updateURL();
         this.visualizationModel.updateURL();
-        //this.sourceModel.fetch({reset:true});
         this.sourceCollection.fetch({reset:true});
         this.witnessCollection.fetch({reset:true});
         this.comparisonSetCollection.fetch({reset:true});
-        //this.comparisonSetModel.fetch({reset:true});
-        //this.visualizationModel.fetch({reset:true});
         this.navigate('');
         this.index();
     }
 });
-
-

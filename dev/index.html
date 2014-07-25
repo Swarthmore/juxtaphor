@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Visualizing Translations</title>
     <link href="_/css/bootstrap.min.css" rel="stylesheet">
+    <link href="_/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="_/css/main.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="_/img/favicon.ico" />
   </head>
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">Akhmatoviz</a>
@@ -64,317 +65,320 @@
       </div>
     </div>
 
-    <div class="modal fade" 
-      id="visualizationModal" 
-      tabindex="-1" 
-      role="dialog" 
-      aria-labelledby="visualizationModal" 
-      aria-hidden="true">
+    <div class="modal fade"
+         id="visualizationModal"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="visualizationModal"
+         aria-hidden="true">
       <div class="modal-dialog modal-lg">
-	<div class="modal-content">
-	  <div class="modal-header">
-	    <button type="button" 
-	      class="close" 
-	      data-dismiss="modal" 
-	      aria-hidden="true">
-	      &times;
-	    </button>
-	    <h4 class="modal-title" id="myModalLabel">Akhmatoviz</h4>
-	  </div>
-	  <div id="visualization-modal-body" class="modal-body">
-	    <iframe id="visualization"></iframe>
-	  </div>
-	  <div class="modal-footer">
-	    <a href="pages/present.html"
-	      class="btn btn-default"
-	      id= "shareID">
-	      Share
-	    </a>
-	    <button type="button"
-	      class="btn btn-default" 
-	      data-dismiss="modal">
-	      Close
-	    </button>
-	  </div>
-	</div>
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button"
+	                class="close"
+	                data-dismiss="modal"
+	                aria-hidden="true">
+	          &times;
+	        </button>
+	        <h4 class="modal-title" id="myModalLabel">Akhmatoviz</h4>
+	      </div>
+	      <div id="visualization-modal-body" class="modal-body">
+	        <iframe id="visualization"></iframe>
+	      </div>
+	      <div class="modal-footer">
+	        <a href="pages/present.html"
+	           class="btn btn-default"
+	           id= "shareID">
+	          Share
+	        </a>
+	        <button type="button"
+	                class="btn btn-default"
+	                data-dismiss="modal">
+	          Close
+	        </button>
+	      </div>
+	    </div>
       </div>
     </div>
 
     <div class="container-fluid">
       <div class="row">
-	<!-- Column 1. Contains the individual sourceView and upload source view-->
-	<div id="views" class="col-md-4 col-md-offset-1">
+	    <!-- Column 1. Contains the individual sourceView and upload source view-->
+	    <div id="views" class="col-md-4 col-md-offset-1">
           <!------ Template Containers ------>
           <div id="view_container"></div>
         </div>
 
-	<!-- Column 2. Contains all the views in tabular form -->
-	<div class="col-md-5 col-md-offset-1">
-	  <!-- Nav tabs -->
-	  <ul class="nav nav-tabs" id="tablist">
-	    <li class="active"><a href="#sourcesTab">
-	      Sources</a></li>
-	    <li><a href="#witnessesTab">
-	      Witnesses</a></li>
-	    <li><a href="#collectionsTab">
-	      Collections</a></li>
-	  </ul>
+	    <!-- Column 2. Contains all the views in tabular form -->
+	    <div class="col-md-5 col-md-offset-1">
+	      <!-- Nav tabs -->
+	      <ul class="nav nav-pills" id="tablist">
+	        <li class="active"><a href="#sourcesTab">
+	            Sources</a></li>
+	        <li><a href="#witnessesTab">
+	            Witnesses</a></li>
+	        <li><a href="#collectionsTab">
+	            Collections</a></li>
+	      </ul>
 
-	  <!-- Tab panes -->
+	      <!-- Tab panes -->
 
-	  <div class="tab-content">
-	    <div class="tab-pane active" id="sourcesTab">
-	      <div id="list_source_container"></div>
+	      <div class="tab-content">
+	        <div class="tab-pane active" id="sourcesTab">
+	          <div id="list_source_container"></div>
+	        </div>
+
+	        <div class="tab-pane" id="witnessesTab">
+	          <div id="list_witness_container"></div>
+	        </div>
+
+	        <div class="tab-pane" id="collectionsTab">
+	          <div id="list_set_container"></div>
+	        </div>
+	      </div>
 	    </div>
+        <!----------- Templates ----------->
 
-	    <div class="tab-pane" id="witnessesTab">
-	      <div id="list_witness_container"></div>
-	    </div>
+        <script type="text/template" id="workspace_dropdown_template">
+          <% _.each(workspaces, function (workspace) {  %>
+          <li>
+            <a href="#workspace/<%= workspace.escape('name') %>">
+              <% if (workspace.escape('name')==AV.WORKSPACE) { %>
+              <span class="glyphicon glyphicon-arrow-right"></span>
+              <% } %>
+              <%= workspace.escape('name')%>
+            </a>
+          </li>
+          <% }); %>
+          <li class="divider"></li>
+          <li><a href="#workspace">Edit Workspaces</a></li>
+        </script>
 
-	    <div class="tab-pane" id="collectionsTab">
-	      <div id="list_set_container"></div>
-	    </div>
-	  </div>
-	</div>
-    <!----------- Templates ----------->
-
-    <script type="text/template" id="workspace_dropdown_template">
-      <% _.each(workspaces, function (workspace) {  %>
-      <li>
-        <a href="#workspace/<%= workspace.escape('name') %>">
-          <% if (workspace.escape('name')==AV.WORKSPACE) { %>
-          <span class="glyphicon glyphicon-arrow-right"></span>
-          <% } %>
-          <%= workspace.escape('name')%>
-        </a>
-      </li>
-      <% }); %>
-      <li class="divider"></li>
-      <li><a href="#workspace">Edit Workspaces</a></li>
-    </script>
-
-    <script type="text/template" id="workspace_edit_template">
-      <table class="table table-striped">
-        <% _.each(workspaces, function (workspace) { %>
-        <tr>
-          <td>
-            <%= workspace.escape('name')%>
-          </td>
-          <td>
-	        <button type="button"
-		            class="btn btn-danger"
-                    id="deleteWorkspaceButton"
-                    data-value=<%=workspace.get('id')%>>
-              <span class="glyphicon glyphicon-trash"></span>
-            </button>
-          </td>
-        </tr>
-        <% }) %>
-      </table>
-      <input type="text"
-             id="workspaceName"
-	         maxlength="20"/>
-      <input type="button"
-             class="btn btn-default btn-lg"
-             id="newWorkspaceButton"
-             value="Create New Workspace"/>
-    </script>
-
-
-    <script type="text/template" id="view_template">
-      <div class="input-group">
-        <span class="input-group-addon">Name</span>
-
-
-        <input type="text"
-               id="name"
-               class="form-control"
-		       maxlength="20"
-               placeholder="<%= source.escape('name') ? source.escape('name') : ''
-		                    %>">
-        <% if (!source.get('name')) { %>
-        <span class="input-group-btn">
-          <input type="button"
-                 class="btn btn-primary"
-                 id="uploadButton"
-                 value="Save Source"/>
-        </span>
-        <% } %>
-      </div>
-      <p><textarea id="viewContent"><%= source.escape('content') %></textarea></p>
-    </script>
-
-    <script type="text/template" id="list_source_template">
-      <table class="table table-striped table-hover table-condensed">
-        <thead>
-          <tr>
-            <th class="col-md-6">Name</th>
-	        <th class="col-md-2">Transform?</th>
-            <!-- Empty headings in order to get spacing to work later. -->
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% _.each(sources, function (source) { %>
-          <tr>
-            <td><%= source.escape('name') %></td>
-
-            <td>
-              <input type="checkbox"
-                     class="transformCheckbox"
-                     name="transform"
-                     value=<%=source.get('id')%>>
-            </td>
-            <td >
-              <div class="btn-group">
-                <a type="button"
-                   class="btn btn-primary"
-                   id="viewButton"
-                   href="#/source/<%=source.get('id')%>">
-		          <span class="glyphicon glyphicon-eye-open"></span>
-		        </a>
+        <script type="text/template" id="workspace_edit_template">
+          <table class="table table-striped">
+            <% _.each(workspaces, function (workspace) { %>
+            <tr>
+              <td>
+                <%= workspace.escape('name')%>
+              </td>
+              <td>
 	            <button type="button"
 		                class="btn btn-danger"
-                        id="deleteSourceButton"
-                        data-value=<%=source.get('id')%>>
+                        id="deleteWorkspaceButton"
+                        data-value=<%=workspace.get('id')%>>
                   <span class="glyphicon glyphicon-trash"></span>
                 </button>
-              </div>
-	        </td>
-          </tr>
-	      <% }); %>
-        </tbody>
-      </table>
-      <a type="button"
-         class="btn btn-primary"
-         id="newSourceButton"
-         href="#source">
-        Create New Source
-      </a>
-
-      <button type="button"
-              class="btn btn-primary"
-              id="transformButton">
-        Transform Selected Sources
-      </button>
-    </script>
-
-    <script type="text/template" id="list_witness_template">
-      <table class="table table-striped table-condensed">
-        <thead>
-          <tr>
-            <th class="col-md-6">Name</th>
-            <!-- Empty headings in order to get spacing to work later. -->
-            <th class="col-md-2">Collate?</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% _.each(witnesses, function (witness) { %>
-          <tr>
-            <td><%= witness.escape('name') %></td>
-            <td>
-              <input type="checkbox"
-                     class="witnessCheckbox"
-                     name="witness"
-                     value=<%=witness.get('id')%>>
-            </td>
-            <td>
-              <button type="button"
-	                  class="btn btn-danger"
-                      id="deleteWitnessButton"
-                      data-value=<%=witness.get('id')%>>
-                <span class="glyphicon glyphicon-trash"></span>
-              </button>
-	        </td>
-          </tr>
-	      <% }); %>
-        </tbody>
-      </table>
-      <div class="input-group">
-        <span class="input-group-addon">Collation Name</span>
-        <input type="text" class="form-control" id="collationNameField" />
-        <span class="input-group-btn">
-          <button type="button"
-                  class="btn btn-primary"
-                  id="collateButton">
-            Collate Selected Witnesses
-          </button>
-        </span>
-      </div>
-    </script>
+              </td>
+            </tr>
+            <% }) %>
+          </table>
+          <input type="text"
+                 id="workspaceName"
+	             maxlength="20"/>
+          <input type="button"
+                 class="btn btn-success btn-lg"
+                 id="newWorkspaceButton"
+                 value="Create New Workspace"/>
+        </script>
 
 
-    <script type="text/template" id="list_set_template">
-      <% if (_.any(sets, function (set) {return set.get('status') != 'COLLATED';})) { %>
-      <div class="alert alert-danger" role="alert">
-        <strong>Error:</strong>
-        Something has gone wrong, and one or more of your collections can not be
-        visualized. Please delete the errant visualization, and try again.
-      </div>
-      <%}%>
-      <table class="table table-striped table-condensed">
-        <thead>
-          <tr>
-            <th class="col-md-4">Name</th>
-            <th class="col-md-1">Status</th>
-            <!-- Empty headings in order to get spacing to work later. -->
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% _.each(sets, function (set) { %>
-          <tr>
-            <td><%= set.escape('name') %></td>
-            <% if (set.get('status') == 'COLLATED') { %>
-            <td><span class="glyphicon glyphicon-ok"></span></td>
-            <% } else if (set.get('status').indexOf("NOT") > -1) { %>
-            <td><span class="glyphicon glyphicon-remove"></span></td>
-            <% } else if (_.contains(['TOKENIZING', 'TOKENIZED', 'COLLATING']),
-               set.get('status')) { %>
-            <td><span class="glyphicon glyphicon-refresh"></span></td>
-            <% } else { %>
-            <td><%=set.escape('status')%></td>
+        <script type="text/template" id="view_template">
+          <div class="input-group">
+            <span class="input-group-addon">Name</span>
+
+
+            <input type="text"
+                   id="name"
+                   class="form-control"
+		           maxlength="20"
+                   placeholder="<%= source.escape('name') ? source.escape('name') : ''
+		                        %>">
+            <% if (!source.get('name')) { %>
+            <span class="input-group-btn">
+              <input type="button"
+                     class="btn btn-success"
+                     id="uploadButton"
+                     value="Save Source"/>
+            </span>
             <% } %>
-            <td>
-              <div class="btn-group">
-                <% if (set.get('status') == 'COLLATED') { %>
-                <a type="button"
-                   class="btn btn-primary"
-                   href="#viz/heatmap/<%=set.get('id')%>"
-                   id="heatMapButton">
-                  Heat Map
-                </a>
-                <a type="button"
-                   class="btn btn-primary"
-                   href="#viz/sidebyside/<%=set.get('id')%>"
-                   id="sideBySideButton">
-                  Side By Side
-                </a>
-                <% } %>
-                <button type="button"
-	                    class="btn btn-danger"
-                        id="deleteSetButton"
-                        data-value=<%=set.get('id')%>>
-                  <span class="glyphicon glyphicon-trash"></span>
-                </button>
-              </div>
-	        </td>
-          </tr>
-	      <% }); %>
-        </tbody>
-      </table>
-    </script>
+          </div>
+          <p><textarea id="viewContent"><%= source.escape('content') %></textarea></p>
+        </script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
-    </script>
-    <script src="_/js/lib/bootstrap.min.js"></script>
-    <script src="_/js/lib/underscore.js"></script>
-    <script src="_/js/lib/backbone.js"></script>
-    <script src="_/js/lib/codemirror.js"></script>
-    <link rel="stylesheet" href="_/css/solarized.css">
-    <link rel="stylesheet" href="_/css/codemirror.css">
-    <script src="_/js/AkhmatoViz.js"></script>
-    <!-- <script src="http://localhost:35729/livereload.js"></script> -->
+        <script type="text/template" id="list_source_template">
+          <table class="table table-striped table-hover table-condensed">
+            <thead>
+              <tr>
+                <th class="col-md-6">Name</th>
+	            <th class="col-md-2">Transform?</th>
+                <!-- Empty headings in order to get spacing to work later. -->
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% _.each(sources, function (source) { %>
+              <tr>
+                <td><%= source.escape('name') %></td>
+
+                <td>
+                  <input type="checkbox"
+                         class="transformCheckbox"
+                         name="transform"
+                         value=<%=source.get('id')%>>
+                </td>
+                <td >
+                  <div class="btn-group">
+                    <a type="button"
+                       class="btn btn-primary"
+                       id="viewButton"
+                       href="#/source/<%=source.get('id')%>">
+		              <span class="glyphicon glyphicon-eye-open"></span>
+		            </a>
+	                <button type="button"
+		                    class="btn btn-danger"
+                            id="deleteSourceButton"
+                            data-value=<%=source.get('id')%>>
+                      <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                  </div>
+	            </td>
+              </tr>
+	          <% }); %>
+            </tbody>
+          </table>
+          <a type="button"
+             class="btn btn-success"
+             id="newSourceButton"
+             href="#source">
+            Create New Source
+          </a>
+
+          <button type="button"
+                  class="btn btn-success"
+                  id="transformButton">
+            Transform Selected Sources
+          </button>
+        </script>
+
+        <script type="text/template" id="list_witness_template">
+          <table class="table table-striped table-condensed">
+            <thead>
+              <tr>
+                <th class="col-md-6">Name</th>
+                <!-- Empty headings in order to get spacing to work later. -->
+                <th class="col-md-2">Collate?</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% _.each(witnesses, function (witness) { %>
+              <tr>
+                <td><%= witness.escape('name') %></td>
+                <td>
+                  <input type="checkbox"
+                         class="witnessCheckbox"
+                         name="witness"
+                         value=<%=witness.get('id')%>>
+                </td>
+                <td>
+                  <button type="button"
+	                      class="btn btn-danger"
+                          id="deleteWitnessButton"
+                          data-value=<%=witness.get('id')%>>
+                    <span class="glyphicon glyphicon-trash"></span>
+                  </button>
+	            </td>
+              </tr>
+	          <% }); %>
+            </tbody>
+          </table>
+          <div class="input-group">
+            <span class="input-group-addon">Collation Name</span>
+            <input type="text" class="form-control" id="collationNameField" />
+            <span class="input-group-btn">
+              <button type="button"
+                      class="btn btn-primary"
+                      id="collateButton">
+                Collate Selected Witnesses
+              </button>
+            </span>
+          </div>
+        </script>
+
+
+        <script type="text/template" id="list_set_template">
+          <% if (_.any(sets, function (set) {
+             return !_.contains(['TOKENIZING', 'TOKENIZED',
+             'COLLATING', 'COLLATED'],
+             set.get('status'));})) { %>
+          <div class="alert alert-danger" role="alert">
+            <strong>Error:</strong>
+            Something has gone wrong, and one or more of your collections can not be
+            visualized. Please delete the errant visualization, and try again.
+          </div>
+          <%}%>
+          <table class="table table-striped table-condensed">
+            <thead>
+              <tr>
+                <th class="col-md-4">Name</th>
+                <th class="col-md-1">Status</th>
+                <!-- Empty headings in order to get spacing to work later. -->
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% _.each(sets, function (set) { %>
+              <tr>
+                <td><%= set.escape('name') %></td>
+                <% if (set.get('status') == 'COLLATED') { %>
+                <td><span class="glyphicon glyphicon-ok"></span></td>
+                <% } else if (set.get('status').indexOf("NOT") > -1) { %>
+                <td><span class="glyphicon glyphicon-remove"></span></td>
+                <% } else if (_.contains(['TOKENIZING', 'TOKENIZED', 'COLLATING']),
+                   set.get('status')) { %>
+                <td><span class="glyphicon glyphicon-refresh"></span></td>
+                <% } else { %>
+                <td><%=set.escape('status')%></td>
+                <% } %>
+                <td>
+                  <div class="btn-group">
+                    <% if (set.get('status') == 'COLLATED') { %>
+                    <a type="button"
+                       class="btn btn-primary"
+                       href="#viz/heatmap/<%=set.get('id')%>"
+                       id="heatMapButton">
+                      Heat Map
+                    </a>
+                    <a type="button"
+                       class="btn btn-primary"
+                       href="#viz/sidebyside/<%=set.get('id')%>"
+                       id="sideBySideButton">
+                      Side By Side
+                    </a>
+                    <% } %>
+                    <button type="button"
+	                        class="btn btn-danger"
+                            id="deleteSetButton"
+                            data-value=<%=set.get('id')%>>
+                      <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                  </div>
+	            </td>
+              </tr>
+	          <% }); %>
+            </tbody>
+          </table>
+        </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+        </script>
+        <script src="_/js/lib/bootstrap.min.js"></script>
+        <script src="_/js/lib/underscore.js"></script>
+        <script src="_/js/lib/backbone.js"></script>
+        <script src="_/js/lib/codemirror.js"></script>
+        <link rel="stylesheet" href="_/css/solarized.css">
+        <link rel="stylesheet" href="_/css/codemirror.css">
+        <script src="_/js/AkhmatoViz.js"></script>
+        <!-- <script src="http://localhost:35729/livereload.js"></script> -->
   </body>
 </html>
