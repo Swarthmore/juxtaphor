@@ -35,8 +35,7 @@ AV.WitnessCollectionView = Backbone.View.extend({
     },
     collate: function(ev) {
         var checkedBoxes = _.filter($('input:checkbox.witnessCheckbox'),
-                                    function(box)
-                                    {return box.checked === true;});
+                                    function(box){return box.checked === true;});
         var checkedIDs = _.pluck(checkedBoxes, 'value');
         checkedIDs = _.map(checkedIDs, Number);
         var givenName = $('#collationNameField')[0].value;
@@ -44,6 +43,8 @@ AV.WitnessCollectionView = Backbone.View.extend({
         //We spent a lot of time on the following. It submits the witnesses
         //together as a set, and then takes the set ID that is returned
         //from that, and collates it.
+        //
+        //It does this because of the baroqueness of Juxta's API
         $.ajax({
             url: AV.URL('set.json'),
             type: "POST",
