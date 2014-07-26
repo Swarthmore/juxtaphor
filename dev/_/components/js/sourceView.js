@@ -21,7 +21,6 @@ AV.SourceView = Backbone.View.extend({
 	var that = this;
 	$('.CodeMirror').click(function(){
 	  that.codeMirror.focus();
-	  console.log("WORKING?");
 	});
 	},
 
