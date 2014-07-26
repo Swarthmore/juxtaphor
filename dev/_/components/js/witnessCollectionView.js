@@ -24,8 +24,8 @@ AV.WitnessCollectionView = Backbone.View.extend({
         this.collection.fetch({reset:true});
     },
     delete: function(ev) {
-	    //ev is the mouse event. We receive the data-value which contains
-	    //the id.
+	    //ev is the mouse event. The user clicked a DOM element,
+        //whose data-value attribute is the ID of the Model to be deleted.
 	    var idToDelete = $(ev.currentTarget).data('value');
 	    var sourceToRemove = this.collection.find(function (source) {
 		    return source.id == idToDelete;});
