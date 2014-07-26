@@ -12,6 +12,7 @@
   </head>
   <body>
 
+    <!-- Begin Navbar -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -33,6 +34,10 @@
         </ul>
       </div>
     </nav>
+    <!-- End Navbar -->
+
+    <!-- This project uses two modals: one to show workspaces, and one to show -->
+    <!-- visualizations. They are declared here. -->
 
     <div class="modal fade"
          id="workspaceModal"
@@ -100,16 +105,16 @@
 	    </div>
       </div>
     </div>
+    <!-- End Modals -->
 
     <div class="container-fluid">
       <div class="row">
-	    <!-- Column 1. Contains the individual sourceView and upload source view-->
+	    <!-- Contains the div for the  individual sourceView -->
 	    <div id="views" class="col-md-4 col-md-offset-1">
-          <!------ Template Containers ------>
           <div id="view_container"></div>
         </div>
 
-	    <!-- Column 2. Contains all the views in tabular form -->
+	    <!-- Contains all the views in tabular form -->
 	    <div class="col-md-5 col-md-offset-1">
 	      <!-- Nav tabs -->
 	      <ul class="nav nav-pills" id="tablist">
@@ -137,8 +142,9 @@
 	        </div>
 	      </div>
 	    </div>
-        <!----------- Templates ----------->
 
+        <!----------- Templates ----------->
+        <!-- This project uses underscore's templating engine. -->
         <script type="text/template" id="workspace_dropdown_template">
           <% _.each(workspaces, function (workspace) {  %>
           <li>
@@ -307,6 +313,7 @@
 
 
         <script type="text/template" id="list_set_template">
+          <!-- _.contains() is being used here like the Pythonic `in' idiom. -->
           <% if (_.any(sets, function (set) {
              return !_.contains(['TOKENIZING', 'TOKENIZED',
              'COLLATING', 'COLLATED'],
@@ -379,6 +386,5 @@
         <link rel="stylesheet" href="_/css/solarized.css">
         <link rel="stylesheet" href="_/css/codemirror.css">
         <script src="_/js/AkhmatoViz.js"></script>
-        <!-- <script src="http://localhost:35729/livereload.js"></script> -->
   </body>
 </html>
