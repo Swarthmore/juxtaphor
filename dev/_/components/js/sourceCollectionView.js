@@ -36,6 +36,7 @@ AV.SourceCollectionView = Backbone.View.extend({
 	    sourceToRemove.destroy().done(
             _.bind(function(){
                 this.collection.fetch();
+                // Backbone.trigger passes message between views
                 Backbone.trigger("source:deleted");
             }, this));
 
@@ -53,7 +54,10 @@ AV.SourceCollectionView = Backbone.View.extend({
 		        url: url,
 		        data: JSON.stringify(request),
 		        contentType: 'application/json'
-            }).done(function(){Backbone.trigger("source:transformed");});
+            }).done(function(){
+                // Backbone.trigger passes message between views
+                Backbone.trigger("source:transformed");
+            });
         });
         this.collection.fetch();
     }

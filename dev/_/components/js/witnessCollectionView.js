@@ -8,6 +8,7 @@ AV.WitnessCollectionView = Backbone.View.extend({
     el: '#list_witness_container',
     initialize: function() {
         this.listenTo(this.collection, 'all', this.render);
+        //Listen to custom messages passed through the backbone object
         this.listenTo(Backbone, "source:transformed", this.refresh);
         this.listenTo(Backbone, "source:deleted", this.refresh);
     },
@@ -31,6 +32,7 @@ AV.WitnessCollectionView = Backbone.View.extend({
 		    return source.id == idToDelete;});
 	    sourceToRemove.urlRoot = AV.URL('witness');
 	    sourceToRemove.destroy();
+        // Backbone.trigger passes message between views
         Backbone.trigger('witness:deleted');
     },
     collate: function(ev) {
