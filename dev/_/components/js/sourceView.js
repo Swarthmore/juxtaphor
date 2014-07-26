@@ -16,11 +16,7 @@ AV.SourceView = Backbone.View.extend({
                 lineNumbers: true,
                 viewportMargin: Infinity,
                 readOnly: this.model.get('name'),
-	  	id: "viewCodeMirror"
             });
-	$("#viewCodeMirror").click(function(){
-	    this.codeMirror.focus();
-	    });
 	},
 	events: {
         "click #uploadButton": "upload"
