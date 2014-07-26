@@ -108,6 +108,8 @@ AV.Router = Backbone.Router.extend({
             });
     },
 
+    //Change the AV.WORKSPACE global, and update all of the models
+    //to reflect that change
     switchWorkspace: function(workspace){
         AV.WORKSPACE = workspace;
         console.log(AV.WORKSPACE);
