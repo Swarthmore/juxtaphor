@@ -17,7 +17,14 @@ AV.SourceView = Backbone.View.extend({
                 viewportMargin: Infinity,
                 readOnly: this.model.get('name'),
             });
+
+	var that = this;
+	$('.CodeMirror').click(function(){
+	  that.codeMirror.focus();
+	  console.log("WORKING?");
+	});
 	},
+
 	events: {
         "click #uploadButton": "upload"
     },
@@ -38,6 +45,5 @@ AV.SourceView = Backbone.View.extend({
 			this.collection.fetch();
 		}, this));
 	    this.render();
-
 	}
 });
