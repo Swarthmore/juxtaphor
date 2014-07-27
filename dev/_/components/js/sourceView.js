@@ -1,7 +1,10 @@
 //Create a view for the source
+//added buttons, listeners, events for uploading both xml and parallel segmented TEI
 AV.SourceView = Backbone.View.extend({
 	el: '#view_container',
-	checked: '',
+	// two convenience constants for passing  checkbox value
+	contentType: '',
+	parallelSeg: '',
 	render: function(){
 		//compile the template using underscore
 		var template = _.template( $("#view_template").html(), {
@@ -28,7 +31,8 @@ AV.SourceView = Backbone.View.extend({
 
 	events: {
         "click #uploadButton": "upload",
-	"click #contentType": "contentType"
+	"click #contentType": "setContentType",
+	"click #parallelSeg": "setParallelSeg"
     },
     upload: function( event ){
 		//Resetting attached model, because if something was
@@ -44,14 +48,24 @@ AV.SourceView = Backbone.View.extend({
 		name: $("#name").val(),
 		contentType: contentType
 		});
-	modelToSubmit.save().done(_.bind(function() {
+	modelToSubmit.save().done(_.bind(function(d) {
+		// if the parallel segmentation is checked, create appopriate witnesses and collections
+		if (this.setParallelSeg)  {
+			var data = {setName: modelToSubmit.get('name'), teiSourceId: d};
+			json_post(AV.URL('import'),data);
+		}
 		this.collection.fetch();
 		}, this));
 	this.render();
 	},
 
-    contentType: function( event ){
-	this.checked = $(event.target).prop('checked');
-	console.log(this.checked);
+    setContentType: function( event ){
+	this.contentType = $(event.target).prop('checked');
+	console.log(this.contentType);
+	},
+
+    setParallelSeg: function( event ){
+	this.parallelSeg = $(event.target).prop('checked');
+	console.log(this.parallelSeg);
 	}
 });
