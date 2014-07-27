@@ -1,5 +1,5 @@
 AV.WorkspaceDropdownView = Backbone.View.extend({
-    el: '#workspace_dropdown_container',
+    el: '#workspace-dropdown',
     template: _.template($("#workspace_dropdown_template").html()),
     initialize: function(){
         this.listenTo(this.collection, "all", this.render);

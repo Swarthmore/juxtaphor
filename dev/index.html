@@ -19,17 +19,8 @@
           <a class="navbar-brand" href="#">Akhmatoviz</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#"
-               class="dropdown-toggle"
-               data-toggle="dropdown">
-              Workspaces <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu"
-                id="workspace_dropdown_container"
-                role="menu">
-              <!-- This will be filled by the template. -->
-            </ul>
+          <li id="workspace-dropdown" class="dropdown">
+		<!-- workspace dropdown template -->
           </li>
         </ul>
       </div>
@@ -146,7 +137,18 @@
         <!----------- Templates ----------->
         <!-- This project uses underscore's templating engine. -->
         <script type="text/template" id="workspace_dropdown_template">
-          <% _.each(workspaces, function (workspace) {  %>
+          
+
+            <a href="#"
+               class="dropdown-toggle"
+               data-toggle="dropdown">
+		WORKSPACE: <%= AV.WORKSPACE %> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu"
+                id="workspace_dropdown_container"
+                role="menu">
+
+	<% _.each(workspaces, function (workspace) {  %>
           <li>
             <a href="#workspace/<%= workspace.escape('name') %>">
               <% if (workspace.escape('name')==AV.WORKSPACE) { %>
@@ -158,6 +160,7 @@
           <% }); %>
           <li class="divider"></li>
           <li><a href="#workspace">Edit Workspaces</a></li>
+	</ul>
         </script>
 
         <script type="text/template" id="workspace_edit_template">
