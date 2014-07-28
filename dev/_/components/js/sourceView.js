@@ -15,6 +15,7 @@ AV.SourceView = Backbone.View.extend({
 	  });
 	  //Load the compiled HTML into the backbone "el"
 	  this.$el.html( template );
+	  //console.log(document.getElementById("viewContent"));
 
 	  this.codeMirror = CodeMirror.fromTextArea(
 	    document.getElementById("viewContent"),
@@ -81,9 +82,12 @@ AV.SourceView = Backbone.View.extend({
       } else {
 	this.lineWrap = false;
       }
-      console.log(document.getElementById("viewContent").innerHTML);// =
-	//this.codeMirror.doc.getValue();
       this.render();
+      
+      //console.log("Toggle");
+      //var oldContent = this.codeMirror.doc.getValue();
+      //this.codeMirror.options.lineWrapping = this.lineWrap;
+      //this.codeMirror.doc.setValue(oldContent);
     }
 
 });
