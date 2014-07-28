@@ -137,30 +137,28 @@
         <!----------- Templates ----------->
         <!-- This project uses underscore's templating engine. -->
         <script type="text/template" id="workspace_dropdown_template">
-          
+          <a href="#"
+             class="dropdown-toggle"
+             data-toggle="dropdown">
+		    WORKSPACE: <%= AV.WORKSPACE %> <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu"
+              id="workspace_dropdown_container"
+              role="menu">
 
-            <a href="#"
-               class="dropdown-toggle"
-               data-toggle="dropdown">
-		WORKSPACE: <%= AV.WORKSPACE %> <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu"
-                id="workspace_dropdown_container"
-                role="menu">
-
-	<% _.each(workspaces, function (workspace) {  %>
-          <li>
-            <a href="#workspace/<%= workspace.escape('name') %>">
-              <% if (workspace.escape('name')==AV.WORKSPACE) { %>
-              <span class="glyphicon glyphicon-arrow-right"></span>
-              <% } %>
-              <%= workspace.escape('name')%>
-            </a>
-          </li>
-          <% }); %>
-          <li class="divider"></li>
-          <li><a href="#workspace">Edit Workspaces</a></li>
-	</ul>
+	        <% _.each(workspaces, function (workspace) {  %>
+            <li>
+              <a href="#workspace/<%= workspace.escape('name') %>">
+                <% if (workspace.escape('name')==AV.WORKSPACE) { %>
+                <span class="glyphicon glyphicon-arrow-right"></span>
+                <% } %>
+                <%= workspace.escape('name')%>
+              </a>
+            </li>
+            <% }); %>
+            <li class="divider"></li>
+            <li><a href="#workspace">Edit Workspaces</a></li>
+	      </ul>
         </script>
 
         <script type="text/template" id="workspace_edit_template">
@@ -212,8 +210,8 @@
             <% } %>
           </div>
           <p><textarea id="viewContent"><%= source.escape('content') %></textarea></p>
-	  <label><input id="contentType" type="checkbox">XML</label>
-	  <label><input id="parallelSeg" type="checkbox">TEI Parallel Segmentation</label>
+	      <label><input id="contentType" type="checkbox">XML</label>
+	      <label><input id="parallelSeg" type="checkbox">TEI Parallel Segmentation</label>
         </script>
 
         <script type="text/template" id="list_source_template">
@@ -221,7 +219,9 @@
             <thead>
               <tr>
                 <th class="col-md-6">Name</th>
-	            <th class="col-md-2">Transform?</th>
+	            <th>
+                  <span class="glyphicon glyphicon-random"></span>
+                </th>
                 <!-- Empty headings in order to get spacing to work later. -->
                 <th></th>
               </tr>
@@ -257,19 +257,20 @@
 	          <% }); %>
             </tbody>
           </table>
+          <div class="btn-group">
+	        <a type="button"
+               class="btn btn-success"
+               id="newSourceButton"
+               href="#source">
+              Create New Source
+            </a>
 
-	      <a type="button"
-             class="btn btn-success"
-             id="newSourceButton"
-             href="#source">
-            Create New Source
-          </a>
-
-          <button type="button"
-                  class="btn btn-success"
-                  id="transformButton">
-            Transform Selected Sources
-          </button>
+            <button type="button"
+                    class="btn btn-success"
+                    id="transformButton">
+              Transform Selected Sources
+            </button>
+          </div>
 	    </script>
 
         <script type="text/template" id="list_witness_template">
@@ -278,7 +279,9 @@
               <tr>
                 <th class="col-md-6">Name</th>
                 <!-- Empty headings in order to get spacing to work later. -->
-                <th class="col-md-2">Collate?</th>
+                <th>
+                  <span class="glyphicon glyphicon-compressed"></span>
+                </th>
                 <th></th>
               </tr>
             </thead>
@@ -293,12 +296,14 @@
                          value=<%=witness.get('id')%>>
                 </td>
                 <td>
-                  <button type="button"
-	                      class="btn btn-danger"
-                          id="deleteWitnessButton"
-                          data-value=<%=witness.get('id')%>>
-                    <span class="glyphicon glyphicon-trash"></span>
-                  </button>
+                  <div class="btn-group">
+                    <button type="button"
+	                        class="btn btn-danger"
+                            id="deleteWitnessButton"
+                            data-value=<%=witness.get('id')%>>
+                      <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                  </div>
 	            </td>
               </tr>
 	          <% }); %>
@@ -360,13 +365,13 @@
                        class="btn btn-warning"
                        href="#viz/heatmap/<%=set.get('id')%>"
                        id="heatMapButton">
-                      Heat Map
+                      <span class="glyphicon glyphicon-fire"></span>
                     </a>
                     <a type="button"
                        class="btn btn-primary"
                        href="#viz/sidebyside/<%=set.get('id')%>"
                        id="sideBySideButton">
-                      Side By Side
+                      <span class="glyphicon glyphicon-pause"></span>
                     </a>
                     <% } %>
                     <button type="button"

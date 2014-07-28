@@ -29,8 +29,8 @@ AV.SourceView = Backbone.View.extend({
 
 	events: {
         "click #uploadButton": "upload",
-	"click #contentType": "setContentType",
-	"click #parallelSeg": "setParallelSeg"
+	    "click #contentType": "setContentType",
+	    "click #parallelSeg": "setParallelSeg"
     },
     upload: function( event ){
 		//Resetting attached model, because if something was
@@ -41,29 +41,29 @@ AV.SourceView = Backbone.View.extend({
         this.codeMirror.save();
 	    // Saving the model sends a "sync" request.
         var contentType = (this.checked) ? 'xml' : 'txt';
-	modelToSubmit.set({
-		data: $("#viewContent").val(),
-		name: $("#name").val(),
-		contentType: contentType
+	    modelToSubmit.set({
+		    data: $("#viewContent").val(),
+		    name: $("#name").val(),
+		    contentType: contentType
 		});
-	modelToSubmit.save().done(_.bind(function(d) {
-		// if the parallel segmentation is checked, create appopriate witnesses and collections
-		if (this.setParallelSeg)  {
-			var data = {setName: modelToSubmit.get('name'), teiSourceId: d};
-			json_post(AV.URL('import'),data);
-		}
-		this.collection.fetch();
+	    modelToSubmit.save().done(_.bind(function(d) {
+		    // if the parallel segmentation is checked, create appopriate witnesses and collections
+		    if (this.setParallelSeg)  {
+			    var data = {setName: modelToSubmit.get('name'), teiSourceId: d};
+			    json_post(AV.URL('import'),data);
+		    }
+		    this.collection.fetch();
 		}, this));
-	this.render();
+	    this.render();
 	},
 
     setContentType: function( event ){
-	this.contentType = $(event.target).prop('checked');
-	console.log(this.contentType);
+	    this.contentType = $(event.target).prop('checked');
+	    console.log(this.contentType);
 	},
 
     setParallelSeg: function( event ){
-	this.parallelSeg = $(event.target).prop('checked');
-	console.log(this.parallelSeg);
+	    this.parallelSeg = $(event.target).prop('checked');
+	    console.log(this.parallelSeg);
 	}
 });
