@@ -5,37 +5,41 @@ AV.SourceView = Backbone.View.extend({
 	// two convenience constants for passing  checkbox value
 	contentType: '',
 	parallelSeg: '',
+	//convenience constant for setting lineWrapping	
+	lineWrap: false,
+
 	render: function(){
-		//compile the template using underscore
-		var template = _.template( $("#view_template").html(), {
-            source: this.model
-        });
-		//Load the compiled HTML into the backbone "el"
-		this.$el.html( template );
+	  //compile the template using underscore
+	  var template = _.template( $("#view_template").html(), {
+	    source: this.model
+	  });
+	  //Load the compiled HTML into the backbone "el"
+	  this.$el.html( template );
 
-        this.codeMirror = CodeMirror.fromTextArea(
-            document.getElementById("viewContent"),
-            {
-                theme: 'solarized dark',
-                lineNumbers: true,
-                viewportMargin: Infinity,
-                readOnly: this.model.get('name'),
-	        lineWrapping: false
-            });
+	  this.codeMirror = CodeMirror.fromTextArea(
+	    document.getElementById("viewContent"),
+	    {
+	      theme: 'solarized dark',
+	    lineNumbers: true,
+	    viewportMargin: Infinity,
+	    readOnly: this.model.get('name'),
+	    lineWrapping: this.lineWrap 
+	    });
 
 
 
-	var that = this;
-	$('.CodeMirror').click(function(){
-	  that.codeMirror.focus();
-	});
+	  var that = this;
+	  $('.CodeMirror').click(function(){
+	    that.codeMirror.focus();
+	  });
 	},
 
 	events: {
-        "click #uploadButton": "upload",
-	"click #contentType": "setContentType",
-	"click #parallelSeg": "setParallelSeg"
-    },
+	  "click #uploadButton": "upload",
+	  "click #contentType": "setContentType",
+	  "click #parallelSeg": "setParallelSeg",
+	  "click #lineWrapToggle": "toggle"
+	},
     upload: function( event ){
 		//Resetting attached model, because if something was
         //looked at before the upload, that will still be in
@@ -62,12 +66,23 @@ AV.SourceView = Backbone.View.extend({
 	},
 
     setContentType: function( event ){
-	this.contentType = $(event.target).prop('checked');
-	console.log(this.contentType);
-	},
+      this.contentType = $(event.target).prop('checked');
+      console.log(this.contentType);
+    },
 
     setParallelSeg: function( event ){
-	this.parallelSeg = $(event.target).prop('checked');
-	console.log(this.parallelSeg);
-	}
+      this.parallelSeg = $(event.target).prop('checked');
+      console.log(this.parallelSeg);
+    },
+    
+    toggle: function( event ){
+      console.log("start toggle: "+ this.lineWrap);
+      if(!this.lineWrap){
+	this.lineWrap = true;
+      } else {
+	this.lineWrap = false;
+      }
+      this.render();
+    }
+
 });
