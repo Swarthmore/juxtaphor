@@ -6,6 +6,8 @@
 
 AV.WitnessCollectionView = Backbone.View.extend({
     el: '#list_witness_container',
+    error: '<div class="alert alert-danger" role="alert">' +
+           'A set must have at least two witnesses. </div>',
     initialize: function() {
         this.listenTo(this.collection, 'all', this.render);
         //Listen to custom messages passed through the backbone object
@@ -40,23 +42,27 @@ AV.WitnessCollectionView = Backbone.View.extend({
                                     function(box){return box.checked === true;});
         var checkedIDs = _.pluck(checkedBoxes, 'value');
         checkedIDs = _.map(checkedIDs, Number);
-        var givenName = $('#collationNameField')[0].value;
 
-        //We spent a lot of time on the following. It submits the witnesses
-        //together as a set, and then takes the set ID that is returned
-        //from that, and collates it.
-        //
-        //It does this because of the baroqueness of Juxta's API
-        $.ajax({
-            url: AV.URL('set.json'),
-            type: "POST",
-            data: JSON.stringify({name:givenName, witnesses:checkedIDs}),
-            contentType: 'application/json',
-            dataType: 'text'
-        }).done(_.bind(function(d){
-            this.model.set({id:d});
-            this.model.collate();
-        }, this));
-        this.collection.fetch();
+        if (checkedIDs.length < 2) {
+            $('#collate_input_group').before(this.error);
+        } else {
+            var givenName = $('#collationNameField')[0].value;
+            //We spent a lot of time on the following. It submits the witnesses
+            //together as a set, and then takes the set ID that is returned
+            //from that, and collates it.
+            //
+            //It does this because of the baroqueness of Juxta's API
+            $.ajax({
+                url: AV.URL('set.json'),
+                type: "POST",
+                data: JSON.stringify({name:givenName, witnesses:checkedIDs}),
+                contentType: 'application/json',
+                dataType: 'text'
+            }).done(_.bind(function(d){
+                this.model.set({id:d});
+                this.model.collate();
+            }, this));
+            this.collection.fetch();
+        }
     }
 });
