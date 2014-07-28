@@ -76,18 +76,21 @@ AV.SourceView = Backbone.View.extend({
       console.log(this.parallelSeg);
     },
     
+    /*
+     * toggle the line wrap. Also updates button value to on or off
+     */
     toggle: function( event ){
+
+      var onOff = "";      
       if(!this.lineWrap){
+	onOff = "On";
 	this.lineWrap = true;
       } else {
+	onOff = "Off";
 	this.lineWrap = false;
       }
-      this.render();
-      
-      //console.log("Toggle");
-      //var oldContent = this.codeMirror.doc.getValue();
-      //this.codeMirror.options.lineWrapping = this.lineWrap;
-      //this.codeMirror.doc.setValue(oldContent);
+      this.codeMirror.setOption("lineWrapping", this.lineWrap);
+      $("#lineWrapToggle").attr("value", "Line Wrap "+onOff);
     }
 
 });
