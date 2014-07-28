@@ -20,10 +20,10 @@ AV.SourceView = Backbone.View.extend({
 	    document.getElementById("viewContent"),
 	    {
 	      theme: 'solarized dark',
-	    lineNumbers: true,
-	    viewportMargin: Infinity,
-	    readOnly: this.model.get('name'),
-	    lineWrapping: this.lineWrap 
+	      lineNumbers: true,
+	      viewportMargin: Infinity,
+	      readOnly: this.model.get('name'),
+	      lineWrapping: this.lineWrap 
 	    });
 
 
@@ -76,12 +76,13 @@ AV.SourceView = Backbone.View.extend({
     },
     
     toggle: function( event ){
-      console.log("start toggle: "+ this.lineWrap);
       if(!this.lineWrap){
 	this.lineWrap = true;
       } else {
 	this.lineWrap = false;
       }
+      console.log(document.getElementById("viewContent").innerHTML);// =
+	//this.codeMirror.doc.getValue();
       this.render();
     }
 
