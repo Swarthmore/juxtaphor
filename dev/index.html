@@ -214,7 +214,8 @@
               <input type="button"
 		     class="btn btn-default"
                      id="lineWrapToggle"
-                     value="line wrap: OFF"/>
+		     value="Line Wrap: <%= router.sourceView.lineWrap %>
+                     "/>
             </span>
           </div>
           <p><textarea id="viewContent"><%= source.escape('content') %></textarea></p>
