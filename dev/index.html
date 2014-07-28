@@ -12,20 +12,7 @@
   </head>
   <body>
 
-    <!-- Begin Navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Akhmatoviz</a>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-          <li id="workspace-dropdown" class="dropdown">
-		<!-- workspace dropdown template -->
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <!-- End Navbar -->
+
 
     <!-- This project uses two modals: one to show workspaces, and one to show -->
     <!-- visualizations. They are declared here. -->
@@ -98,15 +85,34 @@
     </div>
     <!-- End Modals -->
 
-    <div class="container-fluid">
+    <!-- Begin Navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header navbar-left">
+          <a class="navbar-brand" href="#">Akhmatoviz</a>
+        </div>
+        <div class="navbar-collapse collkapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li id="workspace-dropdown" class="dropdown">
+		      <!-- workspace dropdown template -->
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- End Navbar -->
+
+    <div class="container">
+
+
       <div class="row">
 	    <!-- Contains the div for the  individual sourceView -->
-	    <div id="views" class="col-md-4 col-md-offset-1">
+	    <div id="views" class="col-md-7">
           <div id="view_container"></div>
         </div>
 
 	    <!-- Contains all the views in tabular form -->
-	    <div class="col-md-5 col-md-offset-1">
+	    <div class="col-md-5">
 	      <!-- Nav tabs -->
 	      <ul class="nav nav-pills" id="tablist">
 	        <li class="active"><a href="#sourcesTab">
