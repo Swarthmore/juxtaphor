@@ -55,8 +55,34 @@ The implementation is as follows:
 
 ##Nuances and Explanations##
 
-One potentially confusing part of the code is the \_.bind method. We use it
-often in order to ensure "this" means exactly what we want it to mean.
+One potentially confusing part of the code is the `_.bind' method, if one is
+unfamilar with monads. Don't be scared about its use though, it's not so
+complicated. It takes two arguments: a function, and a context. It sets the
+function up so that it will run within that context. This is really useful,
+because most of the time, anonymous functions run in this weird contextless
+environment, which makes `this` work improperly. If you pass `this` in
+as the second parameter to `_.bind`, any reference to `this` in the
+function will point to the external `this'.
+
+Example:
+```js
+foo = Backbone.View.extend({
+    //...
+    _.bind(function() {
+        this.render()
+        // Here, `this' refers to the `foo' object
+    }, this);
+
+    function() {
+        this.render
+        // Here, `this' refers to nothing at all.
+        // This makes JavaScript angry.
+    }
+})
+```
+
+You would use `_.bind()` to avoid ugly `var that = this;` state passing.
+Consult [the docs](http://underscorejs.org/#bind) if you have further questions.
 
 We use the "navigate" method of the Router in order to take the route back 
 to the index.

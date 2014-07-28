@@ -50,20 +50,20 @@ AV.SourceView = Backbone.View.extend({
         this.codeMirror.save();
 	    // Saving the model sends a "sync" request.
         var contentType = (this.checked) ? 'xml' : 'txt';
-	modelToSubmit.set({
-		data: $("#viewContent").val(),
-		name: $("#name").val(),
-		contentType: contentType
+	    modelToSubmit.set({
+		    data: $("#viewContent").val(),
+		    name: $("#name").val(),
+		    contentType: contentType
 		});
-	modelToSubmit.save().done(_.bind(function(d) {
-		// if the parallel segmentation is checked, create appopriate witnesses and collections
-		if (this.setParallelSeg)  {
-			var data = {setName: modelToSubmit.get('name'), teiSourceId: d};
-			json_post(AV.URL('import'),data);
-		}
-		this.collection.fetch();
+	    modelToSubmit.save().done(_.bind(function(d) {
+		    // if the parallel segmentation is checked, create appopriate witnesses and collections
+		    if (this.setParallelSeg)  {
+			    var data = {setName: modelToSubmit.get('name'), teiSourceId: d};
+			    json_post(AV.URL('import'),data);
+		    }
+		    this.collection.fetch();
 		}, this));
-	this.render();
+	    this.render();
 	},
 
     setContentType: function( event ){
