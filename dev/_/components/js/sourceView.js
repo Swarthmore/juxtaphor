@@ -21,12 +21,10 @@ AV.SourceView = Backbone.View.extend({
                 viewportMargin: Infinity,
                 readOnly: this.model.get('name'),
             });
-
-	var that = this;
-	$('.CodeMirror').click(function(){
-	  that.codeMirror.focus();
-	  console.log("WORKING?");
-	});
+	    $('.CodeMirror').click(_.bind(function(){
+	        this.codeMirror.focus();
+	        console.log("WORKING?");
+	    }, this));
 	},
 
 	events: {
