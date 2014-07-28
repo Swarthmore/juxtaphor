@@ -3,8 +3,8 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
     initialize: function() {
         this.listenTo(this.collection, 'reset remove', this.render);
         this.listenTo(Backbone, 'comparison:collate', this.refresh);
-        this.listenTo(Backbone, 'source:deleted', this.refresh);
-        this.listenTo(Backbone, 'witness:deleted', this.refresh);
+        this.listenTo(Backbone, 'source:deleted', this.reqDeleted);
+        this.listenTo(Backbone, 'witness:deleted', this.reqDeleted);
     },
     events: {
 	    "click #deleteSetButton": "delete"
@@ -21,6 +21,16 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
                   })){
             this.collection.fetch({reset: true});
         }
+    },
+    reqDeleted: function(){
+        this.collection.fetch();
+        var deletedModels = _.filter(this.collection.models,
+                 function(model){
+                     return model.get('status') == 'NOT_COLLATED';
+                 });
+        _.map(deletedModels, function(model){
+            model.destroy({wait:true});
+        });
     },
     refresh: function(){
         this.collection.fetch({reset:true});
