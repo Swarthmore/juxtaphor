@@ -40,7 +40,8 @@ AV.Router = Backbone.Router.extend({
         'viz/heatmap/:idToViz': 'heatMap',
         'viz/sidebyside/:idToViz': 'sideBySide',
         'workspace': 'editWorkspaces',
-        'workspace/:ws' : 'switchWorkspace'
+        'workspace/:ws' : 'switchWorkspace',
+	'quickHelp' : 'quickHelp'
     },
 
     index: function() {
@@ -125,5 +126,9 @@ AV.Router = Backbone.Router.extend({
         this.comparisonSetCollection.fetch({reset:true});
         this.navigate('');
         this.index();
+    },
+    quickHelp: function(e) {
+      $("#quickHelpModal").modal('show');
+      this.navigate('');
     }
 });

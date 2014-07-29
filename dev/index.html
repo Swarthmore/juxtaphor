@@ -12,9 +12,41 @@
   </head>
   <body>
 
-    <!-- This project uses two modals: one to show workspaces, and one to show -->
+    <!-- This project uses 3 modals: one to show workspaces, and one to show -->
     <!-- visualizations. They are declared here. -->
 
+    <div class="modal fade"
+         id="quickHelpModal"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="quickHelpModal"
+         aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-hidden="true">
+              &times;
+            </button>
+            <h4 class="modal-title">Quick Help</h4>
+          </div>
+          <div class="modal-body" id="quickHelp-modal-body">
+
+          </div>
+          <div class="modal-footer">
+            <button type="button"
+                    class="btn btn-default"
+                    data-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
     <div class="modal fade"
          id="workspaceModal"
          tabindex="-1"
@@ -90,7 +122,12 @@
           <a class="navbar-brand" href="#">Akhmatoviz</a>
         </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
+          
+	  <ul class="nav navbar-nav">
+	    <li><a href="#quickHelp"> Quick Help</a></li>
+	  </ul>
+	  
+	  <ul class="nav navbar-nav navbar-right">
             <li><a href="./pages/help.html">Help</a></li>
             <li id="workspace-dropdown" class="dropdown">
 		      <!-- workspace dropdown template -->
