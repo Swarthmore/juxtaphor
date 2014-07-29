@@ -112,6 +112,7 @@ AV.Router = Backbone.Router.extend({
     //to reflect that change
     switchWorkspace: function(workspace){
         AV.WORKSPACE = workspace;
+        createCookie('workspace', workspace, 95);
         console.log(AV.WORKSPACE);
         this.sourceModel.updateURL();
         this.sourceCollection.updateURL();
