@@ -12,9 +12,57 @@
   </head>
   <body>
 
-    <!-- This project uses two modals: one to show workspaces, and one to show -->
+    <!-- This project uses 3 modals: one to show workspaces, and one to show -->
     <!-- visualizations. They are declared here. -->
 
+    <div class="modal fade"
+         id="quickHelpModal"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="quickHelpModal"
+         aria-hidden="true">
+      <div class="modal-dialog modal-bg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-hidden="true">
+              &times;
+            </button>
+            <h4 class="modal-title">Quick Help</h4>
+          </div>
+          <div class="modal-body" id="quickHelp-modal-body">
+	    <p>
+	    The site allows users to upload and compare different 
+	    translations. One can take a poem in Russian, for example, and 
+	    upload various English translations to the site. Afterward, these 
+	    "Sources" can be converted into "Witnesses"-- texts that can be 
+	    compared with one another through the API. The ultimate goal is 
+	    called "Collation" where we take Witnesses and group them into 
+	    sets that can be visualized.</p>
+	    <p>
+	    To use the site, follow these steps:
+	    1. Enter a text into the box, give it a title, and click "Save Source."
+	    2. In the Sources tab, check the sources you want to visualize and click "Transform Selected Sources."
+	    3. In the Witnesses tab, check the witnesses you want to collate, give the collection a title, and click Collate Selected Witnesses.
+	    4. In the Collections tab, you should see your collection. Click on Heat Map or Side by Side to see the visualizations!
+	    5. If you want to see the visualization on its own, click the "Share" button on the bottom left to be taken to a page with just the visualization.
+	    </p>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button"
+                    class="btn btn-default"
+                    data-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
     <div class="modal fade"
          id="workspaceModal"
          tabindex="-1"
@@ -90,7 +138,12 @@
           <a class="navbar-brand" href="#">Akhmatoviz</a>
         </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
+          
+	  <ul class="nav navbar-nav">
+	    <li><a href="#quickHelp">Getting Started!</a></li>
+	  </ul>
+	  
+	  <ul class="nav navbar-nav navbar-right">
             <li><a href="./pages/help.html">Help</a></li>
             <li id="workspace-dropdown" class="dropdown">
 		      <!-- workspace dropdown template -->
@@ -188,7 +241,7 @@
                  id="workspaceName"
 	             maxlength="20"/>
           <input type="button"
-                 class="btn btn-success btn-lg"
+                 class="btn btn-success "
                  id="newWorkspaceButton"
                  value="Create New Workspace"/>
         </script>
