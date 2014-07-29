@@ -30,7 +30,6 @@ iframe#visualization{
   margin: 0 4px;
 }
 
-
 body {
    padding-top: 65px;
 }
@@ -49,6 +48,12 @@ body {
 #visualization-modal-body{
 text-align: center
 }
+
+#newWorkspaceButton{
+margin: 0px;
+margin-top: 4px;
+}
+
 
 //Remove responsiveness of navbar
 //http://stackoverflow.com/questions/21738417/bootstrap-remove-responsive-from-navbar
