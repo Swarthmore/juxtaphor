@@ -33,9 +33,13 @@ AV.WitnessCollectionView = Backbone.View.extend({
 	    var sourceToRemove = this.collection.find(function (source) {
 		    return source.id == idToDelete;});
 	    sourceToRemove.urlRoot = AV.URL('witness');
-	    sourceToRemove.destroy();
-        // Backbone.trigger passes message between views
-        Backbone.trigger('witness:deleted');
+	    sourceToRemove.destroy({
+            success: function(){
+                // Backbone.trigger passes message between views
+                Backbone.trigger('witness:deleted');
+            }
+        });
+
     },
     collate: function(ev) {
         var checkedBoxes = _.filter($('input:checkbox.witnessCheckbox'),
