@@ -36,7 +36,9 @@
             <div id="tutorial-carousel" class="carousel slide" data-ride="carousel">
               <!-- Indicators -->
               <ol class="carousel-indicators">
-                <li data-target="#tutorial-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#tutorial-carousel" data-slide-to="0"
+                    class="active">
+                </li>
                 <li data-target="#tutorial-carousel" data-slide-to="1"></li>
                 <li data-target="#tutorial-carousel" data-slide-to="2"></li>
                 <li data-target="#tutorial-carousel" data-slide-to="3"></li>
@@ -49,7 +51,8 @@
                   <img src="_/img/carousel-pictures/00.png">
                   <div class="carousel-caption">
                     <h1>Add a source</h1>
-                    <p>Enter a text into the box, give it a title, and click "Save Source."</p>
+                    <p>Enter a text into the box, give it a title, and click
+                      "Save Source."</p>
                   </div>
                 </div>
                 <div class="item">
@@ -77,7 +80,8 @@
                     <h1>Visualize your collection</h1>
                     <p>In the Collections tab, you should see your collection. Click
                       on Heat Map (<span class="glyphicon glyphicon-fire"></span>) or
-                      Side by Side (<span class="glyphicon glyphicon-pause"></span>) to see the visualizations.</p>
+                      Side by Side (<span class="glyphicon glyphicon-pause"></span>)
+                      to see the visualizations.</p>
                   </div>
                 </div>
 
@@ -85,15 +89,23 @@
                   <img src="_/img/carousel-pictures/04.png">
                   <div class="carousel-caption">
                     <h1>Present your visualization</h1>
-                    <p>If you want to see the visualization on its own, click the "Share" button on the bottom left to be taken to a page with just the visualization.</p>
+                    <p>If you want to see the visualization on its own, click
+                    the "Share" button on the bottom left to be taken to a page
+                      with just the visualization.</p>
                   </div>
                 </div>
               </div>
               <!-- Controls -->
-              <a class="left carousel-control" href="#tutorial-carousel" role="button" data-slide="prev">
+              <a class="left carousel-control"
+                 href="#tutorial-carousel"
+                 role="button"
+                 data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>
               </a>
-              <a class="right carousel-control" href="#tutorial-carousel" role="button" data-slide="next">
+              <a class="right carousel-control"
+                 href="#tutorial-carousel"
+                 role="button"
+                 data-slide="next">
                 <span class="glyphicon glyphicon-chevron-right"></span>
               </a>
             </div>
@@ -107,11 +119,7 @@
           </div>
         </div>
       </div>
-      
     </div>
-
-    
-    
     <div class="modal fade"
          id="workspaceModal"
          tabindex="-1"
@@ -187,11 +195,9 @@
           <a class="navbar-brand" href="#">Akhmatoviz</a>
         </div>
         <div class="navbar-collapse collapse">
-          
 	      <ul class="nav navbar-nav">
 	        <li><a href="#quickHelp">Getting Started!</a></li>
 	      </ul>
-	      
 	      <ul class="nav navbar-nav navbar-right">
             <li><a href="./pages/help.html">Help</a></li>
             <li id="workspace-dropdown" class="dropdown">
@@ -204,8 +210,6 @@
     <!-- End Navbar -->
 
     <div class="container">
-
-
       <div class="row">
 	    <!-- Contains the div for the  individual sourceView -->
 	    <div id="views" class="col-md-7">
@@ -252,7 +256,6 @@
           <ul class="dropdown-menu"
               id="workspace_dropdown_container"
               role="menu">
-
 	        <% _.each(workspaces, function (workspace) {  %>
             <li>
               <a href="#workspace/<%= workspace.escape('name') %>">
@@ -295,12 +298,9 @@
                  value="Create New Workspace"/>
         </script>
 
-
         <script type="text/template" id="view_template">
           <div class="input-group">
             <span class="input-group-addon">Name</span>
-
-
             <input type="text"
                    id="name"
                    class="form-control"
@@ -325,7 +325,9 @@
           </div>
           <p><textarea id="viewContent"><%= source.escape('content') %></textarea></p>
 	      <label><input id="contentType" type="checkbox">XML</label>
-	      <label><input id="parallelSeg" type="checkbox">TEI Parallel Segmentation</label>
+	      <label><input id="parallelSeg" type="checkbox">TEI Parallel
+	        Segmentation</label>
+          
         </script>
 
         <script type="text/template" id="list_source_template">
