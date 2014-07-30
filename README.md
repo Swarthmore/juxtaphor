@@ -64,7 +64,7 @@ The theme we use is called "Superhero": bootswatch.com/superhero/
 
 ##Nuances and Explanations##
 
-One potentially confusing part of the code is the `_.bind' method, if one is
+One potentially confusing part of the code is the `_.bind` method, if one is
 unfamilar with monads. Don't be scared about its use though, it's not so
 complicated. It takes two arguments: a function, and a context. It sets the
 function up so that it will run within that context. This is really useful,
