@@ -54,6 +54,10 @@ margin: 0px;
 margin-top: 4px;
 }
 
+//Fix the width of the button
+#lineWrapToggle{
+width:126px;
+}
 
 //Remove responsiveness of navbar
 //http://stackoverflow.com/questions/21738417/bootstrap-remove-responsive-from-navbar
