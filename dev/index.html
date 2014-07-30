@@ -33,23 +33,70 @@
             <h4 class="modal-title">Quick Help</h4>
           </div>
           <div class="modal-body" id="quickHelp-modal-body">
-	    <p>
-	    The site allows users to upload and compare different 
-	    translations. One can take a poem in Russian, for example, and 
-	    upload various English translations to the site. Afterward, these 
-	    "Sources" can be converted into "Witnesses"-- texts that can be 
-	    compared with one another through the API. The ultimate goal is 
-	    called "Collation" where we take Witnesses and group them into 
-	    sets that can be visualized.</p>
-	    <p>
-	    To use the site, follow these steps:
-	    1. Enter a text into the box, give it a title, and click "Save Source."
-	    2. In the Sources tab, check the sources you want to visualize and click "Transform Selected Sources."
-	    3. In the Witnesses tab, check the witnesses you want to collate, give the collection a title, and click Collate Selected Witnesses.
-	    4. In the Collections tab, you should see your collection. Click on Heat Map or Side by Side to see the visualizations!
-	    5. If you want to see the visualization on its own, click the "Share" button on the bottom left to be taken to a page with just the visualization.
-	    </p>
+            <div id="tutorial-carousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#tutorial-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#tutorial-carousel" data-slide-to="1"></li>
+                <li data-target="#tutorial-carousel" data-slide-to="2"></li>
+                <li data-target="#tutorial-carousel" data-slide-to="3"></li>
+                <li data-target="#tutorial-carousel" data-slide-to="4"></li>
+              </ol>
 
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner">
+                <div class="item active">
+                  <img src="_/img/carousel-pictures/00.png">
+                  <div class="carousel-caption">
+                    <h1>Add a source</h1>
+                    <p>Enter a text into the box, give it a title, and click "Save Source."</p>
+                  </div>
+                </div>
+                <div class="item">
+                  <img src="_/img/carousel-pictures/01.png">
+                  <div class="carousel-caption">
+                    <h1>Transform your sources</h1>
+                    <p>In the Sources tab, check the sources you want to visualize
+                      and click "Transform Selected Sources."</p>
+                  </div>
+                </div>
+
+                <div class="item">
+                  <img src="_/img/carousel-pictures/02.png">
+                  <div class="carousel-caption">
+                    <h1>Collate your witnesses</h1>
+                    <p>In the Witnesses tab, check the witnesses you want to
+                      collate, give the collection a title, and click Collate Selected
+                      Witnesses.</p>
+                  </div>
+                </div>
+
+                <div class="item">
+                  <img src="_/img/carousel-pictures/03.png">
+                  <div class="carousel-caption">
+                    <h1>Visualize your collection</h1>
+                    <p>In the Collections tab, you should see your collection. Click
+                      on Heat Map (<span class="glyphicon glyphicon-fire"></span>) or
+                      Side by Side (<span class="glyphicon glyphicon-pause"></span>) to see the visualizations.</p>
+                  </div>
+                </div>
+
+                <div class="item">
+                  <img src="_/img/carousel-pictures/04.png">
+                  <div class="carousel-caption">
+                    <h1>Present your visualization</h1>
+                    <p>If you want to see the visualization on its own, click the "Share" button on the bottom left to be taken to a page with just the visualization.</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Controls -->
+              <a class="left carousel-control" href="#tutorial-carousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+              </a>
+              <a class="right carousel-control" href="#tutorial-carousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button"
@@ -60,7 +107,9 @@
           </div>
         </div>
       </div>
+      
     </div>
+
     
     
     <div class="modal fade"
@@ -139,11 +188,11 @@
         </div>
         <div class="navbar-collapse collapse">
           
-	  <ul class="nav navbar-nav">
-	    <li><a href="#quickHelp">Getting Started!</a></li>
-	  </ul>
-	  
-	  <ul class="nav navbar-nav navbar-right">
+	      <ul class="nav navbar-nav">
+	        <li><a href="#quickHelp">Getting Started!</a></li>
+	      </ul>
+	      
+	      <ul class="nav navbar-nav navbar-right">
             <li><a href="./pages/help.html">Help</a></li>
             <li id="workspace-dropdown" class="dropdown">
 		      <!-- workspace dropdown template -->
@@ -268,10 +317,10 @@
             <% } %>
             <span class= "input-group-btn">
               <input type="button"
-		     class="btn btn-default"
+		             class="btn btn-default"
                      id="lineWrapToggle"
-		     value="Line Wrap Off
-                     "/>
+		             value="Line Wrap Off
+                            "/>
             </span>
           </div>
           <p><textarea id="viewContent"><%= source.escape('content') %></textarea></p>
@@ -382,8 +431,8 @@
                   class="btn btn-primary"
                   id="collateButton"
                   style="margin:0;margin-top:4px">
-                Collate Selected Witnesses
-              </button>
+            Collate Selected Witnesses
+          </button>
         </script>
 
 
