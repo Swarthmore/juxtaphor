@@ -30,7 +30,6 @@ iframe#visualization{
   margin: 0 4px;
 }
 
-
 body {
    padding-top: 65px;
 }
@@ -48,6 +47,16 @@ body {
 
 #visualization-modal-body{
 text-align: center
+}
+
+#newWorkspaceButton{
+margin: 0px;
+margin-top: 4px;
+}
+
+//Fix the width of the button
+#lineWrapToggle{
+width:126px;
 }
 
 //Remove responsiveness of navbar

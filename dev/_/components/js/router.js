@@ -107,6 +107,7 @@ AV.Router = Backbone.Router.extend({
                     this.workspaceEditView.showModal();
                 }, this)
             });
+	this.navigate('');
     },
 
     //Change the AV.WORKSPACE global, and update all of the models

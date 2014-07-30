@@ -53,6 +53,15 @@ The implementation is as follows:
 -the path is a route of another page-- present.html
 -present.html is a separate page. It has its own backbone router within visualRouter.js. It also has an iframe that gets rendered. 
 
+
+
+###Style###
+Our project uses Bootstrap as the basis for style. When we want to change the look of
+specific elements, we will change main.scss within the \_/components/sass/ folder.
+
+The theme we use is called "Superhero": bootswatch.com/superhero/
+
+
 ##Nuances and Explanations##
 
 One potentially confusing part of the code is the `_.bind' method, if one is
@@ -84,14 +93,19 @@ foo = Backbone.View.extend({
 You would use `_.bind()` to avoid ugly `var that = this;` state passing.
 Consult [the docs](http://underscorejs.org/#bind) if you have further questions.
 
+
 We use the "navigate" method of the Router in order to take the route back 
 to the index.
 
 The sourceView object in router.js explicitly takes in a collection in 
 addition to a model. This is so that we can fetch the collection after
-and upload.
+an upload, showing a refreshed view.
 
 The HTML uses a lot of templating. We've put all the templates on the 
 bottom half of the page. A lot of the design of the page can be changed
 within the templates. Column width in the views, for example, is determined
 by bootstrap classes.
+
+
+
+
