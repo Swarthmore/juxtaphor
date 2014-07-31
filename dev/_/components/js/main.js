@@ -18,6 +18,9 @@ $("body").tooltip({
   container: 'body',
   selector: "[data-toggle='tooltip']"
 });
+//$('deleteSourceButton').on();
+//$('deleteSetButton').on();
+
 
 var router = new AV.Router();
 Backbone.history.start();
