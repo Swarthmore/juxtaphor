@@ -2,6 +2,7 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
     el: '#list_set_container',
     initialize: function() {
         this.listenTo(this.collection, 'reset remove', this.render);
+        this.listenTo(Backbone, 'source:TEI', this.refresh);
         this.listenTo(Backbone, 'comparison:collate', this.refresh);
         this.listenTo(Backbone, 'source:deleted', this.reqDeleted);
         this.listenTo(Backbone, 'witness:deleted', this.reqDeleted);
@@ -29,6 +30,7 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
                      return model.get('status') == 'NOT_COLLATED';
                  });
         _.map(deletedModels, function(model){
+            model.urlRoot(AV.URL('set'));
             model.destroy({wait:true});
         });
     },
