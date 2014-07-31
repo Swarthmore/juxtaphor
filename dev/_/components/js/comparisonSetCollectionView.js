@@ -13,7 +13,10 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
     render: function () {
         this.$el.empty();
         this.$el.html(this.template({sets: this.collection.models}));
-        if (_.any(this.collection.models,
+        _.each(this.collection.models, function(model) { 
+		console.log(model.get('status'));
+	});
+	if (_.any(this.collection.models,
                   function(model){
                       return model.get('status') == 'TOKENIZING' ||
                              model.get('status') == 'TOKENIZED' ||

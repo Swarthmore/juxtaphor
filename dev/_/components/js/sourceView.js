@@ -49,7 +49,7 @@ AV.SourceView = Backbone.View.extend({
         modelToSubmit.updateURL();
         this.codeMirror.save();
 	    // Saving the model sends a "sync" request.
-        var contentType = (this.checked) ? 'xml' : 'txt';
+        var contentType = (this.contentType) ? 'xml' : 'txt';
 	    modelToSubmit.set({
 		    data: $("#viewContent").val(),
 		    name: $("#name").val(),
@@ -57,7 +57,7 @@ AV.SourceView = Backbone.View.extend({
 		});
 	    modelToSubmit.save().done(_.bind(function(d) {
 		    // if the parallel segmentation is checked, create appopriate witnesses and collections
-		    if (this.setParallelSeg)  {
+		    if (this.parallelSeg)  {
 			    var data = {setName: modelToSubmit.get('name'), teiSourceId: d};
 			    json_post(AV.URL('import'),data);
 		    }
