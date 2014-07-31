@@ -59,10 +59,9 @@ AV.SourceView = Backbone.View.extend({
 		    // if the parallel segmentation is checked, create appopriate witnesses and collections
 		    if (this.parallelSeg)  {
 			    var data = {setName: modelToSubmit.get('name'), teiSourceId: d};
-			    json_post(AV.URL('import'),data,
-                          _.bind(function() {
+			    json_post(AV.URL('import'),data,function(){
                               setTimeout(Backbone.trigger('source:TEI'), 1000);
-                          }, this));
+                          });
 		    }
 		    this.collection.fetch();
 		}, this));

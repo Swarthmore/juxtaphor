@@ -11,6 +11,7 @@ AV.SourceCollectionView = Backbone.View.extend({
     initialize: function() {
 	    //listen for sync events in the source collection
         this.listenTo(this.collection, 'sync', this.render);
+        this.listenTo(Backbone, 'source:TEI', this.refresh);
     },
     events: {
 	    "click #deleteSourceButton": "delete",
