@@ -2,7 +2,7 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
     el: '#list_set_container',
     initialize: function() {
         this.listenTo(this.collection, 'reset remove sync', this.render);
-        this.listenTo(Backbone, 'source:TEI', this.refresh);
+        this.listenTo(Backbone, 'source:TEI', setTimeout(this.refresh, 1000));
         this.listenTo(Backbone, 'comparison:collate', this.refresh);
         this.listenTo(Backbone, 'source:deleted', this.reqDeleted);
         this.listenTo(Backbone, 'witness:deleted', this.reqDeleted);
@@ -14,16 +14,17 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
     render: function () {
         this.$el.empty();
         this.$el.html(this.template({sets: this.collection.models}));
-        _.each(this.collection.models, function(model) { 
+        _.each(this.collection.models, function(model) {
 		console.log(model.get('status'));
-	});
-	if (_.any(this.collection.models,
+	    });
+        // Fetch continuously until the comparison set is collated.
+	    if (_.any(this.collection.models,
                   function(model){
                       return model.get('status') == 'TOKENIZING' ||
                              model.get('status') == 'TOKENIZED' ||
                              model.get('status') == 'COLLATING';
                   })){
-            this.collection.fetch({reset: true});
+            setTimeout(this.collection.fetch({reset: true}, 1000));
         }
     },
     reqDeleted: function(){
@@ -38,7 +39,6 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
                 model.destroy();
             });
         }, this));
-
     },
     refresh: function(){
         this.collection.fetch({reset:true});
