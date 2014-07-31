@@ -9,37 +9,35 @@ AV.SourceView = Backbone.View.extend({
 	lineWrap: false,
 
 	render: function(){
-	  //compile the template using underscore
-	  var template = _.template( $("#view_template").html(), {
-	    source: this.model
-	  });
-	  //Load the compiled HTML into the backbone "el"
-	  this.$el.html( template );
-	  //console.log(document.getElementById("viewContent"));
-
-	  this.codeMirror = CodeMirror.fromTextArea(
-	    document.getElementById("viewContent"),
-	    {
-	      theme: 'solarized dark',
-	      lineNumbers: true,
-	      viewportMargin: Infinity,
-	      readOnly: this.model.get('name'),
-	      lineWrapping: this.lineWrap 
+	    //compile the template using underscore
+	    var template = _.template( $("#view_template").html(), {
+	        source: this.model
 	    });
+	    //Load the compiled HTML into the backbone "el"
+	    this.$el.html( template );
+	    //console.log(document.getElementById("viewContent"));
+
+	    this.codeMirror = CodeMirror.fromTextArea(
+	        document.getElementById("viewContent"),
+	        {
+	            theme: 'solarized dark',
+	            lineNumbers: true,
+	            viewportMargin: Infinity,
+	            readOnly: this.model.get('name'),
+	            lineWrapping: this.lineWrap 
+	        });
 
 
-
-	  var that = this;
-	  $('.CodeMirror').click(function(){
-	    that.codeMirror.focus();
-	  });
+	    $('.CodeMirror').click(_.bind(function(){
+	        this.codeMirror.focus();
+	    }, this));
 	},
 
 	events: {
-	  "click #uploadButton": "upload",
-	  "click #contentType": "setContentType",
-	  "click #parallelSeg": "setParallelSeg",
-	  "click #lineWrapToggle": "toggle"
+	    "click #uploadButton": "upload",
+	    "click #contentType": "setContentType",
+	    "click #parallelSeg": "setParallelSeg",
+	    "click #lineWrapToggle": "toggle"
 	},
     upload: function( event ){
 		//Resetting attached model, because if something was
@@ -72,13 +70,13 @@ AV.SourceView = Backbone.View.extend({
 	},
 
     setContentType: function( event ){
-      this.contentType = $(event.target).prop('checked');
-      console.log(this.contentType);
+        this.contentType = $(event.target).prop('checked');
+        console.log(this.contentType);
     },
 
     setParallelSeg: function( event ){
-      this.parallelSeg = $(event.target).prop('checked');
-      console.log(this.parallelSeg);
+        this.parallelSeg = $(event.target).prop('checked');
+        console.log(this.parallelSeg);
     },
     
     /*
@@ -86,16 +84,16 @@ AV.SourceView = Backbone.View.extend({
      */
     toggle: function( event ){
 
-      var onOff = "";      
-      if(!this.lineWrap){
-	onOff = "On";
-	this.lineWrap = true;
-      } else {
-	onOff = "Off";
-	this.lineWrap = false;
-      }
-      this.codeMirror.setOption("lineWrapping", this.lineWrap);
-      $("#lineWrapToggle").attr("value", "Line Wrap "+onOff);
+        var onOff = "";      
+        if(!this.lineWrap){
+	        onOff = "On";
+	        this.lineWrap = true;
+        } else {
+	        onOff = "Off";
+	        this.lineWrap = false;
+        }
+        this.codeMirror.setOption("lineWrapping", this.lineWrap);
+        $("#lineWrapToggle").attr("value", "Line Wrap "+onOff);
     }
 
 });
