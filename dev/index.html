@@ -15,6 +15,7 @@
     <!-- This project uses 3 modals: one to show workspaces, one to show -->
     <!-- visualizations, and one for quick help. They are declared here. -->
 
+
     <div class="modal fade"
          id="quickHelpModal"
          tabindex="-1"
@@ -30,7 +31,7 @@
                     aria-hidden="true">
               &times;
             </button>
-            <h4 class="modal-title">Quick Help</h4>
+            <h5 class="modal-title">Getting Started</h5>
           </div>
           <div class="modal-body" id="quickHelp-modal-body">
             <div id="tutorial-carousel" class="carousel slide"
@@ -51,7 +52,7 @@
                 <div class="item active">
                   <img src="_/img/carousel-pictures/00.png">
                   <div class="carousel-caption">
-                    <h1>Add a source</h1>
+                    <h1>1) Add a source</h1>
                     <p>Enter a text into the box, give it a title, and click
                       "Save Source."</p>
                   </div>
@@ -59,7 +60,7 @@
                 <div class="item">
                   <img src="_/img/carousel-pictures/01.png">
                   <div class="carousel-caption">
-                    <h1>Transform your sources</h1>
+                    <h1>2) Transform your sources</h1>
                     <p>In the Sources tab, check the sources you want to visualize
                       and click "Transform Selected Sources."</p>
                   </div>
@@ -68,7 +69,7 @@
                 <div class="item">
                   <img src="_/img/carousel-pictures/02.png">
                   <div class="carousel-caption">
-                    <h1>Collate your witnesses</h1>
+                    <h1>3) Collate your witnesses</h1>
                     <p>In the Witnesses tab, check the witnesses you want to
                       collate, give the collection a title, and click Collate Selected
                       Witnesses.</p>
@@ -78,7 +79,7 @@
                 <div class="item">
                   <img src="_/img/carousel-pictures/03.png">
                   <div class="carousel-caption">
-                    <h1>Visualize your collection</h1>
+                    <h1>4) Visualize your collection</h1>
                     <p>In the Collections tab, you should see your collection. Click
                       on Heat Map (<span class="glyphicon glyphicon-fire"></span>) or
                       Side by Side (<span class="glyphicon glyphicon-pause"></span>)
@@ -89,7 +90,7 @@
                 <div class="item">
                   <img src="_/img/carousel-pictures/04.png">
                   <div class="carousel-caption">
-                    <h1>Present your visualization</h1>
+                    <h1>5) Present your visualization</h1>
                     <p>If you want to see the visualization on its own, click
                     the "Share" button on the bottom left to be taken to a page
                       with just the visualization.</p>
@@ -197,7 +198,7 @@
         </div>
         <div class="navbar-collapse collapse">
 	      <ul class="nav navbar-nav">
-	        <li><a href="#quickHelp">Getting Started!</a></li>
+	        <li id='getting-started'><a href="#quickHelp">Getting Started <em>!</em></a></li>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
             <li><a href="./pages/help.html">Help</a></li>
@@ -359,11 +360,13 @@
                     <a type="button"
                        class="btn btn-primary"
                        id="viewButton"
+                       data-toggle="tooltip" title="Visualize"
                        href="#/source/<%=source.get('id')%>">
 		              <span class="glyphicon glyphicon-eye-open"></span>
 		            </a>
 	                <button type="button"
 		                    class="btn btn-danger"
+                            data-toggle="tooltip" title="Delete"
                             id="deleteSourceButton"
                             data-value=<%=source.get('id')%>>
                       <span class="glyphicon glyphicon-trash"></span>
@@ -416,6 +419,8 @@
                   <div class="btn-group">
                     <button type="button"
 	                        class="btn btn-danger"
+                            data-toggle="tooltip"
+                            title="Delete"
                             id="deleteWitnessButton"
                             data-value=<%=witness.get('id')%>>
                       <span class="glyphicon glyphicon-trash"></span>
@@ -478,12 +483,14 @@
                     <% if (set.get('status') == 'COLLATED') { %>
                     <a type="button"
                        class="btn btn-warning"
+                       data-toggle='tooltip' title='View heat-map'
                        href="#viz/heatmap/<%=set.get('id')%>"
                        id="heatMapButton">
                       <span class="glyphicon glyphicon-fire"></span>
                     </a>
                     <a type="button"
                        class="btn btn-primary"
+                       data-toggle='tooltip' title='View side-by-side'
                        href="#viz/sidebyside/<%=set.get('id')%>"
                        id="sideBySideButton">
                       <span class="glyphicon glyphicon-pause"></span>
@@ -492,6 +499,7 @@
                     <button type="button"
 	                        class="btn btn-danger"
                             id="deleteSetButton"
+                            data-toggle='tooltip' title='Delete'
                             data-value=<%=set.get('id')%>>
                       <span class="glyphicon glyphicon-trash"></span>
                     </button>

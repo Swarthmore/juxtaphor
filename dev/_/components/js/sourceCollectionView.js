@@ -30,6 +30,8 @@ AV.SourceCollectionView = Backbone.View.extend({
     delete: function(ev) {
         //ev is the mouse event. The user clicked a DOM element,
         //whose data-value attribute is the ID of the Model to be deleted.
+
+            $(".tooltip").hide();
 	    var idToDelete = $(ev.currentTarget).data('value');
 	    var sourceToRemove = this.collection.find(function (source) {
 		    return source.id == idToDelete;});
