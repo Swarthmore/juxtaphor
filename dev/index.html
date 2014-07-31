@@ -444,10 +444,9 @@
 
 
         <script type="text/template" id="list_set_template">
-          <!-- _.contains() is being used here like the Pythonic `in' idiom. -->
+          <!-- _.contains() is being used here like the Pythonic in idiom. -->
           <% if (_.any(sets, function (set) {
-             return !_.contains(['TOKENIZING', 'TOKENIZED',
-             'COLLATING', 'COLLATED'],
+             return !_.contains(['TOKENIZING', 'TOKENIZED', 'COLLATING', 'COLLATED'],
              set.get('status'));})) { %>
           <div class="alert alert-danger" role="alert">
             <strong>Error:</strong>

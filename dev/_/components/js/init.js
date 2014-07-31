@@ -23,6 +23,7 @@ function json_post(url,data,callback,flag){
             console.log(e);
         }
 	});
+	console.log('json_post fired ' + url); 
 }
 //From http://www.quirksmode.org/js/cookies.html
 function createCookie(name,value,days) {
