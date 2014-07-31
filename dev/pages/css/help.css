@@ -1,0 +1,21 @@
+
+.body {
+  position: relative;
+}
+
+.affix {
+  width: 255px; 
+  position: fixed;
+  top: 300px;  
+}
+
+.affix-bottom {
+  width: inherit;
+  position: absolute;
+  top: auto;
+  bottom: 200px;  //height of the footer
+}
+
+.affix-top {
+}
+
