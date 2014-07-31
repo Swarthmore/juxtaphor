@@ -53,7 +53,15 @@ The implementation is as follows:
 -the path is a route of another page-- present.html
 -present.html is a separate page. It has its own backbone router within visualRouter.js. It also has an iframe that gets rendered. 
 
+###Workspaces###
 
+Workspaces allow for people to have different places to upload their sources
+and make their visualizations from. The implementation of Workspaces takes
+place in a few different files: workspaceCollection.js, 
+workspaceDropdownView.js, and workspaceEditView.js. init.js is also involved
+. Once a workspace is chosen, it will be remembered through a cookie. 
+WorkspaceEditView contains most of the internal logic for the workspaces.
+ 
 
 ###Style###
 Our project uses Bootstrap as the basis for style. When we want to change the look of
