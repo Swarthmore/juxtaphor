@@ -1,7 +1,7 @@
 AV.ComparisonSetCollectionView = Backbone.View.extend({
     el: '#list_set_container',
     initialize: function() {
-        this.listenTo(this.collection, 'reset remove', this.render);
+        this.listenTo(this.collection, 'reset remove sync', this.render);
         this.listenTo(Backbone, 'source:TEI', this.refresh);
         this.listenTo(Backbone, 'comparison:collate', this.refresh);
         this.listenTo(Backbone, 'source:deleted', this.reqDeleted);
@@ -24,15 +24,18 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
         }
     },
     reqDeleted: function(){
-        this.collection.fetch();
-        var deletedModels = _.filter(this.collection.models,
-                 function(model){
-                     return model.get('status') == 'NOT_COLLATED';
-                 });
-        _.map(deletedModels, function(model){
-            model.urlRoot(AV.URL('set'));
-            model.destroy({wait:true});
-        });
+        console.log('thing deleted!');
+        this.collection.fetch().done(_.bind(function(){
+            var deletedModels = _.filter(
+                this.collection.models,
+                function(model){return model.get('status') == 'NOT_COLLATED';});
+            _.map(deletedModels, function(model){
+                //model.urlRoot(AV.URL('set'));
+                model.url(AV.URL('set'));
+                model.destroy();
+            });
+        }, this));
+
     },
     refresh: function(){
         this.collection.fetch({reset:true});
