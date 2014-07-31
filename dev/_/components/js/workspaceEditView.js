@@ -1,3 +1,8 @@
+//////////////////////////////////////////////////////////////////////
+// WorkspaceEditView is a view contained within a modal that        //
+// allows the user to remove existing workspaces and add their own. //
+//////////////////////////////////////////////////////////////////////
+
 AV.WorkspaceEditView = Backbone.View.extend({
     el: '#workspaceModal',
     template: _.template($('#workspace_edit_template').html()),
@@ -37,6 +42,7 @@ AV.WorkspaceEditView = Backbone.View.extend({
         if (workspaceName.length > 20 ||
             workspaceName.length < 1 ||
             workspaceName.match(/[^a-z0-9]/i)) {
+            //Show the error message to the user.
             $('#workspaceName').before(this.error);
         } else {
             json_post('/juxta/workspace',

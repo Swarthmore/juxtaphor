@@ -15,6 +15,7 @@
     <!-- This project uses 3 modals: one to show workspaces, one to show -->
     <!-- visualizations, and one for quick help. They are declared here. -->
 
+
     <div class="modal fade"
          id="quickHelpModal"
          tabindex="-1"
@@ -358,11 +359,13 @@
                     <a type="button"
                        class="btn btn-primary"
                        id="viewButton"
+                       data-toggle="tooltip" title="Visualize"
                        href="#/source/<%=source.get('id')%>">
 		              <span class="glyphicon glyphicon-eye-open"></span>
 		            </a>
 	                <button type="button"
 		                    class="btn btn-danger"
+                            data-toggle="tooltip" title="Delete"
                             id="deleteSourceButton"
                             data-value=<%=source.get('id')%>>
                       <span class="glyphicon glyphicon-trash"></span>
@@ -415,6 +418,8 @@
                   <div class="btn-group">
                     <button type="button"
 	                        class="btn btn-danger"
+                            data-toggle="tooltip"
+                            title="Delete"
                             id="deleteWitnessButton"
                             data-value=<%=witness.get('id')%>>
                       <span class="glyphicon glyphicon-trash"></span>
@@ -439,10 +444,9 @@
 
 
         <script type="text/template" id="list_set_template">
-          <!-- _.contains() is being used here like the Pythonic `in' idiom. -->
+          <!-- _.contains() is being used here like the Pythonic in idiom. -->
           <% if (_.any(sets, function (set) {
-             return !_.contains(['TOKENIZING', 'TOKENIZED',
-             'COLLATING', 'COLLATED'],
+             return !_.contains(['TOKENIZING', 'TOKENIZED', 'COLLATING', 'COLLATED'],
              set.get('status'));})) { %>
           <div class="alert alert-danger" role="alert">
             <strong>Error:</strong>
@@ -478,12 +482,14 @@
                     <% if (set.get('status') == 'COLLATED') { %>
                     <a type="button"
                        class="btn btn-warning"
+                       data-toggle='tooltip' title='View heat-map'
                        href="#viz/heatmap/<%=set.get('id')%>"
                        id="heatMapButton">
                       <span class="glyphicon glyphicon-fire"></span>
                     </a>
                     <a type="button"
                        class="btn btn-primary"
+                       data-toggle='tooltip' title='View side-by-side'
                        href="#viz/sidebyside/<%=set.get('id')%>"
                        id="sideBySideButton">
                       <span class="glyphicon glyphicon-pause"></span>
@@ -492,6 +498,7 @@
                     <button type="button"
 	                        class="btn btn-danger"
                             id="deleteSetButton"
+                            data-toggle='tooltip' title='Delete'
                             data-value=<%=set.get('id')%>>
                       <span class="glyphicon glyphicon-trash"></span>
                     </button>
