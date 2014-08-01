@@ -5,9 +5,8 @@ AV.SourceView = Backbone.View.extend({
 	// two convenience constants for passing  checkbox value
 	contentType: '',
 	parallelSeg: '',
-	//convenience constant for setting lineWrapping	
+	//convenience constant for setting lineWrapping
 	lineWrap: false,
-
 	render: function(){
 	    //compile the template using underscore
 	    var template = _.template( $("#view_template").html(), {
@@ -24,7 +23,7 @@ AV.SourceView = Backbone.View.extend({
 	            lineNumbers: true,
 	            viewportMargin: Infinity,
 	            readOnly: this.model.get('name'),
-	            lineWrapping: this.lineWrap 
+	            lineWrapping: this.lineWrap
 	        });
 
 
@@ -83,7 +82,7 @@ AV.SourceView = Backbone.View.extend({
         this.parallelSeg = $(event.target).prop('checked');
         console.log(this.parallelSeg);
     },
-    
+
     /*
      * toggle the line wrap. Also updates button value to on or off
      */
