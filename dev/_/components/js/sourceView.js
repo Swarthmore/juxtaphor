@@ -5,9 +5,8 @@ AV.SourceView = Backbone.View.extend({
 	// two convenience constants for passing  checkbox value
 	contentType: '',
 	parallelSeg: '',
-	//convenience constant for setting lineWrapping	
+	//convenience constant for setting lineWrapping
 	lineWrap: false,
-
 	render: function(){
 	    //compile the template using underscore
 	    var template = _.template( $("#view_template").html(), {
@@ -24,7 +23,7 @@ AV.SourceView = Backbone.View.extend({
 	            lineNumbers: true,
 	            viewportMargin: Infinity,
 	            readOnly: this.model.get('name'),
-	            lineWrapping: this.lineWrap 
+	            lineWrapping: this.lineWrap
 	        });
 
 
@@ -54,11 +53,19 @@ AV.SourceView = Backbone.View.extend({
 		    contentType: contentType
 		});
 	    modelToSubmit.save().done(_.bind(function(d) {
-		    // if the parallel segmentation is checked, create appopriate witnesses and collections
+		    // if the parallel segmentation is checked, create appopriate
+            // witnesses and collections
 		    if (this.parallelSeg)  {
 			    var data = {setName: modelToSubmit.get('name'), teiSourceId: d};
-			    json_post(AV.URL('import'),data,function(){
-                              setTimeout(Backbone.trigger('source:TEI'), 1000);
+			    json_post(AV.URL('import'),
+                          data,
+                          function(){
+                              $('#waitModal').modal('toggle');
+                              console.log('spinning');
+                              setTimeout(function(){
+                                  $('#waitModal').modal('toggle');
+                                  Backbone.trigger('source:TEI');
+                              }, 5000);
                           });
 		    }
 		    this.collection.fetch();
@@ -75,7 +82,7 @@ AV.SourceView = Backbone.View.extend({
         this.parallelSeg = $(event.target).prop('checked');
         console.log(this.parallelSeg);
     },
-    
+
     /*
      * toggle the line wrap. Also updates button value to on or off
      */
