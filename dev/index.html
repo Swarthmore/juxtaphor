@@ -24,8 +24,8 @@
          aria-hidden="true">
       <div class="modal-dialog modal-bg">
         <div class="modal-content">
-          <div class="modal-header">
-            <button type="button"
+          <div class="modal-header"> 
+           <button type="button"
                     class="close"
                     data-dismiss="modal"
                     aria-hidden="true">
@@ -188,6 +188,18 @@
 	    </div>
       </div>
     </div>
+
+    <div id="waitModal"class="modal fade" tabindex="-1" role="dialog" aria-labelledby="waitModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- End Modals -->
 
     <!-- Begin Navbar -->
@@ -311,10 +323,10 @@
 		                        %>">
             <% if (!source.get('name')) { %>
             <span class="input-group-btn">
-              <input type="button"
-                     class="btn btn-success"
-                     id="uploadButton"
-                     value="Save Source"/>
+              <button class="btn btn-success"
+                     id="uploadButton">
+                Save Source
+              </button>
             </span>
             <% } %>
             <span class= "input-group-btn">
@@ -325,11 +337,11 @@
                             "/>
             </span>
           </div>
-          <p><textarea id="viewContent"><%= source.escape('content') %></textarea></p>
+          <textarea id="viewContent"><%= source.escape('content') %></textarea>
 	      <label><input id="contentType" type="checkbox">XML</label>
 	      <label><input id="parallelSeg" type="checkbox">TEI Parallel
 	        Segmentation</label>
-          
+
         </script>
 
         <script type="text/template" id="list_source_template">
@@ -360,7 +372,7 @@
                     <a type="button"
                        class="btn btn-primary"
                        id="viewButton"
-                       data-toggle="tooltip" title="Visualize"
+                       data-toggle="tooltip" title="View Source"
                        href="#/source/<%=source.get('id')%>">
 		              <span class="glyphicon glyphicon-eye-open"></span>
 		            </a>

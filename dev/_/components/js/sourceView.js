@@ -54,11 +54,19 @@ AV.SourceView = Backbone.View.extend({
 		    contentType: contentType
 		});
 	    modelToSubmit.save().done(_.bind(function(d) {
-		    // if the parallel segmentation is checked, create appopriate witnesses and collections
+		    // if the parallel segmentation is checked, create appopriate
+            // witnesses and collections
 		    if (this.parallelSeg)  {
 			    var data = {setName: modelToSubmit.get('name'), teiSourceId: d};
-			    json_post(AV.URL('import'),data,function(){
-                              setTimeout(Backbone.trigger('source:TEI'), 1000);
+			    json_post(AV.URL('import'),
+                          data,
+                          function(){
+                              $('#waitModal').modal('toggle');
+                              console.log('spinning');
+                              setTimeout(function(){
+                                  $('#waitModal').modal('toggle');
+                                  Backbone.trigger('source:TEI');
+                              }, 5000);
                           });
 		    }
 		    this.collection.fetch();
