@@ -347,8 +347,8 @@
 	data-value=<%=source.get('id')%>>
 	<span class="glyphicon glyphicon-trash"></span>
 	</button>
-	<% if (typeof source.get('type') == 'xml') { %><button type="button"
-	class="btn btn-info"
+	<% if (source.get('type') == 'XML') { %><button type="button"
+	class="btn btn-info" id="teiView"
 	data-toggle="modal" data-target="#teiModal" title="TEI View"
 	data-value=<%=source.get('id')%>>
 	<span class="glyphicon glyphicon-eye-open"></span>

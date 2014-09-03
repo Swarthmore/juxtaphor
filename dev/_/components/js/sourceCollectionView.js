@@ -23,6 +23,7 @@ AV.SourceCollectionView = Backbone.View.extend({
     render: function (event) {
         this.$el.empty();
         this.$el.html(this.template({sources: this.collection.models}));
+	console.log(this.collection.models);
     },
     refresh: function() {
         this.collection.updateURL();
@@ -32,7 +33,7 @@ AV.SourceCollectionView = Backbone.View.extend({
         //ev is the mouse event. The user clicked a DOM element,
         //whose data-value attribute is the ID of the Model to be deleted.
 
-            $(".tooltip").hide();
+            (".tooltip").hide();
 	var idToDelete = $(ev.currentTarget).data('value');
 	var sourceToRemove = this.collection.find(function (source) {
 	return source.id == idToDelete;});
@@ -66,6 +67,6 @@ AV.SourceCollectionView = Backbone.View.extend({
         this.collection.fetch();
     },
     teiView: function(ev){
-        
+	console.log($(ev.currentTarget).data('value'));
     }
 });
