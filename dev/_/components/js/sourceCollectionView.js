@@ -67,6 +67,8 @@ AV.SourceCollectionView = Backbone.View.extend({
         this.collection.fetch();
     },
     teiView: function(ev){
-	console.log($(ev.currentTarget).data('value'));
+	var teiID = $(ev.currentTarget).data('value');
+	console.log(teiID);
+	router.navigate('viz/tei/'+teiID,{trigger: true});	
     }
 });

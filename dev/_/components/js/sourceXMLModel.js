@@ -1,5 +1,6 @@
-AV.sourceXMLModel = Backbone.Model.extend ({
+AV.SourceXMLModel = Backbone.Model.extend ({
 
+	urlRoot: AV.URL('source'),
 	defaults: {
 		isPS: ''
 	}

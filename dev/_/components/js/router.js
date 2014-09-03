@@ -20,6 +20,7 @@ AV.Router = Backbone.Router.extend({
             {model:this.sourceModel, collection:this.sourceCollection});
 	    this.sourceCollectionView = new AV.SourceCollectionView(
             {collection:this.sourceCollection});
+	this.sourceXMLModel = new AV.SourceXMLModel();
        	this.witnessCollection = new AV.WitnessCollection();
         this.comparisonSetModel = new AV.ComparisonSetModel();
         this.witnessCollectionView = new AV.WitnessCollectionView(
@@ -37,6 +38,7 @@ AV.Router = Backbone.Router.extend({
         '': 'index',
         'source': 'source',
         'source/:idToView' : 'source',
+	'viz/tei/:idToView' : 'tei',
         'viz/heatmap/:idToViz': 'heatMap',
         'viz/sidebyside/:idToViz': 'sideBySide',
         'workspace': 'editWorkspaces',
@@ -73,6 +75,10 @@ AV.Router = Backbone.Router.extend({
             this.sourceView.render();
         }
     },
+
+    tei: function(idToVisualize) {
+	console.log(idToVisualize);
+	},
 
     sideBySide: function (idToVisualize) {
         if (!(this.listViewsRendered)) {
