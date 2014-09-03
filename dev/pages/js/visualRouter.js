@@ -69,7 +69,5 @@ PV.Router = Backbone.Router.extend({
     }
 });
 
-
 var router = new PV.Router();
 Backbone.history.start();
-

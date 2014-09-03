@@ -9,14 +9,15 @@
 AV.SourceCollectionView = Backbone.View.extend({
     el: '#list_source_container',
     initialize: function() {
-	    //listen for sync events in the source collection
+        //listen for sync events in the source collection
         this.listenTo(this.collection, 'sync', this.render);
         this.listenTo(Backbone, 'source:TEI', this.refresh);
     },
     events: {
-	    "click #deleteSourceButton": "delete",
+        "click #deleteSourceButton": "delete",
         "click #uploadButton": "refresh",
-        "click #transformButton": "transform"
+        "click #transformButton": "transform",
+        "click #teiView": "teiView"
     },
     template: _.template( $("#list_source_template").html()),
     render: function (event) {
@@ -32,16 +33,16 @@ AV.SourceCollectionView = Backbone.View.extend({
         //whose data-value attribute is the ID of the Model to be deleted.
 
             $(".tooltip").hide();
-	    var idToDelete = $(ev.currentTarget).data('value');
-	    var sourceToRemove = this.collection.find(function (source) {
-		    return source.id == idToDelete;});
-	    sourceToRemove.urlRoot = AV.URL('source');
-	    sourceToRemove.destroy().done(
-            _.bind(function(){
-                this.collection.fetch();
-                // Backbone.trigger passes message between views
-                Backbone.trigger("source:deleted");
-            }, this));
+	var idToDelete = $(ev.currentTarget).data('value');
+	var sourceToRemove = this.collection.find(function (source) {
+	return source.id == idToDelete;});
+	sourceToRemove.urlRoot = AV.URL('source');
+	sourceToRemove.destroy().done(
+	_.bind(function(){
+	this.collection.fetch();
+	// Backbone.trigger passes message between views
+	Backbone.trigger("source:deleted");
+	}, this));
 
     },
     transform: function(ev){
@@ -49,19 +50,22 @@ AV.SourceCollectionView = Backbone.View.extend({
                                     function (box) {return box.checked === true;});
         var checkedIDs = _.pluck(checkedBoxes, 'value');
         _.forEach(checkedIDs, function(id) {
-	        var url = '../..' + AV.URL('transform');
-	        var request = { source: id };
-	        //We use AJAX to send the request directly from here.
-	        $.ajax({
-		        type: 'POST',
-		        url: url,
-		        data: JSON.stringify(request),
-		        contentType: 'application/json'
-            }).done(function(){
-                // Backbone.trigger passes message between views
-                Backbone.trigger("source:transformed");
+		var url = '../..' + AV.URL('transform');
+		var request = { source: id };
+		//We use AJAX to send the request directly from here.
+		$.ajax({
+			type: 'POST',
+			url: url,
+			data: JSON.stringify(request),
+			contentType: 'application/json'
+		}).done(function(){
+		// Backbone.trigger passes message between views
+		Backbone.trigger("source:transformed");
             });
         });
         this.collection.fetch();
+    },
+    teiView: function(ev){
+        
     }
 });
