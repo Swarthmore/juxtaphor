@@ -14,10 +14,7 @@ $('#tablist a').click(function (e) {
 
 
 //bootstrap code for tooltips
-$("body").tooltip({
-  container: 'body',
-  selector: "[data-toggle='tooltip']"
-});
+$('[data-tooltip="tooltip"]').tooltip();
 //$('deleteSourceButton').on();
 //$('deleteSetButton').on();
 
