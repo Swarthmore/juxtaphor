@@ -14,20 +14,25 @@ AV.Router = Backbone.Router.extend({
             {collection:this.workspaceCollection});
         this.workspaceEditView = new AV.WorkspaceEditView(
             {collection:this.workspaceCollection});
-        this.sourceModel = new AV.SourceModel();
+        
+	this.sourceModel = new AV.SourceModel();
 	    this.sourceCollection = new AV.SourceCollection();
         this.sourceView = new AV.SourceView(
             {model:this.sourceModel, collection:this.sourceCollection});
 	    this.sourceCollectionView = new AV.SourceCollectionView(
             {collection:this.sourceCollection});
+
 	this.sourceXMLModel = new AV.SourceXMLModel();
-       	this.witnessCollection = new AV.WitnessCollection();
+      	this.sourceXMLView = new AV.SourceXMLView({model: this.sourceXMLModel});
+
+	this.witnessCollection = new AV.WitnessCollection();
         this.comparisonSetModel = new AV.ComparisonSetModel();
         this.witnessCollectionView = new AV.WitnessCollectionView(
             {collection:this.witnessCollection, model:this.comparisonSetModel});
         this.comparisonSetCollection = new AV.ComparisonSetCollection();
         this.comparisonSetCollectionView = new AV.ComparisonSetCollectionView(
             {collection:this.comparisonSetCollection});
+
         this.visualizationModel = new AV.VisualizationModel();
         this.visualizationView = new AV.VisualizationView(
             {model: this.visualizationModel});
@@ -83,7 +88,8 @@ AV.Router = Backbone.Router.extend({
 		_.bind(function(){
 		console.log('success?');
 		console.log(this.sourceXMLModel);
-	},this));
+		this.sourceXMLView.render();	
+		},this));
 	},
 
     sideBySide: function (idToVisualize) {
