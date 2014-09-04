@@ -14,14 +14,14 @@ AV.SourceXMLView = Backbone.View.extend ({
 
 	parseXML: function(xml) {
 	
-		var teiJSON = {},
-		teiJSON.base = [],
-		teiJSON.apps = [],
-		appCount = 0,
+		var appCount = 0,
 		body = $('body', xml).children(),
-		firstWit = $($('witness',xml)[0]);
+		firstWit = $($('witness',xml)[0]),
+		baseID = firstWit.attr('xml:id');
 
-		var baseID = firstWit.attr('xml:id'),
+		var teiJSON = {};
+		teiJSON.base = [];
+		teiJSON.apps = [];
 		teiJSON.title = firstWit.context.textContent;
 
 		body.each(function(i){
