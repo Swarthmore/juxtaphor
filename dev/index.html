@@ -377,7 +377,20 @@
 </script>
 
 <script type="text/template" id="tei_view_template">
-	<p><%= sourceXML.attributes.content %></p>
+	<h3 id="tei-title"><%= tei.title %></h3>
+	
+	<div id="tei-base">
+	<% _.each(tei.base, function(app,count){ %>
+		<li class="wit-<%= app.wit %> app-<%= count %>"> <%= app.rdg %> </li>
+	<% } %>
+	</div>
+
+	<div id="tei-rdgs">
+	<% _.each(tei.apps, function(app,count){ %>
+		<li class="app-<%= count %>"><h3> <%= app.wit %> </h3></li>
+		<li class="wit-<%= app.wit %> app-<%= count %>"> <%= app.rdg %> </li>
+	<% } %>
+	</div>
 </script>
 
 <script type="text/template" id="list_witness_template">

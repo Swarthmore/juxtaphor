@@ -7,7 +7,36 @@ AV.SourceXMLView = Backbone.View.extend ({
 		});
 	},
 	render: function(){
-		console.log(this.model);
+		var teiJSON = AV.parseXML(this.model.get('content'));
+		console.log(teiJSON);
 		this.$el.html(this.template({ sourceXML: this.model }));
+	},
+
+	parseXML: function(xml) {
+	
+		var teiJSON = {},
+		teiJSON.base = [],
+		teiJSON.apps = [],
+		appCount = 0,
+		body = $('body', xml).children(),
+		firstWit = $($('witness',xml)[0]);
+
+		var baseID = firstWit.attr('xml:id'),
+		teiJSON.title = firstWit.context.textContent;
+
+		body.each(function(i){
+			appCount++;
+			var tag = $(this).context.nodeName;
+			if (tag == 'app'){
+				var $app = this.children();
+				$app.each(function(){
+					var wit = $(this).attr('wit');
+					if (wit == baseID) teiJSON.base[appCount] = { 'wit': wit, 'rdg': $(this).context.textContent };
+					else teiJSON.base[appCount] = { 'wit': wit, 'rdg': $(this).context.textContent };
+				});
+			}
+		});
+
+		return teiJSON;
 	}
 });

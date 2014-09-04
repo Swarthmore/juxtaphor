@@ -82,14 +82,10 @@ AV.Router = Backbone.Router.extend({
     },
 
     tei: function(idToVisualize) {
-	console.log(idToVisualize);
-	this.sourceXMLModel.set('id',idToVisualize);
-	this.sourceXMLModel.fetch().done(
-		_.bind(function(){
-		console.log('success?');
-		console.log(this.sourceXMLModel);
-		this.sourceXMLView.render();	
-		},this));
+    	this.sourceXMLModel.set('id',idToVisualize);
+    	this.sourceXMLModel.fetch().done(
+    		_.bind(function(){ this.sourceXMLView.render(); },this)
+        );
 	},
 
     sideBySide: function (idToVisualize) {
