@@ -159,7 +159,7 @@
 		</div>
 
 		<div class="modal-footer">
-		<a href="pages/present.html" class="btn btn-default" id= "shareID">Share</a>
+		<!-- <a href="pages/present.html" class="btn btn-default" id= "shareID">Share</a> -->
 		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		</div>
 		</div>
@@ -171,7 +171,7 @@
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div class="container">
 		<div class="navbar-header navbar-left">
-			<a class="navbar-brand" href="#">juxtaphor <span>beta</span></a>
+			<a class="navbar-brand" href="#">juxtaphor <span>BETA</span></a>
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
@@ -378,9 +378,9 @@
 </script>
 
 <script type="text/template" id="tei_view_template">
-	<h3 id="tei-title"><%= tei.title %></h3>
 	
-	<div class="col-md-4" id="tei-base">
+	<div class="col-md-6"  id="tei-base">
+	<h3 id="tei-title"><%= tei.title %></h3>
 	<p>
 	<% var appCount = 0; _.each(tei.base, function(app){ %>
 		<% if(app !==  '<br/>') { appCount++; %>
@@ -390,12 +390,12 @@
 	</p>
 	</div>
 
-	<div class="col-md-2 col-md-offset-4" id="tei-rdgs">
+	<div class="col-md-4" id="tei-rdgs">
 	<% _.each(tei.apps, function(app, i){ %>
 		<ul id="app-<%= i %>" >
 		<% _.each(app, function(rdg) { %>	
-			<li class="wit-title wit-<%= rdg.wit %>" ><h3> <%= rdg.wit %> </h3></li>
-		<li class="wit-text wit-<%= rdg.wit %>>" > <%= rdg.text %> </li> <% }); %>
+			<li class="wit-title wit-<%= rdg.wit %>" ><h3> <%= rdg.wit %> || </h3>
+		<span class="wit-text wit-<%= rdg.wit %>>" > <%= rdg.text %> </span></li> <% }); %>
 	</ul>
 	<% }); %>
 	</div>

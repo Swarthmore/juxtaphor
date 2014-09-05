@@ -7,7 +7,12 @@
 @import "modules"; */
 
 nav.navbar-inverse h1.navbar-brand { color: #BACFDF;}
-a.navbar-brand { font-weight: 700; font-style: italic;}
+a.navbar-brand { 
+	font-weight: 700;
+	font-size: 2em; 
+	font-style: italic;
+	span { font-weight: 300; color: #ddd; font-size: .5em;  } 
+}
 #getting-started a { color: #F0AD4E;}
 
 #background {
@@ -303,14 +308,48 @@ margin-bottom: 4px;
 }
 
 // tei viewer modal
-#tei-base{
-	span { cursor: pointer; }	
-}
 
+	div.modal-body.row{
+		background-color: #fff;
+		margin: 0px 10px;
+		border: 1.5px solid #000;
+	}
+
+#tei-base{
+	color: #000;
+//	float: left;
+//	background-color: #fff;
+	h3 {color: #8792FF; }
+	p span { 
+		cursor: pointer;
+		text-decoration: underline;
+		margin: 0px 1px;
+		}	
+}
 #tei-rdgs {
 
+	@media (min-width: 990px){ 	
+	position: absolute;
+	top: 3em;
+	right: 3em;
+	padding: 10px;
+	}
 	ul{
 		display: none;
+		padding: 10px;
+		width: 20em;
 		list-style: none;
+		color: #485563;
+		opacity: .75;
+		border: 3px solid #485563;
+		border-radius: 5px;
+		li { padding: 5px 0px; }
+		h3 {
+			display: inline; 
+			font-size: 1em; 
+			font-weight: 500;
+			color: #8792FF;
+			margin-right: 20px;
+		}
 	}
 }

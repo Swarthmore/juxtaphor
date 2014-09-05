@@ -15,10 +15,16 @@ AV.SourceXMLView = Backbone.View.extend ({
 	
 		if(isPS === true) {	
 		$('#tei-base span').on('click', function(ev){
-			var crntApp = $(ev.currentTarget).attr('id');
+			
+			var crntApp = $(ev.currentTarget);
+			var crntAppID = $(ev.currentTarget).attr('id');
+			
 			console.log(crntApp);
-			$('#tei-rdgs ul').css('display','none');	
-			$('#tei-rdgs ul#' + crntApp).css('display','block');
+			$('#tei-base p span').css({'background-color': '#fff'});
+			$('#tei-rdgs ul').css({'display': 'none'});	
+			
+			crntApp.css({'background-color': '#8792ff', 'text-decoration': 'none'});
+			$('#tei-rdgs ul#' + crntAppID).css({'display': 'block'});
 		});}
 	},
 	
