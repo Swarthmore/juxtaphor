@@ -8,15 +8,28 @@ AV.SourceXMLView = Backbone.View.extend ({
 	},
 	render: function(){
 		var teiXML = $.parseXML(this.model.get('content'));
+		var isPS = this.PScheck(teiXML);
+		console.log(isPS);
 		var teiJSON = this.PStoJSON(teiXML);
 		this.$el.html(this.template({ tei: teiJSON }));
-		
+	
+		if(isPS === true) {	
 		$('#tei-base span').on('click', function(ev){
 			var crntApp = $(ev.currentTarget).attr('id');
 			console.log(crntApp);
 			$('#tei-rdgs ul').css('display','none');	
 			$('#tei-rdgs ul#' + crntApp).css('display','block');
-		});
+		});}
+	},
+	
+	PScheck: function(xml){
+		var teiHeader = $('teiHeader',xml).children();
+		console.log('teiHeader',teiHeader);
+		console.log(teiHeader.length);
+		if(teiHeader.length > 1) {
+			if (teiHeader.find('variantEncoding').attr('method') == 'parallel-segmentation') return true;
+			else return false;	
+		} else { return false; }
 	},
 
 	PStoJSON: function(xml) {
