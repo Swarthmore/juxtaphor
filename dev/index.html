@@ -154,7 +154,7 @@
 		 <h4 class="modal-title" id="myModalLabel">juxtaphor</h4>
 		</div>
 		
-		<div id="tei-view-body" class="modal-body">
+		<div class="modal-body row" id="tei-view-body">
 		</div>
 
 		<div class="modal-footer">
@@ -379,17 +379,24 @@
 <script type="text/template" id="tei_view_template">
 	<h3 id="tei-title"><%= tei.title %></h3>
 	
-	<div id="tei-base">
-	<% _.each(tei.base, function(app,count){ %>
-		<li class="wit-<%= app.wit %> app-<%= count %>"> <%= app.rdg %> </li>
-	<% } %>
+	<div class="col-md-4" id="tei-base">
+	<p>
+	<% var appCount = 0; _.each(tei.base, function(app){ %>
+		<% if(app !==  '<br/>') { appCount++; %>
+		<span id="app-<%= appCount %>"> <%= app.text %> </span>
+		<% } else { %> <%= app %> <% } %>
+	<% }); %>
+	</p>
 	</div>
 
-	<div id="tei-rdgs">
-	<% _.each(tei.apps, function(app,count){ %>
-		<li class="app-<%= count %>"><h3> <%= app.wit %> </h3></li>
-		<li class="wit-<%= app.wit %> app-<%= count %>"> <%= app.rdg %> </li>
-	<% } %>
+	<div class="col-md-2 col-md-offset-4" id="tei-rdgs">
+	<% _.each(tei.apps, function(app, i){ %>
+		<ul id="app-<%= i %>" >
+		<% _.each(app, function(rdg) { %>	
+			<li class="wit-title wit-<%= rdg.wit %>" ><h3> <%= rdg.wit %> </h3></li>
+		<li class="wit-text wit-<%= rdg.wit %>>" > <%= rdg.text %> </li> <% }); %>
+	</ul>
+	<% }); %>
 	</div>
 </script>
 

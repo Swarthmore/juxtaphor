@@ -301,3 +301,16 @@ margin-bottom: 4px;
 #waitmodal > .modalcontent{
   height: 100px;
 }
+
+// tei viewer modal
+#tei-base{
+	span { cursor: pointer; }	
+}
+
+#tei-rdgs {
+
+	ul{
+		display: none;
+		list-style: none;
+	}
+}
