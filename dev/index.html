@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JUXTAPHOR</title>
+	<link href="_/css/bootstrap.min.css" rel="stylesheet">
+	<link href="_/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="_/css/main.css" rel="stylesheet">
+	<link rel="shortcut icon" type="image/x-icon" href="_/img/favicon.ico" />
+</head>
+<body>
+
+<!-- This project uses 3 modals: one to show workspaces, one to show
+	visualizations, and one for quick help. They are declared here. -->
+
+<div class="modal fade" id="quickHelpModal" tabindex="-1" role="dialog" aria-labelledby="quickHelpModal" aria-hidden="true">
+	<div class="modal-dialog modal-bg">
+
+	<div class="modal-content">
+		<div class="modal-header"> 
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h5 class="modal-title">Getting Started</h5>
+		</div>
+	<div class="modal-body" id="quickHelp-modal-body">
+		<div id="tutorial-carousel" class="carousel slide" data-ride="carousel" data-interval="">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+		<li data-target="#tutorial-carousel" data-slide-to="0" class="active"></li>
+		<li data-target="#tutorial-carousel" data-slide-to="1"></li>
+		<li data-target="#tutorial-carousel" data-slide-to="2"></li>
+		<li data-target="#tutorial-carousel" data-slide-to="3"></li>
+		<li data-target="#tutorial-carousel" data-slide-to="4"></li>
+		</ol>
+
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+			<div class="item active">
+			<img src="_/img/carousel-pictures/00.png">
+			<div class="carousel-caption">
+				<h1>Add a source</h1>
+				<p>Enter a text into the box, give it a title, and click "Save Source."</p>
+			 </div>
+		</div>
+		
+		<div class="item">
+			<img src="_/img/carousel-pictures/01.png">
+			<div class="carousel-caption">
+				<h1>Transform your sources</h1>
+				<p>In the Sources tab, check the sources you want to visualize and click "Transform Selected Sources."</p>
+			</div>
+		</div>
+		
+		<div class="item">
+			<img src="_/img/carousel-pictures/02.png">
+			<div class="carousel-caption">
+				<h1>Collate your witnesses</h1>
+				<p>In the Witnesses tab, check the witnesses you want to collate, give the collection a title, and click Collate Selected Witnesses.</p>
+			</div>
+		</div>
+
+		<div class="item">
+			  <img src="_/img/carousel-pictures/03.png">
+			  <div class="carousel-caption">
+				<h1>Visualize your collection</h1>
+				<p>In the Collections tab, you should see your collection. Click on Heat Map (<span class="glyphicon glyphicon-fire"></span>) or Side by Side (<span class="glyphicon glyphicon-pause"></span>) to see the visualizations.</p>
+			  </div>
+		</div>
+
+		<div class="item">
+			<img src="_/img/carousel-pictures/04.png">
+			<div class="carousel-caption">
+				<h1>Present your visualization</h1>
+				<p>If you want to see the visualization on its own, click the "Share" button on the bottom left to be taken to a page with just the visualization.</p>
+				</div>
+		</div>
+		</div>
+
+		<!-- Controls -->
+		<a class="left carousel-control" href="#tutorial-carousel" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+		</a>
+		<a class="right carousel-control" href="#tutorial-carousel" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	</div>
+	</div>
+	</div>
+</div>
+
+<div class="modal fade" id="workspaceModal" tabindex="-1" role="dialog" aria-labelledby="workspaceModal" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
+		<h4 class="modal-title">Workspaces</h4>
+		</div>
+
+		<div class="modal-body" id="workspace-modal-body"></div>
+		
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="visualizationModal" tabindex="-1" role="dialog" aria-labelledby="visualizationModal" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+   		<div class="modal-content">
+
+ 		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		 <h4 class="modal-title" id="myModalLabel">juxtaphor</h4>
+		</div>
+		
+		<div id="visualization-modal-body" class="modal-body">
+   		<iframe id="visualization"></iframe>
+		</div>
+
+		<div class="modal-footer">
+		<a href="pages/present.html" class="btn btn-default" id= "shareID">Share</a>
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+		</div>
+	</div>
+</div>
+
+<div id="waitModal"class="modal fade" tabindex="-1" role="dialog" aria-labelledby="waitModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+		<div class="spinner">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
+		</div>
+	</div>
+	</div>
+</div>
+
+<div id="teiModal"class="modal fade" tabindex="-1" role="dialog" aria-labelledby="teiModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+
+   		<div class="modal-content">
+
+ 		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		 <h4 class="modal-title" id="myModalLabel">juxtaphor</h4>
+		</div>
+		
+		<div class="modal-body row" id="tei-view-body">
+		<h1>currently, this view only supports well-formed TEI documents encoded using parallel-segmentation ...</h1>
+		</div>
+
+		<div class="modal-footer">
+		<!-- <a href="pages/present.html" class="btn btn-default" id= "shareID">Share</a> -->
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+		</div>
+	</div>
+</div>
+<!-- End Modals -->
+
+<!-- Begin Navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header navbar-left">
+			<a class="navbar-brand" href="#">juxtaphor <span>BETA</span></a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+			<li id='getting-started'><a href="#quickHelp">Getting Started <em>!</em></a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+			<li><a href="./pages/help.html">ABOUT</a></li>
+			<li id="workspace-dropdown" class="dropdown">
+
+		<!-- workspace dropdown template -->
+		
+			</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- End Navbar -->
+
+<div class="container">
+  <div class="row">
+   <!-- Contains the div for the  individual sourceView -->
+   <div id="views" class="col-md-7">
+	  <div id="view_container"></div>
+  </div>
+
+  <!-- Contains all the views in tabular form -->
+  <div class="col-md-5">
+	 <!-- Nav tabs -->
+	 <ul class="nav nav-pills" id="tablist">
+	   <li class="active"><a href="#sourcesTab">
+		   Sources</a></li>
+		   <li><a href="#witnessesTab">
+			   Witnesses</a></li>
+			   <li><a href="#collectionsTab">
+				   Collections</a></li>
+			   </ul>
+
+			   <!-- Tab panes -->
+
+			   <div class="tab-content">
+				   <div class="tab-pane active" id="sourcesTab">
+					 <div id="list_source_container"></div>
+				 </div>
+
+				 <div class="tab-pane" id="witnessesTab">
+					 <div id="list_witness_container"></div>
+				 </div>
+
+				 <div class="tab-pane" id="collectionsTab">
+					 <div id="list_set_container"></div>
+				 </div>
+			 </div>
+		 </div>
+
+<!----------- Templates ----------->
+
+<!-- This project uses underscore's templating engine. -->
+<script type="text/template" id="workspace_dropdown_template">
+	<a href="#"
+	class="dropdown-toggle"
+	data-toggle="dropdown">
+	WORKSPACE: <%= AV.WORKSPACE %> <span class="caret"></span>
+	</a>
+	<ul class="dropdown-menu"
+	id="workspace_dropdown_container"
+	role="menu">
+	<% _.each(workspaces, function (workspace) {  %>
+	<li>
+	<a href="#workspace/<%= workspace.escape('name') %>">
+	<% if (workspace.escape('name')==AV.WORKSPACE) { %>
+	<span class="glyphicon glyphicon-arrow-right"></span>
+	<% } %>
+	<%= workspace.escape('name')%>
+	</a>
+	</li>
+	<% }); %>
+	<li class="divider"></li>
+	<li><a href="#workspace">Edit Workspaces</a></li>
+	</ul>
+</script>
+
+<script type="text/template" id="workspace_edit_template">
+	<table class="table table-striped">
+	<% _.each(workspaces, function (workspace) { %>
+	<tr>
+	<td>
+	<%= workspace.escape('name')%>
+	</td>
+	<td>
+	<button type="button"
+	class="btn btn-danger"
+	id="deleteWorkspaceButton"
+	data-value=<%=workspace.get('id')%>>
+	<span class="glyphicon glyphicon-trash"></span>
+	</button>
+	</td>
+	</tr>
+	<% }) %>
+	</table>
+	<input type="text"
+	id="workspaceName"
+	maxlength="20"/>
+	<input type="button"
+	class="btn btn-success "
+	id="newWorkspaceButton"
+	value="Create New Workspace"/>
+</script>
+
+<script type="text/template" id="view_template">
+	<div class="input-group">
+	<span class="input-group-addon">Name</span>
+	<input type="text"
+	id="name"
+	class="form-control"
+	maxlength="20"
+	placeholder="<%= source.escape('name') ? source.escape('name') : ''
+	%>">
+	<% if (!source.get('name')) { %>
+	<span class="input-group-btn">
+	<button class="btn btn-success"
+	id="uploadButton">
+	Save Source
+	</button>
+	</span>
+	<% } %>
+	<span class= "input-group-btn">
+	<input type="button"
+	class="btn btn-default"
+	id="lineWrapToggle"
+	value="Line Wrap Off
+	"/>
+	</span>
+	</div>
+	<textarea id="viewContent"><%= source.escape('content') %></textarea>
+	<label><input id="contentType" type="checkbox">XML</label>
+	<label><input id="parallelSeg" type="checkbox">TEI Parallel
+	Segmentation</label>
+</script>
+
+<script type="text/template" id="list_source_template">
+	<table class="table table-striped table-hover table-condensed">
+	<thead>
+	<tr>
+	<th class="col-md-6">Name</th>
+	<th></th>
+	<!-- Empty headings in order to get spacing to work later. -->
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<% _.each(sources, function (source) { %>
+	<tr>
+	<td><%= source.escape('name') %></td>
+
+	<td>
+	<input type="checkbox"
+	class="transformCheckbox"
+	name="transform"
+	value=<%=source.get('id')%>>
+	</td>
+	<td >
+	<div class="btn-group">
+	<a type="button"
+	class="btn btn-primary"
+	id="viewButton"
+	data-tooltip="tooltip" title="View Source"
+	href="#/source/<%=source.get('id')%>">
+	<span>&lt; / &gt;</span>
+	</a>
+	<button type="button"
+	class="btn btn-danger"
+	data-tooltip="tooltip" title="Delete"
+	id="deleteSourceButton"
+	data-value=<%=source.get('id')%>>
+	<span class="glyphicon glyphicon-trash"></span>
+	</button>
+	<% if (source.get('type') == 'XML') { %><button type="button"
+	class="btn btn-info" id="teiView"
+	data-toggle="modal" data-target="#teiModal" title="TEI View"
+	data-value=<%=source.get('id')%>>
+	<span class="glyphicon glyphicon-eye-open"></span>
+	</button>
+	<% } %>
+	</div>
+	</td>
+	</tr>
+	<% }); %>
+	</tbody>
+	</table>
+	<div class="btn-group">
+	<a type="button"
+	class="btn btn-success"
+	id="newSourceButton"
+	href="#source">
+	Create New Source
+	</a>
+
+	<button type="button"
+	class="btn btn-success"
+	id="transformButton">
+	Transform Selected Sources
+	</button>
+	</div>
+</script>
+
+<script type="text/template" id="tei_view_template">
+	
+	<div class="col-md-6"  id="tei-base">
+	<h3 id="tei-title"><%= tei.title %></h3>
+	<p>
+	<% var appCount = 0; _.each(tei.base, function(app){ %>
+		<% if(app !==  '<br/>') { appCount++; %>
+		<span id="app-<%= appCount %>"> <%= app.text %> </span>
+		<% } else { %> <%= app %> <% } %>
+	<% }); %>
+	</p>
+	</div>
+
+	<div class="col-md-4" id="tei-rdgs">
+	<% _.each(tei.apps, function(app, i){ %>
+		<ul id="app-<%= i %>" >
+		<% _.each(app, function(rdg) { %>	
+			<li class="wit-title wit-<%= rdg.wit %>" ><h3> <%= rdg.wit %> || </h3>
+		<span class="wit-text wit-<%= rdg.wit %>>" > <%= rdg.text %> </span></li> <% }); %>
+	</ul>
+	<% }); %>
+	</div>
+</script>
+
+<script type="text/template" id="list_witness_template">
+	<table class="table table-striped table-condensed">
+	<thead>
+	<tr>
+	<th class="col-md-6">Name</th>
+	<!-- Empty headings in order to get spacing to work later. -->
+	<th>
+	<span class="glyphicon glyphicon-compressed"></span>
+	</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<% _.each(witnesses, function (witness) { %>
+	<tr>
+	<td><%= witness.escape('name') %></td>
+	<td>
+	<input type="checkbox"
+	class="witnessCheckbox"
+	name="witness"
+	value=<%=witness.get('id')%>>
+	</td>
+	<td>
+	<div class="btn-group">
+	<button type="button"
+	class="btn btn-danger"
+	data-tooltip="tooltip"
+	title="Delete"
+	id="deleteWitnessButton"
+	data-value=<%=witness.get('id')%>>
+	<span class="glyphicon glyphicon-trash"></span>
+	</button>
+	</div>
+	</td>
+	</tr>
+	<% }); %>
+	</tbody>
+	</table>
+	<div id="collate_input_group" class="input-group">
+	<span class="input-group-addon">Collation Name</span>
+	<input type="text" class="form-control" id="collationNameField" />
+	</div>
+	<button type="button"
+	class="btn btn-primary"
+	id="collateButton"
+	style="margin:0;margin-top:4px">
+	Collate Selected Witnesses
+	</button>
+</script>
+
+<script type="text/template" id="list_set_template">
+	<!-- _.contains() is being used here like the Pythonic in idiom. -->
+	<% if (_.any(sets, function (set) {
+	return !_.contains(['TOKENIZING', 'TOKENIZED', 'COLLATING', 'COLLATED'],
+	set.get('status')); } )) { %>
+		<div class="alert alert-danger" role="alert">
+		<strong>Error:</strong>
+		Something has gone wrong, and one or more of your collections can not be
+		visualized. Please delete the errant visualization, and try again.
+		</div>
+	<% } %>
+
+	<table class="table table-striped table-condensed">
+	<thead>
+	<tr>
+	<th class="col-md-4">Name</th>
+	<th class="col-md-1">Status</th>
+	<!-- Empty headings in order to get spacing to work later. -->
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<% _.each(sets, function (set) { %>
+	<tr>
+	<td><%= set.escape('name') %></td>
+	<% if (set.get('status') == 'COLLATED') { %>
+		<td><span class="glyphicon glyphicon-ok"></span></td>
+	<% } else if (set.get('status').indexOf("NOT") > -1) { %>
+		<td><span class="glyphicon glyphicon-remove"></span></td>
+	<% } else if (_.contains(['TOKENIZING', 'TOKENIZED', 'COLLATING']),
+		set.get('status')) { %>
+		<td><span class="glyphicon glyphicon-refresh"></span></td>
+	<% } else { %>
+		<td><%=set.escape('status')%></td>
+	<% } %>
+	
+	<td>
+	<div class="btn-group">
+	<% if (set.get('status') == 'COLLATED') { %>
+		<a type="button"
+		class="btn btn-warning"
+		data-tooltip="tooltip" title='View heat-map'
+		href="#viz/heatmap/<%=set.get('id')%>"
+		id="heatMapButton">
+		<span class="glyphicon glyphicon-fire"></span>
+		</a>
+		<a type="button"
+		class="btn btn-primary"
+		data-tooltip="tooltip" title='View side-by-side'
+		href="#viz/sidebyside/<%=set.get('id')%>"
+		id="sideBySideButton">
+		<img src="_/img/sidebyside.png" height="15"
+		width="20"></img>
+		</a>
+	<% } %>
+
+	<button type="button"
+	class="btn btn-danger"
+	id="deleteSetButton"
+	data-tooltip="tooltip" title='Delete'
+	data-value=<%=set.get('id')%>>
+	<span class="glyphicon glyphicon-trash"></span>
+	</button>
+	</div>
+	</td>
+	</tr>
+	<% }); %>
+	</tbody>
+	</table>
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="_/js/lib/bootstrap.min.js"></script>
+<script src="_/js/lib/underscore.js"></script>
+<script src="_/js/lib/backbone.js"></script>
+<script src="_/js/lib/codemirror.js"></script>
+<link rel="stylesheet" href="_/css/solarized.css">
+<link rel="stylesheet" href="_/css/codemirror.css">
+<script src="_/js/AkhmatoViz.js"></script>
+</body>
+</html>

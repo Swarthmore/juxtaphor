@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Help</title>
+    <link href="../_/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../_/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../_/css/main.css" rel="stylesheet">
+    <link href="css/help.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="../_/img/favicon.ico" />
+  </head>
+
+  <body data-spy="scroll" data-target="#about-nav">
+    <div class="navbar navbar-default navbar-fixed-top"
+         role="navigation">
+      <div class="container">
+        <div class="navbar-header navbar-left">
+          <a class="navbar-brand" href="../">juxtaphor <span>BETA</span></a>
+        </div>
+        <div class="nav navbar-nav navbar-right">
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div id="about" class="col-md-9">
+	    <h1 id="introduction">Introduction</h1>
+	    <p>Juxtaphor is a web interface that allows users to 1) save different versions of a text 2) create collections from those versions and 3) generate dynamic visualizations from collections.</p>
+
+		<p>This project is a collaboration between Sibelan Forrester, Professor of Russian Literature, and the SPEED program at Swarthmore College. It was built by students Alexander Simms, Benjamin Xie, Katherine Hamilton, and Andrew Pak. All code released under the BSD license, available on our <a href="https://github.com/Swarthmore/VisualizingTranslations">Github VisualizingTranslations repository</a>.</p>
+		
+		<div id="speed" class="logo"></div>
+		<div id="swat" class="logo"></div>
+
+	    <h2 id="sources">Sources</h2>
+		<p>The first step to using this site is to add source files to your
+		workspace. Source files serve as the raw data that the user can
+		enter. After entering the sources, one can view what has been
+		uploaded by clicking on the orange button with an eye icon under
+		the sources tab. They can also be deleted by click on the trashcan
+		button. The whole point of uploading sources, however, is to
+		transform them into smarter texts that can be visualized. Checking
+		off sources and hitting transform will convert the sources into
+		witnesses.</p>
+
+	    <h2 id="witnesses">Witnesses</h2>
+		<p>After transforming the sources, we have successfully used Juxta to
+		prepare the witnesses. Witnesses are versions of the original text
+		that we want to eventually compare. When a source is transformed, 
+		it gets extra metadata that allows Juxta to eventually collate
+		and visualize the different versions. Under the witnesses tab,
+		check off the witnesses you want to compare and collate them.
+		Collating groups the witnesses together into collection sets,
+		which are easily visualized.</p>
+
+	    <h2 id="collections" >Collections</h2>
+		<p>Collections are sets of witnesses that can be visualized. Under
+		the collections tab, one can view all the collections that have
+		been built. Some may take a second to finsih collating. Once
+		collated, however, the collection can be visualized as either
+		a heatmap or a side-by-side comparison view.</p>
+
+	    <h2 id="text-seg">TEI Parallel Segmentation</h2>
+		<p>The Juxta API relies on <a href="http://www.tei-c.org">TEI</a> to parse witnesses and serve visualizations based on collated sets. In particular, Juxta uses TEIs <a href="http://www.tei-c.org/release/doc/tei-p5-doc/en/html/TC.html#TCAPPS">Parallel Segmentation</a> to encode text variations. Roughly speaking, Parallel Segmentation allows users to align portions of several different texts with each other. It does not hardcode one single "base text" against which all others variants are compared. Instead it allows for multiple readings and fluid recombination between texts.
+	
+		<p>The Juxta API automatically performs alignment and markup using Parallel Segmentation; however, if you wish to have more fine-grained control or already have a collated set, you can import an existing XML that encodes variant texts in TEI using Parallel Segmentation. To do so, cut and paste valid TEI XML into the text input area, click the XML and TEI Parallel Segmentation checkboxes that appear below the text input area, and save source as you normally would. This will automatically generate separate witnesses, add a new collection from those witnesses, and collate that collection. This may take a few moments to complete.</p>	
+		
+		<p>Please note that in your TEI XML, please ensure that the titles you assign to your witnesses in your witness list within your <listWit> tags must be unique. If any witnesses already exist in your workspace with the same titles, your new set will not be able to collate. If this happens, simply delete the set, any witnesses that were generated, and the source -- then try to upload again.</p>
+		</p>
+
+		<h2 id="dependencies">Dependencies</h2>
+		<p>Juxtaphor proudly builds on several pieces of open source software:</p>
+		<ul>
+			<li>- <a href="https://github.com/performant-software/juxta-service">Juxta Web Service</a></li>
+			<li>- <a href="backbonejs.org">Backbone.js</a></li>
+			<li>- <a href="underscorejs.org">Underscore.js</a></li>
+			<li>- <a href="http://codemirror.net">CodeMirror</a></li>
+			<li>- <a href="getbootstrap.com">Bootstrap</a></li>
+		</ul>
+        
+	    <h2 id="accessibility">Accessibility</h2>
+     	     Our tutorial slideshow is tested viewable with <a href="http://www.chromevox.com/">ChromeVox</a>.
+      </div>
+
+      <div id="about-nav" class="col-md-3">
+        <ul class="nav nav-stacked affix"
+            data-offset-top="400"
+            data-offset-bottom="200">
+	      <li class="active"><a href="#introduction">Introduction</a></li>
+	      <li><a href="#sources">Sources</a></li>
+	      <li><a href="#witnesses">Witnesses</a></li>
+	      <li><a href="#collections">Collections</a></li>
+	      <li><a href="#text-seg">TEI Parallel Segmentation</a></li>
+	      <li><a href="#dependencies">Dependencies</a></li>
+	      <li><a href="#accessibility">Accessibility</a></li>
+	    </ul>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script src="../_/js/lib/bootstrap.min.js"></script>
+      <script src="../_/js/lib/underscore.js"></script>
+  </body>
+</html>
+
