@@ -15,11 +15,13 @@ AV.SourceXMLView = Backbone.View.extend ({
 	
 		if(isPS === true) {	
 		$('#tei-base span').on('click', function(ev){
-			
 			var crntApp = $(ev.currentTarget);
-			var crntAppID = $(ev.currentTarget).attr('id');
-			
+			crntAppID = crntApp.attr('id');
+	
 			console.log(crntApp);
+			console.log(crntAppID);
+
+			$('div.modal-body.row').css({ 'background-color': '#fff' });
 			$('#tei-base p span').css({'background-color': '#fff'});
 			$('#tei-rdgs ul').css({'display': 'none'});	
 			
@@ -43,7 +45,7 @@ AV.SourceXMLView = Backbone.View.extend ({
 		var appCount = 0,
 		body = $('body', xml).children(),
 		firstWit = $($('witness',xml)[0]),
-		baseID = firstWit.attr('xml:id').slice(-4);
+		baseID = firstWit.attr('xml:id').slice(4);
 		
 		var teiJSON = {};
 		teiJSON.apps = [];
@@ -59,12 +61,15 @@ AV.SourceXMLView = Backbone.View.extend ({
 				teiJSON.apps[appCount] = [];
 				var $app = $(this).children();
 				$app.each(function(i){
-					var wit = $(this).attr('wit').slice(-4);
+					var wit = $(this).attr('wit').slice(5);
+					console.log('wit :' + wit);
 					if (wit == baseID) teiJSON.base.push({ 'wit': wit, 'text': $(this).context.textContent });
 					else teiJSON.apps[appCount].push({ 'wit': wit, 'text': $(this).context.textContent });
 				});
 			}
 		});
+		console.log('teiJson');
+		console.log(teiJSON);
 		return teiJSON;
 	}
 });

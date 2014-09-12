@@ -8,16 +8,14 @@ function test(arg){
 	console.log(output);
 }
 
-var PV = {}
+var PV = { baseURL: ['http://54.88.3.200:8182', '/juxta/'] };
 
 PV.Router = Backbone.Router.extend({
     initialize: function(){
         console.log("Initialize Router");
-        this.baseURL = 'http://54.88.3.200:8182/juxta/public/set/';
-        var visualizationIFrame = $("#visualization");
-        visualizationIFrame.load(_.bind(function(){
-            console.log(visualizationIFrame.contents()[0].title);
-            if (!(visualizationIFrame.contents()[0].title)) {
+        var iFrame = $("#visualization");
+        iFrame.load(_.bind(function(){
+            if (!(iFrame.contents()[0].title)) {
                 console.log("RENDERING it says");
                 document.getElementById('visualization')
                     .contentWindow
@@ -32,14 +30,14 @@ PV.Router = Backbone.Router.extend({
         ':workspace/viz/sidebyside/:idToViz': 'sideBySide'
     },
     sideBySide: function (workspace, idToVisualize) {
-        console.log("Rendering side-by-side");
         //render the sideBySide template
         //Create a model to fetch from server list of witnesses
-        var URL = 'http://54.88.3.200:8182/juxta/' + workspace + "/set/" + idToVisualize + '/view?mode=sidebyside&condensed=true&docs=';
+        var URL = PV.baseURL[0] + PV.baseURL[1] + workspace + "/set/" + idToVisualize + '/view?mode=sidebyside&condensed=true&docs=';
+        console.log("Rendering side-by-side " + URL);
 
         //This model wraps the url and lets us use fetch
         var model = Backbone.Model.extend({
-            url: 'http://54.88.3.200:8182/juxta/' + workspace + "/set/" + idToVisualize
+            url: PV.baseURL[0] + PV.baseURL[1] + workspace + "/set/" + idToVisualize
         });
 
         var mod = new model();
@@ -53,19 +51,28 @@ PV.Router = Backbone.Router.extend({
                     '/view?mode=sidebyside&condensed=true&docs=' +
                     ids[0] + ',' + ids[1];
                 $("#visualization").attr('src', mod.url);
+		this.showURL();
+
             }, this)
             });
-
-        test("sideBySide");
     },
 
     heatMap: function (workspace, idToVisualize) {
-        console.log("rendering heatMap");
         //render the heatMap template
-        var URL = 'http://54.88.3.200:8182/juxta/' + workspace + "/set/" +
+        var URL = PV.baseURL[0] + PV.baseURL[1] + workspace + "/set/" +
                 idToVisualize + '/view?mode=heatmap&condensed=true';
-        console.log(URL);
+        console.log("rendering heatMap: " + URL);
         $("#visualization").attr('src', URL);
+	this.showURL();
+	
+    },
+
+    showURL: function() {
+	
+        var vizURL = PV.baseURL[0] + window.location.pathname + '#' + Backbone.history.fragment;
+	console.log('showURL: ' + vizURL);
+        $('footer pre').text(vizURL);
+
     }
 });
 
