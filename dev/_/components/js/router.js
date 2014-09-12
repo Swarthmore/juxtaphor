@@ -83,6 +83,7 @@ AV.Router = Backbone.Router.extend({
 
     tei: function(idToVisualize) {
     	this.sourceXMLModel.set('id',idToVisualize);
+	this.sourceXMLModel.set('url', this.sourceXMLModel.urlRoot + '/' + this.sourceXMLModel.id + '.json');
     	this.sourceXMLModel.fetch().done(
     		_.bind(function(){ this.sourceXMLView.render(); },this)
         );
@@ -131,6 +132,7 @@ AV.Router = Backbone.Router.extend({
         createCookie('workspace', workspace, 95);
         console.log(AV.WORKSPACE);
         this.sourceModel.updateURL();
+        this.sourceXMLModel.updateURL();
         this.sourceCollection.updateURL();
         this.witnessCollection.updateURL();
         this.comparisonSetCollection.updateURL();
