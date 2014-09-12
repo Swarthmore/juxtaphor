@@ -41,6 +41,7 @@ AV.ComparisonSetCollectionView = Backbone.View.extend({
         }, this));
     },
     refresh: function(){
+	console.log('comparison view refresh');
         this.collection.fetch({reset:true});
     },
     delete: function(ev) {

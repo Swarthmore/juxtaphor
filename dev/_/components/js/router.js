@@ -14,19 +14,25 @@ AV.Router = Backbone.Router.extend({
             {collection:this.workspaceCollection});
         this.workspaceEditView = new AV.WorkspaceEditView(
             {collection:this.workspaceCollection});
-        this.sourceModel = new AV.SourceModel();
+        
+	this.sourceModel = new AV.SourceModel();
 	    this.sourceCollection = new AV.SourceCollection();
         this.sourceView = new AV.SourceView(
             {model:this.sourceModel, collection:this.sourceCollection});
 	    this.sourceCollectionView = new AV.SourceCollectionView(
             {collection:this.sourceCollection});
-       	this.witnessCollection = new AV.WitnessCollection();
+
+	this.sourceXMLModel = new AV.SourceXMLModel();
+      	this.sourceXMLView = new AV.SourceXMLView({model: this.sourceXMLModel});
+
+	this.witnessCollection = new AV.WitnessCollection();
         this.comparisonSetModel = new AV.ComparisonSetModel();
         this.witnessCollectionView = new AV.WitnessCollectionView(
             {collection:this.witnessCollection, model:this.comparisonSetModel});
         this.comparisonSetCollection = new AV.ComparisonSetCollection();
         this.comparisonSetCollectionView = new AV.ComparisonSetCollectionView(
             {collection:this.comparisonSetCollection});
+
         this.visualizationModel = new AV.VisualizationModel();
         this.visualizationView = new AV.VisualizationView(
             {model: this.visualizationModel});
@@ -37,6 +43,7 @@ AV.Router = Backbone.Router.extend({
         '': 'index',
         'source': 'source',
         'source/:idToView' : 'source',
+	'viz/tei/:idToView' : 'tei',
         'viz/heatmap/:idToViz': 'heatMap',
         'viz/sidebyside/:idToViz': 'sideBySide',
         'workspace': 'editWorkspaces',
@@ -73,6 +80,13 @@ AV.Router = Backbone.Router.extend({
             this.sourceView.render();
         }
     },
+
+    tei: function(idToVisualize) {
+    	this.sourceXMLModel.set('id',idToVisualize);
+    	this.sourceXMLModel.fetch().done(
+    		_.bind(function(){ this.sourceXMLView.render(); },this)
+        );
+	},
 
     sideBySide: function (idToVisualize) {
         if (!(this.listViewsRendered)) {

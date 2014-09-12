@@ -7,7 +7,12 @@
 @import "modules"; */
 
 nav.navbar-inverse h1.navbar-brand { color: #BACFDF;}
-a.navbar-brand { font-weight: 700; font-style: italic;}
+a.navbar-brand { 
+	font-weight: 700;
+	font-size: 2em; 
+	font-style: italic;
+	span { font-weight: 300; color: #ddd; font-size: .5em;  } 
+}
 #getting-started a { color: #F0AD4E;}
 
 #background {
@@ -26,6 +31,9 @@ iframe#visualization{
 	border: 1px #000 solid;
 	z-index: 100;
 }
+
+footer.viz-content h3 pre { display: inline-block; margin-bottom: -1em; } 
+
 #main{ margin-top: 9%; font-size: 2em;}
 
 //For adding spacing between buttons
@@ -301,3 +309,83 @@ margin-bottom: 4px;
 #waitmodal > .modalcontent{
   height: 100px;
 }
+
+// tei viewer modal
+
+	div.modal-body.row{
+		background-color: #fff;
+		margin: 0px 10px;
+		border: 1.5px solid #000;
+
+		h1 { 
+			color: #8792ff;
+			font-size: 1.5em; }
+	}
+
+#tei-base{
+	color: #000;
+//	float: left;
+//	background-color: #fff;
+	h3 {color: #8792FF; }
+	p span { 
+		cursor: pointer;
+		text-decoration: underline;
+		margin: 0px 1px;
+		}	
+}
+#tei-rdgs {
+
+	@media (min-width: 990px){ 	
+	position: absolute;
+	top: 3em;
+	right: 3em;
+	padding: 10px;
+	}
+	ul{
+		display: none;
+		padding: 10px;
+		width: 20em;
+		list-style: none;
+		color: #485563;
+		opacity: .75;
+		border: 3px solid #485563;
+		border-radius: 5px;
+		li { padding: 5px 0px; }
+		h3 {
+			display: inline; 
+			font-size: 1em; 
+			font-weight: 500;
+			color: #8792FF;
+			margin-right: 20px;
+		}
+	}
+}
+
+
+    .carousel-inner > .item > img {
+    margin: 0 auto;
+    }
+	
+#about { 
+	
+	font-size: 1.1em;
+
+	li { list-style-type: none; }
+
+	.logo {
+		display: inline-block;
+		height: 200px;
+		width: 250px;
+		border-radius: 125px/100px;
+		opacity: .7;
+	}	
+	
+	.logo#speed { background: #fff url(../img/CreatewSpeed-sm.png) no-repeat center; }
+	.logo#swat { 
+		background: #fff url(../img/swarthmore_logo_thumb.jpg) no-repeat center; 
+		margin-left: 25px;
+		}	
+
+}
+
+#about-nav li.active a { background-color: #4E5D6C; }
