@@ -31,6 +31,9 @@ iframe#visualization{
 	border: 1px #000 solid;
 	z-index: 100;
 }
+
+footer.viz-content h3 pre { display: inline-block; margin-bottom: -1em; } 
+
 #main{ margin-top: 9%; font-size: 2em;}
 
 //For adding spacing between buttons
