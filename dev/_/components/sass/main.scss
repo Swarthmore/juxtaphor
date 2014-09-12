@@ -360,3 +360,32 @@ margin-bottom: 4px;
 		}
 	}
 }
+
+
+    .carousel-inner > .item > img {
+    margin: 0 auto;
+    }
+	
+#about { 
+	
+	font-size: 1.1em;
+
+	li { list-style-type: none; }
+
+	.logo {
+		display: inline-block;
+		height: 200px;
+		width: 250px;
+		border-radius: 125px/100px;
+		opacity: .7;
+	}	
+	
+	.logo#speed { background: #fff url(../img/CreatewSpeed-sm.png) no-repeat center; }
+	.logo#swat { 
+		background: #fff url(../img/swarthmore_logo_thumb.jpg) no-repeat center; 
+		margin-left: 25px;
+		}	
+
+}
+
+#about-nav li.active a { background-color: #4E5D6C; }
