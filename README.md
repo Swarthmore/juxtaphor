@@ -1,6 +1,7 @@
 # Visualizing Translations Documentation#
 
 ##Overview##
+
 This README aims to help future collaborators navigate through our codebase.
 We will try to clear up potentially confusing parts as well as explain the
 structure.
@@ -113,7 +114,3 @@ The HTML uses a lot of templating. We've put all the templates on the
 bottom half of the page. A lot of the design of the page can be changed
 within the templates. Column width in the views, for example, is determined
 by bootstrap classes.
-
-
-
-
